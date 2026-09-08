@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { LeadForm } from "./components/LeadForm";
+import { CareerAccordion } from "./components/CareerAccordion";
 
 const stages = [
   { slug: "newly-licensed", title: "Newly Licensed Agent", image: "/career-newly-licensed.jpg", description: "Start your career with a clear plan. Learn how to find leads, build relationships, choose the right mentorship, and establish strong business habits.", cta: "View the Newly Licensed Agent Guide" },
@@ -24,9 +24,9 @@ export default function Home() {
 
       <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple walking toward their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. We’ll help you understand your options, prepare for each step, and move forward with confidence.</p><a className="button red" href="https://acebuyer.adtrealtyaz.com">Start My Homebuying Plan <span>›</span></a><small>Powered by the ADT Realty ACE Buyer process.</small></div></section>
 
-      <section id="sellers" className="seller"><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>Your Home Is More Than an Estimate</h2><p>Selling starts with understanding what your home could be worth in today’s Arizona market.</p><LeadForm type="seller" /></div><div className="splitImage sellerImage" role="img" aria-label="Modern Arizona home at dusk"><span>Arizona Lives Here.</span></div></section>
+      <section id="sellers" className="seller"><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Get a personalized look at your home’s potential value in today’s Arizona market.</p><LeadForm type="seller" /></div></section>
 
-      <section id="join" className="join"><div className="sectionIntro"><div className="redRule"/><p className="eyebrow">Join ADT Realty</p><h2>Built for Every Stage of Your Real Estate Career</h2><p>ADT Realty combines practical training, modern technology, proven systems, and real support to help you move forward—wherever you are today.</p></div><div className="stageList">{stages.map((stage, index) => <article className={`stage ${index % 2 ? "reverse" : ""}`} key={stage.slug}><div className="stageArt"><Image src={stage.image} alt={`${stage.title} guide artwork`} fill sizes="(max-width: 760px) 100vw, 42vw" /></div><div className="stageCopy"><p className="stageNumber">0{index + 1}</p><h3>{stage.title}</h3><p>{stage.description}</p><Link className="textLink" href={`/join/${stage.slug}`}>{stage.cta} <span>›</span></Link></div></article>)}</div>
+      <section id="join" className="join"><div className="sectionIntro"><div className="redRule"/><p className="eyebrow">Join ADT Realty</p><h2>Built for Every Stage of Your Real Estate Career</h2><p>ADT Realty combines practical training, modern technology, proven systems, and real support to help you move forward—wherever you are today.</p></div><CareerAccordion stages={stages}/>
         <div className="leadersCallout"><div><p className="eyebrow light">Leadership at ADT Realty</p><h2>Want to hear what our leaders say?</h2><p>Meet the people building ADT Realty and hear why they chose to lead here.</p></div><a className="button outline" href="https://adtrealtyaz.com/leaders">Meet Our Leaders <span>›</span></a></div>
       </section>
 

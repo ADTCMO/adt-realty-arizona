@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { LeadForm } from "./components/LeadForm";
-import { CareerAccordion } from "./components/CareerAccordion";
+import { CareerShowcase } from "./components/CareerShowcase";
 
 const stages = [
   { slug: "newly-licensed", title: "Newly Licensed Agent", image: "/career-newly-licensed.jpg", description: "Start your career with a clear plan. Learn how to find leads, build relationships, choose the right mentorship, and establish strong business habits.", cta: "View the Newly Licensed Agent Guide" },
@@ -26,7 +26,7 @@ export default function Home() {
 
       <section id="sellers" className="seller"><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Get a personalized look at your home’s potential value in today’s Arizona market.</p><LeadForm type="seller" /></div></section>
 
-      <section id="join" className="join"><div className="sectionIntro"><div className="redRule"/><p className="eyebrow">Join ADT Realty</p><h2>Built for Every Stage of Your Real Estate Career</h2><p>ADT Realty combines practical training, modern technology, proven systems, and real support to help you move forward—wherever you are today.</p></div><CareerAccordion stages={stages}/>
+      <section id="join" className="join"><div className="sectionIntro"><div className="redRule"/><p className="eyebrow">Join ADT Realty</p><h2>Built for Every Stage of Your Real Estate Career</h2><p>ADT Realty combines practical training, modern technology, proven systems, and real support to help you move forward—wherever you are today.</p></div><CareerShowcase stages={stages}/>
         <div className="leadersCallout"><div><p className="eyebrow light">Leadership at ADT Realty</p><h2>Want to hear what our leaders say?</h2><p>Meet the people building ADT Realty and hear why they chose to lead here.</p></div><a className="button outline" href="https://adtrealtyaz.com/leaders">Meet Our Leaders <span>›</span></a></div>
       </section>
 

@@ -12,7 +12,7 @@ const stages = [
 export default function Home() {
   return <>
     <header className="siteHeader">
-      <a className="brand" href="#home" aria-label="ADT Realty Arizona home"><Image src="/adt-realty-arizona-logo.png" alt="ADT Realty Arizona" width={118} height={118} priority /></a>
+      <a className="brand" href="#home" aria-label="ADT Realty Arizona home"><Image src="/adt-realty-arizona-logo-v2.png" alt="ADT Realty Arizona" width={118} height={118} priority unoptimized /></a>
       <nav aria-label="Main navigation"><a href="#home">Home</a><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="https://adtrealtyaz.com/hero">Community Heroes</a><a href="#join">Join ADT</a></nav>
       <a className="button red headerButton" href="#contact">Talk to an Agent <span>›</span></a>
       <details className="mobileMenu"><summary aria-label="Open navigation"><span/><span/><span/></summary><div><a href="#home">Home</a><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="https://adtrealtyaz.com/hero">Community Heroes</a><a href="#join">Join ADT</a><a href="#contact">Talk to an Agent</a></div></details>
@@ -33,6 +33,6 @@ export default function Home() {
       <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Make Your Next Step Clear.</h2><p>Tell us where you are and what you’re working toward. Your inquiry will go directly to Mike Dingman.</p></div><LeadForm type="contact" /></section>
     </main>
 
-    <footer><Image src="/adt-realty-arizona-logo.png" alt="ADT Realty Arizona" width={96} height={96}/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><p>© 2026 ADT Realty · Equal Housing Opportunity</p></footer>
+    <footer><Image src="/adt-realty-arizona-logo-v2.png" alt="ADT Realty Arizona" width={96} height={96} unoptimized/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><p>© 2026 ADT Realty · Equal Housing Opportunity</p></footer>
   </>;
 }

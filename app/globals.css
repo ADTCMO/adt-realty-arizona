@@ -26,3 +26,16 @@
 
 /* Clean Arizona mark and a real website CTA for every embedded career guide. */
 .brand img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}.guideHeader img{display:block;object-fit:contain}.guideActions{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:28px}.guideActions .button{min-width:260px}.guideActions .embedFallback{margin:0}footer>img{display:block;width:96px;height:110px;object-fit:contain}
+
+/* Editorial flow: keep the people clear, then let the recruiting story breathe. */
+.buyer:after{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 26%,rgba(255,255,255,.72) 40%,rgba(255,255,255,.08) 58%,rgba(255,255,255,0) 72%)}
+.buyer .buyerImage{background-position:center 57%}
+.buyer .splitCopy{width:min(560px,41vw);margin-left:clamp(28px,8vw,130px);margin-right:auto}
+.join{padding-bottom:0}
+.leadersCallout{max-width:1180px;margin:72px auto 0;padding:38px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent;color:var(--ink)}
+.leadersCallout .eyebrow{color:var(--red)!important}.leadersCallout h2{margin-bottom:8px}.leadersCallout p{color:#59657c}.leadersCallout .textLink{flex:none;padding:16px 0;border-bottom:2px solid var(--red)}
+.contact{margin-top:0;padding-top:80px;padding-bottom:80px;background:#f5f7fa;color:var(--ink);border-bottom:1px solid var(--line)}
+.contact>div>p:not(.eyebrow){color:#59657c}.contact .eyebrow.light{color:var(--red)!important}
+.contact .leadForm{color:var(--ink)}.contact .leadForm input,.contact .leadForm select,.contact .leadForm textarea{color:var(--ink);background:#fff;border:0;border-bottom:1px solid #aeb6c5}.contact .leadForm textarea{border:1px solid #c6ccd7}.contact .leadForm .formStatus{color:var(--navy)}
+footer{min-height:104px;background:#00123f}footer>img{filter:brightness(0) invert(1);height:76px}
+@media(max-width:900px){.buyer:after{background:linear-gradient(0deg,#fff 0%,rgba(255,255,255,.97) 34%,rgba(255,255,255,.2) 57%,rgba(255,255,255,0) 72%)}.buyer .buyerImage{background-position:62% center}.buyer .splitCopy{width:auto;margin:265px 28px 0}.leadersCallout{margin-left:0;margin-right:0}.contact{margin-top:0}}

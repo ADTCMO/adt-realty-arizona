@@ -1,5 +1,6 @@
 import { LeadForm } from "./components/LeadForm";
 import { CareerShowcase } from "./components/CareerShowcase";
+import "./seller-section.css";
 
 const stages = [
   { slug: "newly-licensed", title: "Newly Licensed Agent", image: "/career-newly-licensed.jpg", description: "Start your career with a clear plan. Learn how to find leads, build relationships, choose the right mentorship, and establish strong business habits.", cta: "View the Newly Licensed Agent Guide" },
@@ -23,7 +24,7 @@ export default function Home() {
 
       <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple walking toward their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. We’ll help you understand your options, prepare for each step, and move forward with confidence.</p><a className="button red" href="https://acebuyer.adtrealtyaz.com">Start My Homebuying Plan <span>›</span></a><small>Powered by the ADT Realty ACE Buyer process.</small></div></section>
 
-      <section id="sellers" className="seller"><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Get a personalized look at your home’s potential value in today’s Arizona market.</p><LeadForm type="seller" /></div></section>
+      <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"><div className="sellerSignPost"/><div className="sellerSignArm"/><div className="sellerSignBoard"><div className="sellerSignTop">For Sale</div><div className="sellerSignBrand"><span>ADT</span> Realty</div><div className="sellerSignUrl">adtrealtyaz.com</div></div></div><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Get a personalized look at your home’s potential value in today’s Arizona market.</p><LeadForm type="seller" /></div></section>
 
       <section id="join" className="join"><div className="sectionIntro"><div className="redRule"/><p className="eyebrow">Join ADT Realty</p><h2>Built for Every Stage of Your Real Estate Career</h2><p>ADT Realty combines practical training, modern technology, proven systems, and real support to help you move forward—wherever you are today.</p></div><CareerShowcase stages={stages}/>
         <div className="leadersCallout"><div><p className="eyebrow">Leadership at ADT Realty</p><h2>Want to hear what our leaders say?</h2><p>Meet the people building ADT Realty and hear why they chose to lead here.</p></div><a className="textLink" href="https://leaders.adtrealtyaz.com">Meet Our Leaders <span>›</span></a></div>

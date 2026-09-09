@@ -12,12 +12,25 @@ const stages = [
 export default function Home() {
   return <>
     <style>{`
+      #home.hero{min-height:500px;place-items:center start;background:linear-gradient(90deg,rgba(0,19,67,.70) 0%,rgba(0,19,67,.46) 35%,rgba(0,19,67,.12) 64%,rgba(0,19,67,.03) 100%),url('/hero-arizona.jpg') center 55%/cover no-repeat}
+      #home .heroContent{text-align:left;margin:0;padding:50px max(35px,calc((100vw - 1180px)/2));max-width:850px}
+      #home .heroContent h1{font-size:clamp(40px,4vw,60px);line-height:1;letter-spacing:-.035em;text-shadow:0 2px 10px rgba(0,13,45,.38)}
+      #home .heroContent p{max-width:680px;font-size:clamp(17px,1.35vw,21px);margin:13px 0 25px;text-shadow:0 2px 8px rgba(0,13,45,.35)}
+      #home .actions{justify-content:flex-start;gap:14px}
+      #home .actions .button{min-width:205px}
+      #home .actions .outline{border-color:rgba(255,255,255,.72);background:rgba(0,19,67,.12)}
       #buyers{position:relative;min-height:430px;display:block;overflow:hidden;background:#fff}
       #buyers .buyerImage{position:absolute;top:0;right:0;bottom:0;left:38%;background-image:linear-gradient(270deg,#fff 0%,rgba(255,255,255,.18) 20%,rgba(255,255,255,0) 42%),url('/homebuyer-couple-mobile.png');background-size:cover;background-position:30% center;transform:scaleX(-1)}
       #buyers .buyerImage:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 8%,rgba(255,255,255,.68) 22%,rgba(255,255,255,.16) 40%,rgba(255,255,255,0) 56%)}
       #buyers .splitCopy{position:relative;z-index:2;width:min(52%,650px);min-height:430px;padding:48px 30px 48px max(35px,calc((100vw - 1180px)/2));justify-content:center;background:transparent}
       #buyers .splitCopy>p:not(.eyebrow){max-width:510px}
       @media (max-width:760px){
+        #home.hero{min-height:470px;place-items:end start;background:linear-gradient(0deg,rgba(0,19,67,.76) 0%,rgba(0,19,67,.42) 46%,rgba(0,19,67,.05) 78%),url('/hero-arizona.jpg') 58% center/cover no-repeat}
+        #home .heroContent{text-align:left;margin:0;padding:0 24px 34px;max-width:100%}
+        #home .heroContent h1{font-size:36px}
+        #home .heroContent p{font-size:16px;line-height:1.45;margin:10px 0 18px}
+        #home .actions{gap:8px}
+        #home .actions .button{width:100%;min-width:0}
         #buyers.split.buyer{display:block!important;min-height:0!important;height:auto!important;padding:0!important;position:relative!important;overflow:hidden!important;background:#fff!important}
         #buyers .buyerImage.splitImage{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:190px!important;min-height:190px!important;margin:0!important;background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,.25) 66%,rgba(255,255,255,.78) 84%,#fff 100%),url('/homebuyer-couple-mobile.png')!important;background-size:cover!important;background-position:37% 46%!important;transform:scaleX(-1)!important;z-index:1!important}
         #buyers .buyerImage:after{display:none!important}

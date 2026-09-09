@@ -11,7 +11,7 @@ const stages = [
 
 export default function Home() {
   return <>
-    <style>{`@media (max-width:760px){#buyers .buyerImage{background-image:url('/homebuyer-couple-mobile.png');min-height:185px;height:185px;background-size:cover;background-position:63% 48%}#buyers .splitCopy{padding-top:36px}}`}</style>
+    <style>{`@media (max-width:760px){#buyers .buyerImage{background-image:url('/homebuyer-couple-mobile.png');min-height:185px;height:185px;background-size:cover;background-position:63% 48%}#buyers .splitCopy{padding-top:36px}#sellers .compactForm{gap:10px;padding-top:18px;padding-bottom:18px}#sellers .compactForm label{margin:0}#sellers .compactForm input{height:44px;margin-top:4px;padding:10px 12px}#sellers .compactForm .button{height:48px;margin-top:2px}#sellers .compactForm small{margin-top:0}#sellers .compactForm .formStatus{min-height:0}}`}</style>
     <header className="siteHeader">
       <a className="brand" href="#home" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></a>
       <nav aria-label="Main navigation"><a href="#home">Home</a><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="https://adtrealtyaz.com/hero">Community Heroes</a><a href="#join">Join ADT</a></nav>

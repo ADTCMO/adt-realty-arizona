@@ -11,7 +11,29 @@ const stages = [
 
 export default function Home() {
   return <>
-    <style>{`@media (max-width:760px){#buyers .buyerImage{background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 58%,rgba(255,255,255,.18) 70%,rgba(255,255,255,.62) 84%,#fff 100%),url('/homebuyer-couple-mobile.png');min-height:215px;height:215px;background-size:cover;background-position:63% 48%;margin-bottom:-34px;position:relative;z-index:1}#buyers .splitCopy{padding-top:34px;position:relative;z-index:2;background:#fff}#sellers .compactForm{gap:10px;padding-top:18px;padding-bottom:18px}#sellers .compactForm label{margin:0}#sellers .compactForm input{height:44px;margin-top:4px;padding:10px 12px}#sellers .compactForm .button{height:48px;margin-top:2px}#sellers .compactForm small{margin-top:0}#sellers .compactForm .formStatus{min-height:0}}`}</style>
+    <style>{`
+      #buyers{position:relative;min-height:500px;display:block;overflow:hidden;background:#fff}
+      #buyers .buyerImage{position:absolute;inset:0;background-image:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 25%,rgba(255,255,255,.82) 39%,rgba(255,255,255,.30) 55%,rgba(255,255,255,0) 70%),url('/homebuyer-couple-mobile.png');background-size:cover;background-position:68% center}
+      #buyers .splitCopy{position:relative;z-index:2;width:min(50%,650px);min-height:500px;padding:62px 30px 62px max(35px,calc((100vw - 1180px)/2));justify-content:center;background:transparent}
+      #buyers .splitCopy>p:not(.eyebrow){max-width:510px}
+      @media (max-width:760px){
+        #buyers{min-height:auto;display:grid;grid-template-columns:1fr}
+        #buyers .buyerImage{position:relative;inset:auto;background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 55%,rgba(255,255,255,.18) 68%,rgba(255,255,255,.68) 84%,#fff 100%),url('/homebuyer-couple-mobile.png');min-height:205px;height:205px;background-size:cover;background-position:63% 48%;margin-bottom:-46px;z-index:1}
+        #buyers .splitCopy{width:100%;min-height:auto;padding:18px 24px 44px;position:relative;z-index:2;background:transparent}
+        #buyers .redRule{margin-bottom:9px}
+        #buyers .eyebrow{margin-bottom:8px!important}
+        #buyers .splitCopy h2{margin-bottom:14px}
+        #buyers .splitCopy>p:not(.eyebrow){margin-top:0;margin-bottom:16px;line-height:1.55}
+        #buyers .splitCopy .button{margin-top:0;width:100%}
+        #buyers .splitCopy small{margin-top:10px}
+        #sellers .compactForm{gap:10px;padding-top:18px;padding-bottom:18px}
+        #sellers .compactForm label{margin:0}
+        #sellers .compactForm input{height:44px;margin-top:4px;padding:10px 12px}
+        #sellers .compactForm .button{height:48px;margin-top:2px}
+        #sellers .compactForm small{margin-top:0}
+        #sellers .compactForm .formStatus{min-height:0}
+      }
+    `}</style>
     <header className="siteHeader">
       <a className="brand" href="#home" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></a>
       <nav aria-label="Main navigation"><a href="#home">Home</a><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="https://adtrealtyaz.com/hero">Community Heroes</a><a href="#join">Join ADT</a></nav>
@@ -22,7 +44,7 @@ export default function Home() {
     <main>
       <section id="home" className="hero"><div className="heroContent"><h1>ADT REALTY — ARIZONA</h1><p>Local expertise. Modern tools. Relationships that matter.</p><div className="actions"><a className="button red" href="#buyers">Buy a Home <span>›</span></a><a className="button outline" href="#sellers">Sell a Home <span>›</span></a></div></div></section>
 
-      <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple walking toward their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. We’ll help you understand your options, prepare for each step, and move forward with confidence.</p><a className="button red" href="https://acebuyer.adtrealtyaz.com">Start My Homebuying Plan <span>›</span></a><small>Powered by the ADT Realty ACE Buyer process.</small></div></section>
+      <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple outside their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. We’ll help you understand your options, prepare for each step, and move forward with confidence.</p><a className="button red" href="https://acebuyer.adtrealtyaz.com">Start My Homebuying Plan <span>›</span></a><small>Powered by the ADT Realty ACE Buyer process.</small></div></section>
 
       <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Get a personalized look at your home’s potential value in today’s Arizona market.</p><LeadForm type="seller" /></div></section>
 

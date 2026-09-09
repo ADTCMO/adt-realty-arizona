@@ -13,12 +13,12 @@ export default function Home() {
   return <>
     <style>{`
       #buyers{position:relative;min-height:500px;display:block;overflow:hidden;background:#fff}
-      #buyers .buyerImage{position:absolute;inset:0;background-image:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 25%,rgba(255,255,255,.82) 39%,rgba(255,255,255,.30) 55%,rgba(255,255,255,0) 70%),url('/homebuyer-couple-mobile.png');background-size:cover;background-position:68% center}
+      #buyers .buyerImage{position:absolute;inset:0;background-image:linear-gradient(270deg,#fff 0%,rgba(255,255,255,.98) 25%,rgba(255,255,255,.82) 39%,rgba(255,255,255,.30) 55%,rgba(255,255,255,0) 70%),url('/homebuyer-couple-mobile.png');background-size:cover;background-position:32% center;transform:scaleX(-1)}
       #buyers .splitCopy{position:relative;z-index:2;width:min(50%,650px);min-height:500px;padding:62px 30px 62px max(35px,calc((100vw - 1180px)/2));justify-content:center;background:transparent}
       #buyers .splitCopy>p:not(.eyebrow){max-width:510px}
       @media (max-width:760px){
         #buyers.split.buyer{display:block!important;min-height:0!important;height:auto!important;padding:0!important;position:relative!important;overflow:hidden!important;background:#fff!important}
-        #buyers .buyerImage.splitImage{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:190px!important;min-height:190px!important;margin:0!important;background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,.25) 66%,rgba(255,255,255,.78) 84%,#fff 100%),url('/homebuyer-couple-mobile.png')!important;background-size:cover!important;background-position:63% 46%!important;z-index:1!important}
+        #buyers .buyerImage.splitImage{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:190px!important;min-height:190px!important;margin:0!important;background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,.25) 66%,rgba(255,255,255,.78) 84%,#fff 100%),url('/homebuyer-couple-mobile.png')!important;background-size:cover!important;background-position:37% 46%!important;transform:scaleX(-1)!important;z-index:1!important}
         #buyers .splitCopy{display:flex!important;position:relative!important;width:100%!important;height:auto!important;min-height:0!important;margin:-46px 0 0!important;padding:0 24px 30px!important;z-index:2!important;justify-content:flex-start!important;background:transparent!important}
         #buyers .redRule{margin:0 0 7px!important}
         #buyers .eyebrow{margin:0 0 6px!important}

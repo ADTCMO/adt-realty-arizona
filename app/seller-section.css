@@ -11,4 +11,16 @@
 .sellerSellerLayout .compactForm .addressField{grid-column:1/-1!important}
 .sellerSellerLayout .compactForm small{grid-column:1/-1!important;color:#687188!important}
 @media(max-width:1100px){.sellerSellerLayout{grid-template-columns:40% 60%!important}.sellerSellerLayout .compactForm{grid-template-columns:1fr 1fr!important}.sellerSellerLayout .compactForm .addressField,.sellerSellerLayout .compactForm small{grid-column:1/-1!important}}
-@media(max-width:760px){.sellerSellerLayout{grid-template-columns:1fr!important}.sellerVisual{min-height:330px;background-position:32% center}.sellerVisual:after{background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 65%,rgba(255,255,255,.55) 84%,#fff 100%)}.sellerSellerLayout .sellerForm{padding:25px 22px 52px!important}.sellerSellerLayout .compactForm{grid-template-columns:1fr!important;padding:20px 18px!important}.sellerSellerLayout .compactForm .addressField,.sellerSellerLayout .compactForm small{grid-column:auto!important}}
+@media(max-width:760px){
+  .sellerSellerLayout{grid-template-columns:1fr!important}
+  .sellerVisual{min-height:330px;background-position:32% center}
+  .sellerVisual:after{background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 65%,rgba(255,255,255,.55) 84%,#fff 100%)}
+  .sellerSellerLayout .sellerForm{padding:25px 22px 38px!important}
+  .sellerSellerLayout .compactForm{display:grid!important;grid-template-columns:1fr!important;gap:7px!important;margin-top:14px!important;padding:14px 14px 12px!important}
+  .sellerSellerLayout .compactForm .addressField,.sellerSellerLayout .compactForm small{grid-column:auto!important}
+  .sellerSellerLayout .compactForm label{margin:0!important;font-size:10px!important;line-height:1.15!important}
+  .sellerSellerLayout .compactForm input{height:38px!important;min-height:38px!important;margin-top:3px!important;padding:7px 9px!important;font-size:12px!important}
+  .sellerSellerLayout .compactForm .button{height:42px!important;min-height:42px!important;margin-top:2px!important;padding:8px 12px!important;font-size:11px!important}
+  .sellerSellerLayout .compactForm small{margin:1px 0 0!important;font-size:10px!important;line-height:1.25!important}
+  .sellerSellerLayout .compactForm .formStatus{min-height:0!important;margin:0!important}
+}

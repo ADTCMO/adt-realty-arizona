@@ -17,15 +17,15 @@ export default function Home() {
       #buyers .splitCopy{position:relative;z-index:2;width:min(50%,650px);min-height:500px;padding:62px 30px 62px max(35px,calc((100vw - 1180px)/2));justify-content:center;background:transparent}
       #buyers .splitCopy>p:not(.eyebrow){max-width:510px}
       @media (max-width:760px){
-        #buyers{min-height:535px;display:block;position:relative;background:#fff}
-        #buyers .buyerImage{position:absolute;top:0;left:0;right:0;bottom:auto;height:225px;min-height:225px;margin:0;background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 48%,rgba(255,255,255,.18) 62%,rgba(255,255,255,.72) 80%,#fff 100%),url('/homebuyer-couple-mobile.png');background-size:cover;background-position:63% 46%;z-index:1}
-        #buyers .splitCopy{position:relative;z-index:2;width:100%;min-height:535px;padding:185px 24px 30px;display:flex;flex-direction:column;justify-content:flex-start;background:transparent}
-        #buyers .redRule{margin-bottom:7px}
-        #buyers .eyebrow{margin-bottom:6px!important}
-        #buyers .splitCopy h2{margin-bottom:10px}
-        #buyers .splitCopy>p:not(.eyebrow){margin-top:0;margin-bottom:13px;line-height:1.48}
-        #buyers .splitCopy .button{margin-top:0;width:100%}
-        #buyers .splitCopy small{margin-top:8px}
+        #buyers.split.buyer{display:block!important;min-height:0!important;height:auto!important;padding:0!important;position:relative!important;overflow:hidden!important;background:#fff!important}
+        #buyers .buyerImage.splitImage{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:190px!important;min-height:190px!important;margin:0!important;background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,.25) 66%,rgba(255,255,255,.78) 84%,#fff 100%),url('/homebuyer-couple-mobile.png')!important;background-size:cover!important;background-position:63% 46%!important;z-index:1!important}
+        #buyers .splitCopy{display:flex!important;position:relative!important;width:100%!important;height:auto!important;min-height:0!important;margin:-46px 0 0!important;padding:0 24px 30px!important;z-index:2!important;justify-content:flex-start!important;background:transparent!important}
+        #buyers .redRule{margin:0 0 7px!important}
+        #buyers .eyebrow{margin:0 0 6px!important}
+        #buyers .splitCopy h2{margin:0 0 10px!important}
+        #buyers .splitCopy>p:not(.eyebrow){margin:0 0 13px!important;line-height:1.48!important}
+        #buyers .splitCopy .button{margin:0!important;width:100%!important}
+        #buyers .splitCopy small{margin-top:8px!important}
         #sellers .compactForm{gap:10px;padding-top:18px;padding-bottom:18px}
         #sellers .compactForm label{margin:0}
         #sellers .compactForm input{height:44px;margin-top:4px;padding:10px 12px}

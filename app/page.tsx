@@ -25,7 +25,7 @@ export default function Home() {
       #buyers .splitCopy{position:relative;z-index:2;width:min(52%,650px);min-height:430px;padding:48px 30px 48px max(35px,calc((100vw - 1180px)/2));justify-content:center;background:transparent}
       #buyers .splitCopy>p:not(.eyebrow){max-width:510px}
       @media (max-width:760px){
-        #home.hero{min-height:370px;height:370px;place-items:center;background:linear-gradient(0deg,rgba(0,17,54,.56),rgba(0,17,54,.03) 70%),url('/hero-arizona-bright.png') 63% center/cover no-repeat}
+        #home.hero{min-height:370px;height:370px;place-items:center;background:linear-gradient(0deg,rgba(0,17,54,.54),rgba(0,17,54,.04) 72%),url('/hero-arizona-mobile.png') center 58%/cover no-repeat}
         #home .heroContent{text-align:center;margin-top:18px;padding:18px 20px;max-width:none}
         #home .heroContent h1{font-size:34px;line-height:1.02}
         #home .heroContent p{font-size:15px;line-height:1.35;margin:9px 0 16px}

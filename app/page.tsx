@@ -18,14 +18,14 @@ export default function Home() {
       #buyers .splitCopy>p:not(.eyebrow){max-width:510px}
       @media (max-width:760px){
         #buyers{min-height:auto;display:grid;grid-template-columns:1fr}
-        #buyers .buyerImage{position:relative;inset:auto;background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 55%,rgba(255,255,255,.18) 68%,rgba(255,255,255,.68) 84%,#fff 100%),url('/homebuyer-couple-mobile.png');min-height:205px;height:205px;background-size:cover;background-position:63% 48%;margin-bottom:-46px;z-index:1}
-        #buyers .splitCopy{width:100%;min-height:auto;padding:18px 24px 44px;position:relative;z-index:2;background:transparent}
-        #buyers .redRule{margin-bottom:9px}
-        #buyers .eyebrow{margin-bottom:8px!important}
-        #buyers .splitCopy h2{margin-bottom:14px}
-        #buyers .splitCopy>p:not(.eyebrow){margin-top:0;margin-bottom:16px;line-height:1.55}
+        #buyers .buyerImage{position:relative;inset:auto;background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 48%,rgba(255,255,255,.20) 61%,rgba(255,255,255,.72) 78%,#fff 94%),url('/homebuyer-couple-mobile.png');min-height:190px;height:190px;background-size:cover;background-position:63% 46%;margin-bottom:-92px;z-index:1}
+        #buyers .splitCopy{width:100%;min-height:auto;padding:10px 24px 34px;position:relative;z-index:2;background:transparent}
+        #buyers .redRule{margin-bottom:7px}
+        #buyers .eyebrow{margin-bottom:6px!important}
+        #buyers .splitCopy h2{margin-bottom:10px}
+        #buyers .splitCopy>p:not(.eyebrow){margin-top:0;margin-bottom:13px;line-height:1.48}
         #buyers .splitCopy .button{margin-top:0;width:100%}
-        #buyers .splitCopy small{margin-top:10px}
+        #buyers .splitCopy small{margin-top:8px}
         #sellers .compactForm{gap:10px;padding-top:18px;padding-bottom:18px}
         #sellers .compactForm label{margin:0}
         #sellers .compactForm input{height:44px;margin-top:4px;padding:10px 12px}

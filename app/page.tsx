@@ -32,6 +32,11 @@ export default function Home() {
         #sellers .compactForm .button{height:48px;margin-top:2px}
         #sellers .compactForm small{margin-top:0}
         #sellers .compactForm .formStatus{min-height:0}
+        #join .careerStackColumn{width:100%!important;max-width:270px!important;margin:0 auto!important}
+        #join .careerCardStack{width:100%!important;height:300px!important;min-height:300px!important}
+        #join .careerStackCard{width:220px!important;height:300px!important;left:50%!important;transform:translateX(-50%) translateX(calc(var(--depth) * 7px)) scale(calc(1 - var(--depth) * .025))!important;transform-origin:center center!important}
+        #join .careerStackCard img{object-fit:contain!important;object-position:center center!important}
+        #join .careerControls{margin-top:10px!important}
       }
     `}</style>
     <header className="siteHeader">

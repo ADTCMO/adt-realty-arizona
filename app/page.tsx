@@ -22,7 +22,7 @@ export default function Home() {
       #buyers{position:relative;min-height:430px;display:block;overflow:hidden;background:#fff}
       #buyers .buyerImage{position:absolute;top:0;right:0;bottom:0;left:38%;background-image:linear-gradient(270deg,#fff 0%,rgba(255,255,255,.18) 20%,rgba(255,255,255,0) 42%),url('/homebuyer-couple-mobile.png');background-size:cover;background-position:30% center;transform:scaleX(-1)}
       #buyers .buyerImage:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 8%,rgba(255,255,255,.68) 22%,rgba(255,255,255,.16) 40%,rgba(255,255,255,0) 56%)}
-      #buyers .splitCopy{position:relative;z-index:2;width:min(52%,650px);min-height:430px;padding:48px 30px 48px max(35px,calc((100vw - 1180px)/2));justify-content:center;background:transparent}
+      #buyers .splitCopy{position:relative;z-index:2;width:min(52%,650px);min-height:430px;padding:48px 30px 48px clamp(35px,calc((100vw - 1180px)/2),110px);justify-content:center;background:transparent}
       #buyers .splitCopy>p:not(.eyebrow){max-width:510px}
       @media (max-width:760px){
         #home.hero{min-height:370px;height:370px;place-items:center;background:linear-gradient(0deg,rgba(0,17,54,.54),rgba(0,17,54,.04) 72%),url('/hero-arizona-mobile.png') center 58%/cover no-repeat}

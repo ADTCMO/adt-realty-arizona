@@ -1,0 +1,552 @@
+.evPage {
+  --ev-navy: #001343;
+  --ev-blue: #011a59;
+  --ev-red: #b00101;
+  --ev-ink: #101b35;
+  --ev-soft: #f3f5f8;
+  background: #fff;
+  color: var(--ev-ink);
+  min-height: 100vh;
+}
+.evPage * {
+  box-sizing: border-box;
+}
+.evHeader {
+  height: 92px;
+  padding: 0 clamp(22px, 6vw, 92px);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: #fff;
+  position: relative;
+  z-index: 10;
+}
+.evBrand {
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+}
+.evBrand img {
+  object-fit: contain;
+}
+.evHeader nav {
+  margin-left: auto;
+  display: flex;
+  gap: 34px;
+}
+.evHeader nav a {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ev-blue);
+}
+.evHeaderCta {
+  padding: 13px 20px;
+  background: var(--ev-red);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+}
+.evHero {
+  min-height: 680px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+}
+.evHeroImage {
+  position: absolute;
+  inset: 0;
+  background: url("/images/east-valley/east-valley-hero.jpg") center 52% / cover no-repeat;
+  transform: scale(1.01);
+}
+.evHeroShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 13, 48, 0.9) 0%,
+      rgba(0, 19, 67, 0.64) 43%,
+      rgba(0, 19, 67, 0.05) 77%
+    ),
+    linear-gradient(0deg, rgba(0, 12, 44, 0.72), transparent 44%);
+}
+.evHeroCopy {
+  position: relative;
+  z-index: 2;
+  width: min(760px, 84vw);
+  margin-left: clamp(24px, 9vw, 150px);
+  padding: 76px 0 130px;
+}
+.evEyebrow {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #fff;
+}
+.evEyebrow.dark {
+  color: var(--ev-red);
+}
+.evHero h1 {
+  font-size: clamp(48px, 6vw, 86px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  margin: 0 0 24px;
+}
+.evHeroCopy > p:not(.evEyebrow) {
+  max-width: 650px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: #e8edf8;
+}
+.evButton {
+  min-height: 52px;
+  margin-top: 20px;
+  padding: 15px 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #fff;
+  color: var(--ev-navy);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+}
+.evButton.red {
+  background: var(--ev-red);
+  color: #fff;
+}
+.evButton span {
+  font-size: 20px;
+}
+.evCityRail {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  background: rgba(0, 13, 48, 0.86);
+  backdrop-filter: blur(8px);
+}
+.evCityRail a {
+  padding: 23px 8px;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.evCityRail a:hover {
+  background: var(--ev-red);
+}
+.evIntro {
+  max-width: 1200px;
+  margin: auto;
+  padding: 105px 28px 48px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 9%;
+  align-items: end;
+}
+.evIntro h2,
+.evSectionHead h2,
+.evSchools h2,
+.evTalk h2,
+.evPhotoBreak h2 {
+  font-size: clamp(38px, 4.8vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.evIntro > p,
+.evSectionHead > p,
+.evSchools p,
+.evTalk p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #566177;
+}
+.evFitGrid {
+  max-width: 1200px;
+  margin: 0 auto 110px;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #d8dce5;
+  border-left: 1px solid #d8dce5;
+}
+.evFitGrid a {
+  min-height: 150px;
+  padding: 28px;
+  border-right: 1px solid #d8dce5;
+  border-bottom: 1px solid #d8dce5;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: center;
+  background: #fff;
+}
+.evFitGrid a:hover {
+  background: var(--ev-navy);
+  color: #fff;
+}
+.evFitGrid span {
+  grid-column: 1/-1;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #747e92;
+  font-weight: 800;
+}
+.evFitGrid strong {
+  margin-top: 8px;
+  font-size: 25px;
+  letter-spacing: -0.03em;
+}
+.evFitGrid b {
+  align-self: end;
+  color: var(--ev-red);
+  font-size: 22px;
+}
+.evPhotoBreak {
+  min-height: 420px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 70px clamp(26px, 9vw, 150px);
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+.evPhotoBreak:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 15, 52, 0.84),
+    rgba(0, 15, 52, 0.05) 72%
+  );
+}
+.evPhotoBreak > div {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+}
+.evPhotoBreak h2 {
+  font-size: clamp(36px, 4.5vw, 62px);
+}
+.evPhotoTwo {
+  background-image: url("/images/east-valley/east-valley-life.jpg");
+}
+.evPhotoThree {
+  background-image: url("/images/east-valley/east-valley-desert.jpg");
+}
+.evCities {
+  padding: 110px 26px 80px;
+  background: var(--ev-soft);
+}
+.evSectionHead {
+  max-width: 920px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+.evSectionHead .evEyebrow {
+  margin-bottom: 16px;
+}
+.evSectionHead > p {
+  max-width: 760px;
+  margin: 20px auto 0;
+}
+.evCityList {
+  max-width: 1220px;
+  margin: auto;
+}
+.evCity {
+  padding: 52px 0;
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1.15fr) minmax(290px, 0.65fr);
+  gap: 42px;
+  border-top: 1px solid #cdd3df;
+  scroll-margin-top: 30px;
+}
+.evCityNumber {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  color: var(--ev-red);
+  padding-top: 11px;
+}
+.evKicker {
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 900;
+  color: var(--ev-red) !important;
+  margin: 0 0 8px !important;
+}
+.evCity h3 {
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: -0.055em;
+  line-height: 1;
+  margin: 0 0 16px;
+  color: var(--ev-navy);
+}
+.evCity p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #505c73;
+}
+.evFit {
+  font-size: 15px !important;
+  color: var(--ev-ink) !important;
+}
+.evAnchors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.evAnchors span {
+  padding: 8px 11px;
+  background: #fff;
+  border: 1px solid #d7dce6;
+  font-size: 12px;
+  font-weight: 700;
+}
+.evCity aside {
+  padding: 4px 0 0 32px;
+  border-left: 2px solid var(--ev-red);
+}
+.evCity aside h4 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--ev-navy);
+}
+.evCity aside p {
+  margin: 0 0 26px;
+  font-size: 14px;
+}
+.evSchools {
+  max-width: 1200px;
+  margin: auto;
+  padding: 110px 28px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 9%;
+}
+.evSchoolCopy p:first-child {
+  margin-top: 0;
+}
+.evSchoolLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 28px;
+}
+.evSchoolLinks a,
+.evTextLink {
+  color: var(--ev-blue);
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--ev-red);
+  padding-bottom: 5px;
+}
+.evTalk {
+  padding: 90px clamp(28px, 9vw, 150px);
+  background: linear-gradient(115deg, var(--ev-navy), #05286f);
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 0.72fr;
+  gap: 8%;
+  align-items: center;
+}
+.evTalk p {
+  color: #dce3f2;
+}
+.evTalkActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.evTalkActions .evButton {
+  margin: 0;
+}
+.evTalkActions .evTextLink {
+  margin-top: 25px;
+  color: #fff;
+}
+.evFooter {
+  min-height: 110px;
+  padding: 18px clamp(24px, 7vw, 110px);
+  background: #000d34;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+.evFooter img {
+  filter: brightness(0) invert(1);
+  object-fit: contain;
+}
+.evFooter p {
+  font-size: 13px;
+  font-weight: 800;
+}
+.evFooter .evCredits {
+  max-width: 390px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #aeb9d0;
+}
+.evFooter .evCredits a {
+  color: inherit;
+  text-decoration: underline;
+}
+.evFooter span {
+  margin-left: auto;
+  font-size: 12px;
+  color: #cbd3e3;
+}
+@media (max-width: 980px) {
+  .evHeader nav {
+    display: none;
+  }
+  .evHero {
+    min-height: 660px;
+  }
+  .evCityRail {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .evCityRail a {
+    padding: 15px 5px;
+  }
+  .evIntro,
+  .evSchools,
+  .evTalk {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .evFitGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .evCity {
+    grid-template-columns: 48px 1fr;
+  }
+  .evCity aside {
+    grid-column: 2;
+  }
+  .evTalkActions {
+    margin-top: 12px;
+  }
+}
+@media (max-width: 640px) {
+  .evHeader {
+    height: 78px;
+    padding: 0 16px;
+  }
+  .evBrand {
+    width: 70px;
+    height: 70px;
+  }
+  .evHeaderCta {
+    padding: 12px 14px;
+    margin-left: auto;
+  }
+  .evHero {
+    min-height: 670px;
+    align-items: flex-start;
+  }
+  .evHeroImage {
+    background-position: 62% center;
+  }
+  .evHeroShade {
+    background: linear-gradient(
+      0deg,
+      rgba(0, 13, 48, 0.92) 0%,
+      rgba(0, 19, 67, 0.7) 50%,
+      rgba(0, 19, 67, 0.1) 100%
+    );
+  }
+  .evHeroCopy {
+    width: auto;
+    margin: 0;
+    padding: 240px 22px 155px;
+  }
+  .evHero h1 {
+    font-size: 46px;
+  }
+  .evHeroCopy > p:not(.evEyebrow) {
+    font-size: 16px;
+  }
+  .evCityRail {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .evCityRail a:nth-child(n + 5) {
+    display: none;
+  }
+  .evIntro {
+    padding-top: 72px;
+  }
+  .evFitGrid {
+    grid-template-columns: 1fr;
+    margin-bottom: 75px;
+  }
+  .evFitGrid a {
+    min-height: 118px;
+  }
+  .evPhotoBreak {
+    min-height: 360px;
+    padding: 48px 22px;
+  }
+  .evCities {
+    padding: 78px 20px 55px;
+  }
+  .evCity {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 42px 0;
+  }
+  .evCityNumber {
+    padding: 0;
+  }
+  .evCity aside {
+    grid-column: 1;
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 2px solid var(--ev-red);
+  }
+  .evSchools {
+    padding: 78px 22px;
+  }
+  .evTalk {
+    padding: 70px 22px;
+  }
+  .evTalkActions .evButton {
+    width: 100%;
+  }
+  .evFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .evFooter span {
+    margin: 8px 0 0;
+  }
+}

@@ -6,7 +6,7 @@ import "./east-valley.css";
 export const metadata: Metadata = {
   title: "Phoenix East Valley Relocation Guide | ADT Realty",
   description:
-    "Explore East Valley cities, downtowns, schools, golf, outdoor recreation, major events, home prices, airports and Arizona weather.",
+    "Compare East Valley cities, home prices, schools, downtowns, golf, recreation, events, sports venues and Arizona weather before you move.",
   alternates: { canonical: "/east-valley" },
 };
 
@@ -14,146 +14,233 @@ const cities = [
   {
     slug: "scottsdale",
     name: "Scottsdale",
-    tagline: "Desert style, dining and endless ways to get outside",
-    image: "scottsdale.jpg",
-    body: "Scottsdale stretches from the energy of Old Town to quiet desert communities beside the McDowell Sonoran Preserve. The housing range is just as broad: lock-and-leave condos, established ranch homes, golf communities and luxury estates.",
+    price: "About $900K",
+    housing:
+      "Condos, established neighborhoods, golf communities and luxury desert estates",
     schools:
-      "Scottsdale Unified serves much of the city; some northern addresses fall within Cave Creek Unified.",
-    discover:
-      "Old Town's galleries, restaurants and nightlife · McDowell Sonoran Preserve · TPC Scottsdale · spring training at Scottsdale Stadium",
-    airport: "About 15–30 minutes",
+      "Scottsdale Unified serves much of the city. Some northern addresses fall within Cave Creek Unified; boundaries should be verified by address.",
+    highlights: [
+      "Old Town Scottsdale",
+      "McDowell Sonoran Preserve",
+      "TPC Scottsdale & dozens of golf options",
+    ],
+    tradeoff:
+      "The broadest luxury market in the East Valley, but generally the highest prices and long north–south drives.",
   },
   {
     slug: "tempe",
     name: "Tempe",
-    tagline: "The East Valley's most connected urban address",
-    image: "tempe.jpg",
-    body: "ASU, Mill Avenue, light rail and Tempe Town Lake give this compact city an energy unlike anywhere else in the East Valley. Housing includes condos, townhomes, mid-century neighborhoods and newer infill close to major employment centers.",
+    price: "About $500K",
+    housing: "Condos, townhomes, mid-century neighborhoods and newer infill",
     schools:
-      "Tempe Elementary and Tempe Union serve much of the city; southern Tempe also includes Kyrene Elementary areas.",
-    discover:
-      "Mill Avenue · Tempe Town Lake · ASU arts and athletics · Tempe Festival of the Arts",
-    airport: "About 10–15 minutes",
+      "Tempe Elementary and Tempe Union High School District serve much of the city. Southern Tempe also includes Kyrene Elementary areas.",
+    highlights: [
+      "ASU & Mill Avenue",
+      "Tempe Town Lake",
+      "Light rail and quick Sky Harbor access",
+    ],
+    tradeoff:
+      "A compact, connected location with more university activity, aircraft traffic and nightlife in certain areas.",
   },
   {
     slug: "mesa",
     name: "Mesa",
-    tagline: "More variety than any one description can capture",
-    image: "mesa.jpg",
-    body: "Mesa is enormous, and each part feels different. Downtown offers light rail, museums and the Mesa Arts Center; northeast Mesa reaches toward Usery Mountain; southeast Mesa includes golf, master-planned neighborhoods and newer construction.",
+    price: "About $470K",
+    housing:
+      "Historic homes, suburban neighborhoods, golf communities, horse property and new construction",
     schools:
-      "Mesa Public Schools serves most addresses; some southeast neighborhoods are within Gilbert Public Schools or Queen Creek Unified.",
-    discover:
-      "Downtown Mesa · Usery Mountain · Sloan Park · Hohokam Stadium · Mesa Amphitheatre",
-    airport: "About 15–35 minutes",
+      "Mesa Public Schools serves most of the city. Some southeast Mesa addresses are within Gilbert Public Schools or Queen Creek Unified.",
+    highlights: [
+      "Downtown Mesa arts and dining",
+      "Usery Mountain Regional Park",
+      "Sloan Park and Hohokam Stadium",
+    ],
+    tradeoff:
+      "Mesa offers the widest range of housing, but commute, character and schools differ substantially across this very large city.",
   },
   {
     slug: "chandler",
     name: "Chandler",
-    tagline:
-      "A real downtown, established neighborhoods and a major tech corridor",
-    image: "chandler.jpg",
-    body: "Chandler combines a lively historic center with waterfront communities, mature neighborhoods and newer development farther south. The Price Road corridor is one of the Valley's largest employment centers, while Loops 101 and 202 connect the city across the metro.",
+    price: "About $525K",
+    housing:
+      "Established subdivisions, lake communities, golf properties and newer homes",
     schools:
-      "Chandler Unified serves most of the city; west Chandler also includes Kyrene Elementary and Tempe Union areas.",
-    discover:
-      "Downtown Chandler · Ocotillo · Tumbleweed Park · Chandler Ostrich Festival",
-    airport: "About 20–30 minutes",
+      "Chandler Unified serves most of Chandler. Parts of west Chandler are served by Kyrene Elementary and Tempe Union High School District.",
+    highlights: [
+      "Downtown Chandler",
+      "Price Road technology corridor",
+      "Tumbleweed Park and the Ostrich Festival",
+    ],
+    tradeoff:
+      "Excellent freeway and employment access; premium waterfront and south-Chandler neighborhoods cost more.",
   },
   {
     slug: "gilbert",
     name: "Gilbert",
-    tagline: "Agricultural roots with a modern suburban rhythm",
-    image: "gilbert.jpg",
-    body: "Gilbert grew from a farming town into one of Arizona's most recognizable suburban communities. The Heritage District, Riparian Preserve, Agritopia, SanTan Village and extensive park system give residents plenty to do without leaving town.",
+    price: "About $575K",
+    housing:
+      "Established subdivisions, master-planned communities and larger newer homes",
     schools:
-      "Gilbert Public Schools and Higley Unified serve most of Gilbert; some addresses are within Chandler Unified.",
-    discover:
-      "Heritage District · Gilbert Water Tower · Riparian Preserve · Agritopia · SanTan Village",
-    airport: "About 25–35 minutes",
+      "Gilbert Public Schools and Higley Unified serve most of Gilbert. Some addresses fall within Chandler Unified.",
+    highlights: [
+      "Downtown Gilbert Heritage District",
+      "Riparian Preserve",
+      "Agritopia and SanTan Village",
+    ],
+    tradeoff:
+      "A polished suburban setting with popular dining and parks, although most daily trips require a car.",
   },
   {
     slug: "queen-creek",
     name: "Queen Creek",
-    tagline: "New neighborhoods, farms and room at the Valley's southeast edge",
-    image: "queen-creek.jpg",
-    body: "Queen Creek mixes fast-growing master-planned communities with farms, custom homes, equestrian property and San Tan Mountain views. New shopping and dining continue to arrive, but the town still keeps visible ties to its agricultural past.",
+    price: "About $670K",
+    housing: "New master plans, custom homes, acreage and equestrian property",
     schools:
-      "Queen Creek Unified serves much of town, with some neighborhoods in Chandler Unified.",
-    discover:
-      "Schnepf Farms · Queen Creek Olive Mill · Horseshoe Park · San Tan Mountain trails",
-    airport: "About 35–50 minutes",
+      "Queen Creek Unified serves much of the area, with some neighborhoods in Chandler Unified. Verify every property directly with the district.",
+    highlights: [
+      "Queen Creek Marketplace",
+      "Schnepf Farms and Queen Creek Olive Mill",
+      "San Tan Mountain views",
+    ],
+    tradeoff:
+      "More new construction and open space, balanced against rapid growth and longer drives to central employment areas.",
   },
   {
     slug: "san-tan-valley",
     name: "San Tan Valley",
-    tagline: "Newer homes with the desert close by",
-    image: "san-tan-valley.jpg",
-    body: "San Tan Valley sits in Pinal County just southeast of Queen Creek. Buyers often find newer homes and more space for the money here, with the San Tan Mountains forming a dramatic backdrop to many neighborhoods.",
+    price: "About $430K",
+    housing: "Newer subdivisions, larger homes and desert-edge communities",
     schools:
-      "Florence Unified and J.O. Combs Unified serve much of the area; growth makes address-level verification essential.",
-    discover:
-      "San Tan Mountain Regional Park · desert trails · newer communities · open mountain views",
-    airport: "About 45–60+ minutes",
+      "Florence Unified and J.O. Combs Unified serve much of San Tan Valley. Growth makes address-level verification essential.",
+    highlights: [
+      "San Tan Mountain Regional Park",
+      "New-home communities",
+      "Pinal County setting",
+    ],
+    tradeoff:
+      "More house for the money in many neighborhoods, with longer commutes and fewer major-road options.",
   },
   {
     slug: "fountain-hills",
     name: "Fountain Hills",
-    tagline: "Hillside homes, golf and some of the Valley's widest views",
-    image: "fountain-hills.jpg",
-    body: "Tucked against the McDowell Mountains northeast of Scottsdale, Fountain Hills has a quieter center built around its landmark fountain. Hillside homes, condos, golf communities and dramatic desert views define the market.",
-    schools: "Fountain Hills Unified is the primary public school district.",
-    discover:
-      "Fountain Park · We-Ko-Pa Golf Club · McDowell Mountain trails · Four Peaks views",
-    airport: "About 30–40 minutes",
+    price: "About $720K",
+    housing:
+      "Hillside homes, condos, golf communities and desert-view properties",
+    schools:
+      "Fountain Hills Unified is the primary public school district. Charter and private options vary by grade and location.",
+    highlights: [
+      "Fountain Park",
+      "We-Ko-Pa Golf Club",
+      "McDowell Mountain and Four Peaks views",
+    ],
+    tradeoff:
+      "Scenery and lower-density living, but no freeway through town and a smaller housing inventory.",
   },
 ];
 
-const prices = [
-  ["Scottsdale", "$900K"],
-  ["Fountain Hills", "$720K"],
-  ["Queen Creek", "$670K"],
-  ["Gilbert", "$575K"],
-  ["Chandler", "$525K"],
-  ["Tempe", "$500K"],
-  ["Mesa", "$470K"],
-  ["San Tan Valley", "$430K"],
+const downtowns = [
+  {
+    name: "Downtown Gilbert",
+    text: "The Heritage District combines locally known restaurants, nightlife, the Hale Centre Theatre, farmers markets and the town's agricultural roots in a compact destination.",
+  },
+  {
+    name: "Downtown Chandler",
+    text: "Historic storefronts, restaurants, breweries, public art and the Chandler Center for the Arts give downtown a walkable core that continues to add events and new development.",
+  },
+  {
+    name: "Old Town Scottsdale",
+    text: "A larger district spanning galleries, restaurants, nightlife, museums, resorts and Scottsdale Fashion Square—with a very different rhythm by day and after dark.",
+  },
+  {
+    name: "Downtown Mesa",
+    text: "Light rail, the Mesa Arts Center, museums, restaurants and live music anchor an increasingly active downtown corridor.",
+  },
+  {
+    name: "Tempe & Town Lake",
+    text: "Mill Avenue, ASU, Tempe Beach Park and Town Lake create the East Valley's most urban mix of events, dining, recreation and transit.",
+  },
 ];
+
+const golf = [
+  "TPC Scottsdale",
+  "We-Ko-Pa Golf Club",
+  "Talking Stick Golf Club",
+  "Ocotillo Golf Club",
+  "Whirlwind Golf Club",
+  "Las Sendas Golf Club",
+  "Longbow Golf Club",
+  "Kierland Golf Club",
+  "The Boulders",
+  "San Marcos Golf Course",
+];
+const venues = [
+  [
+    "State Farm Stadium",
+    "Arizona Cardinals, major concerts and national sporting events",
+  ],
+  ["Chase Field", "Arizona Diamondbacks and large-scale events"],
+  [
+    "Phoenix's downtown arena",
+    "Phoenix Suns, Phoenix Mercury and arena concerts",
+  ],
+  ["Desert Diamond Arena", "Touring concerts, shows and special events"],
+  ["Talking Stick Resort Amphitheatre", "Large outdoor concert tours"],
+  ["Arizona Financial Theatre", "National touring music and comedy"],
+  ["Mesa Amphitheatre", "Outdoor concerts in downtown Mesa"],
+  ["Mullett Arena", "ASU sports, hockey and live events in Tempe"],
+];
+
+const airportTimes: Record<string, string> = {
+  scottsdale: "15–30 minutes",
+  tempe: "10–15 minutes",
+  mesa: "15–35 minutes",
+  chandler: "20–30 minutes",
+  gilbert: "25–35 minutes",
+  "queen-creek": "35–50 minutes",
+  "san-tan-valley": "45–60+ minutes",
+  "fountain-hills": "30–40 minutes",
+};
 
 export default function EastValleyGuide() {
   return (
     <main className="evPage">
       <header className="evHeader">
-        <Link href="/" className="evBrand">
+        <Link href="/" className="evBrand" aria-label="ADT Realty Arizona home">
           <Image
             src="/adt-realty-arizona-outline.png"
             alt="ADT Realty Arizona"
-            width={92}
-            height={92}
+            width={96}
+            height={96}
+            priority
           />
         </Link>
-        <nav>
+        <nav aria-label="Guide navigation">
+          <a href="#compare">Compare</a>
           <a href="#cities">Cities</a>
-          <a href="#play">Things to do</a>
-          <a href="#market">Home prices</a>
+          <a href="#life">Things to do</a>
           <a href="#weather">Weather</a>
         </nav>
         <a className="evHeaderCta" href="/#contact">
           Ask a local agent
         </a>
       </header>
+
       <section className="evHero">
-        <div className="evHeroImage" />
+        <div
+          className="evHeroImage"
+          role="img"
+          aria-label="Sonoran Desert mountains and East Valley communities"
+        />
         <div className="evHeroShade" />
         <div className="evHeroCopy">
-          <p className="evEyebrow">The Phoenix East Valley</p>
-          <h1>Find your corner of the desert.</h1>
+          <p className="evEyebrow">Phoenix East Valley Relocation Guide</p>
+          <h1>More than a place to live.</h1>
           <p>
-            Eight communities, countless ways to spend a Saturday—and a lot more
-            to consider than the price of a house.
+            Compare the communities, housing costs, schools and everyday
+            lifestyle before deciding where you belong in the East Valley.
           </p>
-          <a className="evButton" href="#cities">
-            Explore the cities <span>↓</span>
+          <a className="evButton" href="#compare">
+            Start comparing <span>↓</span>
           </a>
         </div>
         <div className="evCityRail">
@@ -165,217 +252,243 @@ export default function EastValleyGuide() {
         </div>
       </section>
 
-      <section className="evWelcome">
-        <p className="evEyebrow dark">Welcome to the East Valley</p>
-        <h2>City life, desert trails and everything in between.</h2>
+      <section className="evIntro" id="compare">
+        <div>
+          <p className="evEyebrow dark">Choose your Arizona</p>
+          <h2>Eight communities. Very different ways to live.</h2>
+        </div>
         <p>
-          Morning on a golf course. Dinner in Downtown Gilbert. A
-          spring-training game in Mesa. A concert in Phoenix. The East Valley
-          gives you room to choose how close—or how far—you want to be from it
-          all.
+          Start with downtowns, desert views, golf, commute and the kind of home
+          you want. The numbers matter—but first, see what makes each place
+          different.
         </p>
       </section>
 
-      <section className="evCityStories" id="cities">
-        {cities.map((c, i) => (
-          <article
-            className={`evStory ${i % 2 ? "reverse" : ""}`}
-            id={c.slug}
-            key={c.slug}
-          >
-            <div
-              className="evStoryImage"
-              style={{
-                backgroundImage: `url('/images/east-valley/${c.image}')`,
-              }}
-              role="img"
-              aria-label={`${c.name}, Arizona`}
-            />
-            <div className="evStoryCopy">
-              <p className="evEyebrow dark">{c.name}, Arizona</p>
-              <h2>{c.tagline}</h2>
-              <p>{c.body}</p>
-              <div className="evStoryFacts">
-                <div>
-                  <strong>Explore</strong>
-                  <span>{c.discover}</span>
-                </div>
-                <div>
-                  <strong>Public schools</strong>
-                  <span>
-                    {c.schools} Verify boundaries by property address.
-                  </span>
-                </div>
-                <div>
-                  <strong>Sky Harbor</strong>
-                  <span>
-                    {c.airport} in normal traffic; location and time of day
-                    matter.
-                  </span>
+      <section className="evCities" id="cities">
+        <div className="evSectionHead">
+          <p className="evEyebrow dark">City by city</p>
+          <h2>Housing, schools and the honest tradeoff.</h2>
+        </div>
+        <div className="evCityList">
+          {cities.map((c, i) => (
+            <article className="evCity" id={c.slug} key={c.slug}>
+              <div className="evCityNumber">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <div
+                className="evCityPhoto"
+                style={{
+                  backgroundImage: `url('/images/east-valley/${c.slug}.jpg')`,
+                }}
+                role="img"
+                aria-label={`${c.name}, Arizona`}
+              />
+              <div className="evCityMain">
+                <p className="evKicker">{c.name}, Arizona</p>
+                <h3>{c.name}</h3>
+                <p>
+                  <strong>Housing:</strong> {c.housing}.
+                </p>
+                <div className="evCityDetails">
+                  {c.highlights.map((x) => (
+                    <p key={x}>
+                      <strong>{x}</strong>
+                    </p>
+                  ))}
                 </div>
               </div>
-            </div>
-          </article>
-        ))}
+              <aside>
+                <h4>Public schools</h4>
+                <p>{c.schools}</p>
+                <h4>Sky Harbor</h4>
+                <p>
+                  Approximately {airportTimes[c.slug]} in normal traffic. Exact
+                  neighborhood and time of day matter.
+                </p>
+                <h4>Keep in mind</h4>
+                <p>{c.tradeoff}</p>
+              </aside>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section className="evGolf" id="play">
-        <div className="evGolfImage" />
-        <div className="evGolfShade" />
-        <div className="evGolfCopy">
+      <section className="evPhotoBreak evPhotoTwo">
+        <div>
+          <p className="evEyebrow">After the moving truck leaves</p>
+          <h2>What will your weekends look like?</h2>
+        </div>
+      </section>
+
+      <section className="evLife" id="life">
+        <div className="evSectionHead left">
+          <p className="evEyebrow dark">Downtowns and districts</p>
+          <h2>Five places locals actually gather.</h2>
+        </div>
+        <div className="evDowntownGrid">
+          {downtowns.map((d, i) => (
+            <article key={d.name}>
+              <span>{String(i + 1).padStart(2, "0")}</span>
+              <h3>{d.name}</h3>
+              <p>{d.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="evSplit">
+        <div className="evDarkPanel">
           <p className="evEyebrow">Golf in the Valley</p>
-          <h2>A different course for every kind of round.</h2>
+          <h2>You could play a different course every week.</h2>
           <p>
-            From desert target golf to traditional parkland layouts, the metro
-            includes renowned resorts, public courses and private clubs. TPC
-            Scottsdale, We-Ko-Pa, Talking Stick, Ocotillo, Whirlwind, Las
-            Sendas, Longbow, Kierland, The Boulders and San Marcos are only the
-            beginning.
+            Resort layouts, desert target golf, traditional parkland courses and
+            municipal options are spread throughout the metro.
           </p>
-        </div>
-      </section>
-
-      <section className="evDowntowns">
-        <div className="evSectionLead">
-          <p className="evEyebrow dark">Go out without going far</p>
-          <h2>Five districts worth knowing.</h2>
-        </div>
-        <div className="evDowntownCards">
-          <article>
-            <h3>Downtown Gilbert</h3>
-            <p>
-              Restaurants, nightlife, Hale Centre Theatre and farmers markets
-              surrounding the landmark water tower.
-            </p>
-          </article>
-          <article>
-            <h3>Downtown Chandler</h3>
-            <p>
-              Historic storefronts, breweries, public art, festivals and the
-              Chandler Center for the Arts.
-            </p>
-          </article>
-          <article>
-            <h3>Old Town Scottsdale</h3>
-            <p>
-              Galleries, museums, restaurants, nightlife, resorts and Scottsdale
-              Fashion Square.
-            </p>
-          </article>
-          <article>
-            <h3>Downtown Mesa</h3>
-            <p>
-              Light rail, Mesa Arts Center, museums, live music and an evolving
-              restaurant scene.
-            </p>
-          </article>
-          <article>
-            <h3>Tempe & Town Lake</h3>
-            <p>
-              Mill Avenue, ASU, Tempe Beach Park, waterfront recreation and
-              major community events.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section className="evSports">
-        <div className="evSportsImage" />
-        <div className="evSportsCopy">
-          <p className="evEyebrow">A major-event city</p>
-          <h2>Phoenix plays on the national stage.</h2>
-          <p>
-            The Valley has hosted multiple Super Bowls, college football
-            national championship games, NCAA men's and women's basketball
-            championships, major bowl games, NASCAR weekends and baseball's
-            Cactus League.
-          </p>
-          <div className="evVenueList">
-            <span>State Farm Stadium</span>
-            <span>Chase Field</span>
-            <span>Phoenix's downtown arena</span>
-            <span>Desert Diamond Arena</span>
-            <span>Arizona Financial Theatre</span>
-            <span>Talking Stick Resort Amphitheatre</span>
-            <span>Mesa Amphitheatre</span>
-            <span>Mullett Arena</span>
+          <div className="evTagCloud">
+            {golf.map((g) => (
+              <span key={g}>{g}</span>
+            ))}
           </div>
         </div>
-      </section>
-
-      <section className="evOutdoors">
-        <div className="evSectionLead">
-          <p className="evEyebrow dark">Your first-year list</p>
-          <h2>Get outside. Then keep going.</h2>
-        </div>
-        <div className="evOutdoorGrid">
-          <article>
-            <h3>Trails</h3>
-            <p>
-              McDowell Sonoran Preserve, Usery Mountain, San Tan Mountain and
-              South Mountain offer hiking, running, biking and trail riding.
-            </p>
-          </article>
-          <article>
-            <h3>Water</h3>
-            <p>
-              Saguaro Lake, Canyon Lake and the Lower Salt River offer boating,
-              paddling, fishing and seasonal tubing.
-            </p>
-          </article>
-          <article>
-            <h3>Signature events</h3>
-            <p>
-              Chandler Ostrich Festival, WM Phoenix Open, Barrett-Jackson,
-              Scottsdale Arabian Horse Show and Tempe Festival of the Arts.
-            </p>
-          </article>
-          <article>
-            <h3>Spring training</h3>
-            <p>
-              Sloan Park, Scottsdale Stadium, Salt River Fields, Hohokam Stadium
-              and Tempe Diablo Stadium are all near the East Valley.
-            </p>
-          </article>
+        <div className="evLightPanel">
+          <p className="evEyebrow dark">Signature events</p>
+          <h2>Put these on the calendar.</h2>
+          <ul>
+            <li>
+              <strong>Chandler Ostrich Festival</strong>
+              <span>Tumbleweed Park</span>
+            </li>
+            <li>
+              <strong>Cactus League Spring Training</strong>
+              <span>Stadiums throughout the Valley</span>
+            </li>
+            <li>
+              <strong>WM Phoenix Open</strong>
+              <span>TPC Scottsdale</span>
+            </li>
+            <li>
+              <strong>Barrett-Jackson</strong>
+              <span>WestWorld of Scottsdale</span>
+            </li>
+            <li>
+              <strong>Scottsdale Arabian Horse Show</strong>
+              <span>WestWorld of Scottsdale</span>
+            </li>
+            <li>
+              <strong>Tempe Festival of the Arts</strong>
+              <span>Downtown Tempe</span>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section className="evAirports">
+      <section className="evVenues">
+        <div className="evSectionHead left">
+          <p className="evEyebrow dark">Sports and concerts</p>
+          <h2>The entire Phoenix metro is part of the lifestyle.</h2>
+          <p>
+            The Valley has hosted multiple Super Bowls, college football
+            national championships and NCAA basketball championships, along with
+            major bowl games, NASCAR weekends and the Cactus League. Some of the
+            largest venues sit west of the East Valley, so event-day drive time
+            matters when comparing locations.
+          </p>
+        </div>
+        <div
+          className="evSportsPhoto"
+          role="img"
+          aria-label="State Farm Stadium, home of major Arizona sporting events"
+        />
+        <div className="evVenueGrid">
+          {venues.map(([name, text]) => (
+            <article key={name}>
+              <h3>{name}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+        <div className="evSpring">
+          <strong>Spring-training favorites near the East Valley</strong>
+          <span>
+            Sloan Park · Scottsdale Stadium · Salt River Fields · Hohokam
+            Stadium · Tempe Diablo Stadium
+          </span>
+        </div>
+      </section>
+
+      <section className="evPhotoBreak evPhotoThree">
         <div>
-          <p className="evEyebrow dark">Getting there</p>
-          <h2>Sky Harbor is closer than many newcomers expect.</h2>
-          <p>
-            Tempe is typically the quickest East Valley trip. Scottsdale, Mesa,
-            Chandler and Gilbert remain practical for regular travelers, while
-            Queen Creek and San Tan Valley trade airport proximity for newer
-            development and more space.
-          </p>
+          <p className="evEyebrow">Outside is a big reason people move here</p>
+          <h2>Mountains, desert trails and water are closer than they look.</h2>
         </div>
-        <aside>
-          <h3>Phoenix-Mesa Gateway Airport</h3>
-          <p>
-            For Mesa, Gilbert, Queen Creek and San Tan Valley, Gateway can be
-            considerably more convenient. It serves fewer destinations than Sky
-            Harbor, but it is worth checking before every trip.
-          </p>
-        </aside>
+      </section>
+
+      <section className="evActivities">
+        <div>
+          <p className="evEyebrow dark">Beyond the city limits</p>
+          <h2>A short list for your first year.</h2>
+        </div>
+        <div className="evActivityGrid">
+          <article>
+            <h3>Desert and trails</h3>
+            <p>
+              McDowell Sonoran Preserve, San Tan Mountain Regional Park, Usery
+              Mountain and South Mountain offer hiking, running, biking and
+              trail riding.
+            </p>
+          </article>
+          <article>
+            <h3>Lakes and rivers</h3>
+            <p>
+              Saguaro Lake, Canyon Lake and the Lower Salt River open the door
+              to boating, paddling, fishing and seasonal tubing.
+            </p>
+          </article>
+          <article>
+            <h3>Arts and culture</h3>
+            <p>
+              Mesa Arts Center, Scottsdale Arts, Chandler Center for the Arts,
+              museums and ASU performances bring year-round programming.
+            </p>
+          </article>
+          <article>
+            <h3>Day trips</h3>
+            <p>
+              Sedona, Prescott, Payson and Tucson make practical weekend escapes
+              when you want a change in scenery or temperature.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="evAirportNote">
+        <div>
+          <p className="evEyebrow dark">A second airport worth knowing</p>
+          <h2>Phoenix-Mesa Gateway can save a long drive.</h2>
+        </div>
+        <p>
+          For Mesa, Gilbert, Queen Creek and San Tan Valley, Gateway Airport can
+          be considerably more convenient. It serves fewer destinations than Sky
+          Harbor, but southeastern East Valley residents should check both
+          airports before booking.
+        </p>
       </section>
 
       <section className="evMarket" id="market">
-        <div className="evMarketIntro">
+        <div>
           <p className="evEyebrow">Housing snapshot</p>
           <h2>Now, about the numbers.</h2>
           <p>
-            These rounded 2026 citywide medians are a starting point—not a
-            prediction. Neighborhood, property type, lot, age and condition can
-            change the picture quickly.
+            These rounded 2026 citywide medians are a starting point.
+            Neighborhood, property type, lot, age and condition can change the
+            picture quickly.
           </p>
         </div>
-        <div className="evPriceList">
-          {prices.map(([city, price]) => (
-            <div key={city}>
-              <span>{city}</span>
-              <strong>About {price}</strong>
+        <div className="evPriceGrid">
+          {cities.map((c) => (
+            <div key={c.slug}>
+              <span>{c.name}</span>
+              <strong>{c.price}</strong>
             </div>
           ))}
         </div>
@@ -392,9 +505,9 @@ export default function EastValleyGuide() {
         </div>
         <div className="evSchoolCopy">
           <p>
-            School attendance boundaries do not always follow city limits, and
-            several East Valley communities contain more than one district.
-            Confirm assigned schools directly with the district.
+            School boundaries do not always follow city limits, and fast-growing
+            areas may include several districts. Verify the assigned schools
+            directly with the district before making a housing decision.
           </p>
           <div className="evSchoolLinks">
             <a
@@ -412,7 +525,7 @@ export default function EastValleyGuide() {
       </section>
 
       <section className="evHeat" id="weather">
-        <div>
+        <div className="evHeatQuestion">
           <p className="evEyebrow">The question everyone asks</p>
           <h2>Is it hot?</h2>
           <strong>Yes. The summers are hot.</strong>
@@ -434,36 +547,33 @@ export default function EastValleyGuide() {
         </div>
       </section>
 
-      <section className="evNext">
+      <section className="evCalculator">
         <div>
-          <p className="evEyebrow">Ready for the practical part?</p>
-          <h2>See what fits your budget.</h2>
+          <p className="evEyebrow">The practical next step</p>
+          <h2>What can you afford in the East Valley?</h2>
           <p>
-            Interest rate, down payment, taxes, insurance and HOA costs
-            determine your true buying power—not the citywide median.
+            Median prices only tell part of the story. Your rate, down payment,
+            taxes, insurance, HOA fees and other costs determine your true
+            buying power.
           </p>
         </div>
-        <div>
-          <a className="evButton red" href="https://acebuyer.adtrealtyaz.com">
-            See my true buying power <span>→</span>
-          </a>
-          <a className="evAgentLink" href="/#contact">
-            Ask a local agent
-          </a>
-        </div>
+        <a className="evButton red" href="https://acebuyer.adtrealtyaz.com">
+          See my true buying power <span>→</span>
+        </a>
       </section>
+
       <footer className="evFooter">
         <Image
           src="/adt-realty-arizona-outline.png"
           alt="ADT Realty Arizona"
-          width={82}
-          height={82}
+          width={84}
+          height={84}
         />
         <p>Local guidance across Phoenix's East Valley.</p>
-        <details>
-          <summary>Photo credits</summary>
-          <p>Wikimedia Commons: Designism (CC0); Bobak Ha’Eri and Ixnayonthetimmay (CC BY 3.0); Alan Stark (CC BY-SA 2.0); Cygnusloop99 and Ixnayonthetimmay (CC BY-SA 3.0); Beyond My Ken, BowenLarsen and Hunter Trick (CC BY-SA 4.0); SecretName101 (CC BY 4.0). Images cropped for layout.</p>
-        </details>
+        <p className="evCredits">
+          Photos: Designism / CC0; Eustress / Public Domain; Beyond My Ken / CC
+          BY-SA 4.0. Cropped for layout.
+        </p>
         <span>© 2026 ADT Realty · Equal Housing Opportunity</span>
       </footer>
     </main>

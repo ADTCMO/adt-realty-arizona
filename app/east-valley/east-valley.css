@@ -1,30 +1,29 @@
 .evPage {
-  --navy: #001343;
-  --blue: #011a59;
-  --red: #b00101;
-  --ink: #111c36;
-  --soft: #f4f6f9;
+  --ev-navy: #001343;
+  --ev-blue: #011a59;
+  --ev-red: #b00101;
+  --ev-ink: #101b35;
+  --ev-soft: #f3f5f8;
   background: #fff;
-  color: var(--ink);
+  color: var(--ev-ink);
+  min-height: 100vh;
 }
 .evPage * {
   box-sizing: border-box;
 }
 .evHeader {
-  height: 84px;
-  padding: 0 clamp(18px, 6vw, 88px);
+  height: 92px;
+  padding: 0 clamp(22px, 6vw, 92px);
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 40px;
   background: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  box-shadow: 0 2px 18px rgba(0, 19, 67, 0.08);
+  position: relative;
+  z-index: 10;
 }
 .evBrand {
-  width: 76px;
-  height: 76px;
+  width: 88px;
+  height: 88px;
   display: grid;
   place-items: center;
 }
@@ -34,26 +33,26 @@
 .evHeader nav {
   margin-left: auto;
   display: flex;
-  gap: 28px;
+  gap: 34px;
 }
 .evHeader nav a {
-  font-size: 12px;
-  font-weight: 900;
+  font-size: 13px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--blue);
+  letter-spacing: 0.06em;
+  color: var(--ev-blue);
 }
 .evHeaderCta {
-  padding: 13px 18px;
-  background: var(--red);
+  padding: 13px 20px;
+  background: var(--ev-red);
   color: #fff;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
 }
 .evHero {
-  min-height: 650px;
+  min-height: 680px;
   position: relative;
   display: flex;
   align-items: center;
@@ -65,64 +64,225 @@
   inset: 0;
   background: url("/images/east-valley/hero-bright.jpg") center 55% / cover
     no-repeat;
+  transform: scale(1.01);
+}
+
+/* Photo additions retain the original guide structure. */
+.evHeader {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 16px rgba(0, 19, 67, 0.08);
+}
+.evHeroShade {
+  background:
+    linear-gradient(90deg, rgba(0, 13, 48, 0.58), rgba(0, 19, 67, 0.04) 74%),
+    linear-gradient(0deg, rgba(0, 12, 44, 0.5), transparent 46%);
+}
+.evCity {
+  grid-template-columns: 52px minmax(250px, 0.78fr) minmax(0, 1fr) minmax(
+      270px,
+      0.68fr
+    );
+  gap: 32px;
+  align-items: start;
+}
+.evCityPhoto {
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+  box-shadow: 0 12px 30px rgba(0, 19, 67, 0.12);
+}
+.evCityDetails {
+  margin-top: 22px;
+  border-top: 1px solid #d3d9e4;
+}
+.evCityDetails p {
+  margin: 0;
+  padding: 11px 0;
+  border-bottom: 1px solid #d3d9e4;
+  font-size: 14px;
+}
+.evCityDetails strong {
+  color: var(--ev-blue);
+}
+.evDarkPanel {
+  position: relative;
+  background:
+    linear-gradient(rgba(0, 19, 67, 0.86), rgba(0, 19, 67, 0.9)),
+    url("/images/east-valley/golf.jpg") center/cover no-repeat;
+}
+.evSportsPhoto {
+  height: 390px;
+  margin-bottom: 30px;
+  background: url("/images/east-valley/sports.jpg") center 48% / cover no-repeat;
+}
+.evAirportNote {
+  padding: 90px clamp(28px, 9vw, 150px);
+  background: #eaf0f8;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 9%;
+  align-items: center;
+}
+.evAirportNote h2 {
+  font-size: clamp(38px, 4.8vw, 64px);
+  line-height: 1.03;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.evAirportNote > p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #566177;
+}
+.evMarket {
+  padding: 95px clamp(28px, 9vw, 150px);
+  background: var(--ev-navy);
+  color: #fff;
+}
+.evMarket > div:first-child {
+  max-width: 850px;
+}
+.evMarket h2 {
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.evMarket > div:first-child > p:last-child {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #d8e0ee;
+}
+.evMarket .evPriceGrid {
+  margin-top: 45px;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.evMarket .evPriceGrid div {
+  padding: 22px;
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  display: flex;
+  flex-direction: column;
+}
+.evMarket .evPriceGrid span {
+  font-size: 12px;
+  color: #fff;
+}
+.evMarket .evPriceGrid strong {
+  font-size: 25px;
+  color: #ff786d;
+}
+.evMarket .evDataNote {
+  color: #b9c5d9;
+}
+@media (max-width: 1100px) {
+  .evCity {
+    grid-template-columns: 44px minmax(230px, 0.8fr) 1fr;
+  }
+  .evCity aside {
+    grid-column: 3;
+  }
+  .evCityPhoto {
+    grid-row: 1/3;
+  }
+}
+@media (max-width: 760px) {
+  .evCity {
+    grid-template-columns: 1fr;
+  }
+  .evCityNumber,
+  .evCityPhoto,
+  .evCityMain,
+  .evCity aside {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .evCityPhoto {
+    min-height: 260px;
+  }
+  .evCity aside {
+    padding: 22px 0 0;
+    border-left: 0;
+    border-top: 2px solid var(--ev-red);
+  }
+  .evAirportNote {
+    grid-template-columns: 1fr;
+  }
+  .evSportsPhoto {
+    height: 260px;
+  }
+  .evHeaderCta {
+    font-size: 10px;
+  }
+  .evMarket .evPriceGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 .evHeroShade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(0, 19, 67, 0.58), rgba(0, 19, 67, 0.04) 72%),
-    linear-gradient(0deg, rgba(0, 13, 48, 0.48), transparent 48%);
+    linear-gradient(
+      90deg,
+      rgba(0, 13, 48, 0.9) 0%,
+      rgba(0, 19, 67, 0.64) 43%,
+      rgba(0, 19, 67, 0.05) 77%
+    ),
+    linear-gradient(0deg, rgba(0, 12, 44, 0.72), transparent 44%);
 }
 .evHeroCopy {
   position: relative;
   z-index: 2;
-  width: min(750px, 84vw);
-  margin-left: clamp(24px, 9vw, 145px);
-  padding: 80px 0 125px;
+  width: min(760px, 84vw);
+  margin-left: clamp(24px, 9vw, 150px);
+  padding: 76px 0 130px;
 }
 .evEyebrow {
-  margin: 0 0 15px;
+  margin: 0 0 16px;
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
+  color: #fff;
 }
 .evEyebrow.dark {
-  color: var(--red);
+  color: var(--ev-red);
 }
 .evHero h1 {
-  font-size: clamp(54px, 7vw, 92px);
-  line-height: 0.94;
-  letter-spacing: -0.06em;
+  font-size: clamp(48px, 6vw, 86px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
   margin: 0 0 24px;
 }
 .evHeroCopy > p:not(.evEyebrow) {
-  max-width: 640px;
+  max-width: 650px;
   font-size: 19px;
-  line-height: 1.55;
-  color: #f2f5fa;
+  line-height: 1.6;
+  color: #e8edf8;
 }
 .evButton {
   min-height: 52px;
-  margin-top: 22px;
+  margin-top: 20px;
   padding: 15px 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 18px;
   background: #fff;
-  color: var(--navy);
+  color: var(--ev-navy);
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.07em;
 }
 .evButton.red {
-  background: var(--red);
+  background: var(--ev-red);
   color: #fff;
 }
 .evButton span {
-  font-size: 19px;
+  font-size: 20px;
 }
 .evCityRail {
   position: absolute;
@@ -132,308 +292,218 @@
   bottom: 0;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  background: rgba(0, 19, 67, 0.9);
+  background: rgba(0, 13, 48, 0.86);
   backdrop-filter: blur(8px);
 }
 .evCityRail a {
-  padding: 22px 5px;
+  padding: 23px 8px;
   text-align: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
   font-size: 12px;
   font-weight: 800;
+  letter-spacing: 0.04em;
 }
 .evCityRail a:hover {
-  background: var(--red);
+  background: var(--ev-red);
 }
-.evWelcome {
-  max-width: 1050px;
+.evIntro {
+  max-width: 1200px;
   margin: auto;
-  padding: 110px 28px;
-  text-align: center;
+  padding: 105px 28px 48px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 9%;
+  align-items: end;
 }
-.evWelcome h2,
-.evSectionLead h2,
-.evAirports h2,
+.evIntro h2,
+.evSectionHead h2,
 .evSchools h2,
-.evNext h2 {
-  font-size: clamp(40px, 5vw, 68px);
+.evTalk h2,
+.evPhotoBreak h2 {
+  font-size: clamp(38px, 4.8vw, 66px);
   line-height: 1.02;
   letter-spacing: -0.05em;
   margin: 0;
 }
-.evWelcome > p:last-child {
-  max-width: 800px;
-  margin: 25px auto 0;
-  font-size: 18px;
-  line-height: 1.75;
+.evIntro > p,
+.evSectionHead > p,
+.evSchools p,
+.evTalk p {
+  font-size: 17px;
+  line-height: 1.7;
   color: #566177;
 }
-.evCityStories {
-  overflow: hidden;
-}
-.evStory {
-  min-height: 580px;
+.evFitGrid {
+  max-width: 1200px;
+  margin: 0 auto 110px;
+  padding: 0 28px;
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #d8dce5;
+  border-left: 1px solid #d8dce5;
+}
+.evFitGrid a {
+  min-height: 150px;
+  padding: 28px;
+  border-right: 1px solid #d8dce5;
+  border-bottom: 1px solid #d8dce5;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: center;
   background: #fff;
-  scroll-margin-top: 84px;
 }
-.evStory.reverse {
-  grid-template-columns: 0.92fr 1.08fr;
-  background: #f5f7fa;
+.evFitGrid a:hover {
+  background: var(--ev-navy);
+  color: #fff;
 }
-.evStory.reverse .evStoryImage {
-  order: 2;
-}
-.evStoryImage {
-  min-height: 580px;
-  background-size: cover;
-  background-position: center;
-}
-.evStoryCopy {
-  padding: 70px clamp(34px, 6vw, 92px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.evStoryCopy h2 {
-  font-size: clamp(38px, 4.2vw, 62px);
-  line-height: 1.02;
-  letter-spacing: -0.05em;
-  margin: 0 0 22px;
-  color: var(--navy);
-}
-.evStoryCopy > p:not(.evEyebrow) {
-  font-size: 17px;
-  line-height: 1.75;
-  color: #505d74;
-}
-.evStoryFacts {
-  margin-top: 24px;
-}
-.evStoryFacts > div {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 18px;
-  padding: 15px 0;
-  border-top: 1px solid #d8dde7;
-}
-.evStoryFacts strong {
+.evFitGrid span {
+  grid-column: 1/-1;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--red);
+  letter-spacing: 0.12em;
+  color: #747e92;
+  font-weight: 800;
 }
-.evStoryFacts span {
-  font-size: 14px;
-  line-height: 1.55;
-  color: #48566f;
+.evFitGrid strong {
+  margin-top: 8px;
+  font-size: 25px;
+  letter-spacing: -0.03em;
 }
-.evGolf {
-  min-height: 610px;
+.evFitGrid b {
+  align-self: end;
+  color: var(--ev-red);
+  font-size: 22px;
+}
+.evPhotoBreak {
+  min-height: 420px;
   position: relative;
   display: flex;
   align-items: flex-end;
+  padding: 70px clamp(26px, 9vw, 150px);
   color: #fff;
+  background-size: cover;
+  background-position: center;
 }
-.evGolfImage {
-  position: absolute;
-  inset: 0;
-  background: url("/images/east-valley/golf.jpg") center/cover no-repeat;
-}
-.evGolfShade {
+.evPhotoBreak:after {
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     0deg,
-    rgba(0, 15, 52, 0.9),
-    rgba(0, 15, 52, 0.05) 75%
+    rgba(0, 15, 52, 0.84),
+    rgba(0, 15, 52, 0.05) 72%
   );
 }
-.evGolfCopy {
+.evPhotoBreak > div {
   position: relative;
-  z-index: 2;
-  max-width: 980px;
-  padding: 75px clamp(28px, 9vw, 145px);
+  z-index: 1;
+  max-width: 850px;
 }
-.evGolfCopy h2 {
-  font-size: clamp(42px, 5vw, 70px);
-  line-height: 1;
-  letter-spacing: -0.05em;
-  margin: 0;
+.evPhotoBreak h2 {
+  font-size: clamp(36px, 4.5vw, 62px);
 }
-.evGolfCopy > p:last-child {
-  font-size: 17px;
-  line-height: 1.7;
-  color: #e8edf7;
+.evPhotoTwo {
+  background-image: url("/images/east-valley/east-valley-life.jpg");
 }
-.evDowntowns,
-.evOutdoors {
+.evPhotoThree {
+  background-image: url("/images/east-valley/east-valley-desert.jpg");
+}
+.evCities {
+  padding: 110px 26px 80px;
+  background: var(--ev-soft);
+}
+.evSectionHead {
+  max-width: 920px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+.evSectionHead .evEyebrow {
+  margin-bottom: 16px;
+}
+.evSectionHead > p {
+  max-width: 760px;
+  margin: 20px auto 0;
+}
+.evCityList {
   max-width: 1220px;
   margin: auto;
-  padding: 110px 28px;
 }
-.evSectionLead {
-  max-width: 850px;
-  margin-bottom: 55px;
-}
-.evDowntownCards {
+.evCity {
+  padding: 52px 0;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 18px;
+  grid-template-columns: 70px minmax(0, 1.15fr) minmax(290px, 0.65fr);
+  gap: 42px;
+  border-top: 1px solid #cdd3df;
+  scroll-margin-top: 30px;
 }
-.evDowntownCards article {
-  grid-column: span 2;
-  padding: 30px;
-  background: var(--soft);
-  border-top: 4px solid var(--red);
-  min-height: 205px;
+.evCityNumber {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  color: var(--ev-red);
+  padding-top: 11px;
 }
-.evDowntownCards article:nth-child(4),
-.evDowntownCards article:nth-child(5) {
-  grid-column: span 3;
+.evKicker {
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 900;
+  color: var(--ev-red) !important;
+  margin: 0 0 8px !important;
 }
-.evDowntownCards h3,
-.evOutdoorGrid h3,
-.evAirports h3 {
-  font-size: 24px;
-  color: var(--navy);
-  margin: 0 0 12px;
-  letter-spacing: -0.03em;
-}
-.evDowntownCards p,
-.evOutdoorGrid p,
-.evAirports p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #566177;
-}
-.evSports {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  background: var(--navy);
-  color: #fff;
-}
-.evSportsImage {
-  min-height: 650px;
-  background: url("/images/east-valley/sports.jpg") center/cover no-repeat;
-}
-.evSportsCopy {
-  padding: 80px clamp(35px, 6vw, 90px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.evSportsCopy h2 {
-  font-size: clamp(42px, 5vw, 70px);
+.evCity h3 {
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: -0.055em;
   line-height: 1;
-  letter-spacing: -0.05em;
-  margin: 0 0 22px;
+  margin: 0 0 16px;
+  color: var(--ev-navy);
 }
-.evSportsCopy > p:not(.evEyebrow) {
-  font-size: 17px;
+.evCity p {
+  font-size: 16px;
   line-height: 1.7;
-  color: #dae2f0;
+  color: #505c73;
 }
-.evVenueList {
+.evFit {
+  font-size: 15px !important;
+  color: var(--ev-ink) !important;
+}
+.evAnchors {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 25px;
+  margin-top: 22px;
 }
-.evVenueList span {
-  padding: 9px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  font-size: 13px;
-}
-.evOutdoorGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: #d9dee8;
-}
-.evOutdoorGrid article {
-  padding: 28px;
+.evAnchors span {
+  padding: 8px 11px;
   background: #fff;
+  border: 1px solid #d7dce6;
+  font-size: 12px;
+  font-weight: 700;
 }
-.evAirports {
-  padding: 100px clamp(28px, 9vw, 145px);
-  background: #eaf0f8;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 10%;
-  align-items: center;
+.evCity aside {
+  padding: 4px 0 0 32px;
+  border-left: 2px solid var(--ev-red);
 }
-.evAirports > div > p:last-child {
-  font-size: 17px;
-  line-height: 1.75;
-  color: #566177;
-}
-.evAirports aside {
-  padding: 35px;
-  background: #fff;
-  border-left: 5px solid var(--red);
-}
-.evMarket {
-  padding: 100px clamp(28px, 9vw, 145px);
-  background: var(--navy);
-  color: #fff;
-}
-.evMarketIntro {
-  max-width: 900px;
-}
-.evMarketIntro h2 {
-  font-size: clamp(44px, 6vw, 76px);
-  letter-spacing: -0.055em;
-  line-height: 1;
-  margin: 0;
-}
-.evMarketIntro > p:last-child {
-  font-size: 17px;
-  line-height: 1.7;
-  color: #d9e1ef;
-}
-.evPriceList {
-  margin-top: 55px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  border-left: 1px solid rgba(255, 255, 255, 0.22);
-}
-.evPriceList div {
-  padding: 24px;
-  border-right: 1px solid rgba(255, 255, 255, 0.22);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-  display: flex;
-  flex-direction: column;
-}
-.evPriceList span {
+.evCity aside h4 {
+  margin: 0 0 8px;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.13em;
+  color: var(--ev-navy);
 }
-.evPriceList strong {
-  font-size: 24px;
-  color: #ff6b5d;
-  margin-top: 7px;
-}
-.evDataNote {
-  font-size: 12px;
-  color: #b9c5d9;
-  margin-top: 16px;
+.evCity aside p {
+  margin: 0 0 26px;
+  font-size: 14px;
 }
 .evSchools {
   max-width: 1200px;
   margin: auto;
-  padding: 100px 28px;
+  padding: 110px 28px;
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 9%;
 }
-.evSchoolCopy > p {
-  font-size: 17px;
-  line-height: 1.75;
-  color: #566177;
+.evSchoolCopy p:first-child {
   margin-top: 0;
 }
 .evSchoolLinks {
@@ -443,17 +513,273 @@
   margin-top: 28px;
 }
 .evSchoolLinks a,
-.evAgentLink {
-  color: var(--blue);
+.evTextLink {
+  color: var(--ev-blue);
   font-weight: 900;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 2px solid var(--red);
+  border-bottom: 2px solid var(--ev-red);
   padding-bottom: 5px;
 }
+.evTalk {
+  padding: 90px clamp(28px, 9vw, 150px);
+  background: linear-gradient(115deg, var(--ev-navy), #05286f);
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 0.72fr;
+  gap: 8%;
+  align-items: center;
+}
+.evTalk p {
+  color: #dce3f2;
+}
+.evTalkActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.evTalkActions .evButton {
+  margin: 0;
+}
+.evTalkActions .evTextLink {
+  margin-top: 25px;
+  color: #fff;
+}
+.evFooter {
+  min-height: 110px;
+  padding: 18px clamp(24px, 7vw, 110px);
+  background: #000d34;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+.evFooter img {
+  filter: brightness(0) invert(1);
+  object-fit: contain;
+}
+.evFooter p {
+  font-size: 13px;
+  font-weight: 800;
+}
+.evFooter .evCredits {
+  max-width: 390px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #aeb9d0;
+}
+.evFooter .evCredits a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.evPriceWrap {
+  max-width: 1200px;
+  margin: 0 auto 105px;
+  padding: 0 28px;
+}
+.evPriceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #d8dce5;
+  border-left: 1px solid #d8dce5;
+}
+.evPriceGrid a {
+  min-height: 142px;
+  padding: 24px;
+  border-right: 1px solid #d8dce5;
+  border-bottom: 1px solid #d8dce5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.evPriceGrid a:hover {
+  background: var(--ev-navy);
+  color: #fff;
+}
+.evPriceGrid span {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.evPriceGrid strong {
+  font-size: 30px;
+  color: var(--ev-red);
+  margin: 7px 0;
+}
+.evPriceGrid small {
+  font-size: 12px;
+  color: #6c768a;
+}
+.evDataNote {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #6c768a;
+  margin: 16px 0 0;
+}
+.evLife,
+.evVenues,
+.evActivities {
+  padding: 105px 28px;
+  max-width: 1220px;
+  margin: auto;
+}
+.evSectionHead.left {
+  text-align: left;
+  margin-left: 0;
+}
+.evDowntownGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid #d7dce6;
+  border-left: 1px solid #d7dce6;
+}
+.evDowntownGrid article {
+  grid-column: span 2;
+  padding: 30px;
+  min-height: 245px;
+  border-right: 1px solid #d7dce6;
+  border-bottom: 1px solid #d7dce6;
+}
+.evDowntownGrid article:nth-child(4),
+.evDowntownGrid article:nth-child(5) {
+  grid-column: span 3;
+}
+.evDowntownGrid span {
+  font-size: 12px;
+  color: var(--ev-red);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+.evDowntownGrid h3,
+.evVenueGrid h3,
+.evActivityGrid h3 {
+  font-size: 24px;
+  color: var(--ev-navy);
+  letter-spacing: -0.03em;
+  margin: 22px 0 10px;
+}
+.evDowntownGrid p,
+.evVenueGrid p,
+.evActivityGrid p,
+.evDarkPanel p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #566177;
+}
+.evSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.evDarkPanel,
+.evLightPanel {
+  padding: 90px clamp(28px, 7vw, 105px);
+}
+.evDarkPanel {
+  background: var(--ev-navy);
+  color: #fff;
+}
+.evDarkPanel h2,
+.evLightPanel h2 {
+  font-size: clamp(36px, 4vw, 58px);
+  letter-spacing: -0.05em;
+  line-height: 1.03;
+  margin: 0 0 24px;
+}
+.evDarkPanel > p:not(.evEyebrow) {
+  color: #d7deec;
+}
+.evTagCloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 30px;
+}
+.evTagCloud span {
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 13px;
+}
+.evLightPanel {
+  background: #f0f3f7;
+}
+.evLightPanel ul {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+}
+.evLightPanel li {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 17px 0;
+  border-top: 1px solid #ccd3df;
+}
+.evLightPanel li strong {
+  font-size: 15px;
+}
+.evLightPanel li span {
+  font-size: 13px;
+  color: #687389;
+  text-align: right;
+}
+.evVenueGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #d7dce6;
+  border-left: 1px solid #d7dce6;
+}
+.evVenueGrid article {
+  padding: 25px;
+  min-height: 165px;
+  border-right: 1px solid #d7dce6;
+  border-bottom: 1px solid #d7dce6;
+}
+.evVenueGrid h3 {
+  font-size: 20px;
+  margin-top: 0;
+}
+.evSpring {
+  margin-top: 24px;
+  padding: 24px;
+  background: #f2f4f8;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.evSpring strong {
+  color: var(--ev-red);
+}
+.evSpring span {
+  line-height: 1.6;
+}
+.evActivities {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 8%;
+}
+.evActivities h2 {
+  font-size: clamp(38px, 4.8vw, 64px);
+  line-height: 1.03;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.evActivityGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.evActivityGrid article {
+  padding: 0 28px 28px;
+  border-left: 1px solid #d7dce6;
+}
+.evActivityGrid h3 {
+  margin-top: 0;
+}
 .evHeat {
-  padding: 95px clamp(28px, 9vw, 145px);
+  padding: 95px clamp(28px, 9vw, 150px);
   background: #e65822;
   color: #fff;
   display: grid;
@@ -462,12 +788,12 @@
   align-items: center;
 }
 .evHeat h2 {
-  font-size: clamp(76px, 10vw, 140px);
+  font-size: clamp(70px, 10vw, 140px);
   line-height: 0.85;
   letter-spacing: -0.075em;
   margin: 0 0 25px;
 }
-.evHeat strong {
+.evHeatQuestion strong {
   font-size: 22px;
 }
 .evHeat > div:last-child p {
@@ -478,63 +804,112 @@
   padding-left: 20px;
   line-height: 1.9;
 }
-.evNext {
-  padding: 95px clamp(28px, 9vw, 145px);
-  background: linear-gradient(115deg, var(--navy), #05286f);
+.evCalculator {
+  padding: 95px clamp(28px, 9vw, 150px);
+  background: linear-gradient(115deg, var(--ev-navy), #05286f);
   color: #fff;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 8%;
   align-items: center;
 }
-.evNext > div > p:last-child {
+.evCalculator h2 {
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin: 0;
+}
+.evCalculator p:not(.evEyebrow) {
   font-size: 17px;
   line-height: 1.7;
   color: #dce3f2;
-  max-width: 720px;
+  max-width: 760px;
 }
-.evNext > div:last-child {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.evNext .evButton {
+.evCalculator .evButton {
   margin: 0;
+  white-space: nowrap;
 }
-.evAgentLink {
-  color: #fff;
-  margin-top: 22px;
+
+@media (max-width: 980px) {
+  .evPriceGrid,
+  .evVenueGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .evSplit,
+  .evActivities,
+  .evHeat,
+  .evCalculator {
+    grid-template-columns: 1fr;
+  }
+  .evCalculator .evButton {
+    justify-self: start;
+  }
+  .evDowntownGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .evDowntownGrid article,
+  .evDowntownGrid article:nth-child(4),
+  .evDowntownGrid article:nth-child(5) {
+    grid-column: span 1;
+  }
+  .evSpring {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
-.evFooter {
-  min-height: 105px;
-  padding: 16px clamp(24px, 7vw, 105px);
-  background: #000d34;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-.evFooter img {
-  filter: brightness(0) invert(1);
-}
-.evFooter p {
-  font-size: 13px;
-  font-weight: 800;
-}
-.evFooter details {
-  max-width: 420px;
-  font-size: 11px;
-  color: #aeb9d0;
-}
-.evFooter summary {
-  cursor: pointer;
-  font-weight: 800;
-  color: #dce3f2;
-}
-.evFooter details p {
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 1.45;
+@media (max-width: 640px) {
+  .evPriceGrid,
+  .evVenueGrid,
+  .evDowntownGrid,
+  .evActivityGrid {
+    grid-template-columns: 1fr;
+  }
+  .evPriceGrid a {
+    min-height: 110px;
+  }
+  .evPriceWrap {
+    margin-bottom: 70px;
+  }
+  .evLife,
+  .evVenues,
+  .evActivities {
+    padding: 75px 20px;
+  }
+  .evDowntownGrid article {
+    min-height: auto;
+  }
+  .evSplit {
+    display: block;
+  }
+  .evDarkPanel,
+  .evLightPanel {
+    padding: 70px 22px;
+  }
+  .evActivityGrid article {
+    padding: 24px 0;
+    border-left: 0;
+    border-top: 1px solid #d7dce6;
+  }
+  .evHeat {
+    padding: 70px 22px;
+  }
+  .evHeat h2 {
+    font-size: 82px;
+  }
+  .evCalculator {
+    padding: 70px 22px;
+  }
+  .evCalculator .evButton {
+    width: 100%;
+    white-space: normal;
+  }
+  .evLightPanel li {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .evLightPanel li span {
+    text-align: left;
+  }
 }
 .evFooter span {
   margin-left: auto;
@@ -545,70 +920,69 @@
   .evHeader nav {
     display: none;
   }
+  .evHero {
+    min-height: 660px;
+  }
   .evCityRail {
     grid-template-columns: repeat(4, 1fr);
   }
   .evCityRail a {
     padding: 15px 5px;
   }
-  .evStory,
-  .evStory.reverse,
-  .evSports,
-  .evAirports,
+  .evIntro,
   .evSchools,
-  .evHeat,
-  .evNext {
+  .evTalk {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
-  .evStory.reverse .evStoryImage {
-    order: 0;
-  }
-  .evStoryImage,
-  .evSportsImage {
-    min-height: 440px;
-  }
-  .evDowntownCards {
+  .evFitGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .evDowntownCards article,
-  .evDowntownCards article:nth-child(4),
-  .evDowntownCards article:nth-child(5) {
-    grid-column: span 1;
+  .evCity {
+    grid-template-columns: 48px 1fr;
   }
-  .evOutdoorGrid,
-  .evPriceList {
-    grid-template-columns: repeat(2, 1fr);
+  .evCity aside {
+    grid-column: 2;
   }
-  .evNext > div:last-child {
-    align-items: flex-start;
-    margin-top: 18px;
+  .evTalkActions {
+    margin-top: 12px;
   }
 }
 @media (max-width: 640px) {
   .evHeader {
-    height: 74px;
-    padding: 0 14px;
+    height: 78px;
+    padding: 0 16px;
   }
   .evBrand {
-    width: 65px;
-    height: 65px;
+    width: 70px;
+    height: 70px;
   }
   .evHeaderCta {
+    padding: 12px 14px;
     margin-left: auto;
-    padding: 11px 13px;
   }
   .evHero {
     min-height: 670px;
+    align-items: flex-start;
   }
   .evHeroImage {
-    background-position: 60% center;
+    background-position: 62% center;
+  }
+  .evHeroShade {
+    background: linear-gradient(
+      0deg,
+      rgba(0, 13, 48, 0.92) 0%,
+      rgba(0, 19, 67, 0.7) 50%,
+      rgba(0, 19, 67, 0.1) 100%
+    );
   }
   .evHeroCopy {
+    width: auto;
     margin: 0;
-    padding: 205px 22px 155px;
+    padding: 240px 22px 155px;
   }
   .evHero h1 {
-    font-size: 50px;
+    font-size: 46px;
   }
   .evHeroCopy > p:not(.evEyebrow) {
     font-size: 16px;
@@ -619,50 +993,44 @@
   .evCityRail a:nth-child(n + 5) {
     display: none;
   }
-  .evWelcome {
-    padding: 75px 22px;
+  .evIntro {
+    padding-top: 72px;
   }
-  .evStoryImage,
-  .evSportsImage {
-    min-height: 300px;
-  }
-  .evStoryCopy,
-  .evSportsCopy {
-    padding: 55px 22px;
-  }
-  .evStoryFacts > div {
+  .evFitGrid {
     grid-template-columns: 1fr;
-    gap: 5px;
+    margin-bottom: 75px;
   }
-  .evGolf {
-    min-height: 520px;
+  .evFitGrid a {
+    min-height: 118px;
   }
-  .evGolfCopy {
-    padding: 55px 22px;
+  .evPhotoBreak {
+    min-height: 360px;
+    padding: 48px 22px;
   }
-  .evDowntowns,
-  .evOutdoors {
-    padding: 75px 20px;
+  .evCities {
+    padding: 78px 20px 55px;
   }
-  .evDowntownCards,
-  .evOutdoorGrid,
-  .evPriceList {
+  .evCity {
     grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 42px 0;
   }
-  .evDowntownCards article {
-    min-height: auto;
+  .evCityNumber {
+    padding: 0;
   }
-  .evAirports,
-  .evMarket,
-  .evSchools,
-  .evHeat,
-  .evNext {
+  .evCity aside {
+    grid-column: 1;
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 2px solid var(--ev-red);
+  }
+  .evSchools {
+    padding: 78px 22px;
+  }
+  .evTalk {
     padding: 70px 22px;
   }
-  .evHeat h2 {
-    font-size: 82px;
-  }
-  .evNext .evButton {
+  .evTalkActions .evButton {
     width: 100%;
   }
   .evFooter {
@@ -672,5 +1040,159 @@
   }
   .evFooter span {
     margin: 8px 0 0;
+  }
+}
+
+/* Final overrides for the original guide with integrated photography. */
+.evHeader {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 16px rgba(0, 19, 67, 0.08);
+}
+.evHeroShade {
+  background:
+    linear-gradient(90deg, rgba(0, 13, 48, 0.58), rgba(0, 19, 67, 0.04) 74%),
+    linear-gradient(0deg, rgba(0, 12, 44, 0.5), transparent 46%);
+}
+.evCity {
+  grid-template-columns: 52px minmax(250px, 0.78fr) minmax(0, 1fr) minmax(
+      270px,
+      0.68fr
+    );
+  gap: 32px;
+  align-items: start;
+}
+.evCityPhoto {
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+  box-shadow: 0 12px 30px rgba(0, 19, 67, 0.12);
+}
+.evCityDetails {
+  margin-top: 22px;
+  border-top: 1px solid #d3d9e4;
+}
+.evCityDetails p {
+  margin: 0;
+  padding: 11px 0;
+  border-bottom: 1px solid #d3d9e4;
+  font-size: 14px;
+}
+.evCityDetails strong {
+  color: var(--ev-blue);
+}
+.evDarkPanel {
+  position: relative;
+  background:
+    linear-gradient(rgba(0, 19, 67, 0.86), rgba(0, 19, 67, 0.9)),
+    url("/images/east-valley/golf.jpg") center/cover no-repeat;
+}
+.evSportsPhoto {
+  height: 390px;
+  margin-bottom: 30px;
+  background: url("/images/east-valley/sports.jpg") center 48% / cover no-repeat;
+}
+.evAirportNote {
+  padding: 90px clamp(28px, 9vw, 150px);
+  background: #eaf0f8;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 9%;
+  align-items: center;
+}
+.evAirportNote h2 {
+  font-size: clamp(38px, 4.8vw, 64px);
+  line-height: 1.03;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.evAirportNote > p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #566177;
+}
+.evMarket {
+  padding: 95px clamp(28px, 9vw, 150px);
+  background: var(--ev-navy);
+  color: #fff;
+}
+.evMarket > div:first-child {
+  max-width: 850px;
+}
+.evMarket h2 {
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.evMarket > div:first-child > p:last-child {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #d8e0ee;
+}
+.evMarket .evPriceGrid {
+  margin-top: 45px;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.evMarket .evPriceGrid div {
+  padding: 22px;
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  display: flex;
+  flex-direction: column;
+}
+.evMarket .evPriceGrid span {
+  font-size: 12px;
+  color: #fff;
+}
+.evMarket .evPriceGrid strong {
+  font-size: 25px;
+  color: #ff786d;
+}
+.evMarket .evDataNote {
+  color: #b9c5d9;
+}
+@media (max-width: 1100px) {
+  .evCity {
+    grid-template-columns: 44px minmax(230px, 0.8fr) 1fr;
+  }
+  .evCity aside {
+    grid-column: 3;
+  }
+  .evCityPhoto {
+    grid-row: 1/3;
+  }
+}
+@media (max-width: 760px) {
+  .evCity {
+    grid-template-columns: 1fr;
+  }
+  .evCityNumber,
+  .evCityPhoto,
+  .evCityMain,
+  .evCity aside {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .evCityPhoto {
+    min-height: 260px;
+  }
+  .evCity aside {
+    padding: 22px 0 0;
+    border-left: 0;
+    border-top: 2px solid var(--ev-red);
+  }
+  .evAirportNote {
+    grid-template-columns: 1fr;
+  }
+  .evSportsPhoto {
+    height: 260px;
+  }
+  .evHeaderCta {
+    font-size: 10px;
+  }
+  .evMarket .evPriceGrid {
+    grid-template-columns: 1fr 1fr;
   }
 }

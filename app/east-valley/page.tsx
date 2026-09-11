@@ -4,219 +4,69 @@ import Link from "next/link";
 import "./east-valley.css";
 
 export const metadata: Metadata = {
-  title: "Phoenix East Valley Relocation Guide",
-  description:
-    "Compare Scottsdale, Tempe, Mesa, Chandler, Gilbert, Queen Creek, San Tan Valley and Fountain Hills before choosing where to live in Phoenix's East Valley.",
+  title: "Phoenix East Valley Relocation Guide | ADT Realty",
+  description: "Compare East Valley cities, home prices, schools, downtowns, golf, recreation, events, sports venues and Arizona weather before you move.",
   alternates: { canonical: "/east-valley" },
 };
 
 const cities = [
-  {
-    slug: "scottsdale",
-    name: "Scottsdale",
-    kicker: "Desert polish with room to play",
-    fit: "Resort living, dining, golf, nightlife and premium desert neighborhoods",
-    feel: "Scottsdale stretches from the energy of Old Town to quiet, low-density communities near the McDowell Sonoran Preserve. Housing ranges from lock-and-leave condos to established ranch homes, gated golf communities and luxury desert estates.",
-    schools: "Scottsdale Unified serves much of the city. Northern addresses may fall in Cave Creek Unified, while some southern areas are served by districts shared with Phoenix or Tempe.",
-    anchors: ["Old Town & Arts District", "McDowell Sonoran Preserve", "Loop 101 access"],
-    consider: "Prices generally run higher than elsewhere in the East Valley, and north-south drives can be longer than the map suggests.",
-  },
-  {
-    slug: "tempe",
-    name: "Tempe",
-    kicker: "Connected, energetic and close to everything",
-    fit: "Urban convenience, ASU access, shorter commutes and an active lifestyle",
-    feel: "Tempe is the East Valley's most urban community, shaped by Arizona State University, Tempe Town Lake, light rail and a compact location near Phoenix and Sky Harbor. Expect condos, townhomes, mid-century neighborhoods and pockets of newer infill.",
-    schools: "Tempe Elementary and Tempe Union High School District serve much of the city. Southern Tempe also includes areas served by Kyrene Elementary.",
-    anchors: ["ASU & Mill Avenue", "Tempe Town Lake", "Light rail & Loop 202"],
-    consider: "University activity, aircraft routes and nightlife can make some pockets busier and noisier than others.",
-  },
-  {
-    slug: "mesa",
-    name: "Mesa",
-    kicker: "More variety than any one label can capture",
-    fit: "Housing choice, value, established neighborhoods and access to outdoor recreation",
-    feel: "Mesa is the East Valley's largest city and offers everything from historic homes and downtown apartments to golf communities, horse property and new construction near the southeast edge. Each part of Mesa feels different, so location matters.",
-    schools: "Mesa Public Schools serves most of the city. Some southeast Mesa neighborhoods are served by Gilbert Public Schools or Queen Creek Unified.",
-    anchors: ["Downtown Mesa", "Usery Mountain access", "US 60 & Loops 101/202"],
-    consider: "Because Mesa is so large, commute time, school boundaries and neighborhood character vary widely by address.",
-  },
-  {
-    slug: "chandler",
-    name: "Chandler",
-    kicker: "Established neighborhoods meet a major tech corridor",
-    fit: "Professional households, mature amenities, strong freeway access and waterfront options",
-    feel: "Chandler combines a lively downtown with established subdivisions, newer south-Chandler communities and the Price Road technology corridor. Housing includes starter neighborhoods, master-planned communities, golf properties and distinctive lake communities.",
-    schools: "Chandler Unified serves most of Chandler and extends into neighboring communities. Parts of west Chandler are served by Kyrene Elementary and Tempe Union High School District.",
-    anchors: ["Downtown Chandler", "Price Road tech corridor", "Loops 101 & 202"],
-    consider: "Older and newer sections differ substantially, and premium south-Chandler or waterfront neighborhoods command higher prices.",
-  },
-  {
-    slug: "gilbert",
-    name: "Gilbert",
-    kicker: "Modern suburbia with agricultural roots",
-    fit: "Master-planned living, parks, dining districts and newer family-sized homes",
-    feel: "Gilbert grew from a farming town into one of Arizona's best-known suburban communities. The Heritage District, extensive parks and newer neighborhoods create a polished but approachable feel, with homes ranging from 1980s subdivisions to large newer builds.",
-    schools: "Gilbert Public Schools and Higley Unified serve most of Gilbert. Some western and southern addresses fall within Chandler Unified boundaries.",
-    anchors: ["Heritage District", "Riparian Preserve", "Loop 202 access"],
-    consider: "Most trips require a car, and the newest communities can sit farther from central Phoenix employment centers.",
-  },
-  {
-    slug: "queen-creek",
-    name: "Queen Creek",
-    kicker: "New homes, open space and a growing town center",
-    fit: "New construction, larger homes, equestrian interests and a quieter suburban pace",
-    feel: "Queen Creek blends rapid residential growth with farms, desert views and an equestrian tradition. New master-planned communities dominate many areas, while acreage and custom homes remain part of the town's character.",
-    schools: "Queen Creek Unified serves much of the area, with some neighborhoods in Chandler Unified. Always verify the district and assigned schools for a specific property.",
-    anchors: ["Queen Creek Marketplace", "San Tan Mountain views", "SR 24 & Gateway Airport"],
-    consider: "Rapid growth brings construction and traffic, and commuting to Scottsdale, Tempe or central Phoenix can be significant.",
-  },
-  {
-    slug: "san-tan-valley",
-    name: "San Tan Valley",
-    kicker: "More home and desert at the Valley's edge",
-    fit: "Newer homes, attainable space and buyers comfortable with a farther-out location",
-    feel: "San Tan Valley sits southeast of Queen Creek in Pinal County. It is known for newer subdivisions, mountain views and relatively more house for the money than closer-in East Valley communities.",
-    schools: "Florence Unified and J.O. Combs Unified serve much of San Tan Valley. Boundaries can change quickly in growth areas, so address-level verification is essential.",
-    anchors: ["San Tan Mountains", "Newer subdivisions", "Pinal County setting"],
-    consider: "Commutes are longer, major-road options are more limited and some services are still catching up with growth.",
-  },
-  {
-    slug: "fountain-hills",
-    name: "Fountain Hills",
-    kicker: "Quiet hillsides and wide-open views",
-    fit: "Scenery, golf, lower-density living and a small-town desert atmosphere",
-    feel: "Fountain Hills is tucked against the McDowell Mountains northeast of Scottsdale. Hillside homes, golf communities and desert views define the market, with a quieter center built around the town's landmark fountain.",
-    schools: "Fountain Hills Unified is the primary public school district. Nearby charter and private options vary by grade level and location.",
-    anchors: ["Fountain Park", "McDowell Mountain views", "Four Peaks scenery"],
-    consider: "There is no freeway through town, inventory is smaller and hillside lots can bring unique maintenance considerations.",
-  },
+  { slug:"scottsdale", name:"Scottsdale", price:"About $900K", housing:"Condos, established neighborhoods, golf communities and luxury desert estates", schools:"Scottsdale Unified serves much of the city. Some northern addresses fall within Cave Creek Unified; boundaries should be verified by address.", highlights:["Old Town Scottsdale","McDowell Sonoran Preserve","TPC Scottsdale & dozens of golf options"], tradeoff:"The broadest luxury market in the East Valley, but generally the highest prices and long north–south drives." },
+  { slug:"tempe", name:"Tempe", price:"About $500K", housing:"Condos, townhomes, mid-century neighborhoods and newer infill", schools:"Tempe Elementary and Tempe Union High School District serve much of the city. Southern Tempe also includes Kyrene Elementary areas.", highlights:["ASU & Mill Avenue","Tempe Town Lake","Light rail and quick Sky Harbor access"], tradeoff:"A compact, connected location with more university activity, aircraft traffic and nightlife in certain areas." },
+  { slug:"mesa", name:"Mesa", price:"About $470K", housing:"Historic homes, suburban neighborhoods, golf communities, horse property and new construction", schools:"Mesa Public Schools serves most of the city. Some southeast Mesa addresses are within Gilbert Public Schools or Queen Creek Unified.", highlights:["Downtown Mesa arts and dining","Usery Mountain Regional Park","Sloan Park and Hohokam Stadium"], tradeoff:"Mesa offers the widest range of housing, but commute, character and schools differ substantially across this very large city." },
+  { slug:"chandler", name:"Chandler", price:"About $525K", housing:"Established subdivisions, lake communities, golf properties and newer homes", schools:"Chandler Unified serves most of Chandler. Parts of west Chandler are served by Kyrene Elementary and Tempe Union High School District.", highlights:["Downtown Chandler","Price Road technology corridor","Tumbleweed Park and the Ostrich Festival"], tradeoff:"Excellent freeway and employment access; premium waterfront and south-Chandler neighborhoods cost more." },
+  { slug:"gilbert", name:"Gilbert", price:"About $575K", housing:"Established subdivisions, master-planned communities and larger newer homes", schools:"Gilbert Public Schools and Higley Unified serve most of Gilbert. Some addresses fall within Chandler Unified.", highlights:["Downtown Gilbert Heritage District","Riparian Preserve","Agritopia and SanTan Village"], tradeoff:"A polished suburban setting with popular dining and parks, although most daily trips require a car." },
+  { slug:"queen-creek", name:"Queen Creek", price:"About $670K", housing:"New master plans, custom homes, acreage and equestrian property", schools:"Queen Creek Unified serves much of the area, with some neighborhoods in Chandler Unified. Verify every property directly with the district.", highlights:["Queen Creek Marketplace","Schnepf Farms and Queen Creek Olive Mill","San Tan Mountain views"], tradeoff:"More new construction and open space, balanced against rapid growth and longer drives to central employment areas." },
+  { slug:"san-tan-valley", name:"San Tan Valley", price:"About $430K", housing:"Newer subdivisions, larger homes and desert-edge communities", schools:"Florence Unified and J.O. Combs Unified serve much of San Tan Valley. Growth makes address-level verification essential.", highlights:["San Tan Mountain Regional Park","New-home communities","Pinal County setting"], tradeoff:"More house for the money in many neighborhoods, with longer commutes and fewer major-road options." },
+  { slug:"fountain-hills", name:"Fountain Hills", price:"About $720K", housing:"Hillside homes, condos, golf communities and desert-view properties", schools:"Fountain Hills Unified is the primary public school district. Charter and private options vary by grade and location.", highlights:["Fountain Park","We-Ko-Pa Golf Club","McDowell Mountain and Four Peaks views"], tradeoff:"Scenery and lower-density living, but no freeway through town and a smaller housing inventory." },
 ];
 
-const fitLinks = [
-  ["Walkable & connected", "tempe"],
-  ["Dining, golf & luxury", "scottsdale"],
-  ["Established & job-centered", "chandler"],
-  ["Polished suburban living", "gilbert"],
-  ["New homes & more space", "queen-creek"],
-  ["Maximum variety", "mesa"],
+const downtowns = [
+  {name:"Downtown Gilbert", text:"The Heritage District combines locally known restaurants, nightlife, the Hale Centre Theatre, farmers markets and the town's agricultural roots in a compact destination."},
+  {name:"Downtown Chandler", text:"Historic storefronts, restaurants, breweries, public art and the Chandler Center for the Arts give downtown a walkable core that continues to add events and new development."},
+  {name:"Old Town Scottsdale", text:"A larger district spanning galleries, restaurants, nightlife, museums, resorts and Scottsdale Fashion Square—with a very different rhythm by day and after dark."},
+  {name:"Downtown Mesa", text:"Light rail, the Mesa Arts Center, museums, restaurants and live music anchor an increasingly active downtown corridor."},
+  {name:"Tempe & Town Lake", text:"Mill Avenue, ASU, Tempe Beach Park and Town Lake create the East Valley's most urban mix of events, dining, recreation and transit."},
 ];
 
-export default function EastValleyGuide() {
-  return (
-    <main className="evPage">
-      <header className="evHeader">
-        <Link href="/" aria-label="ADT Realty Arizona home" className="evBrand">
-          <Image src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" width={96} height={96} priority />
-        </Link>
-        <nav aria-label="East Valley guide navigation">
-          <a href="#compare">Compare</a>
-          <a href="#cities">Cities</a>
-          <a href="#schools">Schools</a>
-        </nav>
-        <a className="evHeaderCta" href="#talk">Ask Mike</a>
-      </header>
+const golf = ["TPC Scottsdale","We-Ko-Pa Golf Club","Talking Stick Golf Club","Ocotillo Golf Club","Whirlwind Golf Club","Las Sendas Golf Club","Longbow Golf Club","Kierland Golf Club","The Boulders","San Marcos Golf Course"];
+const venues = [
+  ["State Farm Stadium","Arizona Cardinals, major concerts and national sporting events"],
+  ["Chase Field","Arizona Diamondbacks and large-scale events"],
+  ["Phoenix's downtown arena","Phoenix Suns, Phoenix Mercury and arena concerts"],
+  ["Desert Diamond Arena","Touring concerts, shows and special events"],
+  ["Talking Stick Resort Amphitheatre","Large outdoor concert tours"],
+  ["Arizona Financial Theatre","National touring music and comedy"],
+  ["Mesa Amphitheatre","Outdoor concerts in downtown Mesa"],
+  ["Mullett Arena","ASU sports, hockey and live events in Tempe"],
+];
 
-      <section className="evHero">
-        <div className="evHeroImage" role="img" aria-label="A sweeping view of the Phoenix East Valley" />
-        <div className="evHeroShade" />
-        <div className="evHeroCopy">
-          <p className="evEyebrow">Phoenix East Valley Relocation Guide</p>
-          <h1>Eight communities.<br />One place to compare them.</h1>
-          <p>Get the honest differences in lifestyle, housing, schools and commute before choosing where to call home.</p>
-          <a className="evButton" href="#compare">Find my best fit <span>↓</span></a>
-        </div>
-        <div className="evCityRail" aria-label="Cities included">
-          {cities.map((city) => <a key={city.slug} href={`#${city.slug}`}>{city.name}</a>)}
-        </div>
-      </section>
+export default function EastValleyGuide(){return <main className="evPage">
+  <header className="evHeader"><Link href="/" className="evBrand" aria-label="ADT Realty Arizona home"><Image src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" width={96} height={96} priority/></Link><nav aria-label="Guide navigation"><a href="#compare">Compare</a><a href="#cities">Cities</a><a href="#life">Things to do</a><a href="#weather">Weather</a></nav><a className="evHeaderCta" href="https://acebuyer.adtrealtyaz.com">Buying power</a></header>
 
-      <section className="evIntro" id="compare">
-        <div>
-          <p className="evEyebrow dark">Start with the life you want</p>
-          <h2>There is no single “best” East Valley city.</h2>
-        </div>
-        <p>The right choice depends on how you live, where you work and what you value most. Use these quick paths, then read the full city profiles below.</p>
-      </section>
+  <section className="evHero"><div className="evHeroImage" role="img" aria-label="Sonoran Desert mountains and East Valley communities"/><div className="evHeroShade"/><div className="evHeroCopy"><p className="evEyebrow">Phoenix East Valley Relocation Guide</p><h1>More than a place to live.</h1><p>Compare the communities, housing costs, schools and everyday lifestyle before deciding where you belong in the East Valley.</p><a className="evButton" href="#compare">Start comparing <span>↓</span></a></div><div className="evCityRail">{cities.map(c=><a key={c.slug} href={`#${c.slug}`}>{c.name}</a>)}</div></section>
 
-      <section className="evFitGrid" aria-label="Find a city by lifestyle">
-        {fitLinks.map(([label, slug]) => (
-          <a href={`#${slug}`} key={slug}><span>{label}</span><strong>{cities.find((city) => city.slug === slug)?.name}</strong><b>→</b></a>
-        ))}
-      </section>
+  <section className="evIntro" id="compare"><div><p className="evEyebrow dark">The quick comparison</p><h2>Eight communities. Very different choices.</h2></div><p>Prices are rounded recent market snapshots—not a promise of what a particular home will cost. Property type, neighborhood, condition and lot can move the number dramatically.</p></section>
+  <div className="evPriceWrap"><div className="evPriceGrid">{cities.map(c=><a href={`#${c.slug}`} key={c.slug}><span>{c.name}</span><strong>{c.price}</strong><small>recent median sale price</small></a>)}</div><p className="evDataNote">Rounded 2026 market snapshot for general comparison. Market data changes monthly; verify current city and neighborhood sales before making a decision.</p></div>
 
-      <section className="evPhotoBreak evPhotoTwo">
-        <div><p className="evEyebrow">One Valley, very different rhythms</p><h2>Urban mornings. Desert sunsets. Room to choose.</h2></div>
-      </section>
+  <section className="evCities" id="cities"><div className="evSectionHead"><p className="evEyebrow dark">City by city</p><h2>Housing, schools and the honest tradeoff.</h2></div><div className="evCityList">{cities.map((c,i)=><article className="evCity" id={c.slug} key={c.slug}><div className="evCityNumber">{String(i+1).padStart(2,"0")}</div><div className="evCityMain"><p className="evKicker">Recent median · {c.price}</p><h3>{c.name}</h3><p><strong>Housing:</strong> {c.housing}.</p><div className="evAnchors">{c.highlights.map(x=><span key={x}>{x}</span>)}</div></div><aside><h4>Public schools</h4><p>{c.schools}</p><h4>Keep in mind</h4><p>{c.tradeoff}</p></aside></article>)}</div></section>
 
-      <section className="evCities" id="cities">
-        <div className="evSectionHead">
-          <p className="evEyebrow dark">City-by-city</p>
-          <h2>Know the character before you study the listings.</h2>
-          <p>These profiles are starting points. Every city contains neighborhoods that break the stereotype—which is why the address matters as much as the city name.</p>
-        </div>
+  <section className="evPhotoBreak evPhotoTwo"><div><p className="evEyebrow">After the moving truck leaves</p><h2>What will your weekends look like?</h2></div></section>
 
-        <div className="evCityList">
-          {cities.map((city, index) => (
-            <article className="evCity" id={city.slug} key={city.slug}>
-              <div className="evCityNumber">{String(index + 1).padStart(2, "0")}</div>
-              <div className="evCityMain">
-                <p className="evKicker">{city.kicker}</p>
-                <h3>{city.name}</h3>
-                <p className="evFit"><strong>Best fit:</strong> {city.fit}</p>
-                <p>{city.feel}</p>
-                <div className="evAnchors">{city.anchors.map((anchor) => <span key={anchor}>{anchor}</span>)}</div>
-              </div>
-              <aside>
-                <h4>Public schools</h4>
-                <p>{city.schools}</p>
-                <h4>Keep in mind</h4>
-                <p>{city.consider}</p>
-              </aside>
-            </article>
-          ))}
-        </div>
-      </section>
+  <section className="evLife" id="life"><div className="evSectionHead left"><p className="evEyebrow dark">Downtowns and districts</p><h2>Five places locals actually gather.</h2></div><div className="evDowntownGrid">{downtowns.map((d,i)=><article key={d.name}><span>{String(i+1).padStart(2,"0")}</span><h3>{d.name}</h3><p>{d.text}</p></article>)}</div></section>
 
-      <section className="evPhotoBreak evPhotoThree">
-        <div><p className="evEyebrow">Farther southeast</p><h2>New neighborhoods meet the open Sonoran Desert.</h2></div>
-      </section>
+  <section className="evSplit"><div className="evDarkPanel"><p className="evEyebrow">Golf in the Valley</p><h2>You could play a different course every week.</h2><p>Resort layouts, desert target golf, traditional parkland courses and municipal options are spread throughout the metro.</p><div className="evTagCloud">{golf.map(g=><span key={g}>{g}</span>)}</div></div><div className="evLightPanel"><p className="evEyebrow dark">Signature events</p><h2>Put these on the calendar.</h2><ul><li><strong>Chandler Ostrich Festival</strong><span>Tumbleweed Park</span></li><li><strong>Cactus League Spring Training</strong><span>Stadiums throughout the Valley</span></li><li><strong>WM Phoenix Open</strong><span>TPC Scottsdale</span></li><li><strong>Barrett-Jackson</strong><span>WestWorld of Scottsdale</span></li><li><strong>Scottsdale Arabian Horse Show</strong><span>WestWorld of Scottsdale</span></li><li><strong>Tempe Festival of the Arts</strong><span>Downtown Tempe</span></li></ul></div></section>
 
-      <section className="evSchools" id="schools">
-        <div>
-          <p className="evEyebrow dark">About Arizona schools</p>
-          <h2>Choose the address—not just the district name.</h2>
-        </div>
-        <div className="evSchoolCopy">
-          <p>School attendance boundaries do not always follow city limits. A Chandler address can be served by Kyrene, a Gilbert address can be in Chandler Unified, and fast-growing southeast communities may have several possible districts.</p>
-          <p>Before making a housing decision, verify the assigned schools directly with the district and review the latest state report card. Ratings and boundaries can change, and online portals are not always current.</p>
-          <div className="evSchoolLinks">
-            <a href="https://azreportcards.azed.gov/" target="_blank" rel="noreferrer">Arizona School Report Cards ↗</a>
-            <a href="https://www.azed.gov/" target="_blank" rel="noreferrer">Arizona Department of Education ↗</a>
-          </div>
-        </div>
-      </section>
+  <section className="evVenues"><div className="evSectionHead left"><p className="evEyebrow dark">Sports and concerts</p><h2>The entire Phoenix metro is part of the lifestyle.</h2><p>Some of the largest venues sit west of the East Valley, so event-day drive time matters when comparing locations.</p></div><div className="evVenueGrid">{venues.map(([name,text])=><article key={name}><h3>{name}</h3><p>{text}</p></article>)}</div><div className="evSpring"><strong>Spring-training favorites near the East Valley</strong><span>Sloan Park · Scottsdale Stadium · Salt River Fields · Hohokam Stadium · Tempe Diablo Stadium</span></div></section>
 
-      <section className="evTalk" id="talk">
-        <div>
-          <p className="evEyebrow">A local answer beats another search</p>
-          <h2>Tell Mike how you want to live.</h2>
-          <p>Share your commute, budget and priorities. Mike will help you narrow the East Valley to the communities—and neighborhoods—that genuinely fit.</p>
-        </div>
-        <div className="evTalkActions">
-          <a className="evButton red" href="mailto:mikedingman@adthomes.com?subject=Help me compare East Valley communities">Ask Mike about the East Valley <span>→</span></a>
-          <a className="evTextLink" href="https://acebuyer.adtrealtyaz.com">Ready to buy? See my buying power →</a>
-        </div>
-      </section>
+  <section className="evPhotoBreak evPhotoThree"><div><p className="evEyebrow">Outside is a big reason people move here</p><h2>Mountains, desert trails and water are closer than they look.</h2></div></section>
 
-      <footer className="evFooter">
-        <Image src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" width={84} height={84} />
-        <p>Local guidance across Phoenix's East Valley.</p>
-        <p className="evCredits">
-          Photos: Alan Stark / <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noreferrer">CC BY-SA 2.0</a>; Eustress / Public Domain; Beyond My Ken / <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>. Cropped for layout.
-        </p>
-        <span>© 2026 ADT Realty · Equal Housing Opportunity</span>
-      </footer>
-    </main>
-  );
-}
+  <section className="evActivities"><div><p className="evEyebrow dark">Beyond the city limits</p><h2>A short list for your first year.</h2></div><div className="evActivityGrid"><article><h3>Desert and trails</h3><p>McDowell Sonoran Preserve, San Tan Mountain Regional Park, Usery Mountain and South Mountain offer hiking, running, biking and trail riding.</p></article><article><h3>Lakes and rivers</h3><p>Saguaro Lake, Canyon Lake and the Lower Salt River open the door to boating, paddling, fishing and seasonal tubing.</p></article><article><h3>Arts and culture</h3><p>Mesa Arts Center, Scottsdale Arts, Chandler Center for the Arts, museums and ASU performances bring year-round programming.</p></article><article><h3>Day trips</h3><p>Sedona, Prescott, Payson and Tucson make practical weekend escapes when you want a change in scenery or temperature.</p></article></div></section>
+
+  <section className="evSchools"><div><p className="evEyebrow dark">About Arizona schools</p><h2>Verify the address, not just the city.</h2></div><div className="evSchoolCopy"><p>School boundaries do not always follow city limits, and fast-growing areas may include several districts. Verify the assigned schools directly with the district before making a housing decision.</p><div className="evSchoolLinks"><a href="https://azreportcards.azed.gov/" target="_blank" rel="noreferrer">Arizona School Report Cards ↗</a><a href="https://www.azed.gov/" target="_blank" rel="noreferrer">Department of Education ↗</a></div></div></section>
+
+  <section className="evHeat" id="weather"><div className="evHeatQuestion"><p className="evEyebrow">The question everyone asks</p><h2>Is it hot?</h2><strong>Yes. The summers are hot.</strong></div><div><p>From roughly June through September, daytime temperatures regularly exceed 100°F, and the hottest stretches can reach 110°F or more. Outdoor life shifts to early mornings, evenings, pools and air-conditioned spaces.</p><ul><li>Mild winters and abundant sunshine</li><li>Golf, patios and hiking through much of the year</li><li>Higher summer electric bills</li><li>Covered parking and pool access become meaningful</li><li>Hydration, pets and hot pavement must be taken seriously</li></ul></div></section>
+
+  <section className="evCalculator"><div><p className="evEyebrow">The practical next step</p><h2>What can you afford in the East Valley?</h2><p>Median prices only tell part of the story. Your rate, down payment, taxes, insurance, HOA fees and other costs determine your true buying power.</p></div><a className="evButton red" href="https://acebuyer.adtrealtyaz.com">See my true buying power <span>→</span></a></section>
+
+  <footer className="evFooter"><Image src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" width={84} height={84}/><p>Local guidance across Phoenix's East Valley.</p><p className="evCredits">Photos: Designism / CC0; Eustress / Public Domain; Beyond My Ken / CC BY-SA 4.0. Cropped for layout.</p><span>© 2026 ADT Realty · Equal Housing Opportunity</span></footer>
+ </main>}

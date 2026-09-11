@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import CityExplorer from "./CityExplorer";
 import "./east-valley.css";
 
 export const metadata: Metadata = {
@@ -15,6 +16,9 @@ const cities = [
     slug: "scottsdale",
     name: "Scottsdale",
     price: "About $900K",
+    population: "About 247,000",
+    income: "About $111,000",
+    airport: "15–30 min",
     housing:
       "Condos, established neighborhoods, golf communities and luxury desert estates",
     schools:
@@ -31,6 +35,9 @@ const cities = [
     slug: "tempe",
     name: "Tempe",
     price: "About $500K",
+    population: "About 190,000",
+    income: "About $80,000",
+    airport: "10–15 min",
     housing: "Condos, townhomes, mid-century neighborhoods and newer infill",
     schools:
       "Tempe Elementary and Tempe Union High School District serve much of the city. Southern Tempe also includes Kyrene Elementary areas.",
@@ -46,6 +53,9 @@ const cities = [
     slug: "mesa",
     name: "Mesa",
     price: "About $470K",
+    population: "About 512,000",
+    income: "About $78,000",
+    airport: "15–35 min",
     housing:
       "Historic homes, suburban neighborhoods, golf communities, horse property and new construction",
     schools:
@@ -62,6 +72,9 @@ const cities = [
     slug: "chandler",
     name: "Chandler",
     price: "About $525K",
+    population: "About 281,000",
+    income: "About $105,000",
+    airport: "20–30 min",
     housing:
       "Established subdivisions, lake communities, golf properties and newer homes",
     schools:
@@ -78,6 +91,9 @@ const cities = [
     slug: "gilbert",
     name: "Gilbert",
     price: "About $575K",
+    population: "About 288,000",
+    income: "About $116,000",
+    airport: "25–35 min",
     housing:
       "Established subdivisions, master-planned communities and larger newer homes",
     schools:
@@ -94,6 +110,9 @@ const cities = [
     slug: "queen-creek",
     name: "Queen Creek",
     price: "About $670K",
+    population: "About 83,000",
+    income: "About $145,000",
+    airport: "35–50 min",
     housing: "New master plans, custom homes, acreage and equestrian property",
     schools:
       "Queen Creek Unified serves much of the area, with some neighborhoods in Chandler Unified. Verify every property directly with the district.",
@@ -109,6 +128,9 @@ const cities = [
     slug: "san-tan-valley",
     name: "San Tan Valley",
     price: "About $430K",
+    population: "About 113,000",
+    income: "About $86,000",
+    airport: "45–60+ min",
     housing: "Newer subdivisions, larger homes and desert-edge communities",
     schools:
       "Florence Unified and J.O. Combs Unified serve much of San Tan Valley. Growth makes address-level verification essential.",
@@ -124,6 +146,9 @@ const cities = [
     slug: "fountain-hills",
     name: "Fountain Hills",
     price: "About $720K",
+    population: "About 24,000",
+    income: "About $105,000",
+    airport: "30–40 min",
     housing:
       "Hillside homes, condos, golf communities and desert-view properties",
     schools:
@@ -190,17 +215,6 @@ const venues = [
   ["Mullett Arena", "ASU sports, hockey and live events in Tempe"],
 ];
 
-const airportTimes: Record<string, string> = {
-  scottsdale: "15–30 minutes",
-  tempe: "10–15 minutes",
-  mesa: "15–35 minutes",
-  chandler: "20–30 minutes",
-  gilbert: "25–35 minutes",
-  "queen-creek": "35–50 minutes",
-  "san-tan-valley": "45–60+ minutes",
-  "fountain-hills": "30–40 minutes",
-};
-
 export default function EastValleyGuide() {
   return (
     <main className="evPage">
@@ -243,13 +257,6 @@ export default function EastValleyGuide() {
             Start comparing <span>↓</span>
           </a>
         </div>
-        <div className="evCityRail">
-          {cities.map((c) => (
-            <a key={c.slug} href={`#${c.slug}`}>
-              {c.name}
-            </a>
-          ))}
-        </div>
       </section>
 
       <section className="evIntro" id="compare">
@@ -258,60 +265,12 @@ export default function EastValleyGuide() {
           <h2>Eight communities. Very different ways to live.</h2>
         </div>
         <p>
-          Start with downtowns, desert views, golf, commute and the kind of home
-          you want. The numbers matter—but first, see what makes each place
-          different.
+          Start with the place itself—downtowns, desert views, golf, commute and
+          the kind of home you want. Then open a city for the practical numbers.
         </p>
       </section>
 
-      <section className="evCities" id="cities">
-        <div className="evSectionHead">
-          <p className="evEyebrow dark">City by city</p>
-          <h2>Housing, schools and the honest tradeoff.</h2>
-        </div>
-        <div className="evCityList">
-          {cities.map((c, i) => (
-            <article className="evCity" id={c.slug} key={c.slug}>
-              <div className="evCityNumber">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <div
-                className="evCityPhoto"
-                style={{
-                  backgroundImage: `url('/images/east-valley/${c.slug}.jpg')`,
-                }}
-                role="img"
-                aria-label={`${c.name}, Arizona`}
-              />
-              <div className="evCityMain">
-                <p className="evKicker">{c.name}, Arizona</p>
-                <h3>{c.name}</h3>
-                <p>
-                  <strong>Housing:</strong> {c.housing}.
-                </p>
-                <div className="evCityDetails">
-                  {c.highlights.map((x) => (
-                    <p key={x}>
-                      <strong>{x}</strong>
-                    </p>
-                  ))}
-                </div>
-              </div>
-              <aside>
-                <h4>Public schools</h4>
-                <p>{c.schools}</p>
-                <h4>Sky Harbor</h4>
-                <p>
-                  Approximately {airportTimes[c.slug]} in normal traffic. Exact
-                  neighborhood and time of day matter.
-                </p>
-                <h4>Keep in mind</h4>
-                <p>{c.tradeoff}</p>
-              </aside>
-            </article>
-          ))}
-        </div>
-      </section>
+      <CityExplorer cities={cities} />
 
       <section className="evPhotoBreak evPhotoTwo">
         <div>
@@ -474,30 +433,6 @@ export default function EastValleyGuide() {
         </p>
       </section>
 
-      <section className="evMarket" id="market">
-        <div>
-          <p className="evEyebrow">Housing snapshot</p>
-          <h2>Now, about the numbers.</h2>
-          <p>
-            These rounded 2026 citywide medians are a starting point.
-            Neighborhood, property type, lot, age and condition can change the
-            picture quickly.
-          </p>
-        </div>
-        <div className="evPriceGrid">
-          {cities.map((c) => (
-            <div key={c.slug}>
-              <span>{c.name}</span>
-              <strong>{c.price}</strong>
-            </div>
-          ))}
-        </div>
-        <p className="evDataNote">
-          Market data changes monthly. Verify current city and neighborhood
-          sales before making a housing decision.
-        </p>
-      </section>
-
       <section className="evSchools">
         <div>
           <p className="evEyebrow dark">About Arizona schools</p>
@@ -570,10 +505,15 @@ export default function EastValleyGuide() {
           height={84}
         />
         <p>Local guidance across Phoenix's East Valley.</p>
-        <p className="evCredits">
-          Photos: Designism / CC0; Eustress / Public Domain; Beyond My Ken / CC
-          BY-SA 4.0. Cropped for layout.
-        </p>
+        <details className="evCredits">
+          <summary>Photo credits</summary>
+          <p>
+            East Valley imagery includes work by Designism, Dru Bloomfield, Alan
+            Stark, Cygnusloop99, Beyond My Ken, BowenLarsen and other credited
+            Creative Commons contributors. Chandler sign photo:
+            taniasmile.smirnova / Wallpapers.com. Images cropped for layout.
+          </p>
+        </details>
         <span>© 2026 ADT Realty · Equal Housing Opportunity</span>
       </footer>
     </main>

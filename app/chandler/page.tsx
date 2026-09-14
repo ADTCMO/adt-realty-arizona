@@ -163,7 +163,7 @@ export default function ChandlerPage() {
       </section>
 
       <section className="chandlerCommunities">
-        <div className="chandlerPhotoBreak downtown"><span>Downtown energy. Established neighborhoods. Room to choose.</span></div>
+        <div className="chandlerPhotoBreak downtown"><span>Waterfront communities. Established neighborhoods. Room to choose.</span></div>
         <div className="chandlerCommunityCopy">
           <p className="chandlerKicker dark">Names buyers will hear</p>
           <h2>Neighborhoods and communities worth recognizing.</h2>
@@ -227,7 +227,6 @@ export default function ChandlerPage() {
         </div>
       </section>
 
-      <section className="chandlerPhotoBreak ocotillo"><span>Golf, water and desert light change the way a neighborhood feels.</span></section>
 
       <section className="chandlerDecision">
         <div><p className="chandlerKicker">Run the numbers</p><h2>Could Chandler fit your budget?</h2><p>Price is only the beginning. Estimate how taxes, insurance, down payment, debt and ownership costs may affect your true buying power.</p></div>

@@ -4,7 +4,7 @@ import "./globals.css";
 import OpenAIAdsPixel from "./OpenAIAdsPixel";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://adtrealtyaz.com"),
+  metadataBase: new URL("https://www.adtrealtyaz.com"),
   title: {
     default: "ADT Realty Arizona | Buy, Sell or Build Your Career",
     template: "%s | ADT Realty Arizona",
@@ -48,9 +48,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               "@context": "https://schema.org",
               "@type": "RealEstateAgent",
               name: "ADT Realty Arizona",
-              url: "https://adtrealtyaz.com/",
-              logo: "https://adtrealtyaz.com/adt-realty-arizona-logo.png",
-              image: "https://adtrealtyaz.com/hero-arizona-bright.png",
+              url: "https://www.adtrealtyaz.com/",
+              logo: "https://www.adtrealtyaz.com/adt-realty-arizona-logo.png",
+              image: "https://www.adtrealtyaz.com/hero-arizona-bright.png",
               email: "mikedingman@adthomes.com",
               areaServed: { "@type": "State", name: "Arizona" },
               parentOrganization: { "@type": "Organization", name: "ADT Realty" },

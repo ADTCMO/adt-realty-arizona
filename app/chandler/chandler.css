@@ -1,1 +1,173 @@
 .chandlerPage{--cnavy:#001343;--cblue:#011a59;--cred:#b00101;--cink:#111d37;--csoft:#f2f5f9;color:var(--cink);background:#fff}.chandlerPage *{box-sizing:border-box}.chandlerHeader{height:90px;padding:0 clamp(18px,7vw,110px);display:flex;align-items:center;gap:40px;background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 16px rgba(0,19,67,.08)}.chandlerHeader img{width:72px;height:72px;object-fit:contain}.chandlerHeader nav{display:flex;gap:30px;margin-left:auto}.chandlerHeader nav a{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--cblue)}.chandlerHeaderCta{padding:13px 18px;background:var(--cred);color:#fff;font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}.chandlerHero{min-height:680px;position:relative;display:flex;align-items:center;color:#fff;background:url('/images/east-valley/chandler.jpg') center 52%/cover no-repeat}.chandlerHeroShade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,13,48,.94),rgba(0,19,67,.5) 55%,rgba(0,19,67,.1)),linear-gradient(0deg,rgba(0,10,38,.72),transparent 45%)}.chandlerHeroCopy{position:relative;z-index:2;width:min(760px,84vw);margin-left:clamp(22px,9vw,150px);padding:80px 0 130px}.chandlerKicker{margin:0 0 15px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:#fff}.chandlerKicker.dark{color:var(--cred)}.chandlerHero h1{max-width:720px;margin:0 0 22px;font-size:clamp(50px,6.5vw,92px);line-height:.94;letter-spacing:-.06em}.chandlerHeroCopy>p:not(.chandlerKicker){max-width:650px;font-size:19px;line-height:1.6;color:#edf2fb}.chandlerHeroActions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.chandlerHeroActions a,.chandlerDecision>a{min-height:52px;padding:15px 22px;display:inline-flex;align-items:center;justify-content:center;gap:18px;background:#fff;color:var(--cnavy);font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}.chandlerHeroActions .outline{background:transparent;border:1px solid #fff;color:#fff}.chandlerQuick{position:absolute;left:0;right:0;bottom:0;z-index:3;display:grid;grid-template-columns:repeat(3,1fr);background:rgba(0,13,48,.9);backdrop-filter:blur(8px)}.chandlerQuick span{padding:21px clamp(18px,5vw,70px);border-right:1px solid rgba(255,255,255,.17);font-size:15px;font-weight:800}.chandlerQuick small{display:block;margin-bottom:5px;color:#aebce0;font-size:10px;text-transform:uppercase;letter-spacing:.1em}.chandlerIntro,.chandlerLifestyle{padding:100px clamp(24px,9vw,150px);display:grid;grid-template-columns:.8fr 1.2fr;gap:9%;align-items:start}.chandlerIntro h2,.chandlerSectionHead h2,.chandlerLifestyle h2,.chandlerReality h2,.chandlerDecision h2,.chandlerContact h2{margin:0;font-size:clamp(40px,5vw,70px);line-height:1;letter-spacing:-.055em}.chandlerIntro>div p,.chandlerLifestyleCopy p{margin:0 0 20px;color:#526078;font-size:17px;line-height:1.72}.chandlerAreas,.chandlerCompare{padding:95px clamp(20px,7vw,115px);background:var(--csoft)}.chandlerSectionHead{max-width:850px;margin-bottom:48px}.chandlerAreaGrid{display:grid;grid-template-columns:repeat(2,1fr);background:#fff;border-top:1px solid #d6dce7;border-left:1px solid #d6dce7}.chandlerAreaGrid article{min-height:330px;padding:38px;border-right:1px solid #d6dce7;border-bottom:1px solid #d6dce7}.chandlerAreaGrid article>span{color:var(--cred);font-size:12px;font-weight:900;letter-spacing:.15em}.chandlerAreaGrid .fit{margin:35px 0 6px;color:var(--cred);font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}.chandlerAreaGrid h3,.chandlerCompareGrid h3{margin:0 0 15px;color:var(--cblue);font-size:30px;letter-spacing:-.04em}.chandlerAreaGrid article>p:last-child,.chandlerCompareGrid p{color:#566279;font-size:15px;line-height:1.68}.chandlerReality{padding:95px clamp(24px,8vw,130px);background:var(--cnavy);color:#fff}.chandlerRealityTitle{max-width:950px}.chandlerRealityGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:52px;background:rgba(255,255,255,.18)}.chandlerRealityGrid article{padding:36px;background:var(--cnavy)}.chandlerRealityGrid h3{margin:0 0 12px;font-size:22px}.chandlerRealityGrid p{margin:0;color:#cdd7ed;font-size:15px;line-height:1.7}.chandlerCompareGrid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #ccd4e1;border-left:1px solid #ccd4e1}.chandlerCompareGrid a{min-height:260px;padding:28px;display:flex;flex-direction:column;border-right:1px solid #ccd4e1;border-bottom:1px solid #ccd4e1;background:#fff}.chandlerCompareGrid span{color:#778399;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.chandlerCompareGrid h3{margin-top:12px}.chandlerCompareGrid b{margin-top:auto;color:var(--cred);font-size:11px;text-transform:uppercase}.chandlerDecision{padding:86px clamp(24px,9vw,150px);display:grid;grid-template-columns:1fr auto;gap:8%;align-items:center;background:linear-gradient(115deg,var(--cblue),var(--cnavy));color:#fff}.chandlerDecision p{max-width:720px;color:#d7e0f3;font-size:16px;line-height:1.7}.chandlerDecision>a{background:var(--cred);color:#fff;white-space:nowrap}.chandlerContact{padding:90px clamp(24px,8vw,130px);display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}.chandlerContact>div>p:not(.chandlerKicker){color:#59657a;font-size:17px;line-height:1.7}.chandlerContact small{color:#7a8497}.chandlerFooter{min-height:120px;padding:20px clamp(22px,7vw,110px);display:flex;align-items:center;gap:30px;background:#000c2e;color:#fff}.chandlerFooter img{width:72px;height:72px;filter:brightness(0) invert(1);object-fit:contain}.chandlerFooter p{font-size:13px;font-weight:800}.chandlerFooter span{margin-left:auto;max-width:430px;color:#aeb9d0;font-size:10px;line-height:1.5;text-align:right}.evCityDetailLink{margin:28px 0 0}.evCityDetailLink a{display:inline-flex;align-items:center;gap:12px;color:var(--ev-blue);font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--ev-red);padding-bottom:5px}.evCityDetailLink span{color:var(--ev-red);font-size:18px}@media(max-width:900px){.chandlerCompareGrid{grid-template-columns:1fr 1fr}.chandlerDecision{grid-template-columns:1fr}.chandlerDecision>a{justify-self:start}.chandlerContact{grid-template-columns:1fr}.chandlerContact .leadForm{margin-top:18px}}@media(max-width:680px){.chandlerHeader{height:78px;padding:0 14px}.chandlerHeader img{width:62px;height:62px}.chandlerHeader nav{display:none}.chandlerHeaderCta{margin-left:auto;padding:11px 12px;font-size:9px}.chandlerHero{min-height:600px;background-position:48% center;align-items:flex-start}.chandlerHeroCopy{width:auto;margin:0;padding:190px 18px 145px}.chandlerHero h1{font-size:48px}.chandlerHeroCopy>p:not(.chandlerKicker){font-size:16px;line-height:1.5}.chandlerHeroActions{display:grid}.chandlerHeroActions a{width:100%}.chandlerQuick span{padding:13px 8px;text-align:center;font-size:11px}.chandlerQuick small{font-size:8px}.chandlerIntro,.chandlerLifestyle{padding:64px 20px;grid-template-columns:1fr;gap:24px}.chandlerIntro h2,.chandlerSectionHead h2,.chandlerLifestyle h2,.chandlerReality h2,.chandlerDecision h2,.chandlerContact h2{font-size:38px}.chandlerAreas,.chandlerCompare{padding:64px 16px}.chandlerSectionHead{margin-bottom:30px}.chandlerAreaGrid,.chandlerRealityGrid,.chandlerCompareGrid{grid-template-columns:1fr}.chandlerAreaGrid article{min-height:0;padding:27px 22px}.chandlerAreaGrid .fit{margin-top:22px}.chandlerReality{padding:65px 20px}.chandlerRealityGrid{margin-top:32px}.chandlerRealityGrid article{padding:26px 4px}.chandlerCompareGrid a{min-height:220px;padding:24px}.chandlerDecision{padding:64px 20px;gap:24px}.chandlerDecision>a{width:100%;white-space:normal;text-align:center}.chandlerContact{padding:65px 18px}.chandlerFooter{flex-direction:column;align-items:flex-start;gap:7px}.chandlerFooter span{margin:5px 0 0;text-align:left}}
+
+
+.chandlerCommunities {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  min-height: 570px;
+}
+.chandlerPhotoBreak {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  padding: 44px;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+.chandlerPhotoBreak:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,13,48,.85), transparent 64%);
+}
+.chandlerPhotoBreak span {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  font-size: clamp(25px,3vw,42px);
+  font-weight: 850;
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+.chandlerPhotoBreak.downtown {
+  background-image: url("/images/east-valley/east-valley-life.jpg");
+}
+.chandlerPhotoBreak.ocotillo {
+  min-height: 430px;
+  padding: 55px clamp(24px,9vw,150px);
+  background-image: url("/images/east-valley/golf.jpg");
+}
+.chandlerCommunityCopy {
+  padding: 76px clamp(28px,6vw,85px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.chandlerCommunityCopy h2 {
+  margin: 0;
+  font-size: clamp(38px,4.5vw,62px);
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+.chandlerCommunityCopy>p:last-child {
+  color: #59657a;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.chandlerCommunityNames {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 28px 0 18px;
+}
+.chandlerCommunityNames span {
+  padding: 9px 12px;
+  border: 1px solid #d5dbe6;
+  color: var(--cblue);
+  font-size: 12px;
+  font-weight: 800;
+}
+.chandlerEmployers {
+  padding: 95px clamp(24px,8vw,130px);
+  background: linear-gradient(120deg,var(--cblue),var(--cnavy));
+  color: #fff;
+}
+.chandlerEmployerIntro {
+  max-width: 930px;
+}
+.chandlerEmployerIntro h2 {
+  margin: 0;
+  font-size: clamp(43px,5.5vw,76px);
+  line-height: .98;
+  letter-spacing: -.06em;
+}
+.chandlerEmployerIntro>p:last-child {
+  max-width: 790px;
+  color: #d5dff2;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.chandlerEmployerGrid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  margin-top: 44px;
+  border-top: 1px solid rgba(255,255,255,.2);
+  border-left: 1px solid rgba(255,255,255,.2);
+}
+.chandlerEmployerGrid article {
+  min-height: 130px;
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid rgba(255,255,255,.2);
+  border-bottom: 1px solid rgba(255,255,255,.2);
+}
+.chandlerEmployerGrid strong {
+  font-size: 17px;
+}
+.chandlerEmployerGrid span {
+  margin-top: 7px;
+  color: #bfcbea;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.chandlerEmployerNote {
+  margin: 18px 0 0;
+  color: #aebcdc;
+  font-size: 11px;
+  line-height: 1.55;
+}
+.chandlerFaq {
+  padding: 95px clamp(20px,8vw,130px);
+  background: #fff;
+}
+.chandlerFaqList {
+  max-width: 1050px;
+  border-top: 1px solid #d2d9e5;
+}
+.chandlerFaqList details {
+  border-bottom: 1px solid #d2d9e5;
+}
+.chandlerFaqList summary {
+  padding: 23px 4px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--cblue);
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+.chandlerFaqList summary::-webkit-details-marker { display:none; }
+.chandlerFaqList summary span {
+  color: var(--cred);
+  font-size: 24px;
+}
+.chandlerFaqList details[open] summary span { transform:rotate(45deg); }
+.chandlerFaqList details p {
+  max-width: 850px;
+  margin: -5px 0 24px;
+  color: #59657a;
+  font-size: 15px;
+  line-height: 1.7;
+}
+@media(max-width:900px){
+  .chandlerCommunities{grid-template-columns:1fr}
+  .chandlerEmployerGrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .chandlerPhotoBreak{min-height:330px;padding:28px 20px}
+  .chandlerCommunityCopy{padding:58px 20px}
+  .chandlerCommunityCopy h2{font-size:38px}
+  .chandlerEmployers{padding:64px 18px}
+  .chandlerEmployerIntro h2{font-size:42px}
+  .chandlerEmployerGrid{margin-top:30px}
+  .chandlerEmployerGrid article{min-height:105px;padding:17px 14px}
+  .chandlerFaq{padding:64px 18px}
+  .chandlerFaqList summary{padding:19px 2px;font-size:16px}
+  .chandlerPhotoBreak.ocotillo{min-height:330px}
+}

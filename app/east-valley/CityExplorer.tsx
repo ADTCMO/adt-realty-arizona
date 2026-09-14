@@ -134,7 +134,7 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
             </div>
           </div>
 
-          {city.slug === "chandler" && <div className="evCityDetailLink"><a href="/chandler">Get more details about Chandler <span aria-hidden="true">→</span></a></div>}
+          <div className="evCityDetailLink"><a href={`/${city.slug}`}>Get more details about {city.name} <span aria-hidden="true">→</span></a></div>
 
           <div className="evCityCalculatorCta">
             <div>

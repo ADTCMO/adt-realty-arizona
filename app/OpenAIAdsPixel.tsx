@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-const PIXEL_ID = "CkFr92Yu4a6r1KoBdYYRij";
+const PIXEL_ID = "CKFr92Yu4a6r1KoBdYYRij";
 
 export function measureOpenAIEvent(
   eventName: string,

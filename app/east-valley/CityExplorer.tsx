@@ -134,6 +134,8 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
             </div>
           </div>
 
+          <div className="evCityDetailLink"><a href={`/${city.slug}`}>Get more details about {city.name} <span aria-hidden="true">→</span></a></div>
+
           <div className="evCityCalculatorCta">
             <div>
               <h4>Could {city.name} fit your budget?</h4>
@@ -143,7 +145,7 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
               </p>
             </div>
             <a
-              href="https://acebuyer.adtrealtyaz.com"
+              href={`https://acebuyer.adtrealtyaz.com/?city=${encodeURIComponent(city.name)}`}
               onClick={() =>
                 measureOpenAIEvent(
                   "custom",

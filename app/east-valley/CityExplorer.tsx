@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { measureOpenAIEvent } from "../OpenAIAdsPixel";
 
 export type City = {
@@ -19,6 +19,20 @@ export type City = {
 export default function CityExplorer({ cities }: { cities: City[] }) {
   const [selectedSlug, setSelectedSlug] = useState(cities[0].slug);
   const city = cities.find((item) => item.slug === selectedSlug) ?? cities[0];
+  const selectedIndex = cities.findIndex((item) => item.slug === city.slug);
+  const swipeStart = useRef<number | null>(null);
+
+  function cycle(direction: number) {
+    const nextIndex = (selectedIndex + direction + cities.length) % cities.length;
+    setSelectedSlug(cities[nextIndex].slug);
+  }
+
+  function endSwipe(x: number) {
+    if (swipeStart.current === null) return;
+    const delta = x - swipeStart.current;
+    if (Math.abs(delta) > 42) cycle(delta < 0 ? 1 : -1);
+    swipeStart.current = null;
+  }
 
   return (
     <section className="evCityExplorer" id="cities">
@@ -34,8 +48,14 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
         className="evCityPicker"
         role="tablist"
         aria-label="East Valley cities"
+        onTouchStart={(event) => {
+          swipeStart.current = event.touches[0].clientX;
+        }}
+        onTouchEnd={(event) => endSwipe(event.changedTouches[0].clientX)}
       >
-        {cities.map((item) => (
+        {cities.map((item, index) => {
+          const depth = (index - selectedIndex + cities.length) % cities.length;
+          return (
           <button
             key={item.slug}
             type="button"
@@ -43,6 +63,8 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
             aria-selected={item.slug === city.slug}
             aria-controls="selected-city"
             className={item.slug === city.slug ? "isActive" : ""}
+            data-depth={depth}
+            style={{ "--city-depth": depth } as React.CSSProperties}
             onClick={() => setSelectedSlug(item.slug)}
           >
             <span
@@ -57,7 +79,13 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
               Explore <b aria-hidden="true">→</b>
             </span>
           </button>
-        ))}
+          );
+        })}
+      </div>
+      <div className="evCityStackControls" aria-label="City carousel controls">
+        <button type="button" onClick={() => cycle(-1)} aria-label="Previous city">←</button>
+        <span><strong>{selectedIndex + 1}</strong> / {cities.length}</span>
+        <button type="button" onClick={() => cycle(1)} aria-label="Next city">→</button>
       </div>
 
       <article className="evSelectedCity" id="selected-city" role="tabpanel">

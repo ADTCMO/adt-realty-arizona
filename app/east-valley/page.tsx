@@ -229,7 +229,7 @@ export default function EastValleyGuide() {
           />
         </Link>
         <nav aria-label="Guide navigation">
-          <a href="#compare">Compare</a>
+          <a href="#cities">Compare</a>
           <a href="#cities">Cities</a>
           <a href="#life">Things to do</a>
           <a href="#weather">Weather</a>
@@ -253,21 +253,10 @@ export default function EastValleyGuide() {
             Compare the communities, housing costs, schools and everyday
             lifestyle before deciding where you belong in the East Valley.
           </p>
-          <a className="evButton" href="#compare">
+          <a className="evButton" href="#cities">
             Start comparing <span>↓</span>
           </a>
         </div>
-      </section>
-
-      <section className="evIntro" id="compare">
-        <div>
-          <p className="evEyebrow dark">Choose your Arizona</p>
-          <h2>Eight communities. Very different ways to live.</h2>
-        </div>
-        <p>
-          Start with the place itself—downtowns, desert views, golf, commute and
-          the kind of home you want. Then open a city for the practical numbers.
-        </p>
       </section>
 
       <CityExplorer cities={cities} />
@@ -353,11 +342,6 @@ export default function EastValleyGuide() {
             matters when comparing locations.
           </p>
         </div>
-        <div
-          className="evSportsPhoto"
-          role="img"
-          aria-label="State Farm Stadium, home of major Arizona sporting events"
-        />
         <div className="evVenueGrid">
           {venues.map(([name, text]) => (
             <article key={name}>

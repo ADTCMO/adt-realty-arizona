@@ -28,6 +28,9 @@
   place-items: center;
 }
 .evBrand img {
+  width: auto;
+  height: 76px;
+  max-width: 100%;
   object-fit: contain;
 }
 .evHeader nav {
@@ -323,17 +326,8 @@
 }
 
 .evSelectedCity {
-  display: grid;
-  grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.4fr);
-  min-height: 620px;
   background: white;
   box-shadow: 0 18px 48px rgba(0, 19, 67, 0.12);
-}
-
-.evSelectedCityPhoto {
-  min-height: 100%;
-  background-position: center;
-  background-size: cover;
 }
 
 .evSelectedCityContent {
@@ -425,6 +419,41 @@
   padding-left: 18px;
 }
 
+.evCityCalculatorCta {
+  margin-top: 34px;
+  padding: 24px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  background: var(--ev-navy);
+  color: #fff;
+}
+
+.evCityCalculatorCta h4 {
+  margin: 0 0 7px;
+  font-size: 20px;
+}
+
+.evCityCalculatorCta p {
+  max-width: 560px;
+  margin: 0;
+  color: #dce3f2;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.evCityCalculatorCta a {
+  flex: 0 0 auto;
+  padding: 14px 18px;
+  background: var(--ev-red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .evCitySource {
   margin: 30px 0 0;
   padding-top: 16px;
@@ -437,9 +466,6 @@
 @media (max-width: 1050px) {
   .evCityPicker {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .evSelectedCity {
-    grid-template-columns: 0.75fr 1fr;
   }
   .evCityStats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -460,10 +486,11 @@
     padding: 68px 16px 78px;
   }
   .evCityPicker {
+    grid-template-columns: 1fr;
     gap: 8px;
   }
   .evCityPicker button {
-    min-height: 135px;
+    min-height: 170px;
   }
   .evCityPicker button > strong {
     bottom: 30px;
@@ -475,12 +502,6 @@
     left: 12px;
     font-size: 10px;
   }
-  .evSelectedCity {
-    grid-template-columns: 1fr;
-  }
-  .evSelectedCityPhoto {
-    min-height: 300px;
-  }
   .evSelectedCityContent {
     padding: 34px 20px;
   }
@@ -489,6 +510,16 @@
   }
   .evCityStats strong {
     font-size: 19px;
+  }
+  .evCityCalculatorCta {
+    padding: 22px 18px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .evCityCalculatorCta a {
+    width: 100%;
+    text-align: center;
   }
 }
 .evHeroShade {
@@ -1225,8 +1256,11 @@
     padding: 0 16px;
   }
   .evBrand {
-    width: 70px;
+    width: 62px;
     height: 70px;
+  }
+  .evBrand img {
+    height: 64px;
   }
   .evHeaderCta {
     padding: 12px 14px;

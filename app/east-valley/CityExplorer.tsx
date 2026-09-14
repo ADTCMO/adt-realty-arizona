@@ -60,14 +60,6 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
       </div>
 
       <article className="evSelectedCity" id="selected-city" role="tabpanel">
-        <div
-          className="evSelectedCityPhoto"
-          style={{
-            backgroundImage: `url('/images/east-valley/${city.slug}.jpg')`,
-          }}
-          role="img"
-          aria-label={`${city.name}, Arizona`}
-        />
         <div className="evSelectedCityContent">
           <p className="evKicker">Selected city</p>
           <h3>{city.name}</h3>
@@ -111,6 +103,19 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
               <h4>Keep in mind</h4>
               <p>{city.tradeoff}</p>
             </div>
+          </div>
+
+          <div className="evCityCalculatorCta">
+            <div>
+              <h4>Could {city.name} fit your budget?</h4>
+              <p>
+                Estimate your true buying power with taxes, insurance, down
+                payment and other ownership costs included.
+              </p>
+            </div>
+            <a href="https://acebuyer.adtrealtyaz.com">
+              Try the buying-power calculator <span aria-hidden="true">→</span>
+            </a>
           </div>
 
           <p className="evCitySource">

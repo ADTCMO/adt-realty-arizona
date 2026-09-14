@@ -1,30 +1,16 @@
 import type { MetadataRoute } from "next";
 
+const baseUrl = "https://adtrealtyaz.com";
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date("2026-09-14");
   return [
-    {
-      url: "https://adtrealtyaz.com/",
-      lastModified: new Date("2026-09-11"),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: "https://adtrealtyaz.com/heroes",
-      lastModified: new Date("2026-09-11"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://adtrealtyaz.com/east-valley",
-      lastModified: new Date("2026-09-11"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: "https://adtrealtyaz.com/leaders",
-      lastModified: new Date("2026-09-11"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+    { url: `${baseUrl}/`, lastModified, changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/east-valley`, lastModified, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/hero`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/join/newly-licensed`, lastModified, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/join/developing-agent`, lastModified, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/join/productive-agent`, lastModified, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/join/leadership`, lastModified, changeFrequency: "monthly", priority: 0.7 },
   ];
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { measureOpenAIEvent } from "../OpenAIAdsPixel";
 
 export type City = {
   slug: string;
@@ -113,7 +114,16 @@ export default function CityExplorer({ cities }: { cities: City[] }) {
                 payment and other ownership costs included.
               </p>
             </div>
-            <a href="https://acebuyer.adtrealtyaz.com">
+            <a
+              href="https://acebuyer.adtrealtyaz.com"
+              onClick={() =>
+                measureOpenAIEvent(
+                  "custom",
+                  { type: "custom" },
+                  { custom_event_name: "calculator_opened" },
+                )
+              }
+            >
               Try the buying-power calculator <span aria-hidden="true">→</span>
             </a>
           </div>

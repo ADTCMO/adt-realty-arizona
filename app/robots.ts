@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://adtrealtyaz.com/sitemap.xml",
-    host: "https://adtrealtyaz.com",
+    sitemap: "https://www.adtrealtyaz.com/sitemap.xml",
+    host: "https://www.adtrealtyaz.com",
   };
 }

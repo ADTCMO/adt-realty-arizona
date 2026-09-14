@@ -1646,3 +1646,24 @@
     line-height: 1.5;
   }
 }
+
+
+.evCityDetailLink {
+  margin: 28px 0 0;
+}
+.evCityDetailLink a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--ev-red);
+  color: var(--ev-blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.evCityDetailLink span {
+  color: var(--ev-red);
+  font-size: 18px;
+}

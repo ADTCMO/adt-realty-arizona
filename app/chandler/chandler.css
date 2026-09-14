@@ -171,3 +171,74 @@
   .chandlerFaqList summary{padding:19px 2px;font-size:16px}
   .chandlerPhotoBreak.ocotillo{min-height:330px}
 }
+
+
+/* Chandler visual QA refinements */
+.chandlerIntro,
+.chandlerLifestyle {
+  padding-top: 76px;
+  padding-bottom: 76px;
+}
+
+.chandlerContact .leadForm {
+  width: 100%;
+  padding: 30px;
+  display: grid;
+  gap: 15px;
+  background: #f3f5f8;
+  color: var(--cink);
+  border: 1px solid #d5dbe6;
+}
+
+.chandlerContact .leadForm label {
+  display: block;
+  color: var(--cblue);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.chandlerContact .leadForm input,
+.chandlerContact .leadForm textarea,
+.chandlerContact .leadForm select {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  padding: 13px;
+  border: 1px solid #bfc8d7;
+  background: #fff;
+  color: var(--cink);
+}
+
+.chandlerContact .leadForm textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+.chandlerContact .leadForm .button {
+  justify-self: start;
+  min-width: 240px;
+}
+
+.chandlerContact .leadForm .formStatus {
+  min-height: 18px;
+  color: var(--cblue);
+}
+
+@media(max-width:680px) {
+  .chandlerIntro,
+  .chandlerLifestyle {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  .chandlerContact .leadForm {
+    padding: 22px 17px;
+  }
+
+  .chandlerContact .leadForm .button {
+    width: 100%;
+    min-width: 0;
+  }
+}

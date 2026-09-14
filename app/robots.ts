@@ -8,5 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ["/api/"],
     },
     sitemap: "https://adtrealtyaz.com/sitemap.xml",
+    host: "https://adtrealtyaz.com",
   };
 }

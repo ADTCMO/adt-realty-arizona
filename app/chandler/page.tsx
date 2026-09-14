@@ -53,6 +53,26 @@ const areas = [
   },
 ];
 
+const employers = [
+  ["Intel", "Semiconductor manufacturing and engineering"],
+  ["Microchip Technology", "Global semiconductor headquarters"],
+  ["NXP Semiconductors", "Semiconductor manufacturing and technology"],
+  ["Northrop Grumman", "Aerospace and defense"],
+  ["Wells Fargo", "Financial services and operations"],
+  ["Bank of America", "Financial services"],
+  ["PayPal", "Digital payments and technology"],
+  ["Chandler Regional Medical Center", "Healthcare"],
+];
+
+const faqs = [
+  { question: "What is Chandler, Arizona known for?", answer: "Chandler is known for its semiconductor and technology employers, the Price Corridor, Downtown Chandler, golf and waterfront communities, established neighborhoods and access to major East Valley freeways." },
+  { question: "Is Chandler or Gilbert better for homebuyers?", answer: "Neither city is universally better. Chandler generally offers stronger access to established employment corridors and a wider mix of neighborhood ages. Gilbert often appeals to buyers seeking newer master-planned communities. The better fit depends on budget, commute and preferred lifestyle." },
+  { question: "How far is Chandler from Phoenix Sky Harbor Airport?", answer: "Many Chandler locations are roughly 20 to 30 minutes from Phoenix Sky Harbor in normal traffic, but travel time varies considerably by neighborhood, time of day and freeway conditions." },
+  { question: "Which school districts serve Chandler?", answer: "Chandler Unified serves much of the city. Some western Chandler addresses are served by Kyrene Elementary and Tempe Union High School District. Buyers should verify school assignments for the exact property." },
+  { question: "Does Chandler have waterfront homes?", answer: "Yes. Chandler includes lake communities and waterfront properties, especially around Ocotillo and Andersen Springs. Waterfront location, views, lot orientation and community amenities can create meaningful price differences." },
+  { question: "What should buyers know about Chandler summers?", answer: "Summer heat makes HVAC condition, shade, covered parking, pool access and expected electric costs important property-level considerations." },
+];
+
 const comparisons = [
   ["Gilbert", "Newer suburban feel, popular dining and more master-planned communities"],
   ["Tempe", "More urban energy, ASU, light rail and shorter airport access"],
@@ -79,6 +99,14 @@ export default function ChandlerPage() {
         name: "Chandler",
         address: { "@type": "PostalAddress", addressLocality: "Chandler", addressRegion: "AZ", addressCountry: "US" },
         containedInPlace: { "@type": "State", name: "Arizona" },
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
       },
     ],
   };
@@ -134,6 +162,30 @@ export default function ChandlerPage() {
         </div>
       </section>
 
+      <section className="chandlerCommunities">
+        <div className="chandlerPhotoBreak downtown"><span>Downtown energy. Established neighborhoods. Room to choose.</span></div>
+        <div className="chandlerCommunityCopy">
+          <p className="chandlerKicker dark">Names buyers will hear</p>
+          <h2>Neighborhoods and communities worth recognizing.</h2>
+          <div className="chandlerCommunityNames">
+            {["Ocotillo", "Fulton Ranch", "Andersen Springs", "Cooper Commons", "Sun Groves", "Downtown Chandler"].map((name) => <span key={name}>{name}</span>)}
+          </div>
+          <p>These names are useful starting points—not a ranking. HOA structure, home age, lot position, school assignment and commute can differ even within the same named community.</p>
+        </div>
+      </section>
+
+      <section className="chandlerEmployers">
+        <div className="chandlerEmployerIntro">
+          <p className="chandlerKicker">Arizona’s technology economy</p>
+          <h2>Chandler sits at the heart of the Silicon Desert.</h2>
+          <p>Semiconductor investment helped shape Chandler’s growth, with the Price Corridor becoming one of Arizona’s most important employment centers. Today the city’s economy also includes aerospace, financial services and healthcare.</p>
+        </div>
+        <div className="chandlerEmployerGrid">
+          {employers.map(([name, industry]) => <article key={name}><strong>{name}</strong><span>{industry}</span></article>)}
+        </div>
+        <p className="chandlerEmployerNote">Employer locations and operations can change. Buyers relocating for work should confirm the reporting location and test the drive from the exact property during their normal commute window.</p>
+      </section>
+
       <section className="chandlerReality" id="real-talk">
         <div className="chandlerRealityTitle">
           <p className="chandlerKicker">The honest Chandler conversation</p>
@@ -164,6 +216,18 @@ export default function ChandlerPage() {
           {comparisons.map(([name, description]) => <Link href="/east-valley" key={name}><span>Chandler vs.</span><h3>{name}</h3><p>{description}</p><b>Compare East Valley cities →</b></Link>)}
         </div>
       </section>
+
+      <section className="chandlerFaq">
+        <div className="chandlerSectionHead">
+          <p className="chandlerKicker dark">Questions buyers ask</p>
+          <h2>Chandler answers without the sales pitch.</h2>
+        </div>
+        <div className="chandlerFaqList">
+          {faqs.map((item) => <details key={item.question}><summary>{item.question}<span>+</span></summary><p>{item.answer}</p></details>)}
+        </div>
+      </section>
+
+      <section className="chandlerPhotoBreak ocotillo"><span>Golf, water and desert light change the way a neighborhood feels.</span></section>
 
       <section className="chandlerDecision">
         <div><p className="chandlerKicker">Run the numbers</p><h2>Could Chandler fit your budget?</h2><p>Price is only the beginning. Estimate how taxes, insurance, down payment, debt and ownership costs may affect your true buying power.</p></div>

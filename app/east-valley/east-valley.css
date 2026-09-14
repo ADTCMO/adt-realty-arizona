@@ -1501,3 +1501,102 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+
+/* Mobile stacked city carousel */
+.evCityStackControls {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .evCityPicker {
+    position: relative;
+    display: block;
+    height: 218px;
+    margin: 0 0 10px;
+    touch-action: pan-y;
+    overflow: visible;
+  }
+
+  .evCityPicker button {
+    position: absolute;
+    inset: 0 12px auto 0;
+    width: calc(100% - 12px);
+    min-height: 190px;
+    transform:
+      translateY(calc(var(--city-depth) * 10px))
+      translateX(calc(var(--city-depth) * 5px))
+      scale(calc(1 - var(--city-depth) * 0.025));
+    transform-origin: center top;
+    z-index: calc(20 - var(--city-depth));
+    opacity: 1;
+    transition:
+      transform 260ms ease,
+      opacity 200ms ease,
+      box-shadow 200ms ease;
+  }
+
+  .evCityPicker button[data-depth="3"] {
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .evCityPicker button[data-depth="4"],
+  .evCityPicker button[data-depth="5"],
+  .evCityPicker button[data-depth="6"],
+  .evCityPicker button[data-depth="7"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .evCityPicker button:hover,
+  .evCityPicker button:focus-visible {
+    transform:
+      translateY(calc(var(--city-depth) * 10px))
+      translateX(calc(var(--city-depth) * 5px))
+      scale(calc(1 - var(--city-depth) * 0.025));
+  }
+
+  .evCityPicker button.isActive {
+    box-shadow:
+      0 0 0 3px var(--ev-red),
+      0 16px 34px rgba(0, 19, 67, 0.24);
+  }
+
+  .evCityPicker button:not(.isActive) .evCityPickerAction {
+    display: none;
+  }
+
+  .evCityStackControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin: 8px 0 26px;
+  }
+
+  .evCityStackControls button {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #c7cfdd;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--ev-blue);
+    font-size: 20px;
+    font-weight: 900;
+    box-shadow: 0 5px 14px rgba(0, 19, 67, 0.08);
+  }
+
+  .evCityStackControls span {
+    min-width: 52px;
+    color: #69758a;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .evCityStackControls strong {
+    color: var(--ev-red);
+    font-size: 15px;
+  }
+}

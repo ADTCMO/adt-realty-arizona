@@ -33,13 +33,13 @@ export default function HeroLayout({ children }: Readonly<{ children: React.Reac
     "@context": "https://schema.org",
     "@type": "Service",
     name: "ADT Realty Community Heroes",
-    url: "https://adtrealtyaz.com/hero",
+    url: "https://www.adtrealtyaz.com/hero",
     description:
       "A real estate savings program for qualifying Arizona military members, veterans, first responders, healthcare workers, educators and school staff.",
     provider: {
       "@type": "RealEstateAgent",
       name: "ADT Realty Arizona",
-      url: "https://adtrealtyaz.com/",
+      url: "https://www.adtrealtyaz.com/",
     },
     areaServed: { "@type": "State", name: "Arizona" },
     audience: [

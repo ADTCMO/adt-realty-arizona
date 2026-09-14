@@ -1600,3 +1600,49 @@
     font-size: 15px;
   }
 }
+
+
+/* Mobile vertical rhythm refinements */
+@media (max-width: 640px) {
+  .evHero {
+    min-height: 545px;
+  }
+
+  .evHeroCopy {
+    padding: 190px 18px 72px;
+  }
+
+  .evHeroCopy > p:not(.evEyebrow) {
+    margin-bottom: 14px;
+  }
+
+  .evHeroCopy .evButton {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 680px) {
+  .evCityExplorer {
+    padding-top: 46px;
+    padding-bottom: 64px;
+  }
+
+  .evCityExplorer > .evSectionHead {
+    margin-bottom: 26px;
+  }
+
+  .evCityExplorer > .evSectionHead .evEyebrow {
+    margin-bottom: 10px;
+  }
+
+  .evCityExplorer > .evSectionHead h2 {
+    font-size: 32px;
+    line-height: 1.02;
+  }
+
+  .evCityExplorer > .evSectionHead > p:last-child {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}

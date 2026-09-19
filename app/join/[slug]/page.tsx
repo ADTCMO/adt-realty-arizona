@@ -2,10 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const guides = {
-  "newly-licensed": { title: "Newly Licensed Agent", embed: "https://www.canva.com/design/DAHNmITN8Hg/view?embed", publicUrl: "https://www.canva.com/design/DAHNmITN8Hg/view" },
-  "developing-agent": { title: "Developing Agent", embed: "https://www.canva.com/design/DAHNn_aO8GQ/view?embed", publicUrl: "https://www.canva.com/design/DAHNn_aO8GQ/view" },
-  "productive-agent": { title: "Productive Agent", embed: "https://www.canva.com/design/DAHNoq1lq-Y/view?embed", publicUrl: "https://www.canva.com/design/DAHNoq1lq-Y/view" },
-  leadership: { title: "Leadership", embed: "https://www.canva.com/design/DAHNhN5B25g/view?embed", publicUrl: "https://www.canva.com/design/DAHNhN5B25g/view" },
+  "newly-licensed": { title: "Newly Licensed Agent", embed: "https://www.canva.com/design/DAHNmITN8Hg/view?embed", publicUrl: "https://www.canva.com/d/URHhLBzridRRCjo" },
+  "developing-agent": { title: "Developing Agent", embed: "https://www.canva.com/design/DAHNn_aO8GQ/view?embed", publicUrl: "https://www.canva.com/d/cBcvSBNoaD61r32" },
+  "productive-agent": { title: "Productive Agent", embed: "https://www.canva.com/design/DAHNoq1lq-Y/view?embed", publicUrl: "https://www.canva.com/d/k1d3Akgkeqsn-yY" },
+  leadership: { title: "Leadership", embed: "https://www.canva.com/design/DAHNhN5B25g/view?embed", publicUrl: "https://www.canva.com/d/2EnKT0XtqemH-4_" },
 } as const;
 
 export function generateStaticParams() {

@@ -48,6 +48,9 @@ export default function GuideViewer({ title, slideFolder, pageCount, pdfUrl }: G
     >
       <div className="slideStage">
         <img src={slideUrl} alt={`${title} guide, slide ${page} of ${pageCount}`} />
+        {page === pageCount && (
+          <a className="slideCta" href="/leaders" aria-label="Start the conversation with ADT Realty" />
+        )}
         <button className="slideArrow slideArrowLeft" onClick={previous} disabled={page === 1} aria-label="Previous slide">‹</button>
         <button className="slideArrow slideArrowRight" onClick={next} disabled={page === pageCount} aria-label="Next slide">›</button>
       </div>

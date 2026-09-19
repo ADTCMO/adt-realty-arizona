@@ -2,10 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const guides = {
-  "newly-licensed": { title: "Newly Licensed Agent", embed: "https://www.canva.com/design/DAHNmITN8Hg/view?embed", publicUrl: "https://www.canva.com/d/URHhLBzridRRCjo" },
-  "developing-agent": { title: "Developing Agent", embed: "https://www.canva.com/design/DAHNn_aO8GQ/view?embed", publicUrl: "https://www.canva.com/d/cBcvSBNoaD61r32" },
-  "productive-agent": { title: "Productive Agent", embed: "https://www.canva.com/design/DAHNoq1lq-Y/view?embed", publicUrl: "https://www.canva.com/d/k1d3Akgkeqsn-yY" },
-  leadership: { title: "Leadership", embed: "https://www.canva.com/design/DAHNhN5B25g/view?embed", publicUrl: "https://www.canva.com/d/2EnKT0XtqemH-4_" },
+  "newly-licensed": { title: "Newly Licensed Agent", pdfUrl: "/career-guides/newly-licensed-agent-guide.pdf" },
+  "developing-agent": { title: "Developing Agent", pdfUrl: "/career-guides/developing-agent-guide.pdf" },
+  "productive-agent": { title: "Productive Agent", pdfUrl: "/career-guides/productive-agent-guide.pdf" },
+  leadership: { title: "Leadership", pdfUrl: "/career-guides/leadership-guide.pdf" },
 } as const;
 
 export function generateStaticParams() {
@@ -27,17 +27,17 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         <p className="eyebrow">ADT Realty Career Guide</p>
         <h1>{guide.title}</h1>
         <div className="mobileGuideLaunch">
-          <p>View the complete guide in a mobile-friendly presentation.</p>
-          <a className="guideOpenButton" href={guide.publicUrl} target="_blank" rel="noreferrer">
+          <p>Open the complete ADT Realty career guide.</p>
+          <a className="guideOpenButton" href={guide.pdfUrl} target="_blank" rel="noreferrer">
             Open {guide.title} Guide
           </a>
         </div>
         <div className="canvaEmbed">
-          <iframe loading="lazy" src={guide.embed} allowFullScreen title={guide.title + " guide"} />
+          <iframe loading="lazy" src={guide.pdfUrl} title={guide.title + " guide"} />
         </div>
         <p className="embedFallback">
           Having trouble viewing the guide?{" "}
-          <a href={guide.publicUrl} target="_blank" rel="noreferrer">Open the full guide</a>.
+          <a href={guide.pdfUrl} target="_blank" rel="noreferrer">Open the full guide</a>.
         </p>
       </section>
       <style>{".mobileGuideLaunch{display:none}@media(max-width:760px){.guidePage>section:first-of-type{padding:32px 18px 48px}.guidePage h1{font-size:clamp(38px,12vw,54px);line-height:1.02;margin-bottom:24px}.mobileGuideLaunch{display:block;max-width:520px;margin:0 auto;padding:28px 22px;background:#fff;border:1px solid #d8deea;border-radius:12px;box-shadow:0 16px 38px rgba(0,19,67,.14)}.mobileGuideLaunch p{margin:0 0 18px;color:#566178;font-size:17px;line-height:1.5}.guideOpenButton{display:block;padding:16px 20px;background:#b00101;color:#fff!important;border-radius:8px;font-weight:900;text-decoration:none}.canvaEmbed,.embedFallback{display:none}}"}</style>

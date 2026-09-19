@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import GuideViewer from "./GuideViewer";
 
 const guides = {
-  "newly-licensed": { title: "Newly Licensed Agent", pdfUrl: "/career-guides/newly-licensed-agent-guide.pdf" },
-  "developing-agent": { title: "Developing Agent", pdfUrl: "/career-guides/developing-agent-guide.pdf" },
-  "productive-agent": { title: "Productive Agent", pdfUrl: "/career-guides/productive-agent-guide.pdf" },
-  leadership: { title: "Leadership", pdfUrl: "/career-guides/leadership-guide.pdf" },
+  "newly-licensed": { title: "Newly Licensed Agent", pdfUrl: "/career-guides/newly-licensed-agent-guide.pdf", slideFolder: "/career-guides/newly-licensed-agent", pageCount: 9 },
+  "developing-agent": { title: "Developing Agent", pdfUrl: "/career-guides/developing-agent-guide.pdf", slideFolder: "/career-guides/developing-agent", pageCount: 10 },
+  "productive-agent": { title: "Productive Agent", pdfUrl: "/career-guides/productive-agent-guide.pdf", slideFolder: "/career-guides/productive-agent", pageCount: 9 },
+  leadership: { title: "Leadership", pdfUrl: "/career-guides/leadership-guide.pdf", slideFolder: "/career-guides/leadership", pageCount: 10 },
 } as const;
 
 export function generateStaticParams() {
@@ -26,21 +27,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <section>
         <p className="eyebrow">ADT Realty Career Guide</p>
         <h1>{guide.title}</h1>
-        <div className="mobileGuideLaunch">
-          <p>Open the complete ADT Realty career guide.</p>
-          <a className="guideOpenButton" href={guide.pdfUrl} target="_blank" rel="noreferrer">
-            Open {guide.title} Guide
-          </a>
-        </div>
-        <div className="canvaEmbed">
-          <iframe loading="lazy" src={guide.pdfUrl} title={guide.title + " guide"} />
-        </div>
-        <p className="embedFallback">
-          Having trouble viewing the guide?{" "}
-          <a href={guide.pdfUrl} target="_blank" rel="noreferrer">Open the full guide</a>.
-        </p>
+        <GuideViewer title={guide.title} slideFolder={guide.slideFolder} pageCount={guide.pageCount} pdfUrl={guide.pdfUrl} />
       </section>
-      <style>{".mobileGuideLaunch{display:none}@media(max-width:760px){.guidePage>section:first-of-type{padding:32px 18px 48px}.guidePage h1{font-size:clamp(38px,12vw,54px);line-height:1.02;margin-bottom:24px}.mobileGuideLaunch{display:block;max-width:520px;margin:0 auto;padding:28px 22px;background:#fff;border:1px solid #d8deea;border-radius:12px;box-shadow:0 16px 38px rgba(0,19,67,.14)}.mobileGuideLaunch p{margin:0 0 18px;color:#566178;font-size:17px;line-height:1.5}.guideOpenButton{display:block;padding:16px 20px;background:#b00101;color:#fff!important;border-radius:8px;font-weight:900;text-decoration:none}.canvaEmbed,.embedFallback{display:none}}"}</style>
+      <style>{".guidePage>section:first-of-type{padding-bottom:56px}.slideViewer{max-width:1100px;margin:0 auto;background:#061746;border-radius:18px;overflow:hidden;box-shadow:0 22px 60px rgba(0,19,67,.22)}.slideStage{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:11/8.5;background:#02091d}.slideStage img{display:block;width:100%;height:100%;object-fit:contain}.slideArrow{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:68px;border:0;border-radius:10px;background:rgba(0,19,67,.78);color:#fff;font-size:48px;line-height:1;cursor:pointer}.slideArrowLeft{left:14px}.slideArrowRight{right:14px}.slideArrow:disabled,.slideControls button:disabled{opacity:.28;cursor:default}.slideControls{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px;background:#061746;color:#fff}.slideControls button,.slideControls a{border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:9px 14px;background:transparent;color:#fff;font:inherit;font-weight:800;text-decoration:none;cursor:pointer}.slideControls span{min-width:54px;text-align:center;font-weight:800}.slideViewer:fullscreen{display:flex;flex-direction:column;justify-content:center;border-radius:0;background:#02091d}.slideViewer:fullscreen .slideStage{max-height:calc(100vh - 64px)}@media(max-width:760px){.guidePage>section:first-of-type{padding:28px 10px 40px}.guidePage h1{font-size:clamp(34px,10vw,48px);line-height:1.03;margin-bottom:20px}.slideViewer{border-radius:10px}.slideArrow{display:none}.slideControls{gap:7px;padding:10px 7px}.slideControls button,.slideControls a{padding:9px 10px;font-size:13px}.slideControls button:first-child,.slideControls button:nth-of-type(2){display:none}}"}</style>
     </main>
   );
 }

@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 function videoEmbed(url) {
   try {
     const parsed = new URL(url);
+    if (["youtube.com", "www.youtube.com", "youtube-nocookie.com", "www.youtube-nocookie.com"].includes(parsed.hostname)) {
+      const embedId = parsed.pathname.match(/^\/embed\/([A-Za-z0-9_-]+)$/)?.[1];
+      if (embedId) return `https://www.youtube-nocookie.com/embed/${embedId}`;
+    }
     if (["youtube.com", "www.youtube.com", "m.youtube.com"].includes(parsed.hostname)) {
       const id = parsed.searchParams.get("v") || parsed.pathname.match(/^\/shorts\/([^/]+)/)?.[1];
       return id ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}` : null;
@@ -15,6 +19,10 @@ function videoEmbed(url) {
     }
     if (["vimeo.com", "www.vimeo.com"].includes(parsed.hostname)) {
       const id = parsed.pathname.match(/^\/(\d+)/)?.[1];
+      return id ? `https://player.vimeo.com/video/${id}` : null;
+    }
+    if (parsed.hostname === "player.vimeo.com") {
+      const id = parsed.pathname.match(/^\/video\/(\d+)$/)?.[1];
       return id ? `https://player.vimeo.com/video/${id}` : null;
     }
   } catch {}

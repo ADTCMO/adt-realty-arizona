@@ -32,9 +32,10 @@ function tourEmbed(url) {
   return null;
 }
 
-export default function ListingClient({ listing }) {
+export default function ListingClient({ listing, slug, preview = false }) {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(null);
+  const [inquiryState, setInquiryState] = useState("idle");
   const photos = listing.photos || [];
   const featured = photos.slice(0, 3);
   const gallery = photos.slice(3, 23);
@@ -52,6 +53,17 @@ export default function ListingClient({ listing }) {
   const video = listing.video_url && videoEmbed(listing.video_url);
   const floorPlan = listing.floor_plan_url;
   const price = listing.price ? `$${Number(listing.price).toLocaleString()}` : "";
+
+  async function submitInquiry(event) {
+    event.preventDefault();
+    if (preview || !slug) return;
+    setInquiryState("sending");
+    const response = await fetch("/api/property-inquiry", {
+      method: "POST",
+      body: new FormData(event.currentTarget),
+    }).catch(() => null);
+    setInquiryState(response?.ok ? "sent" : "error");
+  }
 
   return (
     <main className="listing">
@@ -91,11 +103,15 @@ export default function ListingClient({ listing }) {
         .listing .agent strong{font-size:20px}
         .listing .contact{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
         .listing .contact a{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border-radius:5px;font-weight:700}
+        .listing .inquiry{max-width:760px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .listing .inquiry input,.listing .inquiry textarea{width:100%;padding:13px;border:1px solid #cfd7e3;border-radius:5px;font:inherit}
+        .listing .inquiry textarea,.listing .inquiry .wide{grid-column:1/-1}
+        .listing .inquiry button{background:#b00101;color:white;border:0;padding:14px 20px;border-radius:5px;font-weight:700;justify-self:start}
         .listing footer{background:#001343;color:white;padding:25px 22px;text-align:center;font-size:13px}
         .listing .overlay{position:fixed;inset:0;background:rgba(1,13,45,.95);z-index:10;display:grid;place-items:center;padding:55px 20px}
         .listing .overlay img{max-width:100%;max-height:100%;object-fit:contain}
         .listing .close{position:absolute;top:15px;right:20px;color:white;background:none;border:0;font-size:34px}
-        @media(max-width:700px){.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .hero{min-height:270px}}
+        @media(max-width:700px){.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery,.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
       `}</style>
 
       <header>ADT REALTY</header>
@@ -123,8 +139,16 @@ export default function ListingClient({ listing }) {
           {listing.baths != null && <span>{listing.baths} Baths</span>}
           {listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
           {listing.garage != null && <span>{listing.garage} Car Garage</span>}
+          {listing.property_type && <span>{listing.property_type}</span>}
+          {listing.year_built && <span>Built {listing.year_built}</span>}
+          {listing.lot_size && <span>Lot {listing.lot_size}</span>}
+          {listing.mls_number && <span>MLS #{listing.mls_number}</span>}
         </div>
         {listing.description && <section><h2>About this home</h2><p className="description">{listing.description}</p></section>}
+        {listing.amenities && <section><h2>Features and amenities</h2><div className="facts">
+          {listing.amenities.split("\n").map((item) => item.trim()).filter(Boolean).map((item, index) => <span key={index}>{item}</span>)}
+        </div></section>}
+        {listing.open_house_details && <section><h2>Open house</h2><p>{listing.open_house_details}</p></section>}
         {gallery.length > 0 && <section><h2>Photo gallery</h2><div className="gallery">
           {gallery.map((url, index) => <button key={index} onClick={() => setLightbox(url)} aria-label={`Enlarge gallery photo ${index + 1}`}><img src={url} loading="lazy" alt={`${listing.address} gallery photo ${index + 1}`} /></button>)}
         </div></section>}
@@ -148,8 +172,23 @@ export default function ListingClient({ listing }) {
           <div><strong>{listing.agent?.name || "ADT Realty"}</strong>{listing.agent?.license && <div>License #{listing.agent.license}</div>}</div>
           <div className="contact">
             {phone && <a href={`tel:${phone.replace(/[^+\d]/g,"")}`}>Call Agent</a>}
-            {email && <a href={`mailto:${email}?subject=${encodeURIComponent(`Showing request: ${listing.address}`)}`}>Schedule a Showing</a>}
+            <a href="#request-showing">Request a Showing</a>
           </div>
+        </section>
+        <section id="request-showing">
+          <h2>Request a showing</h2>
+          {inquiryState === "sent" ? <p>Thank you. The listing agent will be in touch.</p> : (
+            <form className="inquiry" onSubmit={submitInquiry}>
+              <input type="hidden" name="slug" value={slug || ""} />
+              <input name="name" aria-label="Your name" placeholder="Your name" required />
+              <input name="email" type="email" aria-label="Email" placeholder="Email" required />
+              <input name="phone" type="tel" aria-label="Phone" placeholder="Phone (optional)" />
+              <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px"}} />
+              <textarea name="message" aria-label="Message" placeholder="When would you like to see the home?" rows={4} className="wide" />
+              <button disabled={preview || inquiryState === "sending"}>{preview ? "Available when published" : inquiryState === "sending" ? "Sending..." : "Send Request"}</button>
+              {inquiryState === "error" && <p className="wide">Could not send your request. Please call the agent instead.</p>}
+            </form>
+          )}
         </section>
       </div>
       <footer>ADT Realty · Equal Housing Opportunity</footer>

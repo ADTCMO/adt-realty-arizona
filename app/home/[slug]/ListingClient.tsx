@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 function videoEmbed(url) {
   try {
     const parsed = new URL(url);
+    if (["player.mux.com", "stream.mux.com"].includes(parsed.hostname)) {
+      const playbackId = parsed.pathname.match(/^\/([A-Za-z0-9]+)(?:\.m3u8)?$/)?.[1];
+      return playbackId ? `https://player.mux.com/${playbackId}` : null;
+    }
     if (["youtube.com", "www.youtube.com", "youtube-nocookie.com", "www.youtube-nocookie.com"].includes(parsed.hostname)) {
       const embedId = parsed.pathname.match(/^\/embed\/([A-Za-z0-9_-]+)$/)?.[1];
       if (embedId) return `https://www.youtube-nocookie.com/embed/${embedId}`;

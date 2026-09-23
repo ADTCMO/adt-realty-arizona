@@ -36,6 +36,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(null);
   const [inquiryState, setInquiryState] = useState("idle");
+  const [fallbackEmailHref, setFallbackEmailHref] = useState(null);
   const photos = listing.photos || [];
   const featured = photos.slice(0, 3);
   const gallery = photos.slice(3, 23);
@@ -50,6 +51,8 @@ export default function ListingClient({ listing, slug, preview = false }) {
   const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
   const phone = listing.agent?.phone;
   const email = listing.agent?.email;
+  const emailSubject = `Showing request: ${address}`;
+  const emailHref = email ? `mailto:${email}?subject=${encodeURIComponent(emailSubject)}` : null;
   const video = listing.video_url && videoEmbed(listing.video_url);
   const floorPlan = listing.floor_plan_url;
   const price = listing.price ? `$${Number(listing.price).toLocaleString()}` : "";
@@ -58,9 +61,14 @@ export default function ListingClient({ listing, slug, preview = false }) {
     event.preventDefault();
     if (preview || !slug) return;
     setInquiryState("sending");
+    const form = new FormData(event.currentTarget);
+    if (email) {
+      const body = `Name: ${form.get("name") || ""}\nEmail: ${form.get("email") || ""}\nPhone: ${form.get("phone") || ""}\n\n${form.get("message") || ""}\n\nProperty: ${address}`;
+      setFallbackEmailHref(`mailto:${email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`);
+    }
     const response = await fetch("/api/property-inquiry", {
       method: "POST",
-      body: new FormData(event.currentTarget),
+      body: form,
     }).catch(() => null);
     setInquiryState(response?.ok ? "sent" : "error");
   }
@@ -172,6 +180,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
           <div><strong>{listing.agent?.name || "ADT Realty"}</strong>{listing.agent?.license && <div>License #{listing.agent.license}</div>}</div>
           <div className="contact">
             {phone && <a href={`tel:${phone.replace(/[^+\d]/g,"")}`}>Call Agent</a>}
+            {emailHref && <a href={emailHref}>Email Agent</a>}
             <a href="#request-showing">Request a Showing</a>
           </div>
         </section>
@@ -186,7 +195,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
               <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px"}} />
               <textarea name="message" aria-label="Message" placeholder="When would you like to see the home?" rows={4} className="wide" />
               <button disabled={preview || inquiryState === "sending"}>{preview ? "Available when published" : inquiryState === "sending" ? "Sending..." : "Send Request"}</button>
-              {inquiryState === "error" && <p className="wide">Could not send your request. Please call the agent instead.</p>}
+              {inquiryState === "error" && <p className="wide">The form could not send your request. {fallbackEmailHref ? <a href={fallbackEmailHref}>Email the agent directly with your message</a> : "Please call the agent."}</p>}
             </form>
           )}
         </section>

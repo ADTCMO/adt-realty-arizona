@@ -21,6 +21,17 @@ function videoEmbed(url) {
   return null;
 }
 
+function tourEmbed(url) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== "https:") return null;
+    if (parsed.hostname === "zillow.com" || parsed.hostname.endsWith(".zillow.com")) {
+      return parsed.href;
+    }
+  } catch {}
+  return null;
+}
+
 export default function ListingClient({ listing }) {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(null);
@@ -127,7 +138,10 @@ export default function ListingClient({ listing }) {
             ? <a href={floorPlan} target="_blank" rel="noopener noreferrer"><img src={floorPlan} alt="Property floor plan" style={{maxWidth:"100%",maxHeight:650}} /></a>
             : <a className="link" href={floorPlan} target="_blank" rel="noopener noreferrer">View floor plan</a>}
         </section>}
-        {listing.tour_url && <section><h2>3D tour</h2><a className="link" href={listing.tour_url} target="_blank" rel="noopener noreferrer">Explore the 3D tour</a></section>}
+        {listing.tour_url && <section><h2>3D tour and interactive floor plan</h2>
+          {tourEmbed(listing.tour_url) && <iframe className="media-frame" src={tourEmbed(listing.tour_url)} title="3D home tour and interactive floor plan" loading="lazy" allowFullScreen />}
+          <p><a href={listing.tour_url} target="_blank" rel="noopener noreferrer" style={{color:"#b00101",fontWeight:700}}>Open the 3D tour in a new tab ↗</a></p>
+        </section>}
         <section><h2>Location</h2><iframe className="map" src={mapUrl} title={`Map of ${address}`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></section>
         <section className="agent">
           {listing.agent?.photo && <img src={listing.agent.photo} alt={listing.agent.name || "Listing agent"} />}

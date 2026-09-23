@@ -168,6 +168,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
         {floorPlan && <section><h2>Floor plan</h2>
           {/\.(png|jpe?g|webp)(?:\?.*)?$/i.test(floorPlan)
             ? <a href={floorPlan} target="_blank" rel="noopener noreferrer"><img src={floorPlan} alt="Property floor plan" style={{maxWidth:"100%",maxHeight:650}} /></a>
+            : /\.pdf(?:\?.*)?$/i.test(floorPlan) ? <><iframe className="media-frame" src={floorPlan} title="Property floor plan PDF" loading="lazy" /><p><a className="link" href={floorPlan} target="_blank" rel="noopener noreferrer">Open floor plan PDF ↗</a></p></>
             : <a className="link" href={floorPlan} target="_blank" rel="noopener noreferrer">View floor plan</a>}
         </section>}
         {listing.tour_url && <section><h2>3D tour and interactive floor plan</h2>

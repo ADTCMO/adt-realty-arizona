@@ -90,7 +90,8 @@ export default function ListingClient({ listing, slug, preview = false }) {
       <style>{`
         .listing{font-family:Inter,Arial,sans-serif;color:#001343;background:#fff;min-height:100vh}
         .listing *{box-sizing:border-box}
-        .listing header{background:#001343;color:#fff;padding:18px max(5vw,20px);font-weight:800;letter-spacing:.08em}
+        .listing header{background:#fff;color:#001343;border-bottom:4px solid #b00101;padding:10px max(5vw,20px);display:flex;align-items:center;gap:16px;font-weight:800;letter-spacing:.08em}
+        .listing header img{height:74px;width:auto;object-fit:contain}
         .listing .wrap{max-width:1180px;margin:auto;padding:0 22px}
         .listing .hero{position:relative;background:#010d2d;height:min(62vw,590px);min-height:300px;overflow:hidden}
         .listing .hero img{width:100%;height:100%;object-fit:cover;display:block}
@@ -134,7 +135,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
         @media(max-width:700px){.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery,.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
       `}</style>
 
-      <header>ADT REALTY</header>
+      <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>ARIZONA PROPERTY</span></header>
       {featured.length > 0 && (
         <div className="hero">
           <img src={featured[active]} alt={`${listing.address} featured photo ${active + 1}`} />

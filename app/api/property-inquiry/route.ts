@@ -67,33 +67,20 @@ export async function POST(request: Request) {
   ].filter(Boolean).join("\n").slice(0, 2000);
 
   try {
-    const existing = await lofty(`/v1.0/leads?email=${encodeURIComponent(email)}&preciseSearchFlag=true&limit=1`, key);
-    let id = leadId(existing);
-    if (!id) {
-      const [firstName, ...rest] = name.split(/\s+/);
-      const created = await lofty("/v1.0/leads", key, {
-        method: "POST",
-        body: JSON.stringify({
-          firstName, lastName: rest.join(" "), emails: [email],
-          phones: phone ? [phone] : [], leadTypes: [2],
-          source: "ACE Marketing property page",
-          tagsAdd: ["ACE Marketing", "Showing Request"],
-          content: `Showing request for ${address}`,
-          assignedUserId: OWNER_ID, ownershipId: OWNER_ID,
-          ownershipScope: "PERSONAL", welcomeEmail: false, leadAlert: true,
-        }),
-      });
-      id = leadId(created);
-      if (!id) {
-        const found = await lofty(`/v1.0/leads?email=${encodeURIComponent(email)}&preciseSearchFlag=true&limit=1`, key);
-        id = leadId(found);
-      }
-    } else {
-      await lofty(`/v1.0/leads/${id}`, key, {
-        method: "PUT",
-        body: JSON.stringify({ tagsAdd: ["ACE Marketing", "Showing Request"] }),
-      });
-    }
+    const [firstName, ...rest] = name.split(/\\s+/);
+    const created = await lofty("/v1.0/leads", key, {
+      method: "POST",
+      body: JSON.stringify({
+        firstName, lastName: rest.join(" "), emails: [email],
+        phones: phone ? [phone] : [], leadTypes: [2],
+        source: "ACE Marketing property page",
+        tagsAdd: ["ACE Marketing", "Showing Request"],
+        content: `Showing request for ${address}`,
+        assignedUserId: OWNER_ID, ownershipId: OWNER_ID,
+        ownershipScope: "PERSONAL", welcomeEmail: false, leadAlert: true,
+      }),
+    });
+    const id = leadId(created);
     if (!id) throw new Error("Lofty lead ID missing");
     await lofty("/v1.0/notes", key, {
       method: "POST", body: JSON.stringify({ leadId: id, content: note, isPin: true }),

@@ -164,6 +164,20 @@ export default function ListingClient({ listing, slug, preview = false, style })
         @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .email-reveal{justify-content:flex-start}.listing .email-reveal span{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
 
 
+
+        .listing .hero-brand{position:absolute;z-index:2;left:max(5vw,20px);bottom:30px;color:#fff;display:flex;flex-direction:column;gap:4px;max-width:min(65%,520px);padding:16px 22px;background:rgba(0,19,67,.88);border-left:6px solid #b00101;box-shadow:0 8px 30px rgba(1,13,45,.25)}
+        .listing .hero-brand small{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.16em}
+        .listing .hero-brand strong{font-size:clamp(18px,2.6vw,32px);line-height:1.12}
+        .listing .hero-brand em{font-style:normal;font-size:clamp(18px,2vw,25px);font-weight:800}
+        .listing--heritage .dots{left:auto;right:22px;width:auto}
+        .listing--premier .dots{right:auto;left:18px;width:auto}
+        .listing--signature .dots{bottom:12px}
+        .listing--heritage .hero-brand{bottom:0;left:0;border-left:0;border-top:5px solid #b00101;min-width:37%;padding:20px max(5vw,24px)}
+        .listing--signature .hero-brand{left:50%;bottom:36px;transform:translateX(-50%);background:#f5f5f2;color:#001343;border:1px solid #aab3c2;text-align:center;align-items:center;width:min(78%,560px);max-width:none;padding:20px 28px;box-shadow:0 10px 28px rgba(1,13,45,.18)}
+        .listing--signature .hero-brand small{color:#b00101}
+        .listing--modern .hero-brand{border-left:0;border-bottom:6px solid #b00101;background:rgba(0,19,67,.86);bottom:30px}
+        .listing--premier .hero-brand{left:auto;right:0;bottom:0;top:0;justify-content:center;width:min(31%,390px);max-width:none;border-left:5px solid #b00101;background:rgba(0,19,67,.92);padding:24px 32px}
+        @media(max-width:700px){.listing .hero-brand{left:0;bottom:0;max-width:100%;padding:11px 15px}.listing .hero-brand strong{font-size:19px}.listing .hero-brand em{font-size:18px}.listing--signature .hero-brand{left:50%;bottom:12px;width:90%;padding:10px;max-width:none}.listing--premier .hero-brand{top:auto;right:0;width:100%;border-left:0;border-top:4px solid #b00101;padding:10px 16px}}
         /* Four ACE page layouts keep the same content and working lead form. */
         .listing--heritage{background:#f7f8fb}
         .listing--heritage header{background:#001343;color:#fff;border-bottom:6px solid #b00101}
@@ -212,6 +226,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
       {featured.length > 0 && (
         <div className="hero">
           <img src={featured[active]} alt={`${listing.address} featured photo ${active + 1}`} />
+          <div className="hero-brand" aria-hidden="true"><small>{listing.status || "Featured property"}</small><strong>{listing.address}</strong><em>{price}</em></div>
           {featured.length > 1 && <>
             <div className="arrows">
               <button aria-label="Previous photo" onClick={() => setActive((active - 1 + featured.length) % featured.length)}>‹</button>

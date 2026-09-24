@@ -18,9 +18,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Check the form fields" }, { status: 400 });
   }
 
-  const webhook = process.env.LEAD_WEBHOOK_URL;
-  if (!webhook) return NextResponse.json({ error: "Lead delivery is unavailable" }, { status: 503 });
-
   const listingResponse = await fetch(
     `https://marketing.adtrealtyaz.com/api/public-listings/${encodeURIComponent(slug)}`,
     { cache: "no-store" }
@@ -29,26 +26,38 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Listing unavailable" }, { status: 404 });
   }
   const listing = await listingResponse.json();
-  if (!listing.agent?.email) {
-    return NextResponse.json({ error: "Agent contact unavailable" }, { status: 503 });
-  }
+  const address = [listing.address, listing.city, "AZ", listing.zip].filter(Boolean).join(", ");
+  const pageUrl = `https://www.adtrealtyaz.com/home/${slug}`;
+  const question = [
+    "ACE MARKETING PROPERTY SHOWING REQUEST — RESPONSE NEEDED",
+    `Property: ${address}`,
+    `Property page: ${pageUrl}`,
+    listing.id ? `Listing ID: ${listing.id}` : null,
+    listing.agent?.name ? `Listing agent: ${listing.agent.name}` : null,
+    listing.agent?.email ? `Listing agent email: ${listing.agent.email}` : null,
+    `Requester: ${name}`,
+    phone ? `Phone: ${phone}` : null,
+    `Requested time / message: ${message || "Please contact the requester to arrange a showing."}`,
+  ].filter(Boolean).join("\n");
 
-  const payload = {
-    leadType: "Property showing request",
-    name, email, phone, message,
-    address: [listing.address, listing.city, "AZ", listing.zip].filter(Boolean).join(", "),
-    propertyId: listing.id,
-    pageUrl: `https://www.adtrealtyaz.com/home/${slug}`,
-    source: "adtrealtyaz.com property page",
-    owner: listing.agent.name || "ADT Realty",
-    notificationEmail: listing.agent.email,
-    createdAt: new Date().toISOString(),
-  };
-  const result = await fetch(webhook, {
+  // ACE Buyer's public question endpoint creates a Lofty lead, note, and follow-up
+  // task assigned to Mike. No Lofty credential is exposed to this public site.
+  const result = await fetch("https://acebuyer.adtrealtyaz.com/api/question", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      firstName: name,
+      email,
+      phone,
+      question,
+      preferredResponse: phone ? "call" : "email",
+      planningContext: { source: "ACE Marketing property page", property: address, pageUrl },
+    }),
+    cache: "no-store",
   }).catch(() => null);
-  if (!result?.ok) return NextResponse.json({ error: "Lead delivery failed" }, { status: 502 });
+  if (!result?.ok) {
+    console.error("Property showing delivery failed", result?.status ?? "network error");
+    return NextResponse.json({ error: "Showing request could not be sent" }, { status: 502 });
+  }
   return NextResponse.json({ ok: true });
 }

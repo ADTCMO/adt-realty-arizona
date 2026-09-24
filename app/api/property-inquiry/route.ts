@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const LOFTY_BASE = "https://api.lofty.me";
+const LOFTY_BASE = "https://api.lofty.com";
 const OWNER_ID = process.env.LOFTY_ASSIGNED_USER_ID || "844769665620463";
 
 async function lofty(path: string, key: string, init: RequestInit = {}) {

@@ -47,6 +47,7 @@ function tourEmbed(url) {
 export default function ListingClient({ listing, slug, preview = false }) {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(null);
+  const [videoStarted, setVideoStarted] = useState(false);
   const [inquiryState, setInquiryState] = useState("idle");
   const [fallbackEmailHref, setFallbackEmailHref] = useState(null);
   const photos = listing.photos || [];
@@ -115,6 +116,11 @@ export default function ListingClient({ listing, slug, preview = false }) {
         .listing .gallery button{padding:0;border:0;background:none;aspect-ratio:4/3;overflow:hidden}
         .listing .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .2s}
         .listing .gallery button:hover img{transform:scale(1.04)}
+        .listing .gallery button{position:relative}
+        .listing .gallery-count{display:none}
+        .listing .video-cover{position:relative;border:0;padding:0;background:#010d2d;width:100%;cursor:pointer}
+        .listing .video-cover img{width:100%;height:100%;object-fit:cover}
+        .listing .video-cover span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#b00101;color:white;padding:19px 25px;font-size:28px}
         .listing iframe{width:100%;border:0;border-radius:6px}
         .listing .media-frame{height:min(55vw,550px);min-height:260px}
         .listing .map{height:360px}
@@ -132,10 +138,10 @@ export default function ListingClient({ listing, slug, preview = false }) {
         .listing .overlay{position:fixed;inset:0;background:rgba(1,13,45,.95);z-index:10;display:grid;place-items:center;padding:55px 20px}
         .listing .overlay img{max-width:100%;max-height:100%;object-fit:contain}
         .listing .close{position:absolute;top:15px;right:20px;color:white;background:none;border:0;font-size:34px}
-        @media(max-width:700px){.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery,.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
+        @media(max-width:700px){.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
       `}</style>
 
-      <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>ARIZONA PROPERTY</span></header>
+      <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>{listing.headline || "ADT Realty Property"}</span></header>
       {featured.length > 0 && (
         <div className="hero">
           <img src={featured[active]} alt={`${listing.address} featured photo ${active + 1}`} />
@@ -157,7 +163,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
         </div>
         <div className="facts">
           {listing.beds != null && <span>{listing.beds} Beds</span>}
-          {listing.baths != null && <span>{listing.baths} Baths</span>}
+          {listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
           {listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
           {listing.garage != null && <span>{listing.garage} Car Garage</span>}
           {listing.property_type && <span>{listing.property_type}</span>}
@@ -171,10 +177,10 @@ export default function ListingClient({ listing, slug, preview = false }) {
         </div></section>}
         {listing.open_house_details && <section><h2>Open house</h2><p>{listing.open_house_details}</p></section>}
         {gallery.length > 0 && <section><h2>Photo gallery</h2><div className="gallery">
-          {gallery.map((url, index) => <button key={index} onClick={() => setLightbox(url)} aria-label={`Enlarge gallery photo ${index + 1}`}><img src={url} loading="lazy" alt={`${listing.address} gallery photo ${index + 1}`} /></button>)}
+          {gallery.map((url, index) => <button key={index} onClick={() => setLightbox(url)} aria-label={`Enlarge gallery photo ${index + 1}`}><img src={url} loading="lazy" alt={`${listing.address} gallery photo ${index + 1}`} /><span className="gallery-count">{index + 1} / {gallery.length}</span></button>)}
         </div></section>}
-        {listing.video_url && <section><h2>Video</h2>
-          {video ? <iframe className="media-frame" src={video} title="Property video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowFullScreen loading="lazy" />
+        {listing.video_url && <section><h2>Take a Tour of the Home</h2>
+          {video && listing.video_poster_url && !videoStarted ? <button className="video-cover media-frame" type="button" aria-label="Play property video" onClick={() => setVideoStarted(true)}><img src={listing.video_poster_url} alt="Property video cover" /><span aria-hidden="true">▶</span></button> : video ? <iframe className="media-frame" src={video} title="Property video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowFullScreen loading="lazy" />
             : /\.(mp4|webm)(?:\?.*)?$/i.test(listing.video_url) ? <video className="media-frame" src={listing.video_url} controls style={{width:"100%"}} />
               : <a className="link" href={listing.video_url} target="_blank" rel="noopener noreferrer">Watch property video</a>}
         </section>}

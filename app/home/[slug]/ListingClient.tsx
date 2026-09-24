@@ -49,6 +49,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
   const [lightbox, setLightbox] = useState(null);
   const [videoStarted, setVideoStarted] = useState(false);
   const [inquiryState, setInquiryState] = useState("idle");
+  const [inquiryError, setInquiryError] = useState("");
   const [fallbackEmailHref, setFallbackEmailHref] = useState(null);
   const photos = listing.photos || [];
   const featured = photos.slice(0, 3);
@@ -83,7 +84,13 @@ export default function ListingClient({ listing, slug, preview = false }) {
       method: "POST",
       body: form,
     }).catch(() => null);
-    setInquiryState(response?.ok ? "sent" : "error");
+    if (response?.ok) {
+      setInquiryState("sent");
+    } else {
+      const result = await response?.json().catch(() => null);
+      setInquiryError(result?.error || "The request could not be sent.");
+      setInquiryState("error");
+    }
   }
 
   return (
@@ -214,7 +221,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
               <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px"}} />
               <textarea name="message" aria-label="Message" placeholder="When would you like to see the home?" rows={4} className="wide" />
               <button disabled={preview || inquiryState === "sending"}>{preview ? "Available when published" : inquiryState === "sending" ? "Sending..." : "Send Request"}</button>
-              {inquiryState === "error" && <p className="wide">The form could not send your request. {fallbackEmailHref ? <a href={fallbackEmailHref}>Email the agent directly with your message</a> : "Please call the agent."}</p>}
+              {inquiryState === "error" && <p className="wide">{inquiryError} {fallbackEmailHref ? <a href={fallbackEmailHref}>Email the agent directly with your message</a> : "Please call the agent."}</p>}
             </form>
           )}
         </section>

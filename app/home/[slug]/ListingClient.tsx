@@ -94,7 +94,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
         .listing header{background:#fff;color:#001343;border-bottom:4px solid #b00101;padding:10px max(5vw,20px);display:flex;align-items:center;gap:16px;font-weight:800;letter-spacing:.08em}
         .listing header img{height:74px;width:auto;object-fit:contain}
         .listing .wrap{max-width:1180px;margin:auto;padding:0 22px}
-        .listing .hero{position:relative;background:#010d2d;height:min(62vw,590px);min-height:300px;overflow:hidden}
+        .listing .hero{position:relative;display:block;background:#010d2d;height:min(62vw,590px);min-height:300px;overflow:hidden}
         .listing .hero img{width:100%;height:100%;object-fit:cover;display:block}
         .listing .hero:after{content:"";position:absolute;inset:65% 0 0;background:linear-gradient(transparent,rgba(1,13,45,.75));pointer-events:none}
         .listing .arrows{position:absolute;inset:50% 18px auto;display:flex;justify-content:space-between;transform:translateY(-50%);z-index:2}

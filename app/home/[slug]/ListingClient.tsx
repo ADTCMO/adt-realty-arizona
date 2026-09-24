@@ -44,7 +44,8 @@ function tourEmbed(url) {
   return null;
 }
 
-export default function ListingClient({ listing, slug, preview = false }) {
+export default function ListingClient({ listing, slug, preview = false, style }) {
+  const pageStyle = ["heritage", "signature", "modern", "premier"].includes(style || listing.page_style) ? (style || listing.page_style) : "modern";
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(null);
   const [videoStarted, setVideoStarted] = useState(false);
@@ -105,7 +106,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
   }
 
   return (
-    <main className="listing">
+    <main className={`listing listing--${pageStyle}`}>
       <style>{`
         .listing{font-family:Inter,Arial,sans-serif;color:#001343;background:#fff;min-height:100vh}
         .listing *{box-sizing:border-box}
@@ -161,6 +162,50 @@ export default function ListingClient({ listing, slug, preview = false }) {
         .listing .overlay img{max-width:100%;max-height:100%;object-fit:contain}
         .listing .close{position:absolute;top:15px;right:20px;color:white;background:none;border:0;font-size:34px}
         @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .email-reveal{justify-content:flex-start}.listing .email-reveal span{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
+
+
+        /* Four ACE page layouts keep the same content and working lead form. */
+        .listing--heritage{background:#f7f8fb}
+        .listing--heritage header{background:#001343;color:#fff;border-bottom:6px solid #b00101}
+        .listing--heritage header img{filter:brightness(0) invert(1)}
+        .listing--heritage .hero{max-width:1280px;margin:24px auto 0;border-left:8px solid #b00101;height:min(57vw,600px)}
+        .listing--heritage .summary{border-bottom:2px solid #001343}
+        .listing--heritage .facts{background:#fff;padding:20px 24px}
+        .listing--heritage h2{border-left:5px solid #b00101;padding-left:14px}
+        .listing--signature{background:#f5f5f2;color:#001343}
+        .listing--signature header{justify-content:center;border-bottom:1px solid #bfc7d4;background:#f5f5f2}
+        .listing--signature .hero{height:min(58vw,640px);max-width:1140px;margin:28px auto 0;border:12px solid #fff;box-shadow:0 16px 45px rgba(0,19,67,.13)}
+        .listing--signature .summary{display:block;text-align:center;padding:44px 0 28px}
+        .listing--signature .summary h1{letter-spacing:-.045em;font-size:clamp(34px,5vw,58px)}
+        .listing--signature .price{margin-top:12px}
+        .listing--signature .facts{justify-content:center;border-color:#bfc7d4}
+        .listing--signature h2{text-align:center;letter-spacing:-.025em}
+        .listing--signature .gallery{grid-template-columns:repeat(3,1fr)}
+        .listing--modern .hero{height:min(66vw,660px)}
+        .listing--modern .hero:after{inset:38% 0 0;background:linear-gradient(transparent,rgba(1,13,45,.83))}
+        .listing--modern .summary{position:relative;background:#fff;margin:-44px 0 0;padding:30px 34px;border-radius:12px 12px 0 0;box-shadow:0 -9px 26px rgba(1,13,45,.12)}
+        .listing--modern .facts{background:#f2f5fa;padding:20px 28px;border:0;border-left:5px solid #b00101}
+        .listing--modern .gallery button:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+        .listing--premier{background:#f5f6f8}
+        .listing--premier header{background:#001343;color:#fff;border:0;justify-content:space-between}
+        .listing--premier header img{filter:brightness(0) invert(1)}
+        .listing--premier .hero{height:min(60vw,620px)}
+        .listing--premier .summary{background:#001343;color:white;padding:32px 36px;margin-top:0;align-items:center}
+        .listing--premier .summary h1,.listing--premier .summary .city{color:white}
+        .listing--premier .price{color:white}
+        .listing--premier .status{color:#fff;border-left:4px solid #b00101;padding-left:10px}
+        .listing--premier .facts{margin-top:22px;background:white;justify-content:space-around;border:1px solid #d9dee7;padding:22px}
+        .listing--premier h2{color:#001343;text-transform:uppercase;letter-spacing:.04em;font-size:20px}
+        .listing--premier .gallery{grid-template-columns:repeat(3,1fr)}
+        @media(max-width:700px){
+          .listing--heritage .hero,.listing--signature .hero{margin:0;border:0;min-height:280px}
+          .listing--signature .summary{padding:30px 12px 20px}
+          .listing--signature .gallery,.listing--premier .gallery{display:flex}
+          .listing--modern .summary{margin:-22px 12px 0;padding:24px 18px}
+          .listing--modern .gallery button:first-child{aspect-ratio:4/3}
+          .listing--premier .summary{padding:26px 22px}
+          .listing--premier .summary .price{white-space:normal}
+        }
       `}</style>
 
       <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>{listing.headline || "ADT Realty Property"}</span></header>

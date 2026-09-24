@@ -136,7 +136,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
         .listing .agent img{width:76px;height:76px;object-fit:cover;border-radius:50%}
         .listing .agent strong{font-size:20px}
         .listing .contact{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
-        .listing .contact a{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border-radius:5px;font-weight:700}
+        .listing .contact>a{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border-radius:5px;font-weight:700}.listing .agent-email{width:100%;text-align:right;font-size:14px}.listing .agent-email a{color:#001343;text-decoration:underline}
         .listing .inquiry{max-width:760px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
         .listing .inquiry input,.listing .inquiry textarea{width:100%;padding:13px;border:1px solid #cfd7e3;border-radius:5px;font:inherit}
         .listing .inquiry textarea,.listing .inquiry .wide{grid-column:1/-1}
@@ -145,7 +145,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
         .listing .overlay{position:fixed;inset:0;background:rgba(1,13,45,.95);z-index:10;display:grid;place-items:center;padding:55px 20px}
         .listing .overlay img{max-width:100%;max-height:100%;object-fit:contain}
         .listing .close{position:absolute;top:15px;right:20px;color:white;background:none;border:0;font-size:34px}
-        @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
+        @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .agent-email{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
       `}</style>
 
       <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>{listing.headline || "ADT Realty Property"}</span></header>
@@ -208,6 +208,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
           <div className="contact">
             {phone && <a href={`tel:${phone.replace(/[^+\d]/g,"")}`}>Call Agent</a>}
             {emailHref && <a href={emailHref}>Email Agent</a>}
+            {email && <span className="agent-email">Email: <a href={emailHref}>{email}</a></span>}
           </div>
         </section>
         <section id="request-showing">
@@ -221,7 +222,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
               <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px"}} />
               <textarea name="message" aria-label="Message" placeholder="When would you like to see the home?" rows={4} className="wide" />
               <button disabled={preview || inquiryState === "sending"}>{preview ? "Available when published" : inquiryState === "sending" ? "Sending..." : "Send Request"}</button>
-              {inquiryState === "error" && <p className="wide">{inquiryError} {fallbackEmailHref ? <a href={fallbackEmailHref}>Email the agent directly with your message</a> : "Please call the agent."}</p>}
+              {inquiryState === "error" && <p className="wide">{inquiryError} {fallbackEmailHref ? <>You can <a href={fallbackEmailHref}>open an email draft</a> or write to <a href={emailHref}>{email}</a>.</> : "Please call the agent."}</p>}
             </form>
           )}
         </section>

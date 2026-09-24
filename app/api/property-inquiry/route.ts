@@ -1,5 +1,27 @@
 import { NextResponse } from "next/server";
 
+const LOFTY_BASE = "https://api.lofty.com";
+const OWNER_ID = process.env.LOFTY_ASSIGNED_USER_ID || "844769665620463";
+
+async function lofty(path: string, key: string, init: RequestInit = {}) {
+  const response = await fetch(`${LOFTY_BASE}${path}`, {
+    ...init,
+    headers: {
+      Authorization: `token ${key}`,
+      ...(init.body ? { "Content-Type": "application/json" } : {}),
+    },
+    cache: "no-store",
+  });
+  if (!response.ok) throw new Error(`Lofty ${response.status}`);
+  return response.json();
+}
+
+function leadId(data: any) {
+  const first = data?.leads?.[0] ?? data?.data?.leads?.[0] ??
+    (Array.isArray(data?.data) ? data.data[0] : null);
+  return data?.leadId ?? data?.id ?? data?.data?.leadId ?? data?.data?.id ?? first?.id;
+}
+
 export async function POST(request: Request) {
   const form = await request.formData().catch(() => null);
   if (!form) return NextResponse.json({ error: "Invalid request" }, { status: 400 });
@@ -7,7 +29,7 @@ export async function POST(request: Request) {
 
   const slug = String(form.get("slug") || "").trim();
   const name = String(form.get("name") || "").trim();
-  const email = String(form.get("email") || "").trim();
+  const email = String(form.get("email") || "").trim().toLowerCase();
   const phone = String(form.get("phone") || "").trim();
   const message = String(form.get("message") || "").trim();
 
@@ -18,46 +40,72 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Check the form fields" }, { status: 400 });
   }
 
+  const key = process.env.LOFTY_API_KEY?.trim();
+  if (!key) return NextResponse.json({ error: "Showing request delivery is not configured" }, { status: 503 });
+
   const listingResponse = await fetch(
     `https://marketing.adtrealtyaz.com/api/public-listings/${encodeURIComponent(slug)}`,
     { cache: "no-store" }
   ).catch(() => null);
-  if (!listingResponse?.ok) {
-    return NextResponse.json({ error: "Listing unavailable" }, { status: 404 });
-  }
+  if (!listingResponse?.ok) return NextResponse.json({ error: "Listing unavailable" }, { status: 404 });
   const listing = await listingResponse.json();
   const address = [listing.address, listing.city, "AZ", listing.zip].filter(Boolean).join(", ");
   const pageUrl = `https://www.adtrealtyaz.com/home/${slug}`;
-  const question = [
+  const note = [
     "ACE MARKETING PROPERTY SHOWING REQUEST — RESPONSE NEEDED",
     `Property: ${address}`,
     `Property page: ${pageUrl}`,
     listing.id ? `Listing ID: ${listing.id}` : null,
-    listing.agent?.name ? `Listing agent: ${listing.agent.name}` : null,
-    listing.agent?.email ? `Listing agent email: ${listing.agent.email}` : null,
+    listing.agent?.name ? `Listing page agent: ${listing.agent.name}` : null,
     `Requester: ${name}`,
+    `Email: ${email}`,
     phone ? `Phone: ${phone}` : null,
     `Requested time / message: ${message || "Please contact the requester to arrange a showing."}`,
-  ].filter(Boolean).join("\n");
+  ].filter(Boolean).join("\n").slice(0, 2000);
 
-  // ACE Buyer's public question endpoint creates a Lofty lead, note, and follow-up
-  // task assigned to Mike. No Lofty credential is exposed to this public site.
-  const result = await fetch("https://acebuyer.adtrealtyaz.com/api/question", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      firstName: name,
-      email,
-      phone,
-      question,
-      preferredResponse: phone ? "call" : "email",
-      planningContext: { source: "ACE Marketing property page", property: address, pageUrl },
-    }),
-    cache: "no-store",
-  }).catch(() => null);
-  if (!result?.ok) {
-    console.error("Property showing delivery failed", result?.status ?? "network error");
+  try {
+    const existing = await lofty(`/v1.0/leads?email=${encodeURIComponent(email)}&preciseSearchFlag=true&limit=1`, key);
+    let id = leadId(existing);
+    if (!id) {
+      const [firstName, ...rest] = name.split(/\s+/);
+      const created = await lofty("/v1.0/leads", key, {
+        method: "POST",
+        body: JSON.stringify({
+          firstName, lastName: rest.join(" "), emails: [email],
+          phones: phone ? [phone] : [], leadTypes: [2],
+          source: "ACE Marketing property page",
+          tagsAdd: ["ACE Marketing", "Showing Request"],
+          content: `Showing request for ${address}`,
+          assignedUserId: OWNER_ID, ownershipId: OWNER_ID,
+          ownershipScope: "PERSONAL", welcomeEmail: false, leadAlert: true,
+        }),
+      });
+      id = leadId(created);
+      if (!id) {
+        const found = await lofty(`/v1.0/leads?email=${encodeURIComponent(email)}&preciseSearchFlag=true&limit=1`, key);
+        id = leadId(found);
+      }
+    } else {
+      await lofty(`/v1.0/leads/${id}`, key, {
+        method: "PUT",
+        body: JSON.stringify({ tagsAdd: ["ACE Marketing", "Showing Request"] }),
+      });
+    }
+    if (!id) throw new Error("Lofty lead ID missing");
+    await lofty("/v1.0/notes", key, {
+      method: "POST", body: JSON.stringify({ leadId: id, content: note, isPin: true }),
+    });
+    await lofty("/v1.0/tasks", key, {
+      method: "POST",
+      body: JSON.stringify({
+        leadId: id,
+        content: `ACE MARKETING SHOWING — ${address}`,
+        deadline: Date.now(), type: phone ? "Call" : "Email", assignedRole: "Agent",
+      }),
+    });
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("ACE Marketing Lofty delivery failed", error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json({ error: "Showing request could not be sent" }, { status: 502 });
   }
-  return NextResponse.json({ ok: true });
 }

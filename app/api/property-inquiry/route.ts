@@ -67,7 +67,7 @@ export async function POST(request: Request) {
   ].filter(Boolean).join("\n").slice(0, 2000);
 
   try {
-    const [firstName, ...rest] = name.split(/\\s+/);
+    const [firstName, ...rest] = name.split(/\s+/);
     const created = await lofty("/v1.0/leads", key, {
       method: "POST",
       body: JSON.stringify({

@@ -201,7 +201,6 @@ export default function ListingClient({ listing, slug, preview = false }) {
           <div className="contact">
             {phone && <a href={`tel:${phone.replace(/[^+\d]/g,"")}`}>Call Agent</a>}
             {emailHref && <a href={emailHref}>Email Agent</a>}
-            <a href="#request-showing">Request a Showing</a>
           </div>
         </section>
         <section id="request-showing">

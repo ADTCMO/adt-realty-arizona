@@ -76,10 +76,8 @@ export default function ListingClient({ listing, slug, preview = false }) {
     if (preview || !slug) return;
     setInquiryState("sending");
     const form = new FormData(event.currentTarget);
-    if (email) {
-      const body = `Name: ${form.get("name") || ""}\nEmail: ${form.get("email") || ""}\nPhone: ${form.get("phone") || ""}\n\n${form.get("message") || ""}\n\nProperty: ${address}`;
-      setFallbackEmailHref(`mailto:mikedingman@adthomes.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`);
-    }
+    const body = `Name: ${form.get("name") || ""}\nEmail: ${form.get("email") || ""}\nPhone: ${form.get("phone") || ""}\n\n${form.get("message") || ""}\n\nProperty: ${address}`;
+    setFallbackEmailHref(`mailto:mikedingman@adthomes.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`);
     const response = await fetch("/api/property-inquiry", {
       method: "POST",
       body: form,

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const LOFTY_BASE = "https://api.lofty.com";
+const LOFTY_BASE = "https://api.lofty.me";
 const OWNER_ID = process.env.LOFTY_ASSIGNED_USER_ID || "844769665620463";
 
 async function lofty(path: string, key: string, init: RequestInit = {}) {
@@ -95,8 +95,7 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({ ok: true });
   } catch (error) {
-    const check = await fetch(`${LOFTY_BASE}/v1.0/me`, { headers: { Authorization: `token ${key}` }, cache: "no-store" }).catch(() => null);
-    console.error("ACE Marketing Lofty delivery failed", error instanceof Error ? error.message : "Unknown error", "auth check status", check?.status ?? "network error");
+    console.error("ACE Marketing Lofty delivery failed", error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json({ error: "Showing request could not be sent" }, { status: 502 });
   }
 }

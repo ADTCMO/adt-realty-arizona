@@ -78,7 +78,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
     const form = new FormData(event.currentTarget);
     if (email) {
       const body = `Name: ${form.get("name") || ""}\nEmail: ${form.get("email") || ""}\nPhone: ${form.get("phone") || ""}\n\n${form.get("message") || ""}\n\nProperty: ${address}`;
-      setFallbackEmailHref(`mailto:${email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`);
+      setFallbackEmailHref(`mailto:mikedingman@adthomes.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`);
     }
     const response = await fetch("/api/property-inquiry", {
       method: "POST",
@@ -213,7 +213,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
         </section>
         <section id="request-showing">
           <h2>Request a showing</h2>
-          {inquiryState === "sent" ? <p>Thank you. The listing agent will be in touch.</p> : (
+          {inquiryState === "sent" ? <p>Thank you. We will be in touch.</p> : (
             <form className="inquiry" onSubmit={submitInquiry}>
               <input type="hidden" name="slug" value={slug || ""} />
               <input name="name" aria-label="Your name" placeholder="Your name" required />
@@ -222,7 +222,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
               <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px"}} />
               <textarea name="message" aria-label="Message" placeholder="When would you like to see the home?" rows={4} className="wide" />
               <button disabled={preview || inquiryState === "sending"}>{preview ? "Available when published" : inquiryState === "sending" ? "Sending..." : "Send Request"}</button>
-              {inquiryState === "error" && <p className="wide">{inquiryError} {fallbackEmailHref ? <>You can <a href={fallbackEmailHref}>open an email draft</a> or write to <a href={emailHref}>{email}</a>.</> : "Please call the agent."}</p>}
+              {inquiryState === "error" && <p className="wide">{inquiryError} {fallbackEmailHref ? <>You can <a href={fallbackEmailHref}>open an email draft</a> or write to <a href="mailto:mikedingman@adthomes.com">mikedingman@adthomes.com</a>.</> : "Please call the agent."}</p>}
             </form>
           )}
         </section>

@@ -95,7 +95,7 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("ACE Marketing Lofty delivery failed", error instanceof Error ? error.message : "Unknown error");
+    console.error("ACE Marketing Lofty delivery failed", error instanceof Error ? error.message : "Unknown error", "key format", { prefixed: /^token\\s+/i.test(key), quoted: /^[\"\']|[\"\']$/.test(key), jwtParts: key.split(".").length, hasWhitespace: /\\s/.test(key) });
     return NextResponse.json({ error: "Showing request could not be sent" }, { status: 502 });
   }
 }

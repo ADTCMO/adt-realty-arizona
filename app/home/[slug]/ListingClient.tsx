@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function videoEmbed(url) {
   try {
@@ -51,6 +51,9 @@ export default function ListingClient({ listing, slug, preview = false }) {
   const [inquiryState, setInquiryState] = useState("idle");
   const [inquiryError, setInquiryError] = useState("");
   const [fallbackEmailHref, setFallbackEmailHref] = useState(null);
+  const [emailVisible, setEmailVisible] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+  const emailInputRef = useRef(null);
   const photos = listing.photos || [];
   const featured = photos.slice(0, 3);
   const gallery = photos.slice(3, 23);
@@ -66,10 +69,20 @@ export default function ListingClient({ listing, slug, preview = false }) {
   const phone = listing.agent?.phone;
   const email = listing.agent?.email;
   const emailSubject = `Showing request: ${address}`;
-  const emailHref = email ? `mailto:${email}?subject=${encodeURIComponent(emailSubject)}` : null;
   const video = listing.video_url && videoEmbed(listing.video_url);
   const floorPlan = listing.floor_plan_url;
   const price = listing.price ? `$${Number(listing.price).toLocaleString()}` : "";
+
+  async function copyAgentEmail() {
+    if (!email) return;
+    try {
+      await navigator.clipboard.writeText(email);
+      setEmailCopied(true);
+    } catch {
+      emailInputRef.current?.select();
+      setEmailCopied(document.execCommand("copy"));
+    }
+  }
 
   async function submitInquiry(event) {
     event.preventDefault();
@@ -134,7 +147,11 @@ export default function ListingClient({ listing, slug, preview = false }) {
         .listing .agent img{width:76px;height:76px;object-fit:cover;border-radius:50%}
         .listing .agent strong{font-size:20px}
         .listing .contact{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
-        .listing .contact>a{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border-radius:5px;font-weight:700}.listing .agent-email{width:100%;text-align:right;font-size:14px}.listing .agent-email a{color:#001343;text-decoration:underline}
+        .listing .contact>a,.listing .contact>button{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border:0;border-radius:5px;font:inherit;font-weight:700}
+        .listing .email-reveal{width:100%;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+        .listing .email-reveal input{min-width:240px;max-width:100%;padding:10px;border:1px solid #cfd7e3;border-radius:5px;color:#001343;font:inherit}
+        .listing .email-reveal button{background:#fff;color:#001343;border:1px solid #001343;border-radius:5px;padding:10px 12px;font:inherit;font-weight:700}
+        .listing .email-reveal span{width:100%;text-align:right;font-size:13px}
         .listing .inquiry{max-width:760px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
         .listing .inquiry input,.listing .inquiry textarea{width:100%;padding:13px;border:1px solid #cfd7e3;border-radius:5px;font:inherit}
         .listing .inquiry textarea,.listing .inquiry .wide{grid-column:1/-1}
@@ -143,7 +160,7 @@ export default function ListingClient({ listing, slug, preview = false }) {
         .listing .overlay{position:fixed;inset:0;background:rgba(1,13,45,.95);z-index:10;display:grid;place-items:center;padding:55px 20px}
         .listing .overlay img{max-width:100%;max-height:100%;object-fit:contain}
         .listing .close{position:absolute;top:15px;right:20px;color:white;background:none;border:0;font-size:34px}
-        @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .agent-email{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
+        @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .email-reveal{justify-content:flex-start}.listing .email-reveal span{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
       `}</style>
 
       <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>{listing.headline || "ADT Realty Property"}</span></header>
@@ -205,8 +222,8 @@ export default function ListingClient({ listing, slug, preview = false }) {
           <div><strong>{listing.agent?.name || "ADT Realty"}</strong>{listing.agent?.license && <div>License #{listing.agent.license}</div>}</div>
           <div className="contact">
             {phone && <a href={`tel:${phone.replace(/[^+\d]/g,"")}`}>Call Agent</a>}
-            {emailHref && <a href={emailHref}>Email Agent</a>}
-            {email && <span className="agent-email">Email: <a href={emailHref}>{email}</a></span>}
+            {email && <button type="button" onClick={() => { setEmailVisible(true); setEmailCopied(false); }}>Email Agent</button>}
+            {email && emailVisible && <div className="email-reveal"><input ref={emailInputRef} type="text" readOnly value={email} aria-label="Agent email address" onClick={(event) => event.currentTarget.select()} /><button type="button" onClick={copyAgentEmail}>Copy email</button><span role="status">{emailCopied ? "Email copied. Paste it into your email app." : "Copy this address into your email app."}</span></div>}
           </div>
         </section>
         <section id="request-showing">

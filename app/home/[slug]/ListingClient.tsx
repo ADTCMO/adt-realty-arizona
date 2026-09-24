@@ -171,14 +171,14 @@ export default function ListingClient({ listing, slug, preview = false }) {
           {listing.lot_size && <span>Lot {listing.lot_size}</span>}
           {listing.mls_number && <span>MLS #{listing.mls_number}</span>}
         </div>
+        {gallery.length > 0 && <section><h2>Photo gallery</h2><div className="gallery">
+          {gallery.map((url, index) => <button key={index} onClick={() => setLightbox(url)} aria-label={`Enlarge gallery photo ${index + 1}`}><img src={url} loading="lazy" alt={`${listing.address} gallery photo ${index + 1}`} /><span className="gallery-count">{index + 1} / {gallery.length}</span></button>)}
+        </div></section>}
         {listing.description && <section><h2>About this home</h2><p className="description">{listing.description}</p></section>}
         {listing.amenities && <section><h2>Features and amenities</h2><div className="facts">
           {listing.amenities.split("\n").map((item) => item.trim()).filter(Boolean).map((item, index) => <span key={index}>{item}</span>)}
         </div></section>}
         {listing.open_house_details && <section><h2>Open house</h2><p>{listing.open_house_details}</p></section>}
-        {gallery.length > 0 && <section><h2>Photo gallery</h2><div className="gallery">
-          {gallery.map((url, index) => <button key={index} onClick={() => setLightbox(url)} aria-label={`Enlarge gallery photo ${index + 1}`}><img src={url} loading="lazy" alt={`${listing.address} gallery photo ${index + 1}`} /><span className="gallery-count">{index + 1} / {gallery.length}</span></button>)}
-        </div></section>}
         {listing.video_url && <section><h2>Take a Tour of the Home</h2>
           {video && listing.video_poster_url && !videoStarted ? <button className="video-cover media-frame" type="button" aria-label="Play property video" onClick={() => setVideoStarted(true)}><img src={listing.video_poster_url} alt="Property video cover" /><span aria-hidden="true">▶</span></button> : video ? <iframe className="media-frame" src={videoStarted ? `${video}${video.includes("?") ? "&" : "?"}autoplay=any` : video} title="Property video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen loading="lazy" />
             : /\.(mp4|webm)(?:\?.*)?$/i.test(listing.video_url) ? <video className="media-frame" src={listing.video_url} controls style={{width:"100%"}} />

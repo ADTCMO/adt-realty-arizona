@@ -95,7 +95,8 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("ACE Marketing Lofty delivery failed", error instanceof Error ? error.message : "Unknown error");
+    const check = await fetch(`${LOFTY_BASE}/v1.0/me`, { headers: { Authorization: `token ${key}` }, cache: "no-store" }).catch(() => null);
+    console.error("ACE Marketing Lofty delivery failed", error instanceof Error ? error.message : "Unknown error", "auth check status", check?.status ?? "network error");
     return NextResponse.json({ error: "Showing request could not be sent" }, { status: 502 });
   }
 }

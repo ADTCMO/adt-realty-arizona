@@ -12,7 +12,7 @@ async function lofty(path: string, key: string, init: RequestInit = {}) {
     },
     cache: "no-store",
   });
-  if (!response.ok) throw new Error(`Lofty ${response.status}`);
+  if (!response.ok) {\n    const detail = (await response.text()).slice(0, 300);\n    throw new Error(`Lofty ${response.status} on ${path.split("?")[0]}: ${detail}`);\n  }
   return response.json();
 }
 

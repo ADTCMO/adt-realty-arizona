@@ -219,7 +219,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
           .listing--premier .summary .price{white-space:normal}
         }
 
-        .listing--modern .hero::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(0,19,67,.50),rgba(0,19,67,.12));clip-path:polygon(0 0,19% 0,7% 100%,0 100%)}
+        .listing--modern .hero::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,#001343 0%,rgba(0,19,67,.85) 3%,rgba(0,19,67,.35) 9%,rgba(0,19,67,0) 15%)}
         .listing--modern .facts{background:#001343;color:#fff;border:0;border-top:5px solid #b00101;padding:22px 30px;clip-path:polygon(0 0,97% 0,100% 50%,97% 100%,0 100%)}
 
         .listing--premier .premier-stage{display:grid;grid-template-columns:minmax(0,69%) minmax(275px,31%);max-width:1380px;margin:0 auto;border-bottom:4px solid #b00101}

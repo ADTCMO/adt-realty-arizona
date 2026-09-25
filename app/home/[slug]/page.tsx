@@ -49,10 +49,9 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   };
 }
 
-export default async function PropertyLandingPage({ params, searchParams }: RouteProps & { searchParams: Promise<{ style?: string }> }) {
+export default async function PropertyLandingPage({ params }: RouteProps) {
   const { slug } = await params;
   const listing = await getListing(slug);
   if (!listing) notFound();
-  const { style } = await searchParams;
-  return <ListingClient listing={listing} slug={shortListingSlugs[slug] || slug} style={style} />;
+  return <ListingClient listing={listing} slug={shortListingSlugs[slug] || slug} style={listing.page_style} />;
 }

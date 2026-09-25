@@ -173,20 +173,23 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing--heritage .summary .status{color:#fff}
         .listing--heritage .summary .price{color:#fff}
         .listing--signature{background:#fff}
-        .listing--signature .signature-swoosh{height:clamp(68px,8vw,105px);max-width:1180px;margin:0 auto;background:#fff url("/ace-signature-swoosh.png") center center/100% 200% no-repeat;pointer-events:none}
+        .listing--signature header{position:relative;min-height:105px;padding-left:34%;justify-content:flex-start}
+        .listing--signature header::before{content:"";position:absolute;left:2%;top:12px;width:30%;height:80px;background:url("/ace-signature-swoosh.png") center/100% 200% no-repeat;pointer-events:none}
+        .listing--signature .gallery-section,.listing--signature .agent{position:relative;padding-top:110px}
+        .listing--signature .gallery-section::before,.listing--signature .agent::before{content:"";position:absolute;top:8px;left:0;width:100%;height:85px;background:#fff url("/ace-signature-swoosh.png") center/100% 200% no-repeat;pointer-events:none}
         .listing--signature .summary{padding-top:10px}
-        @media(max-width:700px){.listing--heritage .summary{padding:24px 20px}.listing--signature .signature-swoosh{height:75px;background-position:center 53%}}
+        @media(max-width:700px){.listing--heritage .summary{padding:24px 20px}.listing--signature header{min-height:80px;padding-left:32%;gap:8px;font-size:11px}.listing--signature header img{height:48px}.listing--signature header::before{height:50px;top:15px}.listing--signature .gallery-section,.listing--signature .agent{padding-top:78px}.listing--signature .gallery-section::before,.listing--signature .agent::before{height:62px}}
         /* Four ACE page layouts keep the same content and working lead form. */
         .listing--heritage{background:#f7f8fb}
         .listing--heritage header{background:#001343;color:#fff;border-bottom:6px solid #b00101}
         .listing--heritage header img{filter:brightness(0) invert(1)}
-        .listing--heritage .hero{max-width:1280px;margin:24px auto 0;border-left:8px solid #b00101;height:min(57vw,600px)}
+        .listing--heritage .hero{width:100%;max-width:none;margin:0;border:0;height:min(66vw,660px)}
         .listing--heritage .summary{border-bottom:2px solid #001343}
         .listing--heritage .facts{background:#fff;padding:20px 24px}
         .listing--heritage h2{border-left:5px solid #b00101;padding-left:14px}
         .listing--signature{background:#fff;color:#001343}
-        .listing--signature header{justify-content:center;border-bottom:1px solid #bfc7d4;background:#fff}
-        .listing--signature .hero{height:min(52vw,510px);max-width:1140px;margin:28px auto 0;border:12px solid #fff;box-shadow:0 16px 45px rgba(0,19,67,.13)}
+        .listing--signature header{border-bottom:1px solid #bfc7d4;background:#fff}
+        .listing--signature .hero{width:100%;height:min(66vw,660px);max-width:none;margin:0;border:0;box-shadow:none}
         .listing--signature .summary{display:block;text-align:center;padding:10px 0 28px}
         .listing--signature .summary h1{letter-spacing:-.045em;font-size:clamp(34px,5vw,58px)}
         .listing--signature .price{margin-top:12px}
@@ -272,7 +275,6 @@ export default function ListingClient({ listing, slug, preview = false, style })
         </aside>}
         </div>
       )}
-      {pageStyle === "signature" && <div className="signature-swoosh" aria-hidden="true" />}
       <div className="wrap">
         {(pageStyle !== "premier" || featured.length === 0) && <div className="summary">
           <div><span className="status">{listing.status}</span><h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p></div>

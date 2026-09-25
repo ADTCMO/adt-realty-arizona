@@ -218,10 +218,36 @@ export default function ListingClient({ listing, slug, preview = false, style })
           .listing--premier .summary{padding:26px 22px}
           .listing--premier .summary .price{white-space:normal}
         }
+
+        .listing--modern .hero::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(0,19,67,.94),rgba(0,19,67,.55));clip-path:polygon(0 0,53% 0,26% 100%,0 100%)}
+        .listing--modern .facts{background:#001343;color:#fff;border:0;border-top:5px solid #b00101;padding:22px 30px;clip-path:polygon(0 0,97% 0,100% 50%,97% 100%,0 100%)}
+        .listing--premier header{display:none}
+        .listing--premier .premier-stage{display:grid;grid-template-columns:minmax(0,69%) minmax(275px,31%);max-width:1380px;margin:0 auto;border-bottom:4px solid #b00101}
+        .listing--premier .premier-stage .hero{height:min(56vw,610px);min-height:380px}
+        .listing--premier .premier-stage .hero:after{background:linear-gradient(transparent,rgba(1,13,45,.2))}
+        .listing--premier .premier-panel{background:#fff;padding:30px clamp(20px,2.5vw,42px);display:flex;flex-direction:column;justify-content:center;color:#001343}
+        .listing--premier .premier-panel img{width:min(190px,80%);height:auto;object-fit:contain;margin:0 0 22px}
+        .listing--premier .premier-panel .panel-headline{font-size:12px;letter-spacing:.05em;line-height:1.4;margin:0 0 14px}
+        .listing--premier .premier-panel .status{display:block;border-left:0;color:#001343;padding:12px 0 0;border-top:3px solid #b00101}
+        .listing--premier .premier-panel h1{font-size:clamp(22px,2.3vw,32px);line-height:1.1;margin:16px 0 4px}
+        .listing--premier .premier-panel .city{font-size:14px}
+        .listing--premier .premier-panel .price{color:#001343;font-size:clamp(24px,2.4vw,34px);border-bottom:1px solid #d9dee7;padding:18px 0}
+        .listing--premier .premier-panel .panel-fact{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #d9dee7;padding:13px 0;font-size:13px;font-weight:700}
+        .listing--premier .premier-panel .panel-fact strong{font-size:18px}
+        @media(max-width:700px){
+          .listing--modern .hero::before{clip-path:polygon(0 0,45% 0,18% 100%,0 100%)}
+          .listing--modern .facts{clip-path:none;padding:18px}
+          .listing--premier .premier-stage{grid-template-columns:1fr}
+          .listing--premier .premier-stage .hero{min-height:270px;height:min(70vw,460px)}
+          .listing--premier .premier-panel{padding:20px 24px}
+          .listing--premier .premier-panel img{width:135px;margin-bottom:12px}
+          .listing--premier .premier-panel .panel-fact{padding:10px 0}
+        }
       `}</style>
 
       <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>{listing.headline || "ADT Realty Property"}</span></header>
       {featured.length > 0 && (
+        <div className={pageStyle === "premier" ? "premier-stage" : ""}>
         <div className="hero">
           <img src={featured[active]} alt={`${listing.address} featured photo ${active + 1}`} />
           {featured.length > 1 && <>
@@ -234,18 +260,29 @@ export default function ListingClient({ listing, slug, preview = false, style })
             </div>
           </>}
         </div>
+        {pageStyle === "premier" && <aside className="premier-panel">
+          <img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" />
+          {listing.headline && <p className="panel-headline">{listing.headline}</p>}
+          <span className="status">{listing.status}</span>
+          <h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p>
+          <div className="price">{price}</div>
+          {listing.beds != null && <div className="panel-fact"><span>Bedrooms</span><strong>{listing.beds}</strong></div>}
+          {listing.baths != null && <div className="panel-fact"><span>Bathrooms</span><strong>{listing.baths}</strong></div>}
+          {listing.garage != null && <div className="panel-fact"><span>Garage</span><strong>{listing.garage}</strong></div>}
+        </aside>}
+        </div>
       )}
       {pageStyle === "signature" && <div className="signature-swoosh" aria-hidden="true" />}
       <div className="wrap">
-        <div className="summary">
+        {(pageStyle !== "premier" || featured.length === 0) && <div className="summary">
           <div><span className="status">{listing.status}</span><h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p></div>
           <div className="price">{price}</div>
-        </div>
+        </div>}
         <div className="facts">
-          {listing.beds != null && <span>{listing.beds} Beds</span>}
-          {listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
+          {pageStyle !== "premier" && listing.beds != null && <span>{listing.beds} Beds</span>}
+          {pageStyle !== "premier" && listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
           {listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
-          {listing.garage != null && <span>{listing.garage} Car Garage</span>}
+          {pageStyle !== "premier" && listing.garage != null && <span>{listing.garage} Car Garage</span>}
           {listing.property_type && <span>{listing.property_type}</span>}
           {listing.year_built && <span>Built {listing.year_built}</span>}
           {listing.lot_size && <span>Lot {listing.lot_size}</span>}

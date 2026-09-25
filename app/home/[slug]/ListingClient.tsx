@@ -235,7 +235,6 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing--premier .premier-panel .panel-fact{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #d9dee7;padding:13px 0;font-size:13px;font-weight:700}
         .listing--premier .premier-panel .panel-fact strong{font-size:18px}
         @media(max-width:700px){
-          .listing--modern .hero::before{clip-path:polygon(0 0,45% 0,18% 100%,0 100%)}
           .listing--modern .facts{clip-path:none;padding:18px}
           .listing--premier .premier-stage{grid-template-columns:1fr}
           .listing--premier .premier-stage .hero{min-height:270px;height:min(70vw,460px)}
@@ -269,6 +268,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
           {listing.beds != null && <div className="panel-fact"><span>Bedrooms</span><strong>{listing.beds}</strong></div>}
           {listing.baths != null && <div className="panel-fact"><span>Bathrooms</span><strong>{listing.baths}</strong></div>}
           {listing.garage != null && <div className="panel-fact"><span>Garage</span><strong>{listing.garage}</strong></div>}
+          {listing.sqft != null && <div className="panel-fact"><span>Square feet</span><strong>{Number(listing.sqft).toLocaleString()}</strong></div>}
         </aside>}
         </div>
       )}
@@ -278,10 +278,10 @@ export default function ListingClient({ listing, slug, preview = false, style })
           <div><span className="status">{listing.status}</span><h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p></div>
           <div className="price">{price}</div>
         </div>}
-        {(pageStyle !== "premier" || listing.sqft != null || listing.property_type || listing.year_built || listing.lot_size || listing.mls_number) && <div className="facts">
+        {(pageStyle !== "premier" || listing.property_type || listing.year_built || listing.lot_size || listing.mls_number) && <div className="facts">
           {(pageStyle !== "premier" || featured.length === 0) && listing.beds != null && <span>{listing.beds} Beds</span>}
           {(pageStyle !== "premier" || featured.length === 0) && listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
-          {listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
           {(pageStyle !== "premier" || featured.length === 0) && listing.garage != null && <span>{listing.garage} Car Garage</span>}
           {listing.property_type && <span>{listing.property_type}</span>}
           {listing.year_built && <span>Built {listing.year_built}</span>}

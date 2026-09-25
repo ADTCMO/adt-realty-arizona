@@ -200,7 +200,6 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing--modern .hero:after{inset:38% 0 0;background:linear-gradient(transparent,rgba(1,13,45,.83))}
         .listing--modern .summary{position:relative;background:#fff;margin:-44px 0 0;padding:30px 34px;border-radius:12px 12px 0 0;box-shadow:0 -9px 26px rgba(1,13,45,.12)}
         .listing--modern .facts{background:#f2f5fa;padding:20px 28px;border:0;border-left:5px solid #b00101}
-        .listing--modern .gallery button:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
         .listing--premier{background:#f5f6f8}
         .listing--premier header{background:#001343;color:#fff;border:0;justify-content:space-between}
         .listing--premier header img{filter:brightness(0) invert(1)}

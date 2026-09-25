@@ -221,7 +221,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
 
         .listing--modern .hero::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(0,19,67,.94),rgba(0,19,67,.55));clip-path:polygon(0 0,53% 0,26% 100%,0 100%)}
         .listing--modern .facts{background:#001343;color:#fff;border:0;border-top:5px solid #b00101;padding:22px 30px;clip-path:polygon(0 0,97% 0,100% 50%,97% 100%,0 100%)}
-        .listing--premier header{display:none}
+
         .listing--premier .premier-stage{display:grid;grid-template-columns:minmax(0,69%) minmax(275px,31%);max-width:1380px;margin:0 auto;border-bottom:4px solid #b00101}
         .listing--premier .premier-stage .hero{height:min(56vw,610px);min-height:380px}
         .listing--premier .premier-stage .hero:after{background:linear-gradient(transparent,rgba(1,13,45,.2))}
@@ -245,7 +245,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
         }
       `}</style>
 
-      <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>{listing.headline || "ADT Realty Property"}</span></header>
+      {(pageStyle !== "premier" || featured.length === 0) && <header><img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" /><span>{listing.headline || "ADT Realty Property"}</span></header>}
       {featured.length > 0 && (
         <div className={pageStyle === "premier" ? "premier-stage" : ""}>
         <div className="hero">
@@ -279,10 +279,10 @@ export default function ListingClient({ listing, slug, preview = false, style })
           <div className="price">{price}</div>
         </div>}
         <div className="facts">
-          {pageStyle !== "premier" && listing.beds != null && <span>{listing.beds} Beds</span>}
-          {pageStyle !== "premier" && listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && listing.beds != null && <span>{listing.beds} Beds</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
           {listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
-          {pageStyle !== "premier" && listing.garage != null && <span>{listing.garage} Car Garage</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && listing.garage != null && <span>{listing.garage} Car Garage</span>}
           {listing.property_type && <span>{listing.property_type}</span>}
           {listing.year_built && <span>Built {listing.year_built}</span>}
           {listing.lot_size && <span>Lot {listing.lot_size}</span>}

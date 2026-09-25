@@ -173,7 +173,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing--heritage .summary .status{color:#fff}
         .listing--heritage .summary .price{color:#fff}
         .listing--signature{background:#fff}
-        .listing--signature .signature-swoosh{height:clamp(68px,8vw,105px);max-width:1180px;margin:0 auto;background:#fff url("/ace-signature-swoosh.png") center 54%/cover no-repeat;pointer-events:none}
+        .listing--signature .signature-swoosh{height:clamp(68px,8vw,105px);max-width:1180px;margin:0 auto;background:#fff url("/ace-signature-swoosh.png") center center/100% 200% no-repeat;pointer-events:none}
         .listing--signature .summary{padding-top:10px}
         @media(max-width:700px){.listing--heritage .summary{padding:24px 20px}.listing--signature .signature-swoosh{height:75px;background-position:center 53%}}
         /* Four ACE page layouts keep the same content and working lead form. */

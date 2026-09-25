@@ -219,7 +219,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
           .listing--premier .summary .price{white-space:normal}
         }
 
-        .listing--modern .hero::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(0,19,67,.94),rgba(0,19,67,.55));clip-path:polygon(0 0,53% 0,26% 100%,0 100%)}
+        .listing--modern .hero::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(0,19,67,.50),rgba(0,19,67,.12));clip-path:polygon(0 0,19% 0,7% 100%,0 100%)}
         .listing--modern .facts{background:#001343;color:#fff;border:0;border-top:5px solid #b00101;padding:22px 30px;clip-path:polygon(0 0,97% 0,100% 50%,97% 100%,0 100%)}
 
         .listing--premier .premier-stage{display:grid;grid-template-columns:minmax(0,69%) minmax(275px,31%);max-width:1380px;margin:0 auto;border-bottom:4px solid #b00101}
@@ -261,7 +261,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
           </>}
         </div>
         {pageStyle === "premier" && <aside className="premier-panel">
-          <img src="https://www.adtrealtyaz.com/adt-realty-arizona-outline.png" alt="ADT Realty Arizona logo" />
+          <img src="/adt-realty-official-transparent.png" alt="ADT Realty logo" />
           {listing.headline && <p className="panel-headline">{listing.headline}</p>}
           <span className="status">{listing.status}</span>
           <h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p>
@@ -278,7 +278,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
           <div><span className="status">{listing.status}</span><h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p></div>
           <div className="price">{price}</div>
         </div>}
-        <div className="facts">
+        {(pageStyle !== "premier" || listing.sqft != null || listing.property_type || listing.year_built || listing.lot_size || listing.mls_number) && <div className="facts">
           {(pageStyle !== "premier" || featured.length === 0) && listing.beds != null && <span>{listing.beds} Beds</span>}
           {(pageStyle !== "premier" || featured.length === 0) && listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
           {listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
@@ -287,7 +287,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
           {listing.year_built && <span>Built {listing.year_built}</span>}
           {listing.lot_size && <span>Lot {listing.lot_size}</span>}
           {listing.mls_number && <span>MLS #{listing.mls_number}</span>}
-        </div>
+        </div>}
         {listing.description && <section><h2>About this home</h2><p className="description">{listing.description}</p></section>}
         {listing.amenities && <section><h2>Features and amenities</h2><div className="facts">
           {listing.amenities.split("\n").map((item) => item.trim()).filter(Boolean).map((item, index) => <span key={index}>{item}</span>)}

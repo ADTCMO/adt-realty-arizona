@@ -53,5 +53,5 @@ export default async function PropertyLandingPage({ params }: RouteProps) {
   const { slug } = await params;
   const listing = await getListing(slug);
   if (!listing) notFound();
-  return <ListingClient listing={listing} slug={shortListingSlugs[slug] || slug} />;
+  return <ListingClient listing={listing} slug={shortListingSlugs[slug] || slug} style={listing.page_style} />;
 }

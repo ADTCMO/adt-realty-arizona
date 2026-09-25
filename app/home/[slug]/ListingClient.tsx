@@ -174,9 +174,9 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing--heritage .summary .price{color:#fff}
         .listing--signature{background:#fff}
         .listing--signature header{position:relative;min-height:105px;padding-left:34%;justify-content:flex-start}
-        .listing--signature header::before{content:"";position:absolute;left:2%;top:12px;width:30%;height:80px;background:url("/ace-signature-swoosh.png") center/100% 200% no-repeat;pointer-events:none}
+        .listing--signature header::before{content:"";position:absolute;left:2%;top:12px;width:30%;height:80px;background:url("/ace-signature-swoosh.svg") center/100% 85% no-repeat;pointer-events:none}
         .listing--signature .gallery-section,.listing--signature .agent{position:relative;padding-top:110px}
-        .listing--signature .gallery-section::before,.listing--signature .agent::before{content:"";position:absolute;top:8px;left:0;width:100%;height:85px;background:#fff url("/ace-signature-swoosh.png") center/100% 200% no-repeat;pointer-events:none}
+        .listing--signature .gallery-section::before,.listing--signature .agent::before{content:"";position:absolute;top:8px;left:0;width:100%;height:85px;background:#fff url("/ace-signature-swoosh.svg") center/100% 85% no-repeat;pointer-events:none}
         .listing--signature .summary{padding-top:10px}
         @media(max-width:700px){.listing--heritage .summary{padding:24px 20px}.listing--signature header{min-height:80px;padding-left:32%;gap:8px;font-size:11px}.listing--signature header img{height:48px}.listing--signature header::before{height:50px;top:15px}.listing--signature .gallery-section,.listing--signature .agent{padding-top:78px}.listing--signature .gallery-section::before,.listing--signature .agent::before{height:62px}}
         /* Four ACE page layouts keep the same content and working lead form. */

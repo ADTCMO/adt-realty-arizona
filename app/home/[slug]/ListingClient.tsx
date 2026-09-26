@@ -215,7 +215,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
           .listing--heritage .hero,.listing--signature .hero{margin:0;border:0;min-height:280px}
           .listing--signature .summary{padding:12px 12px 20px}
           .listing--signature .gallery,.listing--premier .gallery{display:flex}
-          .listing--modern .summary{margin:-22px 12px 0;padding:24px 18px}
+          .listing--modern .summary{margin:-6px 12px 0;padding:24px 18px}
           .listing--modern .gallery button:first-child{aspect-ratio:4/3}
           .listing--premier .summary{padding:26px 22px}
           .listing--premier .summary .price{white-space:normal}

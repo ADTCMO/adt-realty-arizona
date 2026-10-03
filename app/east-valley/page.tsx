@@ -229,6 +229,7 @@ export default function EastValleyGuide() {
           />
         </Link>
         <nav aria-label="Guide navigation">
+          <a href="/">Home</a>
           <a href="#cities">Cities</a>
           <a href="#life">Things to do</a>
           <a href="#weather">Weather</a>

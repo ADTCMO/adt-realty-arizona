@@ -37,7 +37,8 @@ export default function JoinPage(){return <div className="joinPage">
   </video>
   <div className="joinHeroWash" aria-hidden="true" />
   <img className="joinHeroMap" src="/join-adt-map.webp" alt="" aria-hidden="true" />
-  <h1 className="joinMapTitle"><span>Join ADT</span><strong>Realty-Arizona</strong></h1>
+  <h1 className="joinMapTitle"><span>Join</span><strong>ADT Realty-Arizona</strong></h1>
+  <div className="joinMapSupport"><h2>Build a Business for Life</h2><p>Practical training, proven systems, modern marketing and people<br className="joinSupportBreak" /> committed to helping you succeed.</p></div>
 </section>
 
 <div className="folderStack">

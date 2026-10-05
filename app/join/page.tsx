@@ -39,7 +39,7 @@ export default function JoinPage(){return <div className="joinPage">
   <div className="joinHeroCopy">
     <h1 className="flagHeadline">
       <span>Join</span>
-      <strong>ADT Realty</strong>
+      <strong>ADT Realty-Arizona</strong>
     </h1>
     <p className="heroPromise">Build a Business for Life</p>
     <p className="heroSupport">Practical training, proven systems, modern marketing and people committed to helping you succeed.</p>

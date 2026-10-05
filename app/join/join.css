@@ -124,9 +124,10 @@
   display:block;
   margin-top:.16em;
   color:#8f1624;
-  font-size:clamp(45px,6.2vw,94px);
+  font-size:clamp(39px,5.1vw,78px);
   font-weight:900;
-  letter-spacing:-.06em;
+  letter-spacing:-.055em;
+  white-space:nowrap;
   text-shadow:0 4px 14px rgba(3,21,47,.28);
 }
 .heroPromise{margin:10px 0 12px!important;color:#fff;font-size:clamp(28px,2.8vw,42px)!important;font-weight:800;line-height:1.05!important;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
@@ -137,7 +138,7 @@
   .joinHeroFlag .joinHeroCopy{width:100%;padding:390px 22px 54px}
   .flagHeadline{top:72px;width:min(90%,700px)}
   .flagHeadline span{font-size:clamp(100px,27vw,180px)}
-  .flagHeadline strong{font-size:clamp(40px,11vw,72px)}
+  .flagHeadline strong{font-size:clamp(31px,8.4vw,56px)}
   .heroPromise{font-size:clamp(30px,8vw,42px)!important}
   .heroSupport{font-size:17px!important}
 }

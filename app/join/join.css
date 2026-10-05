@@ -92,7 +92,7 @@
   z-index:-4;
   object-fit:cover;
   opacity:1;
-  filter:grayscale(1);
+  filter:grayscale(.65);
 }
 .joinHeroWash{
   display:none;

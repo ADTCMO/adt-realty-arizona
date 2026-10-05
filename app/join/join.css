@@ -105,8 +105,8 @@
   width:100%;
   height:100%;
   object-fit:cover;
-  -webkit-mask:url('/join-headline-mask.svg?v=4') 0 0/100% 100% no-repeat;
-  mask:url('/join-headline-mask.svg?v=4') 0 0/100% 100% no-repeat;
+  -webkit-mask:url('/join-headline-mask.svg?v=5') 0 0/100% 100% no-repeat;
+  mask:url('/join-headline-mask.svg?v=5') 0 0/100% 100% no-repeat;
   filter:drop-shadow(0 5px 3px rgba(0,0,0,.5));
 }
 .heroPromise{margin:10px 0 14px!important;color:#fff;font-size:clamp(31px,3.6vw,56px)!important;font-weight:800;line-height:1.02!important;letter-spacing:-.035em;text-shadow:0 2px 14px rgba(0,0,0,.55)}

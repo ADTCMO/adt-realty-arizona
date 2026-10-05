@@ -90,49 +90,31 @@
   padding:clamp(90px,10vw,150px) clamp(30px,6vw,96px);
 }
 .flagHeadline{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
   width:min(100%,820px);
   margin:0 0 24px;
-  text-transform:uppercase;
+  line-height:0;
+}
+.flagHeadline svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 5px 3px rgba(0,0,0,.5))}
+.flagTextSurface{stroke:rgba(255,255,255,.68);stroke-width:1.25px;paint-order:stroke fill}
+.flagJoinSvg,.flagAdtSvg{
+  font-family:Arial Black,Inter,Arial,sans-serif;
+  font-weight:950;
   letter-spacing:-.065em;
-  line-height:.78;
 }
-.flagHeadline span{
-  display:block;
-  color:transparent;
-  -webkit-text-fill-color:transparent;
-  -webkit-background-clip:text;
-  background-clip:text;
-  background-image:url('/american-flag.png');
-  background-repeat:no-repeat;
-  background-size:132% 150%;
-  background-position:0 46%;
-  filter:drop-shadow(0 4px 2px rgba(0,0,0,.5));
-  -webkit-text-stroke:.5px rgba(255,255,255,.55);
-  animation:flagFlow 5.5s ease-in-out infinite alternate;
-}
-.flagJoin{font-size:clamp(112px,15.2vw,250px);font-weight:950}
-.flagAdt{margin-top:.18em;font-size:clamp(47px,7vw,112px);font-weight:950;letter-spacing:-.045em}
+.flagJoinSvg{font-size:244px}
+.flagAdtSvg{font-size:111px;letter-spacing:-.045em}
 .heroPromise{margin:10px 0 14px!important;color:#fff;font-size:clamp(31px,3.6vw,56px)!important;font-weight:800;line-height:1.02!important;letter-spacing:-.035em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
 .heroSupport{max-width:650px;margin-bottom:28px!important;color:#e7edf7!important;font-size:clamp(17px,1.7vw,21px)!important;line-height:1.5!important;text-shadow:0 2px 12px rgba(0,0,0,.7)}
-@keyframes flagFlow{from{background-position:0 43%}to{background-position:14% 57%}}
-
 @media(max-width:850px){
   .joinHeroFlag{min-height:690px;background-position:62% center;align-items:flex-end}
   .joinHeroFlag:before{background:linear-gradient(180deg,rgba(1,12,37,.08) 20%,rgba(1,12,37,.82) 67%,rgba(1,12,37,.96) 100%)}
   .joinHeroFlag .joinHeroCopy{width:100%;padding:250px 22px 54px}
   .flagHeadline{margin-bottom:20px}
-  .flagJoin{font-size:clamp(86px,27vw,160px)}
-  .flagAdt{font-size:clamp(41px,12vw,72px)}
   .heroPromise{font-size:clamp(30px,8vw,42px)!important}
   .heroSupport{font-size:17px!important}
 }
 @media(max-width:460px){
   .joinHeroFlag{min-height:700px;background-position:64% center}
   .joinHeroFlag .joinHeroCopy{padding-top:300px}
-  .flagJoin{font-size:clamp(80px,28vw,128px)}
-  .flagAdt{font-size:clamp(38px,12.5vw,58px)}
 }
-@media(prefers-reduced-motion:reduce){.flagHeadline span{animation:none;filter:drop-shadow(0 4px 2px rgba(0,0,0,.42))}}
+@media(prefers-reduced-motion:reduce){.flagTextSurface{filter:none}}

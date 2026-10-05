@@ -69,85 +69,152 @@
   .wantedPaper>b{font-size:clamp(21px,6.8vw,29px)}
 }
 
-/* Recruiting hero: nationwide landmark map with Arizona highlighted. */
+/* Recruiting hero: waving flag, transparent map layer, then clean Join ADT type. */
 .joinHeroFlag{
   position:relative;
-  min-height:clamp(650px,55vw,760px);
+  min-height:clamp(690px,57vw,790px);
   display:flex;
   align-items:center;
   isolation:isolate;
-  background:#f2e5ce url('/join-adt-map-flag.webp') center/cover no-repeat;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 34% 74%,rgba(179,7,24,.24),transparent 28%),
+    linear-gradient(120deg,#031124 0%,#061a4d 48%,#031124 100%);
 }
-.joinHeroFlag:before{
+.joinFlagVideo,
+.joinHeroWash,
+.joinHeroMap{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.joinFlagVideo{
+  z-index:-4;
+  object-fit:cover;
+  opacity:.22;
+  filter:saturate(.72) contrast(.86) brightness(.58);
+  transform:scale(1.03);
+}
+.joinHeroWash{
+  z-index:-3;
+  background:
+    linear-gradient(90deg,rgba(3,17,36,.98) 0%,rgba(3,17,36,.74) 44%,rgba(3,17,36,.95) 100%),
+    linear-gradient(180deg,rgba(3,17,36,.78) 0%,rgba(3,17,36,.36) 42%,rgba(3,17,36,.96) 100%);
+}
+.joinHeroMap{
+  z-index:-2;
+  object-fit:cover;
+  object-position:55% center;
+  opacity:.5;
+  mix-blend-mode:screen;
+  filter:saturate(.75) contrast(.95) brightness(.82);
+}
+.joinHeroFlag:after{
   content:'';
   position:absolute;
   z-index:-1;
-  inset:0;
-  background:
-    linear-gradient(0deg,rgba(1,12,37,.86) 0%,rgba(1,12,37,.5) 24%,rgba(1,12,37,0) 52%),
-    linear-gradient(90deg,rgba(1,12,37,.18) 0%,rgba(1,12,37,.04) 44%,rgba(1,12,37,0) 72%);
+  inset:auto -8% 0 28%;
+  height:55%;
+  background:linear-gradient(90deg,transparent,rgba(179,7,24,.16),transparent);
+  filter:blur(42px);
 }
 .joinHeroFlag .joinHeroCopy{
-  width:100%;
-  padding:clamp(420px,36vw,500px) clamp(30px,6vw,96px) clamp(54px,6vw,76px);
+  position:relative;
+  z-index:1;
+  width:min(760px,calc(100% - 40px));
+  padding:clamp(72px,8vw,108px) 0 clamp(68px,7vw,92px);
+  margin-left:clamp(24px,7vw,96px);
+}
+.heroKicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:0 0 22px!important;
+  color:rgba(255,255,255,.82)!important;
+  font-size:13px!important;
+  line-height:1!important;
+  font-weight:900;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.heroKicker:before{
+  content:'';
+  display:block;
+  width:42px;
+  height:3px;
+  background:var(--red);
 }
 .flagHeadline{
-  position:absolute;
-  top:clamp(34px,4.5vw,66px);
-  left:50%;
-  transform:translateX(-50%);
-  width:min(74%,1160px);
-  aspect-ratio:1180/520;
-  margin:0;
+  position:relative;
+  width:auto;
+  aspect-ratio:auto;
+  margin:0 0 28px;
   display:flex;
   flex-direction:column;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
-  color:#061a4d;
-  text-align:center;
+  color:#fff;
+  text-align:left;
   text-transform:uppercase;
-  line-height:.77;
-  letter-spacing:-.075em;
-  text-shadow:0 8px 24px rgba(6,26,77,.2);
+  line-height:.82;
+  letter-spacing:0;
+  text-shadow:0 8px 28px rgba(0,0,0,.3);
 }
 .flagHeadline span{
   display:block;
-  font-size:clamp(112px,15vw,230px);
-  font-weight:900;
-  background:linear-gradient(180deg,#315f83 0%,#0b3158 48%,#03152f 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  -webkit-text-stroke:1.5px rgba(255,245,222,.85);
+  color:#fff;
+  font-size:clamp(80px,10vw,154px);
+  font-weight:950;
+  letter-spacing:0;
+  background:none;
+  -webkit-background-clip:initial;
+  background-clip:initial;
+  -webkit-text-stroke:0;
 }
 .flagHeadline strong{
   display:block;
-  margin-top:.16em;
-  color:#8f1624;
-  font-size:clamp(42px,5.5vw,84px);
-  font-weight:900;
-  letter-spacing:-.055em;
+  margin-top:.04em;
+  color:#fff;
+  font-size:clamp(92px,11vw,176px);
+  font-weight:950;
+  letter-spacing:0;
   white-space:nowrap;
-  -webkit-text-stroke:2px #fff5de;
-  paint-order:stroke fill;
-  text-shadow:0 4px 14px rgba(3,21,47,.28);
+  -webkit-text-stroke:0;
+  paint-order:normal;
+  text-shadow:0 8px 28px rgba(0,0,0,.36);
 }
-.heroPromise{margin:10px 0 12px!important;color:#fff;font-size:clamp(28px,2.8vw,42px)!important;font-weight:800;line-height:1.05!important;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
-.heroSupport{max-width:650px;margin-bottom:28px!important;color:#e7edf7!important;font-size:clamp(17px,1.7vw,21px)!important;line-height:1.5!important;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.heroPromise{margin:0 0 14px!important;color:#fff;font-size:clamp(28px,3vw,44px)!important;font-weight:850;line-height:1.05!important;letter-spacing:-.02em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.heroSupport{max-width:660px;margin-bottom:24px!important;color:#e7edf7!important;font-size:clamp(17px,1.55vw,21px)!important;line-height:1.52!important;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.heroAgentStatement{
+  max-width:720px;
+  margin:0 0 30px!important;
+  padding-left:20px;
+  border-left:5px solid var(--red);
+  color:#fff5de!important;
+  font-size:clamp(22px,2.2vw,33px)!important;
+  font-weight:900;
+  line-height:1.18!important;
+  letter-spacing:-.02em;
+  text-shadow:0 3px 16px rgba(0,0,0,.56);
+}
+.heroJoinButton{align-self:flex-start;box-shadow:0 18px 42px rgba(179,7,24,.3)}
 @media(max-width:850px){
-  .joinHeroFlag{min-height:690px;background-position:27% center;align-items:flex-end}
-  .joinHeroFlag:before{background:linear-gradient(180deg,rgba(1,12,37,.08) 20%,rgba(1,12,37,.82) 67%,rgba(1,12,37,.96) 100%)}
-  .joinHeroFlag .joinHeroCopy{width:100%;padding:390px 22px 54px}
-  .flagHeadline{top:72px;width:min(90%,700px)}
-  .flagHeadline span{font-size:clamp(100px,27vw,180px)}
-  .flagHeadline strong{font-size:clamp(32px,8.8vw,59px)}
-  .heroPromise{font-size:clamp(30px,8vw,42px)!important}
+  .joinHeroFlag{min-height:720px;align-items:flex-end}
+  .joinHeroWash{background:linear-gradient(180deg,rgba(3,17,36,.32) 0%,rgba(3,17,36,.82) 55%,rgba(3,17,36,.98) 100%)}
+  .joinHeroMap{object-position:39% center;opacity:.34}
+  .joinHeroFlag .joinHeroCopy{width:calc(100% - 36px);margin:0 auto;padding:300px 0 54px}
+  .flagHeadline span{font-size:clamp(72px,23vw,120px)}
+  .flagHeadline strong{font-size:clamp(82px,26vw,132px)}
+  .heroPromise{font-size:clamp(28px,8vw,42px)!important}
   .heroSupport{font-size:17px!important}
+  .heroAgentStatement{font-size:clamp(22px,6vw,30px)!important}
 }
 @media(max-width:460px){
-  .joinHeroFlag{min-height:700px;background-position:27% center}
-  .joinHeroFlag .joinHeroCopy{padding-top:360px}
-  .flagHeadline{top:95px;width:94%}
+  .joinHeroFlag{min-height:730px}
+  .joinHeroFlag .joinHeroCopy{padding-top:280px}
+  .heroKicker{font-size:11px!important;letter-spacing:.12em}
+  .heroKicker:before{width:30px}
 }
 
 /* Cosmetic folder tabs: each chapter is revealed by scrolling. */

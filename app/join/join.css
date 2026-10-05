@@ -257,13 +257,20 @@
   .heroKicker:before{width:30px}
 }
 
-/* Cosmetic folder tabs: each chapter is revealed by scrolling. */
+/* Chapter navigation stays above the scrolling folder stack. */
 .folderStack{padding:64px clamp(16px,4vw,64px) 100px;background:#e8edf2;isolation:isolate}
 .recruitFolder{--folder-surface:#fffaf0;position:sticky;top:calc(16px + var(--folder-index)*42px);z-index:calc(1 + var(--folder-index));max-width:1280px;margin:0 auto 64px;scroll-margin-top:calc(24px + var(--folder-index)*42px);filter:drop-shadow(0 -5px 14px rgba(6,26,77,.09))}
 .folderTone1{--folder-surface:#dce6ee}
 .folderTone2{--folder-surface:#f4f6f8}
 .folderTab{height:44px;display:flex;align-items:center;gap:16px;width:max-content;max-width:100%;min-width:240px;padding:0 28px;background:var(--folder-surface);border-radius:18px 28px 0 0;color:#061a4d;font-weight:850;font-size:16px;border:1px solid rgba(6,26,77,.12);border-bottom:0;position:relative}
 .folderTab span{font-size:12px;letter-spacing:.08em;color:#8f1624}
+.folderNav{position:sticky;top:0;z-index:20;display:flex;max-width:1280px;margin:0 auto;background:#e8edf2;overflow-x:auto;padding-top:8px}
+.folderNav .folderTab{--folder-surface:#fffaf0;flex:1 0 0;min-width:0;height:60px;padding:8px 10px;gap:6px;font-size:13px;text-decoration:none;line-height:1.2;border-radius:8px 8px 0 0}
+.folderNav .folderTone1{--folder-surface:#dce6ee}
+.folderNav .folderTone2{--folder-surface:#f4f6f8}
+.folderNav .folderTab:hover{color:#b30718;background:#fff}
+.folderNav .folderTab:focus-visible{outline:3px solid #b30718;outline-offset:-3px}
+.folderAnchor{scroll-margin-top:80px}
 .folderBody{background:var(--folder-surface);padding:clamp(30px,4.5vw,64px);border-radius:0 24px 24px 24px;border:1px solid rgba(6,26,77,.12);min-height:580px}
 .folderIntro{max-width:860px;margin-bottom:32px}
 .folderIntro h2{font-size:clamp(36px,4.3vw,64px);line-height:1.04;letter-spacing:-.045em;color:#061a4d;margin-bottom:24px}
@@ -321,4 +328,12 @@
  .folderIntro h2{font-size:36px}
  .folderBody .numbers{grid-template-columns:1fr 1fr}
  .folderBody .stageCard{min-height:270px}
+}
+
+.folderStack .recruitFolder{top:76px;scroll-margin-top:80px}
+@media(max-width:850px){
+  .folderNav .folderTab{flex:0 0 150px;min-width:150px}
+}
+@media(max-width:600px){
+  .folderStack .recruitFolder{top:auto}
 }

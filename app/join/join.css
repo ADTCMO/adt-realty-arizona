@@ -365,11 +365,24 @@
 .folderStack .recruitFolder{
   --folder-top:16px;
   top:min(var(--folder-top),calc(100dvh - var(--folder-height, 100dvh) - 32px));
-  margin-bottom:clamp(180px,40vh,420px);
+  margin-bottom:clamp(320px,70vh,760px);
 }
 .recruitFolder>.folderTab{position:sticky;top:var(--folder-top);z-index:2}
 @media(max-width:600px){
-  .folderStack .recruitFolder{--folder-top:8px;margin-bottom:clamp(140px,30vh,260px)}
+  .folderStack .recruitFolder{--folder-top:8px;margin-bottom:clamp(240px,55vh,480px)}
 }
 
 .recruitFolder>.folderBody{clip-path:inset(var(--folder-clip,0px) 0 0 0)}
+
+/* Blend the business-model artwork into its folder surface. */
+.agentPhoto{
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent),linear-gradient(to bottom,transparent,#000 12%,#000 82%,transparent);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent),linear-gradient(to bottom,transparent,#000 12%,#000 82%,transparent);
+  mask-composite:intersect;
+}
+.recruitFolder[aria-label="Business Model"]>.folderBody{border:0}
+.advantageBenefits{border-top:0}

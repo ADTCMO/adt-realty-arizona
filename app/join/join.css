@@ -69,14 +69,14 @@
   .wantedPaper>b{font-size:clamp(21px,6.8vw,29px)}
 }
 
-/* Recruiting hero: Arizona team artwork with a continuous waving flag title. */
+/* Recruiting hero: nationwide landmark map with Arizona highlighted. */
 .joinHeroFlag{
   position:relative;
   min-height:clamp(650px,55vw,760px);
   display:flex;
   align-items:center;
   isolation:isolate;
-  background:#e9eef2 url('/join-adt-team.webp') center/cover no-repeat;
+  background:#f2e5ce url('/join-adt-map.webp') center/cover no-repeat;
 }
 .joinHeroFlag:before{
   content:'';
@@ -84,8 +84,8 @@
   z-index:-1;
   inset:0;
   background:
-    linear-gradient(0deg,rgba(1,12,37,.82) 0%,rgba(1,12,37,.46) 24%,rgba(1,12,37,0) 52%),
-    linear-gradient(90deg,rgba(1,12,37,.3) 0%,rgba(1,12,37,.08) 44%,rgba(1,12,37,0) 72%);
+    linear-gradient(0deg,rgba(1,12,37,.86) 0%,rgba(1,12,37,.5) 24%,rgba(1,12,37,0) 52%),
+    linear-gradient(90deg,rgba(1,12,37,.18) 0%,rgba(1,12,37,.04) 44%,rgba(1,12,37,0) 72%);
 }
 .joinHeroFlag .joinHeroCopy{
   width:100%;
@@ -119,7 +119,7 @@
 .heroPromise{margin:10px 0 12px!important;color:#fff;font-size:clamp(28px,2.8vw,42px)!important;font-weight:800;line-height:1.05!important;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
 .heroSupport{max-width:650px;margin-bottom:28px!important;color:#e7edf7!important;font-size:clamp(17px,1.7vw,21px)!important;line-height:1.5!important;text-shadow:0 2px 12px rgba(0,0,0,.7)}
 @media(max-width:850px){
-  .joinHeroFlag{min-height:690px;background-position:66% center;align-items:flex-end}
+  .joinHeroFlag{min-height:690px;background-position:27% center;align-items:flex-end}
   .joinHeroFlag:before{background:linear-gradient(180deg,rgba(1,12,37,.08) 20%,rgba(1,12,37,.82) 67%,rgba(1,12,37,.96) 100%)}
   .joinHeroFlag .joinHeroCopy{width:100%;padding:390px 22px 54px}
   .flagHeadline{top:72px;width:min(90%,700px)}
@@ -127,7 +127,7 @@
   .heroSupport{font-size:17px!important}
 }
 @media(max-width:460px){
-  .joinHeroFlag{min-height:700px;background-position:69% center}
+  .joinHeroFlag{min-height:700px;background-position:27% center}
   .joinHeroFlag .joinHeroCopy{padding-top:360px}
   .flagHeadline{top:95px;width:94%}
 }

@@ -41,18 +41,10 @@ export default function JoinPage(){return <div className="joinPage">
       <svg viewBox="0 0 900 365" role="img" aria-hidden="true" preserveAspectRatio="xMinYMid meet">
         <defs>
           <pattern id="headlineFlag" patternUnits="userSpaceOnUse" width="900" height="365">
-            <image href="/american-flag.png" x="0" y="0" width="900" height="365" preserveAspectRatio="xMidYMid slice"/>
+            <image href="/flag-wave.webp" x="0" y="0" width="900" height="365" preserveAspectRatio="xMidYMid slice"/>
           </pattern>
-          <filter id="headlineWave" x="-12%" y="-18%" width="124%" height="136%" filterUnits="objectBoundingBox">
-            <feTurbulence type="fractalNoise" baseFrequency="0.007 0.024" numOctaves="1" seed="8" result="waveNoise">
-              <animate attributeName="baseFrequency" values="0.007 0.024;0.011 0.032;0.007 0.024" dur="4.8s" repeatCount="indefinite"/>
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="waveNoise" scale="10" xChannelSelector="R" yChannelSelector="B">
-              <animate attributeName="scale" values="7;13;7" dur="4.8s" repeatCount="indefinite"/>
-            </feDisplacementMap>
-          </filter>
         </defs>
-        <g className="flagTextSurface" fill="url(#headlineFlag)" filter="url(#headlineWave)">
+        <g className="flagTextSurface" fill="url(#headlineFlag)">
           <text x="7" y="218" className="flagJoinSvg">JOIN</text>
           <text x="7" y="350" className="flagAdtSvg">ADT REALTY</text>
         </g>

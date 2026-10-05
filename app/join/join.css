@@ -149,3 +149,69 @@
   .joinHeroFlag .joinHeroCopy{padding-top:360px}
   .flagHeadline{top:95px;width:94%}
 }
+
+/* Cosmetic folder tabs: each chapter is revealed by scrolling. */
+.folderStack{padding:64px clamp(16px,4vw,64px) 100px;background:#e8edf2;isolation:isolate}
+.recruitFolder{--folder-surface:#fffaf0;position:sticky;top:calc(16px + var(--folder-index)*42px);z-index:calc(1 + var(--folder-index));max-width:1280px;margin:0 auto 64px;scroll-margin-top:calc(24px + var(--folder-index)*42px);filter:drop-shadow(0 -5px 14px rgba(6,26,77,.09))}
+.folderTone1{--folder-surface:#dce6ee}
+.folderTone2{--folder-surface:#f4f6f8}
+.folderTab{height:44px;display:flex;align-items:center;gap:16px;width:max-content;max-width:100%;min-width:240px;padding:0 28px;background:var(--folder-surface);border-radius:18px 28px 0 0;color:#061a4d;font-weight:850;font-size:16px;border:1px solid rgba(6,26,77,.12);border-bottom:0;position:relative}
+.folderTab span{font-size:12px;letter-spacing:.08em;color:#8f1624}
+.folderBody{background:var(--folder-surface);padding:clamp(30px,4.5vw,64px);border-radius:0 24px 24px 24px;border:1px solid rgba(6,26,77,.12);min-height:580px}
+.folderIntro{max-width:860px;margin-bottom:32px}
+.folderIntro h2{font-size:clamp(36px,4.3vw,64px);line-height:1.04;letter-spacing:-.045em;color:#061a4d;margin-bottom:24px}
+.folderIntro h2 em{font-style:normal;color:#8f1624}
+.folderIntro>p:not(.eyebrow){font-size:18px;line-height:1.65;color:#455570;max-width:800px}
+.folderSplit{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.folderSplit .folderIntro{margin-bottom:0}
+.folderArt{display:block;width:100%;height:auto;max-height:360px;object-fit:contain;border-radius:16px}
+.trainingArt{mix-blend-mode:multiply}
+.folderValues{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:36px 0}
+.folderValues article{padding-top:20px;border-top:2px solid #8f1624}
+.folderValues article>span{font-weight:800;color:#8f1624;font-size:14px}
+.folderValues h3{font-size:22px;line-height:1.2;color:#061a4d;margin:12px 0}
+.folderValues p{color:#455570;line-height:1.6}
+.folderMission{display:grid;grid-template-columns:180px 1fr;gap:24px;padding-top:24px;border-top:1px solid #c9c9c0}
+.folderMission h3{color:#8f1624;font-size:22px}
+.folderMission p{font-size:18px;line-height:1.6;color:#455570;margin-bottom:0}
+.modelBenefits{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.modelBenefits article{padding:22px 0;border-top:2px solid #8f1624}
+.modelBenefits h3{color:#061a4d;font-size:22px;line-height:1.2}
+.modelBenefits p{color:#455570;line-height:1.6}
+.folderBody .numbers{border-radius:12px;overflow:hidden}
+.trainingTopics{display:flex;flex-wrap:wrap;gap:12px 24px;border-top:1px solid #bfcbd5;padding-top:24px;margin-top:32px}
+.trainingTopics span{font-size:16px;font-weight:750;color:#061a4d}
+.systemsArt{max-height:none;border-radius:16px}
+.toolCaptions{display:grid;grid-template-columns:1fr 1fr;gap:32px;color:#455570;line-height:1.6}
+.toolCaptions b{display:block;color:#061a4d;font-size:20px;margin-bottom:6px}
+.marketingVisual{background:#061a4d;border-radius:18px;overflow:hidden;box-shadow:0 22px 44px rgba(6,26,77,.16)}
+.marketingVisual img{object-fit:cover;height:210px;border-radius:0}
+.marketingVisual>div{padding:28px;color:#fff}
+.marketingVisual span{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#c7d6e7}
+.marketingVisual h3{font-size:32px;margin:12px 0;line-height:1.12}
+.marketingVisual p{margin-bottom:0;color:#d6e1ed;line-height:1.5}
+.folderBody .stageCard{min-height:270px;border-radius:14px}
+.folderBody .stageCard h3{font-size:26px}
+.folderBody .leaderGrid{background:transparent;gap:20px}
+.folderBody .leaderGrid article{border-radius:14px}
+.folderBody .leaderGrid blockquote{font-size:19px}
+@media(max-width:850px){
+ .folderStack{padding:40px 16px 56px}
+ .recruitFolder{top:calc(8px + var(--folder-index)*34px);scroll-margin-top:calc(16px + var(--folder-index)*34px);margin-bottom:44px}
+ .folderTab{height:36px;padding:0 20px;min-width:205px;font-size:14px}
+ .folderBody{padding:28px;min-height:0}
+ .folderSplit{grid-template-columns:1fr;gap:26px}
+ .folderValues{gap:20px}
+ .folderIntro h2{font-size:40px}
+ .folderIntro>p:not(.eyebrow){font-size:17px}
+}
+@media(max-width:600px){
+ .recruitFolder{position:relative;top:auto;scroll-margin-top:20px;margin-bottom:30px}
+ .folderBody{padding:26px 22px;border-radius:0 18px 18px 18px}
+ .folderValues,.folderMission,.toolCaptions,.modelBenefits{grid-template-columns:1fr;gap:18px}
+ .folderValues{margin:24px 0}
+ .folderMission h3{margin-bottom:0}
+ .folderIntro h2{font-size:36px}
+ .folderBody .numbers{grid-template-columns:1fr 1fr}
+ .folderBody .stageCard{min-height:270px}
+}

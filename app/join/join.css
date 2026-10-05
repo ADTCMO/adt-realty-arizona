@@ -76,7 +76,7 @@
   display:flex;
   align-items:center;
   isolation:isolate;
-  background:#f2e5ce url('/join-adt-map.webp') center/cover no-repeat;
+  background:#f2e5ce url('/join-adt-map-flag.webp') center/cover no-repeat;
 }
 .joinHeroFlag:before{
   content:'';
@@ -108,10 +108,27 @@
   text-transform:uppercase;
   line-height:.77;
   letter-spacing:-.075em;
-  text-shadow:0 2px 0 rgba(255,255,255,.7),0 8px 24px rgba(6,26,77,.16);
+  text-shadow:0 8px 24px rgba(6,26,77,.2);
 }
-.flagHeadline span{display:block;font-size:clamp(112px,15vw,230px);font-weight:900}
-.flagHeadline strong{display:block;margin-top:.16em;color:#a5081b;font-size:clamp(48px,6.7vw,102px);font-weight:900;letter-spacing:-.06em}
+.flagHeadline span{
+  display:block;
+  font-size:clamp(112px,15vw,230px);
+  font-weight:900;
+  background:linear-gradient(180deg,#315f83 0%,#0b3158 48%,#03152f 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,245,222,.85);
+}
+.flagHeadline strong{
+  display:block;
+  margin-top:.16em;
+  color:#8f1624;
+  font-size:clamp(48px,6.7vw,102px);
+  font-weight:900;
+  letter-spacing:-.06em;
+  -webkit-text-stroke:1px rgba(255,245,222,.76);
+}
 .heroPromise{margin:10px 0 12px!important;color:#fff;font-size:clamp(28px,2.8vw,42px)!important;font-weight:800;line-height:1.05!important;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
 .heroSupport{max-width:650px;margin-bottom:28px!important;color:#e7edf7!important;font-size:clamp(17px,1.7vw,21px)!important;line-height:1.5!important;text-shadow:0 2px 12px rgba(0,0,0,.7)}
 @media(max-width:850px){

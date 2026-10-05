@@ -111,6 +111,34 @@
 .joinHeroFlag:after{
   content:none;
 }
+.joinHeroFlag .joinMapTitle{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+  padding:16px;
+  color:#fff;
+  text-align:center;
+  text-transform:uppercase;
+  font-size:96px;
+  font-weight:950;
+  line-height:1;
+  letter-spacing:0;
+  text-shadow:0 2px 5px rgba(3,17,36,.85),0 6px 22px rgba(3,17,36,.55);
+}
+.joinMapTitle strong{display:block;margin-top:10px;font-size:40px;letter-spacing:0}
+@media(max-width:850px){
+  .joinHeroFlag .joinMapTitle{font-size:64px}
+  .joinMapTitle strong{font-size:28px}
+}
+@media(max-width:460px){
+  .joinHeroFlag .joinMapTitle{font-size:40px}
+  .joinMapTitle strong{margin-top:6px;font-size:20px}
+}
 .joinHeroFlag .joinHeroCopy{
   position:relative;
   z-index:1;

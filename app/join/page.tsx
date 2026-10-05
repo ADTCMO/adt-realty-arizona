@@ -12,12 +12,13 @@ export const metadata: Metadata = {
 const chapters = [
   ["values", "ADT Realty"], ["model", "Business Model"],
   ["training", "Training"], ["systems", "Tools & Systems"],
-  ["marketing", "Marketing"], ["arizona", "Arizona Opportunities"],
+  ["marketing", "Marketing"], ["ace", "ACE System"],
+  ["community-heroes", "Community Heroes"],
   ["career-paths", "Career Paths"], ["leaders", "Leadership"],
 ];
 function Folder({label,index,id,children}: {label:string;index:number;id?:string;children:ReactNode}) {
   return <><div id={id ?? chapters[index][0]} className="folderAnchor" />
-  <section aria-label={label} className={`recruitFolder folderTone${index%3}`} style={{"--folder-index":index} as CSSProperties}>
+  <section aria-label={label} className={`recruitFolder folderTone${index%3}`} style={{"--folder-index":index,"--folder-count":chapters.length} as CSSProperties}>
     <a className="folderTab" href={`#${id ?? chapters[index][0]}`} title={label}><span>{String(index+1).padStart(2,"0")}</span><b>{label}</b></a>
     <div className="folderBody">{children}</div>
   </section></>;
@@ -55,30 +56,41 @@ export default function JoinPage(){return <div className="joinPage">
  <div className="folderMission"><h3>Our Mission</h3><p>Help people live a better life through real estate by encouraging innovation, collaboration and integrity in our daily practices.</p></div>
 </Folder>
 <Folder label="Business Model" index={1} id="model">
- <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">The ADT Advantage</p><h2>We work<br/><em>for our agents.</em></h2><p>We don’t hire agents to work for us. Agents join ADT Realty so we can work for them.</p><p>Every system, training resource and leadership initiative is designed with one goal: helping agents build successful businesses and better lives through real estate.</p></div><div className="modelBenefits"><article><h3>Cloud-based brokerage</h3><p>Professional support without the limits of office walls.</p></article><article><h3>Training & coaching</h3><p>Practical guidance to turn knowledge into production.</p></article><article><h3>Revenue share</h3><p>Opportunity to earn beyond your own transactions.</p></article><article><h3>Leadership opportunities</h3><p>Help others grow while building your own future.</p></article></div></div>
- <div className="numbers"><div><b>80/20</b><span>Agent-focused split</span></div><div><b>$15K</b><span>Company-dollar cap</span></div><div><b>$85</b><span>Monthly technology fee</span></div><div><b>$495</b><span>Transaction fee</span></div></div>
+ <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">The ADT Advantage</p><h2>We work<br/><em>for our agents.</em></h2><p>We don’t hire agents to work for us. Agents join ADT Realty so we can work for them.</p><p>Every system, training resource and leadership initiative is designed with one goal: helping agents build successful businesses and better lives through real estate.</p></div><div className="agentPhoto" role="img" aria-label="ADT agents collaborating at a desk" /></div>
+ <div className="advantageBenefits">{[
+ ["Cloud-based brokerage","Professional support without the limits of office walls."],
+ ["Training & coaching","Practical guidance to turn knowledge into production."],
+ ["Revenue share","Opportunity to earn beyond your own transactions."],
+ ["Leadership opportunities","Help others grow while building your own future."],
+ ["Additional income streams","Explore opportunities to grow beyond personal production."]
+ ].map(([title,copy],i)=><article key={title}><span className={`advantageIcon advantageIcon${i}`} aria-hidden="true"/><h3>{title}</h3><p>{copy}</p></article>)}</div>
 </Folder>
 <Folder label="Training" index={2}>
- <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">Real training. Real coaching.</p><h2>Training that<br/><em>builds businesses.</em></h2><p>Develop the knowledge, skills and confidence to build a successful real estate business—and the life you want.</p><p>From your first consultation to your next stage of leadership, our focus is practical: learn it, use it and grow.</p></div><img className="folderArt trainingArt" src="/join-training-art.webp" alt="Training platform illustrated on a laptop and phone" loading="lazy"/></div>
+ <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">Real training. Real coaching.</p><h2>Training that<br/><em>builds businesses.</em></h2><p>Develop the knowledge, skills and confidence to build a successful real estate business—and the life you want.</p><p>From your first consultation to your next stage of leadership, our focus is practical: learn it, use it and grow.</p></div><div className="trainingStudio" role="img" aria-label="Illustration of ADT training topics on a laptop"><div className="trainingScreen"><div className="trainingScreenTop"><span>ADT TRAINING</span><i>LEARN · APPLY · GROW</i></div><div className="trainingLesson"><span className="playMark">▶</span><div><small>BUILD YOUR BUSINESS</small><strong>Your next chapter<br/>starts with learning.</strong></div></div><div className="trainingModules">{["Business planning","Lead generation","Client conversations","Leadership"].map((x,i)=><div key={x}><b>0{i+1}</b><span>{x}</span></div>)}</div></div><div className="trainingBase"/><div className="trainingNote">Practical skills.<br/><b>Lasting confidence.</b></div></div></div>
  <div className="trainingTopics">{["Live training","Learning resources","Coaching & support","Lead generation","Business planning","Leadership development"].map(x=><span key={x}>{x}</span>)}</div>
 </Folder>
 <Folder label="Tools & Systems" index={3}>
  <div className="folderIntro"><p className="eyebrow">Connected resources</p><h2>Technology that<br/><em>powers your business.</em></h2><p>Organize leads, strengthen follow-up and manage the work behind each transaction—with systems that help you spend more time building relationships.</p></div>
- <img className="folderArt systemsArt" src="/join-systems-art.webp" alt="Pitch-deck illustration of CRM and transaction-management tools" loading="lazy"/>
- <div className="toolCaptions"><p><b>Lead management & CRM</b>Lead tracking, follow-up, campaigns and pipeline organization.</p><p><b>Transaction resources</b>Contracts, signatures, document storage and transaction tracking.</p></div>
+ <div className="systemsShowcase"><div className="systemCrop fubCrop" role="img" aria-label="Follow Up Boss lead management and CRM artwork"/><div className="systemCrop dotloopCrop" role="img" aria-label="Dotloop transaction management artwork"/></div>
+ <div className="toolCaptions"><p><b>Follow Up Boss · Lead management & CRM</b>Lead tracking, follow-up, campaigns and pipeline organization.</p><p><b>Dotloop · Transaction resources</b>Contracts, signatures, document storage and transaction tracking.</p></div>
 </Folder>
 <Folder label="Marketing" index={4}>
- <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">Stay visible. Start conversations.</p><h2>Your marketing.<br/><em>Working for you.</em></h2><p>Automated marketing and a personal website give buyers and sellers useful tools and knowledge—not just another online business card.</p><p>Share ACE Buyer and seller resources, property pages and professional content that create natural opportunities to begin a conversation.</p></div><div className="marketingVisual"><img className="folderArt" src="/buyer-home.jpg" alt="Arizona home" loading="lazy"/><div><span>Your personal website</span><h3>Useful tools.<br/>Stronger relationships.</h3><p>Buyer resources · Seller education · Property marketing</p></div></div></div>
- <div className="trainingTopics">{["Automated campaigns","Personal agent website","Property marketing","Social content","Buyer presentations","Listing presentations"].map(x=><span key={x}>{x}</span>)}</div>
+ <div className="folderIntro"><p className="eyebrow">Your brand. Our support.</p><h2>Marketing that<br/><em>helps you stand out.</em></h2><p>Build your brand with professional marketing materials, ready-to-use content and a team that supports your business. From your next listing to your next client conversation, put your best foot forward.</p></div>
+ <div className="marketingShowcase"><div className="marketingLaptop" role="img" aria-label="Laptop showing ADT branded marketing"/><div className="marketingSamples" role="img" aria-label="Examples of Just Listed, market update, ACE Chronicles, FSBO and recruiting marketing materials"/></div>
+ <div className="trainingTopics">{["Social media marketing","Professional branding","Monthly mailers","Recruiting & growth materials","Marketing team support"].map(x=><span key={x}>{x}</span>)}</div>
 </Folder>
-<Folder label="Arizona Opportunities" index={5}>
- <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">An Arizona advantage</p><h2>More signs.<br/><em>More conversations.</em></h2><p>ADT Realty Arizona offers seller-lead opportunities designed to help agents win more listings and build visibility in their communities.</p><p>A listing can open the door to buyer inquiries, neighborhood conversations, future sellers and referrals. We pair those opportunities with training and marketing to help you build lasting momentum.</p></div><img className="folderArt opportunityArt" src="/adt-seller-yard.png" alt="Arizona real estate yard-sign artwork" loading="lazy"/></div>
+<Folder label="ACE System" index={5} id="ace">
+ <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">Built for your Arizona business</p><h2>More than a website.<br/><em>A system for growth.</em></h2><p>The ACE system brings company-provided leads, a personal website and automated marketing together to help you attract buyers and sellers—and turn opportunities into relationships.</p><p>Your website gives people a reason to visit and engage: useful calculators, buyer and seller planning tools, and resources that help them take their next step.</p></div><div className="aceVisual"><div className="aceBrand">ACE<span>YOUR BUSINESS. CONNECTED.</span></div><div className="aceJourney"><span>Attract</span><b>→</b><span>Connect</span><b>→</b><span>Grow</span></div><div className="aceResources"><a href="https://acebuyer.adtrealtyaz.com">Buyer tools<span>Payments · Affordability · Savings ↗</span></a><a href="/">Seller resources<span>Home value · Planning · Next steps ↗</span></a></div></div></div>
+ <div className="aceBenefits"><article><b>Company-provided leads</b><p>More opportunities to start conversations with buyers and sellers.</p></article><article><b>Your personal website</b><p>A useful destination designed to attract and engage potential clients.</p></article><article><b>Automated marketing</b><p>Stay visible and keep your business in front of potential clients.</p></article></div>
 </Folder>
-<Folder label="Career Paths" index={6} id="career-paths">
+<Folder label="Community Heroes" index={6} id="community-heroes">
+ <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">ADT Realty Community Heroes</p><h2>A chance<br/><em>to give back.</em></h2><p>Serve the people who serve our communities. Community Heroes gives our agents a meaningful way to thank military members, veterans, first responders, healthcare professionals and educators.</p><p>Build relationships rooted in gratitude, help heroes take their next step in real estate, and make a difference close to home.</p><a className="joinButton" href="/hero">Explore Community Heroes</a></div><img className="heroesArt" src="/community-heroes-service-bg.png" alt="Military, emergency service, healthcare and education professionals together in an Arizona community" loading="lazy"/></div>
+</Folder>
+<Folder label="Career Paths" index={7} id="career-paths">
  <div className="folderIntro"><p className="eyebrow">Build at every stage</p><h2>Your next step.<br/><em>Your kind of growth.</em></h2><p>Choose the career guide that reflects where you are today and what you want to build next.</p></div>
  <div className="stageGrid">{stages.map(([slug,title,img,copy])=><a href={`/join/${slug}`} className="stageCard" key={slug}><img src={img} alt="" loading="lazy"/><div><h3>{title}</h3><p>{copy}</p><b>View the career guide</b></div></a>)}</div>
 </Folder>
-<Folder label="Leadership" index={7} id="leaders">
+<Folder label="Leadership" index={8} id="leaders">
  <div className="folderIntro"><p className="eyebrow">Real people. Real growth.</p><h2>Hear from<br/><em>our leaders.</em></h2><p>There are plenty of opportunities to grow: increase production, mentor agents, become an area leader or help develop an entire market.</p></div>
  <div className="leaderGrid">{leaders.map(([n,r,q])=><article key={n}><blockquote>“{q}”</blockquote><h3>{n}</h3><p>{r}</p></article>)}</div>
 </Folder>

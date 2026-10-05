@@ -41,12 +41,6 @@ export default function JoinPage(){return <div className="joinPage">
       <video className="flagHeadlineVideo" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
         <source src="/flag-wave.mp4" type="video/mp4"/>
       </video>
-      <svg className="flagHeadlineOutline" viewBox="0 0 900 365" aria-hidden="true" preserveAspectRatio="xMinYMid meet">
-        <g fill="none">
-          <text x="10" y="218" textLength="880" lengthAdjust="spacingAndGlyphs" className="flagJoinSvg">JOIN</text>
-          <text x="10" y="350" textLength="880" lengthAdjust="spacingAndGlyphs" className="flagAdtSvg">ADT REALTY</text>
-        </g>
-      </svg>
     </h1>
     <p className="heroPromise">Build a Business for Life</p>
     <p className="heroSupport">Practical training, proven systems, modern marketing and people committed to helping you succeed.</p>

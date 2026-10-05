@@ -43,14 +43,13 @@ export default function JoinPage(){return <div className="joinPage">
       </video>
       <svg className="flagHeadlineOutline" viewBox="0 0 900 365" aria-hidden="true" preserveAspectRatio="xMinYMid meet">
         <g fill="none">
-          <text x="7" y="218" className="flagJoinSvg">JOIN</text>
-          <text x="7" y="350" className="flagAdtSvg">ADT REALTY</text>
+          <text x="10" y="218" textLength="880" lengthAdjust="spacingAndGlyphs" className="flagJoinSvg">JOIN</text>
+          <text x="10" y="350" textLength="880" lengthAdjust="spacingAndGlyphs" className="flagAdtSvg">ADT REALTY</text>
         </g>
       </svg>
     </h1>
     <p className="heroPromise">Build a Business for Life</p>
     <p className="heroSupport">Practical training, proven systems, modern marketing and people committed to helping you succeed.</p>
-    <a className="joinButton" href="#values">Explore the Opportunity</a>
   </div>
 </section>
 <section id="values" className="values"><div><b>Helping Others</b><span>Put people first and create opportunity.</span></div><div><b>Do the Right Thing. Every Time.</b><span>Lead with integrity in every decision.</span></div><div><b>Build Relationships</b><span>Connect, collaborate and grow together.</span></div></section>

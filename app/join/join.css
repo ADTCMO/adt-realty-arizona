@@ -86,14 +86,17 @@
   background:linear-gradient(90deg,rgba(1,12,37,.64) 0%,rgba(1,12,37,.28) 48%,rgba(1,12,37,.02) 72%);
 }
 .joinHeroFlag .joinHeroCopy{
-  width:min(60%,920px);
-  padding:clamp(90px,10vw,150px) clamp(30px,6vw,96px);
+  width:100%;
+  padding:clamp(410px,42vw,510px) clamp(30px,6vw,96px) clamp(72px,8vw,110px);
 }
 .flagHeadline{
-  position:relative;
-  width:min(100%,820px);
+  position:absolute;
+  top:clamp(80px,9vw,130px);
+  left:50%;
+  transform:translateX(-50%);
+  width:40%;
   aspect-ratio:900/365;
-  margin:0 0 24px;
+  margin:0;
   line-height:0;
 }
 .flagHeadlineVideo{
@@ -102,8 +105,8 @@
   width:100%;
   height:100%;
   object-fit:cover;
-  -webkit-mask:url('/join-headline-mask.svg?v=2') 0 0/100% 100% no-repeat;
-  mask:url('/join-headline-mask.svg?v=2') 0 0/100% 100% no-repeat;
+  -webkit-mask:url('/join-headline-mask.svg?v=3') 0 0/100% 100% no-repeat;
+  mask:url('/join-headline-mask.svg?v=3') 0 0/100% 100% no-repeat;
   filter:drop-shadow(0 5px 3px rgba(0,0,0,.5));
 }
 .flagHeadlineOutline{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 4px 2px rgba(0,0,0,.45))}
@@ -120,13 +123,14 @@
 @media(max-width:850px){
   .joinHeroFlag{min-height:690px;background-position:62% center;align-items:flex-end}
   .joinHeroFlag:before{background:linear-gradient(180deg,rgba(1,12,37,.08) 20%,rgba(1,12,37,.82) 67%,rgba(1,12,37,.96) 100%)}
-  .joinHeroFlag .joinHeroCopy{width:100%;padding:250px 22px 54px}
-  .flagHeadline{margin-bottom:20px}
+  .joinHeroFlag .joinHeroCopy{width:100%;padding:390px 22px 54px}
+  .flagHeadline{top:90px;width:min(78%,620px)}
   .heroPromise{font-size:clamp(30px,8vw,42px)!important}
   .heroSupport{font-size:17px!important}
 }
 @media(max-width:460px){
   .joinHeroFlag{min-height:700px;background-position:64% center}
-  .joinHeroFlag .joinHeroCopy{padding-top:300px}
+  .joinHeroFlag .joinHeroCopy{padding-top:360px}
+  .flagHeadline{top:105px;width:88%}
 }
 @media(prefers-reduced-motion:reduce){.flagHeadlineVideo{filter:none}}

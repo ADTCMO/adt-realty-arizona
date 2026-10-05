@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 365">
   <g fill="white" font-family="Arial Black, Arial, sans-serif" font-weight="900">
-    <text x="7" y="218" font-size="244" letter-spacing="-15">JOIN</text>
-    <text x="7" y="350" font-size="111" letter-spacing="-5">ADT REALTY</text>
+    <text x="10" y="218" font-size="244" textLength="880" lengthAdjust="spacingAndGlyphs">JOIN</text>
+    <text x="10" y="350" font-size="111" textLength="880" lengthAdjust="spacingAndGlyphs">ADT REALTY</text>
   </g>
 </svg>

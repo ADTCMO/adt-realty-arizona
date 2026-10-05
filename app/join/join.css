@@ -128,6 +128,8 @@
   font-weight:900;
   letter-spacing:-.055em;
   white-space:nowrap;
+  -webkit-text-stroke:2px #fff5de;
+  paint-order:stroke fill;
   text-shadow:0 4px 14px rgba(3,21,47,.28);
 }
 .heroPromise{margin:10px 0 12px!important;color:#fff;font-size:clamp(28px,2.8vw,42px)!important;font-weight:800;line-height:1.05!important;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.55)}

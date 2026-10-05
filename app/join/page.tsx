@@ -37,10 +37,9 @@ export default function JoinPage(){return <div className="joinPage">
 <main>
 <section className="joinHero joinHeroFlag">
   <div className="joinHeroCopy">
-    <h1 className="flagHeadline" aria-label="Join ADT Realty">
-      <video className="flagHeadlineVideo" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
-        <source src="/flag-wave.mp4" type="video/mp4"/>
-      </video>
+    <h1 className="flagHeadline">
+      <span>Join</span>
+      <strong>ADT Realty</strong>
     </h1>
     <p className="heroPromise">Build a Business for Life</p>
     <p className="heroSupport">Practical training, proven systems, modern marketing and people committed to helping you succeed.</p>

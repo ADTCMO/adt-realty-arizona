@@ -99,23 +99,19 @@
   width:min(74%,1160px);
   aspect-ratio:1180/520;
   margin:0;
-  line-height:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#061a4d;
+  text-align:center;
+  text-transform:uppercase;
+  line-height:.77;
+  letter-spacing:-.075em;
+  text-shadow:0 2px 0 rgba(255,255,255,.7),0 8px 24px rgba(6,26,77,.16);
 }
-.flagHeadlineVideo{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  -webkit-mask:url('/join-headline-mask.svg?v=11') 0 0/100% 100% no-repeat;
-  mask:url('/join-headline-mask.svg?v=11') 0 0/100% 100% no-repeat;
-  filter:
-    drop-shadow(1px 0 rgba(255,255,255,.72))
-    drop-shadow(-1px 0 rgba(255,255,255,.72))
-    drop-shadow(0 1px rgba(255,255,255,.72))
-    drop-shadow(0 -1px rgba(255,255,255,.72))
-    drop-shadow(0 5px 3px rgba(0,0,0,.5));
-}
+.flagHeadline span{display:block;font-size:clamp(112px,15vw,230px);font-weight:900}
+.flagHeadline strong{display:block;margin-top:.16em;color:#a5081b;font-size:clamp(48px,6.7vw,102px);font-weight:900;letter-spacing:-.06em}
 .heroPromise{margin:10px 0 12px!important;color:#fff;font-size:clamp(28px,2.8vw,42px)!important;font-weight:800;line-height:1.05!important;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
 .heroSupport{max-width:650px;margin-bottom:28px!important;color:#e7edf7!important;font-size:clamp(17px,1.7vw,21px)!important;line-height:1.5!important;text-shadow:0 2px 12px rgba(0,0,0,.7)}
 @media(max-width:850px){
@@ -123,6 +119,8 @@
   .joinHeroFlag:before{background:linear-gradient(180deg,rgba(1,12,37,.08) 20%,rgba(1,12,37,.82) 67%,rgba(1,12,37,.96) 100%)}
   .joinHeroFlag .joinHeroCopy{width:100%;padding:390px 22px 54px}
   .flagHeadline{top:72px;width:min(90%,700px)}
+  .flagHeadline span{font-size:clamp(100px,27vw,180px)}
+  .flagHeadline strong{font-size:clamp(43px,12vw,78px)}
   .heroPromise{font-size:clamp(30px,8vw,42px)!important}
   .heroSupport{font-size:17px!important}
 }
@@ -131,4 +129,3 @@
   .joinHeroFlag .joinHeroCopy{padding-top:360px}
   .flagHeadline{top:95px;width:94%}
 }
-@media(prefers-reduced-motion:reduce){.flagHeadlineVideo{filter:none}}

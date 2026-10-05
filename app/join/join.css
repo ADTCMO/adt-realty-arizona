@@ -87,14 +87,14 @@
 }
 .joinHeroFlag .joinHeroCopy{
   width:100%;
-  padding:clamp(410px,42vw,510px) clamp(30px,6vw,96px) clamp(72px,8vw,110px);
+  padding:clamp(475px,42vw,560px) clamp(30px,6vw,96px) clamp(60px,7vw,92px);
 }
 .flagHeadline{
   position:absolute;
-  top:clamp(80px,9vw,130px);
+  top:clamp(34px,4.5vw,66px);
   left:50%;
   transform:translateX(-50%);
-  width:40%;
+  width:min(62%,1000px);
   aspect-ratio:900/455;
   margin:0;
   line-height:0;
@@ -105,23 +105,23 @@
   width:100%;
   height:100%;
   object-fit:cover;
-  -webkit-mask:url('/join-headline-mask.svg?v=5') 0 0/100% 100% no-repeat;
-  mask:url('/join-headline-mask.svg?v=5') 0 0/100% 100% no-repeat;
+  -webkit-mask:url('/join-headline-mask.svg?v=6') 0 0/100% 100% no-repeat;
+  mask:url('/join-headline-mask.svg?v=6') 0 0/100% 100% no-repeat;
   filter:drop-shadow(0 5px 3px rgba(0,0,0,.5));
 }
-.heroPromise{margin:10px 0 14px!important;color:#fff;font-size:clamp(31px,3.6vw,56px)!important;font-weight:800;line-height:1.02!important;letter-spacing:-.035em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.heroPromise{margin:10px 0 12px!important;color:#fff;font-size:clamp(28px,2.8vw,42px)!important;font-weight:800;line-height:1.05!important;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
 .heroSupport{max-width:650px;margin-bottom:28px!important;color:#e7edf7!important;font-size:clamp(17px,1.7vw,21px)!important;line-height:1.5!important;text-shadow:0 2px 12px rgba(0,0,0,.7)}
 @media(max-width:850px){
   .joinHeroFlag{min-height:690px;background-position:62% center;align-items:flex-end}
   .joinHeroFlag:before{background:linear-gradient(180deg,rgba(1,12,37,.08) 20%,rgba(1,12,37,.82) 67%,rgba(1,12,37,.96) 100%)}
   .joinHeroFlag .joinHeroCopy{width:100%;padding:390px 22px 54px}
-  .flagHeadline{top:90px;width:min(78%,620px)}
+  .flagHeadline{top:72px;width:min(90%,700px)}
   .heroPromise{font-size:clamp(30px,8vw,42px)!important}
   .heroSupport{font-size:17px!important}
 }
 @media(max-width:460px){
   .joinHeroFlag{min-height:700px;background-position:64% center}
   .joinHeroFlag .joinHeroCopy{padding-top:360px}
-  .flagHeadline{top:105px;width:88%}
+  .flagHeadline{top:95px;width:94%}
 }
 @media(prefers-reduced-motion:reduce){.flagHeadlineVideo{filter:none}}

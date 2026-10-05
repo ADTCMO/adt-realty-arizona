@@ -91,7 +91,7 @@
   z-index:-4;
   object-fit:cover;
   opacity:1;
-  filter:none;
+  filter:grayscale(1);
 }
 .joinHeroWash{
   display:none;
@@ -104,7 +104,7 @@
   max-height:88%;
   object-fit:contain;
   object-position:center;
-  opacity:1;
+  opacity:.8;
   mix-blend-mode:normal;
   filter:none;
 }

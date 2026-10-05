@@ -330,10 +330,16 @@
  .folderBody .stageCard{min-height:270px}
 }
 
-.folderStack .recruitFolder{top:76px;scroll-margin-top:80px}
-@media(max-width:850px){
-  .folderNav .folderTab{flex:0 0 150px;min-width:150px}
-}
+.folderStack .recruitFolder{position:sticky;top:16px;scroll-margin-top:16px;pointer-events:none}
+.recruitFolder>.folderTab{pointer-events:auto;width:12.5%;min-width:0;margin-left:calc(var(--folder-index)*12.5%);height:60px;padding:8px 10px;gap:6px;font-size:13px;line-height:1.2;text-decoration:none;border-radius:16px 22px 0 0}
+.recruitFolder>.folderTab b{font-weight:850}
+.recruitFolder>.folderTab:hover{color:#b30718}
+.recruitFolder>.folderTab:focus-visible{outline:3px solid #b30718;outline-offset:-3px}
+.recruitFolder>.folderBody{pointer-events:auto}
+.folderAnchor{scroll-margin-top:16px}
 @media(max-width:600px){
-  .folderStack .recruitFolder{top:auto}
+  .folderStack .recruitFolder{top:8px}
+  .recruitFolder>.folderTab{height:42px;padding:6px 4px;justify-content:center;border-radius:10px 14px 0 0}
+  .recruitFolder>.folderTab b{display:none}
+  .folderAnchor{scroll-margin-top:8px}
 }

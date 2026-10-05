@@ -35,7 +35,22 @@ const leaders=[
 export default function JoinPage(){return <div className="joinPage">
 <header className="joinTop"><a href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
 <main>
-<section className="joinHero"><div className="joinHeroCopy"><p className="eyebrow">Join ADT Realty Arizona</p><h1>Where Real Estate <em>Careers Grow.</em></h1><p>Build a stronger real estate business with practical training, proven systems, modern marketing and people committed to helping you succeed.</p><a className="joinButton" href="#values">Explore the Opportunity</a></div><div className="heroArt"><img src="/career-productive.jpg" alt="Real estate professionals building their businesses"/></div></section>
+<section className="joinHero joinHeroFlag">
+  <svg className="flagFilter" aria-hidden="true" focusable="false">
+    <filter id="flag-wave" x="-10%" y="-15%" width="120%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.025" numOctaves="1" seed="7" result="noise">
+        <animate attributeName="baseFrequency" dur="5s" values="0.006 0.025;0.009 0.032;0.006 0.025" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+  </svg>
+  <div className="joinHeroCopy">
+    <h1 className="flagHeadline" aria-label="Join ADT Realty"><span className="flagJoin">JOIN</span><span className="flagAdt">ADT REALTY</span></h1>
+    <p className="heroPromise">Build a Business for Life</p>
+    <p className="heroSupport">Practical training, proven systems, modern marketing and people committed to helping you succeed.</p>
+    <a className="joinButton" href="#values">Explore the Opportunity</a>
+  </div>
+</section>
 <section id="values" className="values"><div><b>Helping Others</b><span>Put people first and create opportunity.</span></div><div><b>Do the Right Thing. Every Time.</b><span>Lead with integrity in every decision.</span></div><div><b>Build Relationships</b><span>Connect, collaborate and grow together.</span></div></section>
 <section className="mission"><p>Our Mission</p><h2>Help more than <strong>5,000 people</strong> live a better life through real estate.</h2><span>We encourage innovation, collaboration and integrity in our daily practices.</span></section>
 <section className="agentStatement"><p>We work for our agents</p><h2>We don’t hire agents to work for us. Agents join ADT Realty so we can work for them.</h2><span>Our role is to provide the training, systems, marketing, technology and support agents need to create opportunities, serve their clients and build successful businesses.</span></section>

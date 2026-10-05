@@ -68,3 +68,72 @@
   .wantedPaper>p:not(.wantedTop){font-size:16px;line-height:1.45}
   .wantedPaper>b{font-size:clamp(21px,6.8vw,29px)}
 }
+
+/* Recruiting hero: ADT summit artwork with a continuous waving flag title. */
+.joinHeroFlag{
+  position:relative;
+  min-height:clamp(650px,76vw,860px);
+  display:flex;
+  align-items:center;
+  isolation:isolate;
+  background:#031536 url('/join-adt-summit.webp') center/cover no-repeat;
+}
+.joinHeroFlag:before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:linear-gradient(90deg,rgba(1,12,37,.64) 0%,rgba(1,12,37,.28) 48%,rgba(1,12,37,.02) 72%);
+}
+.joinHeroFlag .joinHeroCopy{
+  width:min(60%,920px);
+  padding:clamp(90px,10vw,150px) clamp(30px,6vw,96px);
+}
+.flagFilter{position:absolute;width:0;height:0;overflow:hidden}
+.flagHeadline{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  width:min(100%,820px);
+  margin:0 0 24px;
+  text-transform:uppercase;
+  letter-spacing:-.065em;
+  line-height:.78;
+}
+.flagHeadline span{
+  display:block;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  background-image:url('/american-flag.svg');
+  background-repeat:no-repeat;
+  background-size:125% 135%;
+  background-position:0 50%;
+  filter:url('#flag-wave') drop-shadow(0 4px 2px rgba(0,0,0,.42));
+  -webkit-text-stroke:1px rgba(255,255,255,.6);
+  animation:flagFlow 7s ease-in-out infinite alternate;
+}
+.flagJoin{font-size:clamp(112px,15.2vw,250px);font-weight:950}
+.flagAdt{margin-top:.18em;font-size:clamp(47px,7vw,112px);font-weight:950;letter-spacing:-.045em}
+.heroPromise{margin:10px 0 14px!important;color:#fff;font-size:clamp(31px,3.6vw,56px)!important;font-weight:800;line-height:1.02!important;letter-spacing:-.035em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.heroSupport{max-width:650px;margin-bottom:28px!important;color:#e7edf7!important;font-size:clamp(17px,1.7vw,21px)!important;line-height:1.5!important;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+@keyframes flagFlow{from{background-position:0 48%}to{background-position:13% 54%}}
+
+@media(max-width:850px){
+  .joinHeroFlag{min-height:690px;background-position:62% center;align-items:flex-end}
+  .joinHeroFlag:before{background:linear-gradient(180deg,rgba(1,12,37,.08) 20%,rgba(1,12,37,.82) 67%,rgba(1,12,37,.96) 100%)}
+  .joinHeroFlag .joinHeroCopy{width:100%;padding:250px 22px 54px}
+  .flagHeadline{margin-bottom:20px}
+  .flagJoin{font-size:clamp(86px,27vw,160px)}
+  .flagAdt{font-size:clamp(41px,12vw,72px)}
+  .heroPromise{font-size:clamp(30px,8vw,42px)!important}
+  .heroSupport{font-size:17px!important}
+}
+@media(max-width:460px){
+  .joinHeroFlag{min-height:700px;background-position:64% center}
+  .joinHeroFlag .joinHeroCopy{padding-top:300px}
+  .flagJoin{font-size:clamp(80px,28vw,128px)}
+  .flagAdt{font-size:clamp(38px,12.5vw,58px)}
+}
+@media(prefers-reduced-motion:reduce){.flagHeadline span{animation:none;filter:drop-shadow(0 4px 2px rgba(0,0,0,.42))}}

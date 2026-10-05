@@ -3,50 +3,49 @@ import { LeadForm } from "../components/LeadForm";
 import "./join.css";
 
 export const metadata: Metadata = {
-  title: "Join ADT Realty Arizona | Real Estate Careers Phoenix",
-  description: "Build your Arizona real estate career with practical leadership, leads, training, modern marketing tools and support from ADT Realty Arizona.",
+  title: "Join ADT Realty Arizona | Build Your Real Estate Career",
+  description: "Explore ADT Realty Arizona training, systems, marketing, seller lead opportunities and career paths for Arizona real estate agents.",
   alternates: { canonical: "https://www.adtrealtyaz.com/join" },
 };
 
-const stages = [
-  ["newly-licensed", "Newly Licensed", "/career-newly-licensed.jpg", "Start with a clear plan, practical mentorship and the habits that create a lasting business."],
-  ["developing-agent", "Developing Agent", "/career-developing.jpg", "Turn activity into consistent production with better follow-up, marketing and daily systems."],
-  ["productive-agent", "Productive Agent", "/career-productive.jpg", "Protect your time, improve profitability and grow without doing everything yourself."],
-  ["leadership", "Leadership", "/career-leadership.jpg", "Build a market, mentor agents and create opportunity beyond your own production."],
+const business=[
+ ["Training & coaching","Practical guidance built around the work agents do every day."],
+ ["Business systems","Connected tools for leads, contacts, follow-up and transactions."],
+ ["Marketing support","Resources that help agents stay visible and start conversations."],
+ ["Leadership growth","Opportunities to mentor agents, build markets and create additional income."],
+ ["Revenue share","A path to earn beyond your own production as the company grows."],
+ ["Cloud-based brokerage","Professional support without the limits of a traditional office model."],
 ];
-const benefits = [
-  ["Leads with a plan", "Arizona-generated opportunities supported by systems that help you follow up and convert."],
-  ["Marketing that gets used", "Personal websites, listing pages, presentations, social content and lead-capture tools."],
-  ["Training for real production", "Practical coaching for prospecting, follow-up, appointments, conversion and business planning."],
-  ["Technology with a purpose", "Modern tools designed to save time, strengthen your presentation and keep your business organized."],
-  ["Local, accountable support", "Arizona leadership that knows the market, answers questions and helps you take the next step."],
-  ["A path beyond production", "Leadership development for agents who want to mentor others, build a market and create additional income."],
+const training=["Lead generation","Database development","Follow-up and conversion","Buyer and seller consultations","Contracts and transactions","Business planning","Personal branding","Leadership development"];
+const systems=["CRM and lead management","Contact and database organization","Follow-up systems","Transaction resources","Business planning tools","Lead routing and accountability","ACE Buyer resources","ACE Seller resources"];
+const marketing=["Personal agent website","Automated marketing campaigns","Buyer tools and education","Seller tools and market knowledge","Property marketing pages","Social media content","Listing presentations","Buyer presentations"];
+const stages=[
+ ["newly-licensed","Newly Licensed","/career-newly-licensed.jpg","Build a strong foundation with practical guidance, skills and habits."],
+ ["developing-agent","Developing Agent","/career-developing.jpg","Create consistency with better systems, follow-up and daily execution."],
+ ["productive-agent","Productive Agent","/career-productive.jpg","Increase profitability, protect your time and grow with leverage."],
+ ["leadership","Leadership","/career-leadership.jpg","Mentor agents, build a market and create opportunity beyond production."],
+];
+const leaders=[
+ ["Sarah Atchison","Chief Growth Officer & Texas State Leader","Leadership isn’t about control; it’s about stewardship—serving, protecting and empowering others."],
+ ["Lisa Johnson","Senior Vice President of Success & Washington State Leader","When individuals grow, the entire organization becomes stronger."],
+ ["Laura Phelps","New Mexico State Leader","Helping others first, learning more in order to give more."],
+ ["Brandi Ott","Georgia State Leader","ADT Realty and Mick truly want to see you win. You will receive excellent training if you show up and use it."],
 ];
 
-export default function JoinPage() {
-  return <div className="joinPage">
-    <header className="joinTop">
-      <a href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></a>
-      <nav aria-label="Join page navigation"><a href="#career-path">Career Paths</a><a href="#what-you-get">What You Get</a><a href="/leaders">Meet Our Leaders</a></nav>
-      <a className="joinButton" href="#conversation">Start a Conversation</a>
-    </header>
-    <main>
-      <section className="joinHero"><div className="joinWrap">
-        <p className="joinKicker">Join ADT Realty Arizona</p>
-        <h1>Build a better real estate business—and a better life.</h1>
-        <p>ADT Realty Arizona gives agents practical leadership, modern marketing, training, lead opportunities and the support to build a business they can be proud of.</p>
-        <div className="joinActions"><a className="joinButton" href="#conversation">Let’s Talk About Your Next Step</a><a className="joinButton joinOutline" href="#career-path">Find My Career Path</a></div>
-      </div></section>
-      <section className="joinProof"><div className="joinProofGrid"><div>Arizona Leadership</div><div>Lead Opportunities</div><div>Modern Agent Tools</div><div>Training That Produces</div></div></section>
-      <section id="career-path" className="joinSection"><div className="joinHeading"><span/><p className="joinKicker">Built for where you are</p><h2>Your next step should fit your career.</h2><p>You do not need the same thing from a brokerage at every stage. Choose the path that sounds most like you and see how ADT Realty can help you move forward.</p></div>
-        <div className="joinStageGrid">{stages.map(([slug,title,image,copy])=><a className="joinStage" href={`/join/${slug}`} key={slug}><img src={image} alt=""/><div><h3>{title}</h3><p>{copy}</p><b>Explore this path →</b></div></a>)}</div>
-      </section>
-      <section id="what-you-get" className="joinValue"><div className="joinSection"><div className="joinHeading"><span/><p className="joinKicker">What ADT Realty provides</p><h2>A brokerage should help you build—not just hold your license.</h2><p>We are building a practical Arizona platform around the things agents use every day: opportunity, skills, marketing, follow-up and leadership.</p></div>
-        <div className="joinBenefits">{benefits.map(([title,copy])=><article key={title}><h3>{title}</h3><p>{copy}</p></article>)}</div>
-      </div></section>
-      <section className="joinLeader"><div><p className="joinKicker">Leadership at ADT Realty</p><h2>We’re not building downlines. We’re building leaders.</h2><p>Agents who want more than their own production can develop people, build a market and help shape what ADT Realty becomes in Arizona.</p></div><a className="joinButton" href="/leaders">Meet Our Leaders</a></section>
-      <section id="conversation" className="joinConversation"><div className="joinConversationInner"><div className="joinHeading"><span/><p className="joinKicker">A confidential conversation</p><h2>Ready to build what’s next?</h2><p>Tell us where you are in your career and what you want to build. Your message goes directly to Mike Dingman, Arizona State Leader and Designated Broker.</p><p>No pressure. Just a straightforward conversation about whether ADT Realty Arizona is the right fit.</p></div><LeadForm type="career" /></div></section>
-    </main>
-    <footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Do the right thing. Every time. · © 2026 ADT Realty</p></footer>
-  </div>;
-}
+export default function JoinPage(){return <div className="joinPage">
+<header className="joinTop"><a href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
+<main>
+<section className="joinHero"><div className="joinHeroCopy"><p className="eyebrow">Join ADT Realty Arizona</p><h1>Where Real Estate <em>Careers Grow.</em></h1><p>Build a stronger real estate business with practical training, proven systems, modern marketing and people committed to helping you succeed.</p><a className="joinButton" href="#values">Explore the Opportunity</a></div><div className="heroArt"><img src="/career-productive.jpg" alt="Real estate professionals building their businesses"/></div></section>
+<section id="values" className="values"><div><b>Helping Others</b><span>Put people first and create opportunity.</span></div><div><b>Do the Right Thing. Every Time.</b><span>Lead with integrity in every decision.</span></div><div><b>Build Relationships</b><span>Connect, collaborate and grow together.</span></div></section>
+<section className="mission"><p>Our Mission</p><h2>Help more than <strong>5,000 people</strong> live a better life through real estate.</h2><span>We encourage innovation, collaboration and integrity in our daily practices.</span></section>
+<section className="agentStatement"><p>We work for our agents</p><h2>We don’t hire agents to work for us. Agents join ADT Realty so we can work for them.</h2><span>Our role is to provide the training, systems, marketing, technology and support agents need to create opportunities, serve their clients and build successful businesses.</span></section>
+<section id="model" className="joinSection"><div className="sectionIntro"><p className="eyebrow">The ADT Advantage</p><h2>A business model built around agent growth.</h2><p>ADT Realty combines an agent-focused compensation model with the practical resources needed to build a stronger business.</p></div><div className="businessGrid">{business.map(([t,c])=><article key={t}><h3>{t}</h3><p>{c}</p></article>)}</div><div className="numbers"><div><b>80/20</b><span>Agent-focused split</span></div><div><b>$15K</b><span>Company-dollar cap</span></div><div><b>$85</b><span>Monthly technology fee</span></div><div><b>$495</b><span>Transaction fee</span></div></div></section>
+<section className="sellerLeads"><div><p className="eyebrow">An Arizona advantage</p><h2>More listings. More signs. More conversations.</h2><p>ADT Realty Arizona offers seller-lead opportunities designed to help agents win more listings and build greater visibility in their communities.</p><p>A listing can create buyer inquiries, neighborhood conversations, future sellers, referrals and long-term relationships. We pair those opportunities with the training, systems and marketing needed to turn momentum into a sustainable business.</p></div><div className="signArt"><span>ADT REALTY</span><b>FOR SALE</b><small>More signs create more conversations.</small></div></section>
+<section className="training"><div className="joinSection"><div className="sectionIntro"><p className="eyebrow">Training that builds businesses</p><h2>Training should lead to action—and action should lead to growth.</h2><p>Our training focuses on the skills and activities that help agents create opportunities, serve clients and produce measurable results.</p></div><div className="pillGrid">{training.map(x=><span key={x}>{x}</span>)}</div></div></section>
+<section className="systems joinSection"><div className="sectionIntro"><p className="eyebrow">Systems that support production</p><h2>Connected resources for the work behind every transaction.</h2><p>We bring essential systems together so agents can organize opportunities, strengthen follow-up and spend more time building relationships.</p></div><div className="systemGrid">{systems.map((x,i)=><div key={x}><b>{String(i+1).padStart(2,"0")}</b><span>{x}</span></div>)}</div></section>
+<section className="marketing"><div className="joinSection"><div className="sectionIntro"><p className="eyebrow">Marketing that builds relationships</p><h2>Tools and knowledge designed to start conversations.</h2><p>Real estate businesses grow through relationships. ADT Realty gives agents useful tools, relevant knowledge and professional marketing resources they can share with buyers, sellers and their communities.</p></div><div className="marketingSplit"><div className="websiteMock"><div className="mockBar"><i/><i/><i/></div><h3>Your personal real estate resource</h3><p>Not simply an online business card. Your website gives buyers and sellers useful tools and practical knowledge while creating natural opportunities to begin a conversation with you.</p><button>Start a Conversation</button></div><ul>{marketing.map(x=><li key={x}>{x}</li>)}</ul></div></div></section>
+<section id="career-paths" className="joinSection"><div className="sectionIntro"><p className="eyebrow">Build at every stage</p><h2>Your next step should fit your career.</h2><p>Choose the career guide that reflects where you are today and what you want to build next.</p></div><div className="stageGrid">{stages.map(([slug,title,img,copy])=><a href={`/join/${slug}`} className="stageCard" key={slug}><img src={img} alt=""/><div><h3>{title}</h3><p>{copy}</p><b>View the career guide</b></div></a>)}</div></section>
+<section id="leaders" className="leaders"><div className="joinSection"><div className="sectionIntro"><p className="eyebrow">Real people. Real growth.</p><h2>Hear from some of our leaders.</h2><p>Learn why they chose ADT Realty, what surprised them and how their businesses and roles have grown.</p></div><div className="leaderGrid">{leaders.map(([n,r,q])=><article key={n}><blockquote>“{q}”</blockquote><h3>{n}</h3><p>{r}</p></article>)}</div><div className="growthCallout"><h3>There are plenty of opportunities to grow at ADT Realty.</h3><p>Growth can mean increasing production, building a stronger business, mentoring agents, becoming an area leader or helping develop an entire market.</p></div></div></section>
+<section className="wanted"><div className="wantedPaper"><p className="wantedTop">Wanted</p><h2>Arizona Area Leaders<br/>and Real Estate Agents</h2><small>By order of ADT Realty</small><h3>Turn Your License Into a Legacy</h3><p>Whether you are ready to grow your production, strengthen your business or help build an Arizona market, ADT Realty offers an opportunity to create something bigger.</p><b>We’re not building downlines.<br/>We’re building leaders.</b><a className="wantedButton" href="#conversation">Start the Conversation</a></div></section>
+<section id="conversation" className="conversation"><div className="conversationInner"><div><p className="eyebrow">No pressure. No obligation.</p><h2>Start a confidential conversation.</h2><p>Tell us where you are in your career and what you want to build. We’ll help you determine whether ADT Realty Arizona is the right fit.</p></div><LeadForm type="career"/></div></section>
+</main><footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Helping Others · Do the Right Thing Every Time · Build Relationships</p></footer></div>}

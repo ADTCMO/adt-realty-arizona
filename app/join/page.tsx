@@ -31,11 +31,21 @@ const leaders=[
 export default function JoinPage(){return <div className="joinPage">
 <header className="joinTop"><a href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
 <main>
-<section className="joinHero joinHeroFlag"><div className="joinHeroCopy">
-  <h1 className="flagHeadline"><span>Join</span><strong>ADT Realty-Arizona</strong></h1>
-  <p className="heroPromise">Build a Business for Life</p>
-  <p className="heroSupport">Practical training, proven systems, modern marketing and people committed to helping you succeed.</p>
-</div></section>
+<section className="joinHero joinHeroFlag">
+  <video className="joinFlagVideo" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+    <source src="/flag-wave.mp4" type="video/mp4" />
+  </video>
+  <div className="joinHeroWash" aria-hidden="true" />
+  <img className="joinHeroMap" src="/join-adt-map.webp" alt="" aria-hidden="true" />
+  <div className="joinHeroCopy">
+    <p className="heroKicker">ADT Realty Arizona</p>
+    <h1 className="flagHeadline"><span>Join</span><strong>ADT</strong></h1>
+    <p className="heroPromise">Where Real Estate Careers Grow</p>
+    <p className="heroSupport">Build your business with practical training, modern technology, marketing support and leadership opportunities backed by a growing national brokerage.</p>
+    <p className="heroAgentStatement">Agents don’t join ADT Realty to work for us. They join so we can work for them.</p>
+    <a className="joinButton heroJoinButton" href="#conversation">Start the Conversation</a>
+  </div>
+</section>
 
 <div className="folderStack">
 <Folder label="ADT Realty" index={0} id="values">

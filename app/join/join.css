@@ -360,3 +360,14 @@
 @media(max-width:1000px){.recruitFolder>.folderTab{font-size:10px;gap:4px}.advantageBenefits{gap:16px}.advantageBenefits h3{font-size:16px}}
 @media(max-width:850px){.agentPhoto{width:min(100%,540px);margin:auto}.advantageBenefits{grid-template-columns:repeat(3,1fr)}.trainingStudio{width:min(100%,540px);margin:auto}.heroesArt{max-height:440px;aspect-ratio:4/3;border-radius:18px}.aceVisual{max-width:540px;width:100%;margin:auto}}
 @media(max-width:600px){.advantageBenefits{grid-template-columns:1fr 1fr;gap:22px}.systemsShowcase,.marketingShowcase,.aceBenefits{grid-template-columns:1fr}.systemCrop{max-width:100%}.trainingScreenTop{padding:14px 10px}.trainingScreenTop span{font-size:14px}.trainingScreenTop i{font-size:7px}.trainingLesson{padding:24px 12px;gap:12px}.trainingLesson strong{font-size:19px}.trainingModules{padding:12px;gap:10px}.trainingModules div{font-size:10px}.aceVisual{padding:26px}.recruitFolder>.folderTab{padding:6px 2px}.recruitFolder>.folderTab span{font-size:12px}.marketingLaptop{margin-bottom:-10px}}
+
+/* Read the entire folder before the next chapter covers it. */
+.folderStack .recruitFolder{
+  --folder-top:16px;
+  top:min(var(--folder-top),calc(100dvh - var(--folder-height, 100dvh) - 32px));
+  margin-bottom:clamp(180px,40vh,420px);
+}
+.recruitFolder>.folderTab{position:sticky;top:var(--folder-top);z-index:2}
+@media(max-width:600px){
+  .folderStack .recruitFolder{--folder-top:8px;margin-bottom:clamp(140px,30vh,260px)}
+}

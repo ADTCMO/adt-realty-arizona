@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import type { ReactNode, CSSProperties } from "react";
+import { RecruitingFolder } from "./RecruitingFolder";
+import type { ReactNode } from "react";
 import { LeadForm } from "../components/LeadForm";
 import "./join.css";
 
@@ -17,11 +18,7 @@ const chapters = [
   ["career-paths", "Career Paths"], ["leaders", "Leadership"],
 ];
 function Folder({label,index,id,children}: {label:string;index:number;id?:string;children:ReactNode}) {
-  return <><div id={id ?? chapters[index][0]} className="folderAnchor" />
-  <section aria-label={label} className={`recruitFolder folderTone${index%3}`} style={{"--folder-index":index,"--folder-count":chapters.length} as CSSProperties}>
-    <a className="folderTab" href={`#${id ?? chapters[index][0]}`} title={label}><span>{String(index+1).padStart(2,"0")}</span><b>{label}</b></a>
-    <div className="folderBody">{children}</div>
-  </section></>;
+  return <RecruitingFolder label={label} index={index} id={id ?? chapters[index][0]} count={chapters.length}>{children}</RecruitingFolder>;
 }
 const stages=[
  ["newly-licensed","Newly Licensed","/career-newly-licensed.jpg","Build a strong foundation with practical guidance, skills and habits."],

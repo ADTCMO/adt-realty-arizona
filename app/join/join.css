@@ -371,3 +371,5 @@
 @media(max-width:600px){
   .folderStack .recruitFolder{--folder-top:8px;margin-bottom:clamp(140px,30vh,260px)}
 }
+
+.recruitFolder>.folderBody{clip-path:inset(var(--folder-clip,0px) 0 0 0)}

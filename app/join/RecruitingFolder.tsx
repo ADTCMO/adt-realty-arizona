@@ -9,11 +9,26 @@ export function RecruitingFolder({ label, index, id, count, children }: {
   useLayoutEffect(() => {
     const element = section.current;
     if (!element) return;
-    const measure = () => element.style.setProperty("--folder-height", `${element.getBoundingClientRect().height}px`);
+    let frame = 0;
+    const updateClip = () => {
+      frame = 0;
+      const top = parseFloat(getComputedStyle(element).getPropertyValue("--folder-top")) || 0;
+      element.style.setProperty("--folder-clip", `${Math.max(0, top - element.getBoundingClientRect().top)}px`);
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(updateClip); };
+    const measure = () => {
+      element.style.setProperty("--folder-height", `${element.getBoundingClientRect().height}px`);
+      onScroll();
+    };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(element);
-    return () => observer.disconnect();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return <><div id={id} className="folderAnchor" />

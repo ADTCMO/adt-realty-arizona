@@ -36,15 +36,7 @@ export default function JoinPage(){return <div className="joinPage">
     <source src="/flag-wave.mp4" type="video/mp4" />
   </video>
   <div className="joinHeroWash" aria-hidden="true" />
-  <img className="joinHeroMap" src="/join-adt-map.webp" alt="" aria-hidden="true" />
-  <div className="joinHeroCopy">
-    <p className="heroKicker">ADT Realty Arizona</p>
-    <h1 className="flagHeadline"><span>Join</span><strong>ADT</strong></h1>
-    <p className="heroPromise">Where Real Estate Careers Grow</p>
-    <p className="heroSupport">Build your business with practical training, modern technology, marketing support and leadership opportunities backed by a growing national brokerage.</p>
-    <p className="heroAgentStatement">Agents don’t join ADT Realty to work for us. They join so we can work for them.</p>
-    <a className="joinButton heroJoinButton" href="#conversation">Start the Conversation</a>
-  </div>
+  <img className="joinHeroMap" src="/join-adt-map-ink.webp" alt="" aria-hidden="true" />
 </section>
 
 <div className="folderStack">

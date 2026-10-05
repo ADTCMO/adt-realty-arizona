@@ -69,16 +69,16 @@
   .wantedPaper>b{font-size:clamp(21px,6.8vw,29px)}
 }
 
-/* Recruiting hero: waving flag, transparent map layer, then clean Join ADT type. */
+/* Recruiting hero background study: flag video behind a contained transparent map. */
 .joinHeroFlag{
   position:relative;
-  min-height:clamp(690px,57vw,790px);
-  display:flex;
-  align-items:center;
+  min-height:clamp(520px,48vw,720px);
+  display:grid;
+  place-items:center;
   isolation:isolate;
   overflow:hidden;
   background:
-    radial-gradient(circle at 34% 74%,rgba(179,7,24,.24),transparent 28%),
+    radial-gradient(circle at 50% 58%,rgba(179,7,24,.16),transparent 30%),
     linear-gradient(120deg,#031124 0%,#061a4d 48%,#031124 100%);
 }
 .joinFlagVideo,
@@ -92,32 +92,36 @@
 .joinFlagVideo{
   z-index:-4;
   object-fit:cover;
-  opacity:.22;
-  filter:saturate(.72) contrast(.86) brightness(.58);
+  opacity:.34;
+  filter:saturate(.82) contrast(.92) brightness(.62);
   transform:scale(1.03);
 }
 .joinHeroWash{
   z-index:-3;
   background:
-    linear-gradient(90deg,rgba(3,17,36,.98) 0%,rgba(3,17,36,.74) 44%,rgba(3,17,36,.95) 100%),
-    linear-gradient(180deg,rgba(3,17,36,.78) 0%,rgba(3,17,36,.36) 42%,rgba(3,17,36,.96) 100%);
+    linear-gradient(90deg,rgba(3,17,36,.84) 0%,rgba(3,17,36,.42) 48%,rgba(3,17,36,.84) 100%),
+    linear-gradient(180deg,rgba(3,17,36,.68) 0%,rgba(3,17,36,.2) 45%,rgba(3,17,36,.86) 100%);
 }
 .joinHeroMap{
   z-index:-2;
-  object-fit:cover;
-  object-position:55% center;
-  opacity:.5;
-  mix-blend-mode:screen;
-  filter:saturate(.75) contrast(.95) brightness(.82);
+  inset:auto;
+  width:min(94vw,1500px);
+  height:auto;
+  max-height:88%;
+  object-fit:contain;
+  object-position:center;
+  opacity:.78;
+  mix-blend-mode:normal;
+  filter:drop-shadow(0 22px 42px rgba(0,0,0,.26));
 }
 .joinHeroFlag:after{
   content:'';
   position:absolute;
   z-index:-1;
-  inset:auto -8% 0 28%;
-  height:55%;
-  background:linear-gradient(90deg,transparent,rgba(179,7,24,.16),transparent);
-  filter:blur(42px);
+  inset:auto 0 0;
+  height:30%;
+  background:linear-gradient(180deg,transparent,rgba(3,17,36,.82));
+  pointer-events:none;
 }
 .joinHeroFlag .joinHeroCopy{
   position:relative;
@@ -200,9 +204,9 @@
 }
 .heroJoinButton{align-self:flex-start;box-shadow:0 18px 42px rgba(179,7,24,.3)}
 @media(max-width:850px){
-  .joinHeroFlag{min-height:720px;align-items:flex-end}
-  .joinHeroWash{background:linear-gradient(180deg,rgba(3,17,36,.32) 0%,rgba(3,17,36,.82) 55%,rgba(3,17,36,.98) 100%)}
-  .joinHeroMap{object-position:39% center;opacity:.34}
+  .joinHeroFlag{min-height:560px}
+  .joinHeroWash{background:linear-gradient(180deg,rgba(3,17,36,.46) 0%,rgba(3,17,36,.32) 44%,rgba(3,17,36,.92) 100%)}
+  .joinHeroMap{width:112vw;max-height:82%;opacity:.74}
   .joinHeroFlag .joinHeroCopy{width:calc(100% - 36px);margin:0 auto;padding:300px 0 54px}
   .flagHeadline span{font-size:clamp(72px,23vw,120px)}
   .flagHeadline strong{font-size:clamp(82px,26vw,132px)}
@@ -211,7 +215,8 @@
   .heroAgentStatement{font-size:clamp(22px,6vw,30px)!important}
 }
 @media(max-width:460px){
-  .joinHeroFlag{min-height:730px}
+  .joinHeroFlag{min-height:500px}
+  .joinHeroMap{width:126vw;max-height:78%}
   .joinHeroFlag .joinHeroCopy{padding-top:280px}
   .heroKicker{font-size:11px!important;letter-spacing:.12em}
   .heroKicker:before{width:30px}

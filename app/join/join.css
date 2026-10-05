@@ -409,3 +409,5 @@
 .fubCrop{clip-path:polygon(15% 0,100% 0,100% 100%,0 100%,0 37%,15% 37%)}
 .dotloopCrop{aspect-ratio:755/600;background-size:254.305% auto;background-position:97.425% 79.167%}
 .marketingComposition{clip-path:polygon(0 22%,14% 22%,14% 18%,48% 18%,48% 4%,100% 4%,100% 100%,0 100%);mask-image:radial-gradient(ellipse 80% 85% at 52% 50%,#000 52%,transparent 100%)}
+.marketingComposition{clip-path:polygon(0 76%,6.3% 73%,6.3% 18.5%,48% 18.5%,50% 0,79% 2%,81% 5%,100% 8%,98% 99%,48% 96%,48% 92%,0 92%)}
+.folderBody .joinHeroesCopy .eyebrow{color:#ffd6c3}

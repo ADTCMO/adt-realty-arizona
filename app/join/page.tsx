@@ -36,7 +36,7 @@ export default function JoinPage(){return <div className="joinPage">
     <source src="/flag-wave.mp4" type="video/mp4" />
   </video>
   <div className="joinHeroWash" aria-hidden="true" />
-  <img className="joinHeroMap" src="/join-adt-map-ink.webp" alt="" aria-hidden="true" />
+  <img className="joinHeroMap" src="/join-adt-map.webp" alt="" aria-hidden="true" />
 </section>
 
 <div className="folderStack">

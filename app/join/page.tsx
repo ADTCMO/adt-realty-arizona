@@ -38,13 +38,11 @@ export default function JoinPage(){return <div className="joinPage">
 <section className="joinHero joinHeroFlag">
   <div className="joinHeroCopy">
     <h1 className="flagHeadline" aria-label="Join ADT Realty">
-      <svg viewBox="0 0 900 365" role="img" aria-hidden="true" preserveAspectRatio="xMinYMid meet">
-        <defs>
-          <pattern id="headlineFlag" patternUnits="userSpaceOnUse" width="900" height="365">
-            <image href="/flag-wave.webp" x="0" y="0" width="900" height="365" preserveAspectRatio="xMidYMid slice"/>
-          </pattern>
-        </defs>
-        <g className="flagTextSurface" fill="url(#headlineFlag)">
+      <video className="flagHeadlineVideo" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+        <source src="/flag-wave.mp4" type="video/mp4"/>
+      </video>
+      <svg className="flagHeadlineOutline" viewBox="0 0 900 365" aria-hidden="true" preserveAspectRatio="xMinYMid meet">
+        <g fill="none">
           <text x="7" y="218" className="flagJoinSvg">JOIN</text>
           <text x="7" y="350" className="flagAdtSvg">ADT REALTY</text>
         </g>

@@ -282,6 +282,9 @@
 .trainingArt{mix-blend-mode:multiply}
 .folderValues{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:36px 0}
 .folderValues article{padding-top:20px;border-top:2px solid #8f1624}
+.folderValues article:before{content:'';display:block;width:180px;height:180px;max-width:100%;margin:0 0 22px;border-radius:50%;background-image:url('/join-core-values-slide.webp');background-repeat:no-repeat;background-size:1536px 864px;background-position:-270px -327px}
+.folderValues article:nth-child(2):before{background-position:-670px -329px}
+.folderValues article:nth-child(3):before{background-position:-1080px -326px}
 .folderValues article>span{font-weight:800;color:#8f1624;font-size:14px}
 .folderValues h3{font-size:22px;line-height:1.2;color:#061a4d;margin:12px 0}
 .folderValues p{color:#455570;line-height:1.6}

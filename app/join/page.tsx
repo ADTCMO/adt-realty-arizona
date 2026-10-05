@@ -36,14 +36,6 @@ export default function JoinPage(){return <div className="joinPage">
 <header className="joinTop"><a href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
 <main>
 <section className="joinHero joinHeroFlag">
-  <svg className="flagFilter" aria-hidden="true" focusable="false">
-    <filter id="flag-wave" x="-10%" y="-15%" width="120%" height="130%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.025" numOctaves="1" seed="7" result="noise">
-        <animate attributeName="baseFrequency" dur="5s" values="0.006 0.025;0.009 0.032;0.006 0.025" repeatCount="indefinite"/>
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="B"/>
-    </filter>
-  </svg>
   <div className="joinHeroCopy">
     <h1 className="flagHeadline" aria-label="Join ADT Realty"><span className="flagJoin">JOIN</span><span className="flagAdt">ADT REALTY</span></h1>
     <p className="heroPromise">Build a Business for Life</p>

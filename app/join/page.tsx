@@ -18,6 +18,7 @@ const chapters = [
 function Folder({label,index,id,children}: {label:string;index:number;id?:string;children:ReactNode}) {
   return <><div id={id ?? chapters[index][0]} className="folderAnchor" />
   <section aria-label={label} className={`recruitFolder folderTone${index%3}`} style={{"--folder-index":index} as CSSProperties}>
+    <a className="folderTab" href={`#${id ?? chapters[index][0]}`} title={label}><span>{String(index+1).padStart(2,"0")}</span><b>{label}</b></a>
     <div className="folderBody">{children}</div>
   </section></>;
 }
@@ -48,9 +49,6 @@ export default function JoinPage(){return <div className="joinPage">
 </section>
 
 <div className="folderStack">
-<nav className="folderNav" aria-label="Explore ADT Realty">
-  {chapters.map(([id,label],index)=><a className={`folderTab folderTone${index%3}`} href={`#${id}`} key={id}><span>{String(index+1).padStart(2,"0")}</span>{label}</a>)}
-</nav>
 <Folder label="ADT Realty" index={0} id="values">
  <div className="folderIntro"><p className="eyebrow">American Dream Team</p><h2>Build a business.<br/><em>Build a better life.</em></h2><p>ADT Realty is a rapidly growing national real estate brokerage built around helping agents build successful, lasting businesses. Growth-focused training, practical systems, modern marketing and personal support help you strengthen your skills, serve your clients and create more opportunity.</p></div>
  <div className="folderValues"><article><span>01</span><h3>Helping Others</h3><p>We put people first and serve with purpose.</p></article><article><span>02</span><h3>Do the Right Thing.<br/>Every Time.</h3><p>Integrity guides our actions and decisions.</p></article><article><span>03</span><h3>Build Relationships</h3><p>We connect, collaborate and create lasting relationships.</p></article></div>

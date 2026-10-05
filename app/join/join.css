@@ -3,3 +3,68 @@
 @media(max-width:460px){.joinHero h1{font-size:42px}.joinHeroCopy>p:not(.eyebrow){font-size:18px}.sectionIntro h2,.sellerLeads h2,.conversation h2{font-size:37px}.businessGrid,.systemGrid,.pillGrid{grid-template-columns:1fr}.numbers b{font-size:30px}.numbers div{padding:22px 10px}.stageCard{min-height:330px}.leaderGrid article{padding:26px}.websiteMock{padding:0 24px 28px}.mockBar{margin:0 -24px 28px}.wanted{padding:48px 12px}.wantedPaper{border-width:7px;padding:38px 18px}.wantedTop{font-size:68px}.conversation .leadForm{padding:24px}}
 
 .conversation .leadForm label{color:var(--navy)!important;font-weight:800}.conversation .leadForm input,.conversation .leadForm select,.conversation .leadForm textarea{display:block!important;background:#fff!important;color:var(--ink)!important;border:1px solid #cbd4e1!important;margin-top:7px;padding:12px;border-radius:3px}
+
+/* Western recruiting poster: textured artwork with accessible live type. */
+.wanted{
+  padding:clamp(54px,8vw,104px) 20px;
+  background:
+    radial-gradient(circle at 50% 18%,rgba(199,136,57,.32),transparent 34%),
+    linear-gradient(180deg,#241208 0%,#5a3318 48%,#241208 100%);
+  overflow:hidden;
+}
+.wantedPaper{
+  position:relative;
+  isolation:isolate;
+  width:min(100%,960px);
+  min-height:640px;
+  margin:auto;
+  padding:clamp(72px,8vw,112px) clamp(32px,9vw,118px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#2a1609;
+  border:0;
+  background:#c8934f url('/wanted-western-parchment.webp') center/cover no-repeat;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  font-family:Georgia,'Times New Roman',serif;
+}
+.wantedPaper:after{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  inset:9% 10%;
+  background:radial-gradient(ellipse,rgba(250,220,158,.26),transparent 70%);
+  pointer-events:none;
+}
+.wantedTop{
+  width:min(100%,650px);
+  margin:0 0 20px;
+  padding:0 0 20px;
+  border-bottom:5px double #2a1609;
+  text-transform:uppercase;
+  font-size:clamp(66px,10vw,128px);
+  line-height:.78;
+  font-weight:900;
+  letter-spacing:.045em;
+  text-shadow:0 1px 0 rgba(255,230,175,.35);
+}
+.wantedPaper h2{max-width:720px;margin:0 0 12px;text-transform:uppercase;font-size:clamp(27px,4.2vw,48px);line-height:1.02;letter-spacing:.025em}
+.wantedPaper small{display:block;text-transform:uppercase;font-weight:900;letter-spacing:.17em}
+.wantedPaper h3{margin:30px 0 14px;font-size:clamp(29px,4vw,46px);line-height:1.05}
+.wantedPaper>p:not(.wantedTop){max-width:690px;margin-bottom:0;font-size:clamp(16px,2vw,19px);line-height:1.55;font-weight:600}
+.wantedPaper>b{display:block;margin:26px 0;font-size:clamp(22px,3.4vw,38px);line-height:1.08;text-transform:uppercase}
+.wantedButton{display:inline-flex;background:#2a1609;color:#f8deb0;text-decoration:none;text-transform:uppercase;font-weight:900;padding:16px 26px;border:2px solid #2a1609;box-shadow:0 3px 0 rgba(0,0,0,.26)}
+.wantedButton:hover{background:#5c2d13;color:#fff}
+
+@media(max-width:600px){
+  .wanted{padding:40px 8px}
+  .wantedPaper{min-height:590px;padding:70px 27px 64px;background-position:center}
+  .wantedTop{font-size:clamp(58px,21vw,82px);border-bottom-width:4px}
+  .wantedPaper h2{font-size:clamp(25px,8vw,34px)}
+  .wantedPaper small{font-size:11px;letter-spacing:.11em}
+  .wantedPaper h3{font-size:clamp(27px,8vw,36px)}
+  .wantedPaper>p:not(.wantedTop){font-size:16px;line-height:1.45}
+  .wantedPaper>b{font-size:clamp(21px,6.8vw,29px)}
+}

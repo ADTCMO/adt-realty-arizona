@@ -102,7 +102,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Make Your Next Step Clear.</h2><p>Tell us where you are and what you’re working toward. Your inquiry will go directly to Mike Dingman.</p></div><LeadForm type="contact" /></section>
+      <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Talk About Your Next Move.</h2><p>Looking to buy a home, need to sell, or interested in joining the ADT Realty team? Reach out—we’d love to hear about your goals and help you take the next step.</p></div><LeadForm type="contact" /></section>
     </main>
 
     <footer><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><p>© 2026 ADT Realty · Equal Housing Opportunity</p></footer>

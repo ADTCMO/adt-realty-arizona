@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | ADT Realty Arizona",
   },
   description:
-    "Buy or sell a home in Chandler, Gilbert and the Phoenix East Valley with ADT Realty Arizona. Explore local city guides, homebuyer resources and agent opportunities.",
+    "Buy or sell a home in Chandler, Gilbert and the Phoenix East Valley with ADT Realty Arizona. Use mortgage calculators, get a home value estimate and explore local guides.",
   alternates: { canonical: "/" },
   keywords: [
     "Arizona real estate",
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     "Arizona real estate agents",
   ],
   icons: {
-    icon: [{ url: "/adt-realty-arizona-logo.png", type: "image/png" }],
-    shortcut: "/adt-realty-arizona-logo.png",
-    apple: [{ url: "/adt-realty-arizona-logo.png" }],
+    icon: [{ url: "/favicon-96.png", type: "image/png", sizes: "96x96" }],
+    shortcut: "/favicon-96.png",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   openGraph: {
     type: "website",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
       "Explore Arizona real estate with local guidance for buyers, sellers and agents in Chandler, Gilbert and the Phoenix East Valley.",
     images: [
       {
-        url: "/hero-arizona-bright.png",
-        width: 1200,
-        height: 630,
+        url: "/social-share-home.jpg",
+        width: 1920,
+        height: 819,
         alt: "Arizona home and landscape featured by ADT Realty Arizona",
       },
     ],
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Arizona Real Estate | Buy, Sell & Local Guides | ADT Realty",
     description:
       "Local real estate guidance for buyers, sellers and agents across Arizona's East Valley.",
-    images: ["/hero-arizona-bright.png"],
+    images: ["/social-share-home.jpg"],
   },
   robots: {
     index: true,
@@ -61,6 +61,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"/>
+      </head>
       <body>
         <script
           type="application/ld+json"
@@ -70,8 +75,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               "@type": "RealEstateAgent",
               name: "ADT Realty Arizona",
               url: "https://www.adtrealtyaz.com/",
-              logo: "https://www.adtrealtyaz.com/adt-realty-arizona-logo.png",
-              image: "https://www.adtrealtyaz.com/hero-arizona-bright.png",
+              logo: "https://www.adtrealtyaz.com/adt-realty-arizona-outline.png",
+              image: "https://www.adtrealtyaz.com/social-share-home.jpg",
               email: "mikedingman@adthomes.com",
               areaServed: [
                 { "@type": "State", name: "Arizona" },

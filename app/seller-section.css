@@ -1,7 +1,7 @@
 /* Section 3 only — uploaded seller photo + coded fade */
 .sellerSellerLayout{display:grid!important;grid-template-columns:minmax(0,42%) minmax(0,58%)!important;min-width:0!important;min-height:540px!important;padding:0!important;background:#fff!important;color:var(--ink)!important;position:relative!important;overflow:hidden!important}
 .sellerSellerLayout:after{display:none!important}
-.sellerVisual{position:relative;min-height:540px;overflow:hidden;background:url('/adt-seller-yard.png') 38% center/cover no-repeat}
+.sellerVisual{position:relative;min-height:540px;overflow:hidden;background:url('/adt-seller-yard.webp') 38% center/cover no-repeat}
 .sellerVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 58%,rgba(255,255,255,.28) 70%,rgba(255,255,255,.78) 88%,#fff 100%);pointer-events:none}
 .sellerSellerLayout .sellerForm{min-width:0!important;padding:58px clamp(28px,4.6vw,76px) 58px clamp(18px,2.6vw,42px)!important;max-width:none!important;margin:0!important;text-align:left!important;align-items:flex-start!important;justify-content:center!important;color:var(--ink)!important;position:relative;z-index:2;background:#fff}
 .sellerSellerLayout .sellerForm .redRule{margin-left:0!important;margin-right:0!important}

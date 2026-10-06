@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // pages are generated from the listing system and are intentionally omitted
   // until the public-listings API can provide a complete, current URL list.
   return [
+    { url: `${baseUrl}/join`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/`, changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/east-valley`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/chandler`, changeFrequency: "monthly", priority: 0.9 },

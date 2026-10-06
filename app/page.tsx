@@ -1,13 +1,5 @@
 import { LeadForm } from "./components/LeadForm";
-import { CareerShowcase } from "./components/CareerShowcase";
 import "./seller-section.css";
-
-const stages = [
-  { slug: "newly-licensed", title: "Newly Licensed Agent", image: "/career-newly-licensed.jpg", description: "Start your career with a clear plan. Learn how to find leads, build relationships, choose the right mentorship, and establish strong business habits.", cta: "View the Newly Licensed Agent Guide" },
-  { slug: "developing-agent", title: "Developing Agent", image: "/career-developing.jpg", description: "Turn activity into consistent production. Build repeatable systems for lead generation, follow-up, database management, marketing, and time management.", cta: "View the Developing Agent Guide" },
-  { slug: "productive-agent", title: "Productive Agent", image: "/career-productive.jpg", description: "Build on your success without doing everything yourself. Explore better systems, technology, and support to increase production, protect your time, and improve profitability.", cta: "View the Productive Agent Guide" },
-  { slug: "leadership", title: "Leadership", image: "/career-leadership.jpg", description: "Create opportunity beyond your own production. Build a market, mentor agents, develop future leaders, and earn additional income by helping others succeed.", cta: "View the Leadership Guide" },
-];
 
 export default function Home() {
   return <>
@@ -47,11 +39,37 @@ export default function Home() {
         #sellers .compactForm .button{height:48px;margin-top:2px}
         #sellers .compactForm small{margin-top:0}
         #sellers .compactForm .formStatus{min-height:0}
-        #join .careerStackColumn{width:100%!important;max-width:270px!important;margin:0 auto!important}
-        #join .careerCardStack{width:100%!important;height:300px!important;min-height:300px!important}
-        #join .careerStackCard{width:220px!important;height:300px!important;left:50%!important;transform:translateX(-50%) translateX(calc(var(--depth) * 7px)) scale(calc(1 - var(--depth) * .025))!important;transform-origin:center center!important}
-        #join .careerStackCard img{object-fit:contain!important;object-position:center center!important}
-        #join .careerControls{margin-top:10px!important}
+      }
+
+      #join.joinTeaser{padding:70px clamp(24px,6vw,100px) 66px;background:linear-gradient(150deg,#fff 20%,#f0f4fa 100%);overflow:hidden}
+      .joinTeaserInner{max-width:1180px;margin:auto}
+      .joinTeaserTop{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:56px}
+      .joinTeaserCopy h2{font-size:clamp(36px,4.2vw,58px);line-height:1.04;letter-spacing:-.045em;margin:0 0 22px;max-width:650px}
+      .joinTeaserCopy h2 span{color:var(--red)}
+      .joinTeaserPromise{font-size:clamp(18px,1.8vw,22px);line-height:1.55;color:#536078;max-width:510px;margin:0}
+      .joinTeaserPromise strong{color:var(--navy);font-weight:700}
+      .joinTeaserArt{padding:25px 8px 18px;position:relative;min-width:0}
+      .joinTeaserArt:before{content:'';position:absolute;inset:-20% -15%;background:radial-gradient(ellipse,rgba(171,191,220,.32),transparent 67%);pointer-events:none}
+      .joinTeaserScreen{position:relative;border:9px solid #14233b;border-bottom-width:15px;border-radius:14px 14px 5px 5px;aspect-ratio:1.6;overflow:hidden;background:#fff;box-shadow:0 18px 40px #00134320}
+      .joinTeaserScreen img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+      .joinTeaserBase{position:relative;height:12px;margin:0 -6%;border-radius:2px 2px 50% 50%;background:linear-gradient(#cad2dd,#8f9daf);box-shadow:0 15px 20px #00134315}
+      .joinTeaserBase:after{content:'';position:absolute;left:40%;right:40%;top:0;height:4px;background:#8391a4;border-radius:0 0 5px 5px}
+      .joinTeaserHighlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin-top:42px;padding-top:28px;border-top:1px solid #cfd7e3}
+      .joinTeaserHighlight>span{font-size:12px;letter-spacing:.16em;font-weight:800;color:var(--red)}
+      .joinTeaserHighlight h3{font-size:21px;line-height:1.2;margin:10px 0}
+      .joinTeaserHighlight p{font-size:16px;line-height:1.65;color:#536078;margin:0}
+      .joinTeaserAction{margin-top:30px}
+      .joinTeaserAction:focus-visible{outline:3px solid var(--navy);outline-offset:4px}
+      @media(max-width:760px){
+        #join.joinTeaser{padding:42px 24px}
+        .joinTeaserTop{grid-template-columns:1fr;gap:16px}
+        .joinTeaserCopy h2{font-size:38px;margin-bottom:16px}
+        .joinTeaserArt{width:min(100%,420px);margin:auto;padding:12px 16px 6px}
+        .joinTeaserHighlights{grid-template-columns:1fr;gap:22px;margin-top:26px;padding-top:24px}
+        .joinTeaserHighlight{position:relative;padding-left:34px}
+        .joinTeaserHighlight>span{position:absolute;left:0;top:4px}
+        .joinTeaserHighlight h3{margin:0 0 7px;font-size:20px}
+        .joinTeaserAction{width:100%;padding-left:16px;padding-right:16px}
       }
     `}</style>
     <header className="siteHeader">
@@ -68,8 +86,19 @@ export default function Home() {
 
       <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Enter your address to see your automated home value estimate and explore your next steps with ACE Seller.</p><LeadForm type="seller" /></div></section>
 
-      <section id="join" className="join"><div className="sectionIntro"><div className="redRule"/><p className="eyebrow">Join ADT Realty</p><h2>Built for Every Stage of Your Real Estate Career</h2><p>ADT Realty combines practical training, modern technology, proven systems, and real support to help you move forward—wherever you are today.</p></div><CareerShowcase stages={stages}/>
-        <div className="leadersCallout"><div><p className="eyebrow">Leadership at ADT Realty</p><h2>Want to hear what our leaders say?</h2><p>Meet the people building ADT Realty and hear why they chose to lead here.</p></div><a className="textLink" href="/leaders">Meet Our Leaders <span>›</span></a></div>
+      <section id="join" className="join joinTeaser" aria-labelledby="joinTeaserTitle">
+        <div className="joinTeaserInner">
+          <div className="joinTeaserTop">
+            <div className="joinTeaserCopy"><div className="redRule"/><p className="eyebrow">Join ADT Realty</p><h2 id="joinTeaserTitle">A Brokerage Built <span>Around You.</span></h2><p className="joinTeaserPromise">You don’t join ADT to work for us.<br/><strong>We go to work for you.</strong></p></div>
+            <div className="joinTeaserArt"><div className="joinTeaserScreen"><img src="/join-website-screen.jpg" alt="ADT Realty Arizona website shown on a laptop" loading="lazy" width="800" height="500"/></div><div className="joinTeaserBase" aria-hidden="true"/></div>
+          </div>
+          <div className="joinTeaserHighlights">
+            <div className="joinTeaserHighlight"><span aria-hidden="true">01</span><h3>More Opportunity</h3><p>Company-provided leads that create more conversations and opportunities to grow.</p></div>
+            <div className="joinTeaserHighlight"><span aria-hidden="true">02</span><h3>Tools That Work for You</h3><p>Your personal website, ACE Buyer and Seller tools, and automated marketing.</p></div>
+            <div className="joinTeaserHighlight"><span aria-hidden="true">03</span><h3>Support to Build Your Business</h3><p>Practical training, coaching, and accessible leadership.</p></div>
+          </div>
+          <a className="button red joinTeaserAction" href="/join">Discover the ADT Advantage <span aria-hidden="true">›</span></a>
+        </div>
       </section>
 
       <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Make Your Next Step Clear.</h2><p>Tell us where you are and what you’re working toward. Your inquiry will go directly to Mike Dingman.</p></div><LeadForm type="contact" /></section>

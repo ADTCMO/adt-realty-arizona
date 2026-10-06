@@ -41,35 +41,36 @@ export default function Home() {
         #sellers .compactForm .formStatus{min-height:0}
       }
 
-      #join.joinTeaser{padding:70px clamp(24px,6vw,100px) 66px;background:linear-gradient(150deg,#fff 20%,#f0f4fa 100%);overflow:hidden}
-      .joinTeaserInner{max-width:1180px;margin:auto}
-      .joinTeaserTop{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:56px}
-      .joinTeaserCopy h2{font-size:clamp(36px,4.2vw,58px);line-height:1.04;letter-spacing:-.045em;margin:0 0 22px;max-width:650px}
+      #join.joinTeaser{padding:0 0 58px;background:#fff;overflow:hidden}
+      .joinTeaserInner{max-width:none;margin:auto}
+      .joinTeaserTop{position:relative;min-height:440px;display:flex;align-items:center;isolation:isolate}
+      .joinTeaserCopy{position:relative;z-index:2;width:51%;padding:66px 24px 66px max(24px,calc((100vw - 1180px)/2))}
+      .joinTeaserCopy h2{font-size:clamp(36px,4.2vw,58px);line-height:1.04;letter-spacing:-.045em;margin:0 0 22px;max-width:590px}
       .joinTeaserCopy h2 span{color:var(--red)}
       .joinTeaserPromise{font-size:clamp(18px,1.8vw,22px);line-height:1.55;color:#536078;max-width:510px;margin:0}
       .joinTeaserPromise strong{color:var(--navy);font-weight:700}
-      .joinTeaserArt{padding:25px 8px 18px;position:relative;min-width:0}
-      .joinTeaserArt:before{content:'';position:absolute;inset:-20% -15%;background:radial-gradient(ellipse,rgba(171,191,220,.32),transparent 67%);pointer-events:none}
-      .joinTeaserScreen{position:relative;border:9px solid #14233b;border-bottom-width:15px;border-radius:14px 14px 5px 5px;aspect-ratio:1.6;overflow:hidden;background:#fff;box-shadow:0 18px 40px #00134320}
-      .joinTeaserScreen img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
-      .joinTeaserBase{position:relative;height:12px;margin:0 -6%;border-radius:2px 2px 50% 50%;background:linear-gradient(#cad2dd,#8f9daf);box-shadow:0 15px 20px #00134315}
-      .joinTeaserBase:after{content:'';position:absolute;left:40%;right:40%;top:0;height:4px;background:#8391a4;border-radius:0 0 5px 5px}
-      .joinTeaserHighlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin-top:42px;padding-top:28px;border-top:1px solid #cfd7e3}
+      .joinTeaserArt{position:absolute;inset:0 0 0 25%;z-index:0}
+      .joinTeaserArt img{display:block;width:100%;height:100%;object-fit:cover;object-position:70% 38%}
+      .joinTeaserArt:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 13%,rgba(255,255,255,.7) 29%,rgba(255,255,255,0) 49%),linear-gradient(0deg,#fff 0%,rgba(255,255,255,0) 19%)}
+      .joinTeaserHighlights{max-width:1180px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin-top:12px;padding-top:28px;border-top:1px solid #cfd7e3}
       .joinTeaserHighlight>span{font-size:12px;letter-spacing:.16em;font-weight:800;color:var(--red)}
       .joinTeaserHighlight h3{font-size:21px;line-height:1.2;margin:10px 0}
       .joinTeaserHighlight p{font-size:16px;line-height:1.65;color:#536078;margin:0}
-      .joinTeaserAction{margin-top:30px}
+      .joinTeaserAction{margin-top:30px;margin-left:max(24px,calc((100vw - 1132px)/2))}
       .joinTeaserAction:focus-visible{outline:3px solid var(--navy);outline-offset:4px}
       @media(max-width:760px){
-        #join.joinTeaser{padding:42px 24px}
-        .joinTeaserTop{grid-template-columns:1fr;gap:16px}
+        #join.joinTeaser{padding:0 0 42px}
+        .joinTeaserTop{display:flex;flex-direction:column;min-height:0}
+        .joinTeaserCopy{width:100%;padding:0 24px 12px;order:2;margin-top:-20px}
+        .joinTeaserArt:after{background:linear-gradient(0deg,#fff 0%,rgba(255,255,255,.85) 9%,rgba(255,255,255,0) 30%)}
+        .joinTeaserArt img{object-position:78% 27%}
         .joinTeaserCopy h2{font-size:38px;margin-bottom:16px}
-        .joinTeaserArt{width:min(100%,420px);margin:auto;padding:12px 16px 6px}
+        .joinTeaserArt{position:relative;inset:auto;width:100%;height:290px;order:1}
         .joinTeaserHighlights{grid-template-columns:1fr;gap:22px;margin-top:26px;padding-top:24px}
         .joinTeaserHighlight{position:relative;padding-left:34px}
         .joinTeaserHighlight>span{position:absolute;left:0;top:4px}
         .joinTeaserHighlight h3{margin:0 0 7px;font-size:20px}
-        .joinTeaserAction{width:100%;padding-left:16px;padding-right:16px}
+        .joinTeaserAction{width:calc(100% - 48px);margin-left:24px;padding-left:16px;padding-right:16px}
       }
     `}</style>
     <header className="siteHeader">
@@ -90,7 +91,7 @@ export default function Home() {
         <div className="joinTeaserInner">
           <div className="joinTeaserTop">
             <div className="joinTeaserCopy"><div className="redRule"/><p className="eyebrow">Join ADT Realty</p><h2 id="joinTeaserTitle">A Brokerage Built <span>Around You.</span></h2><p className="joinTeaserPromise">You don’t join ADT to work for us.<br/><strong>We go to work for you.</strong></p></div>
-            <div className="joinTeaserArt"><div className="joinTeaserScreen"><img src="/join-website-screen.jpg" alt="ADT Realty Arizona website shown on a laptop" loading="lazy" width="800" height="500"/></div><div className="joinTeaserBase" aria-hidden="true"/></div>
+            <div className="joinTeaserArt"><img src="/join-agent-keys.webp" alt="A real estate agent offering house keys outside an Arizona home" loading="lazy" width="1672" height="941"/></div>
           </div>
           <div className="joinTeaserHighlights">
             <div className="joinTeaserHighlight"><span aria-hidden="true">01</span><h3>More Opportunity</h3><p>Company-provided leads that create more conversations and opportunities to grow.</p></div>

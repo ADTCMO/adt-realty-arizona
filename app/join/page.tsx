@@ -1,3 +1,4 @@
+import MarketingSamples from "./MarketingSamples";
 import JoinLeaders from "./JoinLeaders";
 import type { Metadata } from "next";
 import { RecruitingFolder } from "./RecruitingFolder";
@@ -47,7 +48,8 @@ export default function JoinPage(){return <div className="joinPage">
 
 <div className="folderStack">
 <Folder label="ADT Realty" index={0} id="values">
- <div className="folderIntro"><p className="eyebrow">American Dream Team</p><h2>A National Brokerage.<br/><em>A Personal Commitment.</em></h2><p>ADT Realty is a rapidly growing national real estate brokerage built around helping agents build successful, lasting businesses. Growth-focused training, practical systems, modern marketing and personal support help you strengthen your skills, serve your clients and create more opportunity.</p></div>
+ <div className="folderIntro valuesIntro"><p className="eyebrow">American Dream Team</p><h2>A National Brokerage.<br/><em>A Personal Commitment.</em></h2><p>Build a lasting business with people who put your growth first. ADT Realty brings together practical training, connected systems and personal support—grounded in three shared values.</p></div>
+ <img className="valuesTeamPhoto" src="/join-values-team.webp" alt="Real estate professionals collaborating outside an Arizona home" width="1440" height="480" loading="lazy" decoding="async"/>
  <div className="folderValues"><article><h3>Helping Others</h3><p>We put people first and serve with purpose.</p></article><article><h3>Do the Right Thing.<br/>Every Time.</h3><p>Integrity guides our actions and decisions.</p></article><article><h3>Build Relationships</h3><p>We connect, collaborate and create lasting relationships.</p></article></div>
  <div className="folderMission"><h3>Our Mission</h3><p>Help people live a better life through real estate by encouraging innovation, collaboration and integrity in our daily practices.</p></div>
 </Folder>
@@ -75,18 +77,15 @@ export default function JoinPage(){return <div className="joinPage">
 <Folder label="Tools & Systems" index={3}>
  <div className="folderIntro"><p className="eyebrow">Connected resources</p><h2>Technology that<br/><em>powers your business.</em></h2><p>Organize leads, strengthen follow-up and manage the work behind each transaction—with systems that help you spend more time building relationships.</p></div>
  <div className="systemsShowcase">
-  <article className="systemFeature"><div className="systemLaptop"><div className="systemScreen fubScreen" role="img" aria-label="Follow Up Boss dashboard example from our recruiting presentation"/></div><h3>Follow Up Boss</h3><p className="systemRole">Lead management & CRM</p><p>Keep your contacts, conversations and next steps together. Build a follow-up routine that keeps relationships moving.</p></article>
-  <article className="systemFeature"><div className="systemLaptop"><div className="systemScreen dotloopScreen" role="img" aria-label="Dotloop transaction dashboard from our recruiting presentation"/></div><h3>Dotloop</h3><p className="systemRole">Transaction management</p><p>Bring contracts, signatures and documents into one organized workflow, from the first offer through closing.</p></article>
+  <article className="systemFeature"><div className="systemLaptop"><img className="systemScreen" src="/join-fub-dashboard.webp" alt="Follow Up Boss dashboard showing activity and follow-up metrics" width="1000" height="425" loading="lazy" decoding="async"/></div><h3>Follow Up Boss</h3><p className="systemRole">Lead management & CRM</p><p>Keep your contacts, conversations and next steps together. Build a follow-up routine that keeps relationships moving.</p></article>
+  <article className="systemFeature"><div className="systemLaptop"><img className="systemScreen" src="/join-dotloop-dashboard.webp" alt="Dotloop interface showing organized transaction files" width="960" height="333" loading="lazy" decoding="async"/></div><h3>Dotloop</h3><p className="systemRole">Transaction management</p><p>Bring contracts, signatures and documents into one organized workflow, from the first offer through closing.</p></article>
  </div>
+ <p className="systemSampleNote">Product interface examples from Follow Up Boss and Dotloop.</p>
 </Folder>
 <Folder label="Marketing" index={4}>
  <div className="folderIntro"><p className="eyebrow">Your brand. Our support.</p><h2>Marketing that<br/><em>helps you stand out.</em></h2><p>Build your brand with professional marketing materials, ready-to-use content and a team that supports your business. From your next listing to your next client conversation, put your best foot forward.</p></div>
- <div className="marketingExamples" aria-label="Coordinated property marketing examples">
-  <figure className="marketingSocial"><div className="sampleBrand">ADT Realty · Arizona</div><h3>JUST<br/>LISTED</h3><div className="marketingPropertyPhoto"><img src="/join-property-page.jpg" alt="Waterfront view at 2094 W Peninsula Circle" loading="lazy" width="550" height="1600"/></div><p>2094 W Peninsula Cir<br/><span>Chandler, Arizona</span></p><figcaption>Social post concept</figcaption></figure>
-  <figure className="marketingFlyer"><div className="sampleBrand">ADT Realty · Arizona</div><div className="marketingPropertyPhoto"><img src="/join-property-page.jpg" alt="Waterfront patio featured in a property flyer concept" loading="lazy" width="550" height="1600"/></div><h3>A new view.<br/>A new chapter.</h3><p>2094 W Peninsula Cir<br/>Chandler, Arizona</p><div className="flyerRule"/><p className="flyerCopy">Waterfront living.<br/>A place to call home.</p><figcaption>Property flyer concept</figcaption></figure>
-  <figure className="marketingWeb"><div className="systemLaptop"><div className="marketingWebScreen"><img src="/join-property-page.jpg" alt="Actual ADT Realty property website for 2094 W Peninsula Circle" loading="lazy" width="550" height="1600"/></div></div><figcaption><a href="/home/2094-w-peninsula-cir">Explore the property website <span aria-hidden="true">↗</span></a><span>Created with ACE Marketing</span></figcaption></figure>
- </div>
- <p className="marketingExampleNote">One property. A consistent look across social, print and your property website. Design examples shown; availability and pricing may change.</p>
+ <MarketingSamples />
+ <p className="marketingExampleNote">One property. Your brand across social, print and a dedicated property website. Featured campaign: 2094 W Peninsula Circle, Chandler. Sample campaign details may change.</p>
 
  <div className="trainingTopics">{["Social media marketing","Professional branding","Monthly mailers","Recruiting & growth materials","Marketing team support"].map(x=><span key={x}>{x}</span>)}</div>
 </Folder>
@@ -104,22 +103,23 @@ export default function JoinPage(){return <div className="joinPage">
 </Folder>
 <Folder label="Career Paths" index={8} id="career-paths">
  <div className="folderIntro"><p className="eyebrow">Build at every stage</p><h2>Wherever You Are in Your Career,<br/><em>There’s a Path Forward.</em></h2><p>From your first transaction to leading others, ADT Realty provides the tools, training and support to help you take your next step. Explore the guide that fits where you are today.</p></div>
- <div className="stageGrid">{stages.map(([slug,title,,copy])=><a href={`/join/${slug}`} className="stageCard" key={slug}><span className="careerStep" aria-hidden="true">{title === "Newly Licensed" ? "START STRONG" : title === "Developing Agent" ? "BUILD MOMENTUM" : title === "Productive Agent" ? "GROW WITH PURPOSE" : "LEAD THE WAY"}</span><div><h3>{title}</h3><p>{copy}</p><b>View the career guide</b></div></a>)}</div>
+ <div className="stageGrid">{stages.map(([slug,title,cover,copy])=><a href={`/join/${slug}`} className="stageCard" key={slug}><img className="careerCover" src={cover} alt={`${title} career guide cover`} width="160" height="210" loading="lazy" decoding="async"/><div><h3>{title}</h3><p>{copy}</p><b>View the career guide</b></div></a>)}</div>
 </Folder>
 <Folder label="Leadership" index={9} id="leaders">
  <div className="folderIntro"><p className="eyebrow">Real people. Real growth.</p><h2>Hear from<br/><em>our leaders.</em></h2><p>There are plenty of opportunities to grow: increase production, mentor agents, become an area leader or help develop an entire market.</p></div>
  <JoinLeaders />
 </Folder>
 </div>
-<section className="wanted"><div className="wantedPaper"><p className="wantedTop">Wanted</p><h2>Arizona Area Leaders<br/>and Real Estate Agents</h2><small>By order of ADT Realty</small><h3>Turn Your License Into a Legacy</h3><p>Whether you are ready to grow your production, strengthen your business or help build an Arizona market, ADT Realty offers an opportunity to create something bigger.</p><b>We’re not building downlines.<br/>We’re building leaders.</b><a className="wantedButton" href="#conversation">Start the Conversation</a></div></section>
 <section className="joinFaq" aria-labelledby="join-faq-heading"><div className="joinFaqInner"><div className="folderIntro"><p className="eyebrow">Let’s talk details</p><h2 id="join-faq-heading">Good questions.<br/><em>A clearer next step.</em></h2><p>Your next move deserves a clear conversation about costs, opportunities and the support behind you.</p></div><div className="joinFaqItems">
- <details><summary>What is the commission split?</summary><p>Contact Mike for ADT Realty’s current written compensation plan. We’ll review the split with you and discuss how it applies to the business you want to build.</p></details>
- <details><summary>Are there fees or a commission cap?</summary><p>Ask for a complete breakdown of the current plan, including any brokerage fees, transaction fees and cap terms. Review the full cost picture with Mike before making your decision.</p></details>
- <details><summary>How does revenue share work?</summary><p>Revenue share is an opportunity to earn beyond your own transactions through brokerage growth. The current program rules determine eligibility and payouts. Mike can walk you through the structure, requirements and examples; earnings are not guaranteed.</p></details>
- <details><summary>Do you offer stock options or ownership opportunities?</summary><p>Stock options, ownership and revenue share are different arrangements. Ask Mike to confirm which opportunities are currently available at ADT Realty and review the written terms for any program you’re considering.</p></details>
- <details><summary>Are there other ways to earn at ADT Realty?</summary><p>Beyond personal production, explore revenue share, mentorship and leadership paths. The opportunities that fit you will depend on your experience, goals and the requirements of each role.</p></details>
- <details><summary>Is there a path for my stage of career?</summary><p>Yes. Explore the guides for newly licensed, developing and productive agents, or the leadership path. In your conversation with Mike, discuss your next step, the support you need and a plan for making the transition.</p></details>
+ <details><summary>What is the commission split?</summary><p>On self-generated business, the split is <strong>80/20</strong>, moving to <strong>100% after a $15,000 cap</strong>. Company-provided leads have a <strong>75/25 split</strong> and do not count toward the cap.</p></details>
+ <details><summary>Is there a transaction fee?</summary><p>There is a <strong>$495 transaction fee</strong>, which may be paid by the client or the agent.</p></details>
+ <details><summary>How much does it cost to join, and what is the monthly fee?</summary><p>It costs <strong>$100 to join</strong>, with an <strong>$85 monthly technology fee</strong>.</p></details>
+ <details><summary>How does revenue share work?</summary><p>All five levels are available immediately, with no frontline requirements or locked levels. The program offers a flat <strong>10% override at each level</strong>, creating an opportunity for ongoing income as your team grows. Earnings depend on qualifying activity and program terms.</p></details>
+ <details><summary>Does ADT Realty offer stock options?</summary><p>Stock options are planned for ADT Realty’s next stage of growth, with a projected rollout within the next 12 months. Joining now offers the opportunity to get involved on the ground floor and help shape a growing brokerage. Program details, eligibility and timing are still being finalized.</p></details>
+ <details><summary>Are there other opportunities to grow and earn at ADT Realty?</summary><p>ADT Realty is expanding opportunities beyond real estate sales. ADT Insurance recently launched, with ADT Mortgage and ADT Lending expected to follow. These businesses are intended to create additional income opportunities for eligible agents while giving clients access to more services. Participation details and requirements will vary by program.</p></details>
+ <details><summary>Is there a path for my stage of career?</summary><p>Absolutely. We’ll discuss your experience, goals and where you are today to help identify the right career path for you. Whether you’re newly licensed, building consistency or growing an established business, ADT Realty offers training and support to help you take your next step—including opportunities to mentor agents and grow into leadership roles.</p></details>
  </div></div></section>
 <section id="conversation" className="conversation"><div className="conversationInner"><div><p className="eyebrow">No pressure. No obligation.</p><h2>Start a confidential conversation.</h2><p>Tell us where you are in your career and what you want to build. We’ll help you determine whether ADT Realty Arizona is the right fit.</p></div><LeadForm type="career"/></div></section>
 </main><footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Helping Others · Do the Right Thing Every Time · Build Relationships</p></footer></div>}
+
 

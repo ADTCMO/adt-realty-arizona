@@ -218,3 +218,15 @@
 @media print{.recruitFolder{position:relative;top:auto;margin-bottom:28px;filter:none;break-inside:avoid}.folderTab{position:relative;top:auto}.joinFlagVideo{display:none}.folderStack{padding:0}.wanted,.conversation{break-before:page}}
 
 .folderBody .joinHeroesCopy .eyebrow{color:#ffd6c3}
+
+/* Tabs are siblings of the panel stacking contexts, so no panel can cover them. */
+.folderTabTrack{--folder-surface:#fffaf0;position:sticky;top:16px;z-index:100;max-width:1280px;height:60px;margin:0 auto;pointer-events:none}
+.folderTabTrack.folderTone1{--folder-surface:#dce6ee}
+.folderTabTrack.folderTone2{--folder-surface:#f4f6f8}
+.folderTabTrack>.folderTab{position:relative;top:0;height:100%}
+.heroesTabTrack{--folder-surface:#061a4d}
+.heroesTabTrack>.folderTab{color:#fff}
+.heroesTabTrack>.folderTab span{color:#ffc2b7}
+@media(max-width:600px){.folderTabTrack{top:8px;height:42px}}
+@media(prefers-reduced-motion:reduce){.folderTabTrack{position:relative;top:auto}}
+@media print{.folderTabTrack{position:relative;top:auto}}

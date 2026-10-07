@@ -50,7 +50,7 @@ export default function JoinPage(){return <div className="joinPage">
 <Folder label="ADT Realty" index={0} id="values">
  <div className="folderIntro valuesIntro"><p className="eyebrow">American Dream Team</p><h2>A National Brokerage.<br/><em>A Personal Commitment.</em></h2><p>Build a lasting business with people who put your growth first. ADT Realty brings together practical training, connected systems and personal support—grounded in three shared values.</p></div>
  <img className="valuesTeamPhoto" src="/join-values-team.webp" alt="Real estate professionals collaborating outside an Arizona home" width="1440" height="480" loading="lazy" decoding="async"/>
- <div className="folderValues"><article><h3>Helping Others</h3><p>We put people first and serve with purpose.</p></article><article><h3>Do the Right Thing.<br/>Every Time.</h3><p>Integrity guides our actions and decisions.</p></article><article><h3>Build Relationships</h3><p>We connect, collaborate and create lasting relationships.</p></article></div>
+ <div className="folderValues"><article><h3>Helping Others</h3><p>We put people first and serve with purpose.</p></article><article><h3>Do the Right Thing.<br/> Every Time.</h3><p>Integrity guides our actions and decisions.</p></article><article><h3>Build Relationships</h3><p>We connect, collaborate and create lasting relationships.</p></article></div>
  <div className="folderMission"><h3>Our Mission</h3><p>Help people live a better life through real estate by encouraging innovation, collaboration and integrity in our daily practices.</p></div>
 </Folder>
 <Folder label="Business Model" index={1} id="model">

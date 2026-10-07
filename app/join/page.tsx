@@ -44,7 +44,7 @@ export default function JoinPage(){return <div className="joinPage">
   <div className="joinMapSupport"><h2>Build a Business for Life</h2><p>Practical training, proven systems, modern marketing and people<br className="joinSupportBreak" /> committed to helping you succeed.</p></div>
 </section>
 
-<section className="joinPromise" aria-label="Our commitment to agents"><h2>You don’t join ADT Realty to work for us.<br/><em>We go to work for you.</em></h2></section>
+<section className="joinPromise" aria-label="Our commitment to agents"><h2>Agents don’t join ADT Realty to work for us.<br/><em>They join so we can go to work for them.</em></h2></section>
 
 <div className="folderStack">
 <Folder label="ADT Realty" index={0} id="values">
@@ -83,7 +83,7 @@ export default function JoinPage(){return <div className="joinPage">
  <p className="systemSampleNote">Product interface examples from Follow Up Boss and Dotloop.</p>
 </Folder>
 <Folder label="Marketing" index={4}>
- <div className="folderIntro"><p className="eyebrow">Your brand. Our support.</p><h2>Marketing that<br/><em>helps you stand out.</em></h2><p>Build your brand with professional marketing materials, ready-to-use content and a team that supports your business. From your next listing to your next client conversation, put your best foot forward.</p></div>
+ <div className="folderIntro"><p className="eyebrow">Your brand. Our support.</p><h2>Your listing. A complete marketing campaign.<br/><em>Automatically.</em></h2><p>ADT Realty’s fully automated marketing system turns your property details and photos into branded social media posts, professional flyers, property websites and more—helping you launch a coordinated campaign and spend more time with clients.</p></div>
  <MarketingSamples />
  <p className="marketingExampleNote">One property. Your brand across social, print and a dedicated property website. Featured campaign: 2094 W Peninsula Circle, Chandler. Sample campaign details may change.</p>
 
@@ -121,5 +121,6 @@ export default function JoinPage(){return <div className="joinPage">
  </div></div></section>
 <section id="conversation" className="conversation"><div className="conversationInner"><div><p className="eyebrow">No pressure. No obligation.</p><h2>Start a confidential conversation.</h2><p>Tell us where you are in your career and what you want to build. We’ll help you determine whether ADT Realty Arizona is the right fit.</p></div><LeadForm type="career"/></div></section>
 </main><footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Helping Others · Do the Right Thing Every Time · Build Relationships</p></footer></div>}
+
 
 

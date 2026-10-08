@@ -81,42 +81,22 @@
   display:block;
   z-index:-3;
   inset:0;
-  background:
-    linear-gradient(90deg,rgba(2,15,49,.78) 0%,rgba(2,15,49,.48) 29%,rgba(2,15,49,.08) 49%,transparent 64%),
-    radial-gradient(ellipse 43% 69% at 72% 45%,rgba(255,255,255,.22),rgba(248,250,252,.1) 58%,transparent 82%);
+  background:linear-gradient(90deg,rgba(2,15,49,.8) 0%,rgba(2,15,49,.5) 28%,rgba(2,15,49,.12) 46%,transparent 61%);
 }
 .joinHeroMap{
   z-index:-2;
-  top:4%;
-  right:-1%;
-  width:76%;
-  height:90%;
+  top:0;
+  right:0;
+  width:100%;
+  height:100%;
   object-fit:contain;
-  object-position:right center;
-  opacity:.76;
+  object-position:right bottom;
+  opacity:.86;
   mix-blend-mode:normal;
-  filter:saturate(.48) brightness(1.07) contrast(.88);
-  -webkit-mask-image:
-    radial-gradient(ellipse 67% 70% at 62% 49%,#000 42%,rgba(0,0,0,.88) 58%,rgba(0,0,0,.28) 76%,transparent 91%),
-    linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%),
-    linear-gradient(to right,transparent 0%,#000 12%,#000 94%,transparent 100%);
-  -webkit-mask-composite:source-in,source-in;
-  mask-image:
-    radial-gradient(ellipse 67% 70% at 62% 49%,#000 42%,rgba(0,0,0,.88) 58%,rgba(0,0,0,.28) 76%,transparent 91%),
-    linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%),
-    linear-gradient(to right,transparent 0%,#000 12%,#000 94%,transparent 100%);
-  mask-composite:intersect;
+  filter:none;
 }
 .joinHeroFlag:after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  left:0;
-  right:0;
-  bottom:0;
-  height:27%;
-  background:linear-gradient(180deg,transparent 0%,rgba(7,35,72,.2) 28%,rgba(5,31,68,.56) 100%);
-  pointer-events:none;
+  content:none;
 }
 .joinHeroFlag .joinMapTitle{
   position:absolute;
@@ -149,13 +129,11 @@
   .joinMapSupport p{font-size:15px}
 }
 @media(max-width:850px){
-  .joinHeroMap{right:-5%;width:83%;height:92%}
   .joinHeroFlag .joinMapTitle{width:48%;font-size:clamp(32px,6vw,52px)}
   .joinMapSupport{bottom:9%}
   .joinMapSupport p{font-size:12px}
 }
 @media(max-width:600px){
-  .joinHeroMap{right:-8%;width:91%;height:94%}
   .joinHeroFlag .joinMapTitle{left:4%;width:55%;font-size:36px}
   .joinMapSupport p{font-size:10px}
 }

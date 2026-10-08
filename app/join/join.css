@@ -52,7 +52,7 @@
 .conversation{padding:80px 24px;background:#eef1f5;scroll-margin-top:24px}.conversationInner{width:min(1080px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}.conversation h2{font-size:clamp(36px,4.5vw,58px);line-height:1.08;letter-spacing:-.04em;color:var(--navy);margin-bottom:18px}.conversation p{font-size:18px;line-height:1.65;color:var(--muted)}.conversation .leadForm{background:#fff;padding:30px;box-shadow:0 18px 48px #061a4d15}.conversation .leadForm label{color:var(--navy)!important;font-weight:800}.conversation .leadForm input,.conversation .leadForm select,.conversation .leadForm textarea{display:block!important;width:100%;background:#fff!important;color:var(--ink)!important;border:1px solid #cbd4e1!important;margin-top:7px;padding:12px;border-radius:3px}.conversation .leadForm .button{background:var(--red);color:#fff}
 .joinFooter{background:#020f31;color:#fff;padding:32px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:20px}.joinFooter img{height:54px;width:auto;filter:brightness(0) invert(1)}.joinFooter p{margin:0;color:#cad5e7;font-size:14px}
 
-/* Full-width water and map artwork over the moving flag. */
+/* Full-width map artwork over the moving flag. */
 .joinHeroFlag{
   position:relative;
   min-height:0;
@@ -61,11 +61,10 @@
   place-items:center;
   isolation:isolate;
   overflow:hidden;
-  background:#061a4d;
+  background:#000;
 }
 .joinFlagVideo,
 .joinHeroWash,
-.joinHeroWater,
 .joinHeroMap{
   position:absolute;
 }
@@ -75,38 +74,29 @@
   width:100%;
   height:100%;
   object-fit:cover;
-  opacity:.86;
-  filter:sepia(.42) saturate(.58) brightness(.68) contrast(.92);
+  opacity:.88;
+  filter:saturate(.72) brightness(.72) contrast(.94);
 }
 .joinHeroWash{
   display:block;
   z-index:-3;
   inset:0;
-  background:linear-gradient(180deg,rgba(55,38,24,.18),rgba(93,67,39,.1) 58%,rgba(7,22,48,.08));
+  background:
+    linear-gradient(90deg,rgba(2,15,49,.76) 0%,rgba(2,15,49,.48) 34%,rgba(2,15,49,.08) 62%,rgba(2,15,49,.02) 100%),
+    radial-gradient(ellipse 62% 75% at 68% 47%,rgba(255,255,255,.2),rgba(244,248,252,.08) 58%,transparent 82%);
 }
-.joinHeroWater{
+.joinHeroMap{
   z-index:-2;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
   object-position:center;
-  clip-path:inset(55% 0 0);
-}
-.joinHeroMap{
-  z-index:-1;
-  inset:5% 11% 13%;
-  width:78%;
-  height:82%;
-  object-fit:contain;
-  object-position:center;
-  opacity:.82;
-  mix-blend-mode:normal;
-  filter:saturate(.9) contrast(.96);
-  -webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 8%,#000 70%,transparent 96%);
-  -webkit-mask-composite:source-in;
-  mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 8%,#000 70%,transparent 96%);
-  mask-composite:intersect;
+  opacity:.7;
+  mix-blend-mode:screen;
+  filter:saturate(.38) brightness(1.08) contrast(.9);
+  -webkit-mask-image:radial-gradient(ellipse 74% 88% at 64% 48%,#000 50%,rgba(0,0,0,.88) 67%,rgba(0,0,0,.34) 86%,transparent 100%);
+  mask-image:radial-gradient(ellipse 74% 88% at 64% 48%,#000 50%,rgba(0,0,0,.88) 67%,rgba(0,0,0,.34) 86%,transparent 100%);
 }
 .joinHeroFlag:after{
   content:none;
@@ -114,53 +104,45 @@
 .joinHeroFlag .joinMapTitle{
   position:absolute;
   z-index:1;
-  inset:0 0 5%;
+  left:3.25%;
+  top:50%;
+  width:43%;
+  transform:translateY(-54%);
   display:flex;
   flex-direction:column;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
   margin:0;
-  padding:16px;
-  color:#082e4c;
-  text-align:center;
+  padding:16px 0;
+  color:#fff;
+  text-align:left;
   text-transform:uppercase;
-  font-size:88px;
+  font-size:clamp(46px,4.65vw,90px);
   font-weight:950;
-  line-height:1;
-  letter-spacing:0;
-  -webkit-text-stroke:2px #e8d2a8;
-  paint-order:stroke fill;
-  text-shadow:0 2px 3px rgba(3,17,36,.25);
+  line-height:.96;
+  letter-spacing:-.035em;
+  text-shadow:0 3px 18px rgba(2,15,49,.72);
 }
-.joinMapTitle>span{font-size:1em;-webkit-text-stroke:2px #fff;paint-order:stroke fill}
-.joinMapTitle>b{display:block;font-size:.78em;color:#082e4c;-webkit-text-stroke:2px #fff;paint-order:stroke fill}
-.joinMapTitle strong{display:block;margin-top:18px;font-size:40px;letter-spacing:.01em;color:#b30718}
-.joinMapSupport{position:absolute;z-index:1;left:2.5%;bottom:3.5%;color:#fff;text-shadow:0 2px 4px #031124,0 2px 12px #031124}
+.joinMapTitle>span{font-size:.58em;line-height:1.06;letter-spacing:-.02em}
+.joinMapTitle>b{display:block;font-size:1em;color:#fff}
+.joinMapTitle strong{display:block;margin-top:12px;font-size:.31em;line-height:1.1;letter-spacing:.01em;color:#ef3340}
+.joinMapSupport{position:absolute;z-index:1;left:4.1%;bottom:16%;max-width:42%;color:#fff;text-shadow:0 2px 4px #031124,0 2px 12px #031124}
 .joinMapSupport p{margin:0;font-size:17px;line-height:1.4}
 @media(max-width:1200px){
-  .joinHeroFlag .joinMapTitle{font-size:66px}
-  .joinMapTitle strong{font-size:32px}
   .joinMapSupport p{font-size:15px}
 }
 @media(max-width:850px){
-  .joinHeroMap{inset:4% 7% 13%;width:86%;height:83%}
-  .joinHeroFlag .joinMapTitle{font-size:52px}
-  .joinMapTitle strong{margin-top:10px;font-size:25px}
-  .joinMapSupport{bottom:4%}
+  .joinHeroFlag .joinMapTitle{width:48%;font-size:clamp(32px,6vw,52px)}
+  .joinMapSupport{bottom:9%}
   .joinMapSupport p{font-size:12px}
 }
 @media(max-width:600px){
-  .joinHeroFlag{min-height:240px}
-  .joinHeroMap{inset:3% 4% 14%;width:92%;height:83%}
-  .joinHeroFlag .joinMapTitle{font-size:36px;-webkit-text-stroke:1px #e8d2a8}
-  .joinMapTitle>span,.joinMapTitle>b{-webkit-text-stroke:1px #fff}
-  .joinMapTitle strong{margin-top:7px;font-size:19px}
-  .joinMapSupport p{font-size:12px}
+  .joinHeroFlag .joinMapTitle{left:4%;width:55%;font-size:36px}
+  .joinMapSupport p{font-size:10px}
 }
 @media(max-width:460px){
-  .joinHeroFlag .joinMapTitle{font-size:clamp(27px,8vw,36px);inset:0 0 18%}
-  .joinMapTitle strong{margin-top:8px;font-size:clamp(15px,4.4vw,19px)}
-  .joinMapSupport{left:5.5%;bottom:6%;right:5.5%}
+  .joinHeroFlag .joinMapTitle{font-size:27px;top:46%;width:58%}
+  .joinMapSupport{bottom:5%;left:4%;max-width:58%}
   .joinSupportBreak{display:none}
 }
 
@@ -187,7 +169,7 @@
 @media(max-width:1100px){.folderTab{font-size:10px;padding:6px;gap:4px}.valuesIntro h2{font-size:36px}.advantageBenefits,.trainingBenefits{gap:16px}.advantageBenefits h3,.trainingBenefits h3{font-size:15px}.advantageBenefits p,.trainingBenefits p{font-size:14px}.stageCard{grid-template-columns:70px minmax(0,1fr);gap:16px;padding:18px}.careerCover{width:70px;height:105px}.stageCard h3{font-size:20px}.joinHeroesCopy{width:60%}}
 @media(max-width:850px){.joinTop{height:68px;padding:0 18px}.joinTop img{height:46px}.joinTop nav{display:none}.joinTop>.joinButton{padding:11px 13px;font-size:13px}.folderStack{padding:0 16px 40px}.folderBody{padding:30px 28px;min-height:0}.folderSplit{grid-template-columns:1fr;gap:24px}.folderIntro h2{font-size:38px}.folderIntro>p:not(.eyebrow){font-size:17px}.valuesIntro{grid-template-columns:1fr;gap:14px}.valuesTeamPhoto{height:210px}.agentPhoto{width:min(100%,480px);margin:auto}.trainingDeckArt{max-width:520px;margin:auto}.advantageBenefits,.trainingBenefits{grid-template-columns:repeat(3,1fr)}.marketingExamples{grid-template-columns:1fr 1fr;gap:24px}.marketingWeb{grid-column:1/-1;max-width:450px;width:100%;justify-self:center}.systemsShowcase{gap:28px}.sellerLeadArt{max-width:480px;width:100%;margin:auto}.aceLaptopArt{max-width:520px;margin:auto;width:100%}.joinHeroesCopy{width:70%}.joinHeroesFeature{background-position:60% center}.joinFaqInner{grid-template-columns:1fr;gap:4px}.conversationInner{grid-template-columns:1fr;gap:32px}.joinFooter{display:block;text-align:center}.joinFooter img{margin-bottom:14px}}
 @media(max-width:600px){.joinPromise{padding:36px 22px}.joinPromise h2{font-size:27px}.folderStack{--tab-top:8px;--tab-height:42px;--tab-bottom:50px;padding-left:10px;padding-right:10px}.recruitFolder{margin-bottom:20px}.folderTab{padding:6px 2px;justify-content:center;border-radius:9px 12px 0 0}.folderTab b{display:none}.folderTab span{font-size:11px}.folderBody{padding:28px 22px 32px;border-radius:0 16px 16px 16px}.folderIntro h2{font-size:33px}.valuesTeamPhoto{height:170px}.folderValues{grid-template-columns:1fr;gap:20px;margin:22px 0}.folderValues article{text-align:left;border-left:2px solid #8f1624;padding-left:16px}.folderValues h3{font-size:20px}.folderValues h3 br{display:none}.folderMission p{font-size:16px}.advantageBenefits,.trainingBenefits{grid-template-columns:1fr 1fr;gap:22px}.advantageBenefits h3,.trainingBenefits h3{font-size:17px}.advantageBenefits p,.trainingBenefits p{font-size:15px}.trainingAvailable>div{gap:16px}.trainingAvailable h3{font-size:19px}.systemsShowcase{grid-template-columns:1fr;gap:26px}.systemFeature h3{font-size:24px}.systemFeature p{font-size:16px}.marketingExamples{gap:24px;grid-template-columns:1fr}.marketingExamples figure{width:100%;max-width:300px;justify-self:center}.marketingExamples .marketingWeb{grid-column:auto;max-width:360px}.stageGrid{grid-template-columns:1fr;gap:14px}.stageCard{grid-template-columns:74px minmax(0,1fr);gap:16px;min-height:160px;padding:18px 14px}.careerCover{width:74px;height:112px}.stageCard h3{font-size:21px}.stageCard p{font-size:15px}.sellerLeadArt{padding-bottom:125px}.listingPost strong{font-size:14px}.listingPost img{height:82px}.sellerSocialSamples{left:8%;gap:10px}.aceLaptopArt{padding:18px 0 0}.aceLaptopScreen{border-width:8px}.aceLaptopKeyboard{margin:0 -10px;height:19px}.aceLaptopArt>p{font-size:14px}.aceBenefits{grid-template-columns:1fr;gap:20px}.joinHeroesFeature{padding:30px 24px;min-height:650px;background-image:linear-gradient(180deg,#061a4d33 0%,#061a4de6 40%,#061a4d 100%),url('/community-heroes-bg.png');align-items:flex-end;background-position:65% top}.joinHeroesCopy{width:100%}.joinHeroesLogo{width:150px;height:92px}.joinHeroesCopy h2{font-size:46px}.heroServiceList{padding:24px;gap:14px;font-size:12px}.joinFaq{padding:48px 24px}.joinFaqItems summary{font-size:17px}.conversation{padding:48px 22px}.conversation .leadForm{padding:24px}.joinLeaderExperience{grid-template-columns:1fr;gap:28px}.joinLeaderStory h3{font-size:27px}}
-@media(prefers-reduced-motion:reduce){.stageCard{transition:none}.joinFlagVideo{display:none}.joinHeroWash{display:none}.joinHeroMap{-webkit-mask-image:none;mask-image:none}.recruitFolder,.folderTabTrack{position:relative;top:auto}.folderStack:before{display:none}}
+@media(prefers-reduced-motion:reduce){.stageCard{transition:none}.joinFlagVideo{display:none}.joinHeroFlag{background:#061a4d}.recruitFolder,.folderTabTrack{position:relative;top:auto}.folderStack:before{display:none}}
 @media print{.recruitFolder,.folderTabTrack{position:relative;top:auto}.recruitFolder{margin-bottom:24px;filter:none;break-inside:avoid}.joinFlagVideo,.folderStack:before{display:none}.folderStack{padding:0}.folderBody{min-height:0}.conversation{break-before:page}}
 
 

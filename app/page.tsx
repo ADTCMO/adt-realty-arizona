@@ -13,6 +13,11 @@ export default function Home() {
       #home .actions{justify-content:center;gap:26px}
       #home .actions .button{min-width:230px}
       #home .actions .outline{border-color:#fff;background:rgba(0,19,67,.10)}
+      .homeValues{min-height:150px;padding:24px clamp(28px,6vw,88px);display:flex;flex-direction:column;justify-content:center;background:#011a59;color:#fff;text-align:center}
+      .homeValues>p{margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+      .homeValuesList{display:grid;grid-template-columns:1fr 1.65fr 1fr;align-items:center;max-width:1260px;width:100%;margin:auto}
+      .homeValuesList strong{min-height:48px;padding:0 28px;display:flex;align-items:center;justify-content:center;font-size:clamp(16px,1.55vw,24px);line-height:1.15;letter-spacing:.015em;text-transform:uppercase}
+      .homeValuesList strong+strong{border-left:4px solid #b00101}
       #buyers{position:relative;min-height:430px;display:block;overflow:hidden;background:#fff}
       #buyers .buyerImage{position:absolute;top:0;right:0;bottom:0;left:38%;background-image:linear-gradient(270deg,#fff 0%,rgba(255,255,255,.18) 20%,rgba(255,255,255,0) 42%),url('/homebuyer-couple-mobile.webp');background-size:cover;background-position:30% center;transform:scaleX(-1)}
       #buyers .buyerImage:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 8%,rgba(255,255,255,.68) 22%,rgba(255,255,255,.16) 40%,rgba(255,255,255,0) 56%)}
@@ -41,25 +46,39 @@ export default function Home() {
         #sellers .compactForm .button{height:48px;margin-top:2px}
         #sellers .compactForm small{margin-top:0}
         #sellers .compactForm .formStatus{min-height:0}
+        .homeValues{min-height:0;padding:27px 24px}
+        .homeValues>p{margin-bottom:14px}
+        .homeValuesList{grid-template-columns:1fr}
+        .homeValuesList strong{min-height:42px;padding:10px 4px;font-size:16px}
+        .homeValuesList strong+strong{border-left:0;border-top:1px solid rgba(255,255,255,.25)}
       }
 
       #join.joinTeaser{padding:0 0 58px;background:#fff;overflow:hidden}
       .joinTeaserInner{max-width:none;margin:auto}
       .joinTeaserTop{position:relative;min-height:440px;display:flex;align-items:center;isolation:isolate}
-      .joinTeaserCopy{position:relative;z-index:2;width:51%;padding:66px 24px 66px max(24px,calc((100vw - 1180px)/2))}
+      .joinTeaserCopy{position:relative;z-index:2;width:51%;margin-left:auto;padding:66px max(24px,calc((100vw - 1180px)/2)) 66px 24px}
       .joinTeaserCopy h2{font-size:clamp(36px,4.2vw,58px);line-height:1.04;letter-spacing:-.045em;margin:0 0 22px;max-width:590px}
       .joinTeaserCopy h2 span{color:var(--red)}
       .joinTeaserPromise{font-size:clamp(18px,1.8vw,22px);line-height:1.55;color:#536078;max-width:510px;margin:0}
       .joinTeaserPromise strong{color:var(--navy);font-weight:700}
-      .joinTeaserArt{position:absolute;inset:0 0 0 25%;z-index:0}
-      .joinTeaserArt img{display:block;width:100%;height:100%;object-fit:cover;object-position:70% 38%}
-      .joinTeaserArt:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 13%,rgba(255,255,255,.7) 29%,rgba(255,255,255,0) 49%),linear-gradient(0deg,#fff 0%,rgba(255,255,255,0) 19%)}
+      .joinTeaserArt{position:absolute;inset:0 25% 0 0;z-index:0}
+      .joinTeaserArt img{display:block;width:100%;height:100%;object-fit:cover;object-position:42% 38%}
+      .joinTeaserArt:after{content:'';position:absolute;inset:0;background:linear-gradient(270deg,#fff 0%,rgba(255,255,255,.98) 13%,rgba(255,255,255,.7) 29%,rgba(255,255,255,0) 49%),linear-gradient(0deg,#fff 0%,rgba(255,255,255,0) 19%)}
       .joinTeaserHighlights{max-width:1180px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin-top:12px;padding-top:28px;border-top:1px solid #cfd7e3}
       .joinTeaserHighlight>span{font-size:12px;letter-spacing:.16em;font-weight:800;color:var(--red)}
       .joinTeaserHighlight h3{font-size:21px;line-height:1.2;margin:10px 0}
       .joinTeaserHighlight p{font-size:16px;line-height:1.65;color:#536078;margin:0}
       .joinTeaserAction{margin-top:30px;margin-left:max(24px,calc((100vw - 1132px)/2))}
       .joinTeaserAction:focus-visible{outline:3px solid var(--navy);outline-offset:4px}
+      .homeHeroes{position:relative;min-height:470px;display:flex;align-items:center;overflow:hidden;background:#011a59;color:#fff;isolation:isolate}
+      .homeHeroes:before{content:'';position:absolute;z-index:-2;inset:0;background:url('/community-heroes-bg.png') 63% center/cover no-repeat}
+      .homeHeroes:after{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#011a59 0%,rgba(1,26,89,.96) 34%,rgba(1,26,89,.54) 58%,rgba(1,26,89,.08) 82%)}
+      .homeHeroesCopy{width:min(600px,52%);margin-left:max(28px,calc((100vw - 1180px)/2));padding:48px 30px 42px 0}
+      .homeHeroesLogo{display:block;width:190px;height:100px;object-fit:contain;object-position:left center;margin-bottom:12px}
+      .homeHeroesCopy h2{font-size:clamp(38px,4vw,58px);line-height:1;margin:0 0 18px}
+      .homeHeroesCopy>p{font-size:17px;line-height:1.6;color:#e5ebf5;max-width:560px}
+      .homeHeroesActions{display:flex;gap:14px;margin-top:26px}.homeHeroesActions .outline{border-color:#fff;color:#fff;background:transparent}
+      .homeHeroGroups{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.3);font-size:12px;font-weight:750}
       @media(max-width:760px){
         #join.joinTeaser{padding:0 0 42px}
         .joinTeaserTop{display:flex;flex-direction:column;min-height:0}
@@ -73,21 +92,35 @@ export default function Home() {
         .joinTeaserHighlight>span{position:absolute;left:0;top:4px}
         .joinTeaserHighlight h3{margin:0 0 7px;font-size:20px}
         .joinTeaserAction{width:calc(100% - 48px);margin-left:24px;padding-left:16px;padding-right:16px}
+        .homeHeroes{min-height:620px;align-items:flex-end}
+        .homeHeroes:before{background-position:65% top}
+        .homeHeroes:after{background:linear-gradient(180deg,rgba(1,26,89,.04) 5%,rgba(1,26,89,.84) 48%,#011a59 72%)}
+        .homeHeroesCopy{width:100%;margin:0;padding:260px 24px 34px}
+        .homeHeroesLogo{width:155px;height:82px}
+        .homeHeroesCopy h2{font-size:40px}
+        .homeHeroesCopy>p{font-size:16px}
+        .homeHeroesActions{flex-direction:column}
+        .homeHeroesActions .button{width:100%}
+        .homeHeroGroups{gap:10px 16px}
       }
     `}</style>
     <header className="siteHeader">
       <a className="brand" href="#home" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></a>
-      <nav aria-label="Main navigation"><a href="#home">Home</a><a href="#buyers">Buy</a><a href="/east-valley">East Valley</a><a href="#sellers">Sell</a><a href="https://adtrealtyaz.com/hero">Community Heroes</a><a href="#join">Join ADT</a></nav>
+      <nav aria-label="Main navigation"><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="#community-heroes">Community Heroes</a><a href="/leaders">Meet Our Arizona Broker</a><a href="#join">Join ADT</a></nav>
       <a className="button red headerButton" href="#contact">Talk to an Agent <span>›</span></a>
-      <details className="mobileMenu"><summary aria-label="Open navigation"><span/><span/><span/></summary><div><a href="#home">Home</a><a href="#buyers">Buy</a><a href="/east-valley">East Valley Guide</a><a href="#sellers">Sell</a><a href="https://adtrealtyaz.com/hero">Community Heroes</a><a href="#join">Join ADT</a><a href="#contact">Talk to an Agent</a></div></details>
+      <details className="mobileMenu"><summary aria-label="Open navigation"><span/><span/><span/></summary><div><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="#community-heroes">Community Heroes</a><a href="/leaders">Meet Our Arizona Broker</a><a href="#join">Join ADT</a><a href="#contact">Talk to an Agent</a></div></details>
     </header>
 
     <main>
       <section id="home" className="hero"><div className="heroContent"><h1>ADT REALTY — ARIZONA</h1><p>Local expertise. Modern tools. Relationships that matter.</p><div className="actions"><a className="button red" href="#buyers">Buy a Home <span>›</span></a><a className="button outline" href="#sellers">Sell a Home <span>›</span></a></div></div></section>
 
-      <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple outside their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. We’ll help you understand your options, prepare for each step, and move forward with confidence.</p><a className="button red" href="https://acebuyer.adtrealtyaz.com">Start My Homebuying Plan <span>›</span></a><small>Powered by the ADT Realty ACE Buyer process.</small></div></section>
+      <section className="homeValues" aria-labelledby="homeValuesTitle"><p id="homeValuesTitle">What Guides Us</p><div className="homeValuesList"><strong>Helping Others</strong><strong>Do the Right Thing. Every Time.</strong><strong>Build Relationships</strong></div></section>
 
-      <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Enter your address to see your automated home value estimate and explore your next steps with ACE Seller.</p><LeadForm type="seller" /></div></section>
+      <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple outside their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. Use our free buyer tools to explore your payment, affordability, potential savings and the steps ahead.</p><a className="button red" href="https://acebuyer.adtrealtyaz.com">Explore Free Buyer Tools <span>›</span></a></div></section>
+
+      <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Enter your address for a free automated home-value estimate, then explore tools to understand your potential proceeds and prepare for your next move.</p><LeadForm type="seller" /></div></section>
+
+      <section id="community-heroes" className="homeHeroes" aria-labelledby="homeHeroesTitle"><div className="homeHeroesCopy"><img className="homeHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes"/><h2 id="homeHeroesTitle">Heroes, We Have Your Back.</h2><p>ADT Realty proudly offers meaningful homebuying and selling savings to the people who serve our communities.</p><div className="homeHeroGroups"><span>Military &amp; Veterans</span><span>Law Enforcement</span><span>Firefighters &amp; EMS</span><span>Healthcare</span><span>Educators &amp; School Staff</span></div><div className="homeHeroesActions"><a className="button red" href="/hero#community-hero-form">Estimate My Savings <span>›</span></a><a className="button outline" href="/hero">Learn More <span>›</span></a></div></div></section>
 
       <section id="join" className="join joinTeaser" aria-labelledby="joinTeaserTitle">
         <div className="joinTeaserInner">

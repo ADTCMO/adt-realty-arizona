@@ -46,6 +46,10 @@ export default function JoinPage(){return <div className="joinPage">
 
 <section className="joinPromise" aria-label="Our commitment to agents"><h2>Agents don’t join ADT Realty to work for us.<br/><em>They join so we can go to work for them.</em></h2></section>
 
+<nav className="chapterTabs" aria-label="Explore ADT Realty agent benefits">
+ {chapters.map(([id,label],index)=><a href={`#${id}`} key={id}><span>{String(index+1).padStart(2,"0")}</span><b>{label}</b></a>)}
+</nav>
+
 <div className="folderStack">
 <Folder label="ADT Realty" index={0} id="values">
  <div className="folderIntro valuesIntro"><p className="eyebrow">American Dream Team</p><h2>A National Brokerage.<br/><em>A Personal Commitment.</em></h2><p>Build a lasting business with people who put your growth first. ADT Realty brings together practical training, connected systems and personal support—grounded in three shared values.</p></div>

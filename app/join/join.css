@@ -90,8 +90,10 @@
   opacity:.9;
   mix-blend-mode:normal;
   filter:saturate(1.2);
-  -webkit-mask-image:radial-gradient(ellipse 72% 88% at center,#000 54%,transparent 100%);
-  mask-image:radial-gradient(ellipse 72% 88% at center,#000 54%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 11%,#000 89%,transparent),linear-gradient(to bottom,transparent,#000 13%,#000 87%,transparent);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent,#000 11%,#000 89%,transparent),linear-gradient(to bottom,transparent,#000 13%,#000 87%,transparent);
+  mask-composite:intersect;
 }
 .joinHeroFlag:after{
   content:none;

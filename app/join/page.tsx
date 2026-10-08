@@ -15,13 +15,13 @@ export const metadata: Metadata = {
 const chapters = [
   ["values", "ADT Realty"], ["model", "Business Model"],
   ["training", "Training"], ["systems", "Tools & Systems"],
-  ["marketing", "Marketing"], ["seller-leads", "Seller Leads"],
+  ["seller-leads", "Seller Leads"], ["marketing", "Marketing"],
   ["ace", "ACE Business Center"],
   ["community-heroes", "Community Heroes"],
   ["career-paths", "Career Paths"], ["leaders", "Leadership"],
 ];
-function Folder({label,index,id,children}: {label:string;index:number;id?:string;children:ReactNode}) {
-  return <RecruitingFolder label={label} index={index} id={id ?? chapters[index][0]} count={chapters.length}>{children}</RecruitingFolder>;
+function Folder({label,index,id,natural=false,children}: {label:string;index:number;id?:string;natural?:boolean;children:ReactNode}) {
+  return <RecruitingFolder label={label} index={index} id={id ?? chapters[index][0]} count={chapters.length} natural={natural}>{children}</RecruitingFolder>;
 }
 const stages=[
  ["newly-licensed","Newly Licensed","/career-newly-licensed.jpg","Build a strong foundation with practical guidance, skills and habits."],
@@ -39,7 +39,7 @@ export default function JoinPage(){return <div className="joinPage">
     <source src="/flag-wave.mp4" type="video/mp4" />
   </video>
   <div className="joinHeroWash" aria-hidden="true" />
-  <img className="joinHeroMap" src="/join-adt-map-feathered.webp?v=2" alt="" aria-hidden="true" />
+  <img className="joinHeroMap" src="/join-adt-map-feathered.webp" alt="" aria-hidden="true" />
   <h1 className="joinMapTitle"><span>Build a Business</span><b>for Life</b><strong>Join ADT Realty — Arizona</strong></h1>
   <div className="joinMapSupport"><p>Practical training, proven systems, modern marketing and people<br className="joinSupportBreak" /> committed to helping you succeed.</p></div>
 </section>
@@ -74,7 +74,7 @@ export default function JoinPage(){return <div className="joinPage">
  ].map(([title,copy],i)=><article key={title}><span className={`trainingDeckIcon trainingDeckIcon${i}`} aria-hidden="true"/><h3>{title}</h3><p>{copy}</p></article>)}</div>
  <div className="trainingAvailable"><p className="eyebrow">Available to you</p><div><h3>Buffini Certified Trainers</h3><h3>Icenhower Online Training Library</h3></div></div>
 </Folder>
-<Folder label="Tools & Systems" index={3}>
+<Folder label="Tools & Systems" index={3} natural>
  <div className="folderIntro"><p className="eyebrow">Connected resources</p><h2>Technology that<br/><em>powers your business.</em></h2><p>Organize leads, strengthen follow-up and manage the work behind each transaction—with systems that help you spend more time building relationships.</p></div>
  <div className="systemsShowcase">
   <article className="systemFeature"><div className="systemLaptop"><img className="systemScreen" src="/join-fub-dashboard.webp" alt="Follow Up Boss dashboard showing activity and follow-up metrics" width="1000" height="425" loading="lazy" decoding="async"/></div><h3>Follow Up Boss</h3><p className="systemRole">Lead management & CRM</p><p>Keep your contacts, conversations and next steps together. Build a follow-up routine that keeps relationships moving.</p></article>
@@ -82,30 +82,29 @@ export default function JoinPage(){return <div className="joinPage">
  </div>
  <p className="systemSampleNote">Product interface examples from Follow Up Boss and Dotloop.</p>
 </Folder>
-<Folder label="Marketing" index={4}>
- <div className="folderIntro"><p className="eyebrow">Your brand. Our support.</p><h2>Your listing. A complete marketing campaign.<br/><em>Automatically.</em></h2><p>ADT Realty’s fully automated marketing system turns your property details and photos into branded social media posts, professional flyers, property websites and more—helping you launch a coordinated campaign and spend more time with clients.</p></div>
- <MarketingSamples />
- <p className="marketingExampleNote">One property. Your brand across social, print and a dedicated property website. Featured campaign: 2094 W Peninsula Circle, Chandler. Sample campaign details may change.</p>
-
- <div className="trainingTopics">{["Social media marketing","Professional branding","Monthly mailers","Recruiting & growth materials","Marketing team support"].map(x=><span key={x}>{x}</span>)}</div>
-</Folder>
-<Folder label="Seller Leads" index={5} id="seller-leads">
+<Folder label="Seller Leads" index={4} id="seller-leads" natural>
  <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">Company-provided opportunities</p><h2>Highly motivated<br/><em>seller leads.</em></h2><p>Get your sign in more yards. Company-provided seller leads give you more opportunities to win listings, build local visibility and promote your business.</p><p>Each listing gives you more to share: a Just Listed announcement, an open house, neighborhood conversations and new reasons for buyers and sellers to reach out.</p></div><div className="sellerLeadArt"><img src="/adt-seller-yard.webp" alt="ADT Realty For Sale sign in an Arizona front yard" loading="lazy"/><div className="sellerSocialSamples"><div className="listingPost"><strong>JUST LISTED</strong><img src="/seller-home.jpg" alt="Arizona home in a sample listing post" loading="lazy"/><span>ADT REALTY · ARIZONA</span></div><div className="listingPost openHousePost"><strong>OPEN HOUSE</strong><img src="/buyer-home.jpg" alt="Arizona home in a sample open house post" loading="lazy"/><span>COME FIND YOUR NEXT CHAPTER</span></div></div><small className="sampleCaption">Marketing examples</small></div></div>
  <div className="trainingTopics"><span>More signs in yards</span><span>More ways to promote your business</span><span>More client conversations</span></div>
 </Folder>
-<Folder label="ACE Business Center" index={6} id="ace">
+<Folder label="Marketing" index={5} natural>
+ <div className="folderIntro"><p className="eyebrow">Your brand. Our support.</p><h2>Your listing. A complete marketing campaign.<br/><em>Automatically.</em></h2><p>ADT Realty’s fully automated marketing system turns your property details and photos into branded social media posts, professional flyers, property websites and more—helping you launch a coordinated campaign and spend more time with clients.</p></div>
+ <MarketingSamples />
+ <p className="marketingExampleNote">One property. Your brand across social, print and a dedicated property website. Featured campaign: 2094 W Peninsula Circle, Chandler. Sample campaign details may change.</p>
+ <div className="trainingTopics">{["Social media marketing","Professional branding","Monthly mailers","Recruiting & growth materials","Marketing team support"].map(x=><span key={x}>{x}</span>)}</div>
+</Folder>
+<Folder label="ACE Business Center" index={6} id="ace" natural>
  <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">Your personal ACE System Business Center</p><h2>Your website.<br/><em>A powerful business tool.</em></h2><p>A personal website that gives buyers and sellers a reason to visit, explore and come back. Useful tools and clear guidance help attract potential clients naturally—and give you a meaningful way to start the conversation.</p><p>Your ACE Business Center brings your website, buyer and seller tools, and automated marketing together to support the business you’re building.</p></div><div className="aceLaptopArt"><div className="aceLaptopScreen"><img src="/join-website-screen.jpg" alt="Actual ADT Realty Arizona website displayed on a laptop" loading="lazy"/></div><div className="aceLaptopKeyboard"/><p>Your brand. Useful tools. More opportunity.</p></div></div>
  <div className="aceBenefits"><article><b>Your personal website</b><p>A destination built to attract buyers and sellers with resources they can use.</p></article><article><b>Buyer & seller tools</b><p>Calculators, planning resources and education that help people take their next step.</p></article><article><b>Automated marketing</b><p>Stay visible, share useful content and keep your business in front of potential clients.</p></article></div>
 </Folder>
-<Folder label="Community Heroes" index={7} id="community-heroes">
+<Folder label="Community Heroes" index={7} id="community-heroes" natural>
  <div className="joinHeroesFeature"><div className="joinHeroesCopy"><img className="joinHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes" loading="lazy"/><p className="eyebrow">Serve those who serve Arizona</p><h2>A chance<br/><em>to give back.</em></h2><p>They strengthen our communities every day. As an ADT Realty agent, you have an opportunity to thank them with meaningful support when they buy or sell a home.</p><p>Build relationships rooted in gratitude. Make a difference in the lives of the people who make a difference for all of us.</p><a className="joinButton" href="/hero">Explore Community Heroes</a></div></div>
  <div className="heroServiceList"><span>Military & Veterans</span><span>Law Enforcement</span><span>Firefighters & EMS</span><span>Healthcare</span><span>Educators & School Staff</span></div>
 </Folder>
-<Folder label="Career Paths" index={8} id="career-paths">
+<Folder label="Career Paths" index={8} id="career-paths" natural>
  <div className="folderIntro"><p className="eyebrow">Build at every stage</p><h2>Wherever You Are in Your Career,<br/><em>There’s a Path Forward.</em></h2><p>From your first transaction to leading others, ADT Realty provides the tools, training and support to help you take your next step. Explore the guide that fits where you are today.</p></div>
  <div className="stageGrid">{stages.map(([slug,title,cover,copy])=><a href={`/join/${slug}`} className="stageCard" key={slug}><img className="careerCover" src={cover} alt={`${title} career guide cover`} width="160" height="210" loading="lazy" decoding="async"/><div><h3>{title}</h3><p>{copy}</p><b>View the career guide</b></div></a>)}</div>
 </Folder>
-<Folder label="Leadership" index={9} id="leaders">
+<Folder label="Leadership" index={9} id="leaders" natural>
  <div className="folderIntro"><p className="eyebrow">Real people. Real growth.</p><h2>Hear from<br/><em>our leaders.</em></h2><p>There are plenty of opportunities to grow: increase production, mentor agents, become an area leader or help develop an entire market.</p></div>
  <JoinLeaders />
 </Folder>

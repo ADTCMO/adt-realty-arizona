@@ -82,9 +82,9 @@
 }
 .joinHeroMap{
   z-index:-2;
-  inset:0;
-  width:100%;
-  height:100%;
+  inset:5% 15% 9%;
+  width:70%;
+  height:86%;
   object-fit:contain;
   object-position:center;
   opacity:.9;
@@ -97,7 +97,7 @@
 .joinHeroFlag .joinMapTitle{
   position:absolute;
   z-index:1;
-  inset:0 0 12%;
+  inset:0 0 5%;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -107,7 +107,7 @@
   color:#082e4c;
   text-align:center;
   text-transform:uppercase;
-  font-size:170px;
+  font-size:104px;
   font-weight:950;
   line-height:1;
   letter-spacing:0;
@@ -115,35 +115,34 @@
   paint-order:stroke fill;
   text-shadow:0 2px 3px rgba(3,17,36,.25);
 }
-.joinMapTitle>span{font-size:1.2em;-webkit-text-stroke:2px #fff;paint-order:stroke fill}
-.joinMapTitle strong{display:block;margin-top:16px;font-size:62px;letter-spacing:0;color:#b30718}
+.joinMapTitle>span{font-size:1em;-webkit-text-stroke:2px #fff;paint-order:stroke fill}
+.joinMapTitle>b{display:block;font-size:.78em;color:#082e4c;-webkit-text-stroke:2px #fff;paint-order:stroke fill}
+.joinMapTitle strong{display:block;margin-top:18px;font-size:48px;letter-spacing:.01em;color:#b30718}
 .joinMapSupport{position:absolute;z-index:1;left:5.5%;bottom:15%;color:#fff;text-shadow:0 2px 4px #031124,0 2px 12px #031124}
-.joinMapSupport h2{margin:0 0 8px;font-size:30px;line-height:1.15;letter-spacing:0}
 .joinMapSupport p{margin:0;font-size:17px;line-height:1.4}
 @media(max-width:1200px){
-  .joinHeroFlag .joinMapTitle{font-size:130px}
-  .joinMapTitle strong{font-size:48px}
-  .joinMapSupport h2{font-size:25px}
+  .joinHeroFlag .joinMapTitle{font-size:78px}
+  .joinMapTitle strong{font-size:38px}
   .joinMapSupport p{font-size:15px}
 }
 @media(max-width:850px){
-  .joinHeroFlag .joinMapTitle{font-size:96px}
-  .joinMapTitle strong{margin-top:10px;font-size:34px}
+  .joinHeroMap{inset:5% 11% 9%;width:78%;height:86%}
+  .joinHeroFlag .joinMapTitle{font-size:58px}
+  .joinMapTitle strong{margin-top:10px;font-size:28px}
   .joinMapSupport{bottom:9%}
-  .joinMapSupport h2{font-size:20px}
   .joinMapSupport p{font-size:12px}
 }
 @media(max-width:600px){
-  .joinHeroFlag .joinMapTitle{font-size:66px;-webkit-text-stroke:1px #e8d2a8}
-  .joinMapTitle strong{margin-top:6px;font-size:25px}
-  .joinMapSupport h2{font-size:16px;margin-bottom:4px}
+  .joinHeroMap{inset:4% 7% 8%;width:86%;height:88%}
+  .joinHeroFlag .joinMapTitle{font-size:40px;-webkit-text-stroke:1px #e8d2a8}
+  .joinMapTitle>span,.joinMapTitle>b{-webkit-text-stroke:1px #fff}
+  .joinMapTitle strong{margin-top:7px;font-size:21px}
   .joinMapSupport p{font-size:10px}
 }
 @media(max-width:460px){
-  .joinHeroFlag .joinMapTitle{font-size:48px;inset:0 0 22%}
-  .joinMapTitle strong{margin-top:6px;font-size:19px}
+  .joinHeroFlag .joinMapTitle{font-size:29px;inset:0 0 18%}
+  .joinMapTitle strong{margin-top:6px;font-size:16px}
   .joinMapSupport{bottom:6%;right:5.5%}
-  .joinMapSupport h2{font-size:14px}
   .joinSupportBreak{display:none}
 }
 

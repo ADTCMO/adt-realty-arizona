@@ -14,7 +14,7 @@
 .folderTab{pointer-events:auto;height:100%;display:flex;align-items:center;gap:6px;width:calc(100% / var(--folder-count));margin-left:calc(var(--folder-index)*100% / var(--folder-count));padding:8px;background:var(--folder-surface);border-radius:14px 18px 0 0;border:1px solid #061a4d20;border-bottom:0;color:var(--navy);font-weight:850;font-size:12px;line-height:1.2;text-decoration:none}.folderTab span{font-size:11px;color:#8f1624}.folderTab:hover{color:var(--red)}
 .folderTab:focus-visible,.stageCard:focus-visible,.joinFaq summary:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 .folderBody{background:var(--folder-surface);padding:clamp(28px,3.5vw,48px);border-radius:0 20px 20px 20px;border:1px solid #061a4d20;min-height:min(680px,calc(100svh - 104px))}
-.naturalTabTrack{display:none}
+.naturalTabTrack{display:block}
 .recruitFolder.naturalSection{position:relative;top:auto;z-index:auto;max-width:none;margin:0 calc(-1 * clamp(16px,4vw,64px));filter:none;background:var(--folder-surface)}
 .recruitFolder.naturalSection .folderBody{width:min(1180px,calc(100% - 48px));margin:0 auto;padding:clamp(64px,7vw,104px) 24px;border:0;border-radius:0;min-height:0;background:transparent}
 .recruitFolder.naturalSection.folderTone0{--folder-surface:#fff}

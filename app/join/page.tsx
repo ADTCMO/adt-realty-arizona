@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { RecruitingFolder } from "./RecruitingFolder";
 import type { ReactNode } from "react";
 import { LeadForm } from "../components/LeadForm";
+import { ChapterTabs } from "./ChapterTabs";
 import "./join.css";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ const chapters = [
   ["ace", "ACE Business Center"],
   ["community-heroes", "Community Heroes"],
   ["career-paths", "Career Paths"], ["leaders", "Leadership"],
-];
+] as const;
 function Folder({label,index,id,natural=false,children}: {label:string;index:number;id?:string;natural?:boolean;children:ReactNode}) {
   return <RecruitingFolder label={label} index={index} id={id ?? chapters[index][0]} count={chapters.length} natural={natural}>{children}</RecruitingFolder>;
 }
@@ -46,9 +47,7 @@ export default function JoinPage(){return <div className="joinPage">
 
 <section className="joinPromise" aria-label="Our commitment to agents"><h2>Agents don’t join ADT Realty to work for us.<br/><em>They join so we can go to work for them.</em></h2></section>
 
-<nav className="chapterTabs" aria-label="Explore ADT Realty agent benefits">
- {chapters.map(([id,label],index)=><a href={`#${id}`} key={id}><span>{String(index+1).padStart(2,"0")}</span><b>{label}</b></a>)}
-</nav>
+<ChapterTabs chapters={chapters} />
 
 <div className="folderStack">
 <Folder label="ADT Realty" index={0} id="values">

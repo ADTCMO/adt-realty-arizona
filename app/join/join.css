@@ -5,9 +5,10 @@
 .joinButton{display:inline-flex;justify-content:center;align-items:center;padding:14px 22px;background:var(--red);color:#fff!important;text-decoration:none;font-weight:900;border-radius:4px}.joinButton:hover{background:#8f1624}
 .eyebrow{text-transform:uppercase;letter-spacing:.15em;font-weight:900;font-size:12px;color:var(--red);margin-bottom:16px}
 .joinPromise{padding:clamp(44px,6vw,82px) 24px;text-align:center;background:#e8edf2}.joinPromise h2{max-width:1050px;margin:0 auto;color:var(--navy);font-size:clamp(26px,3.2vw,44px);line-height:1.24;letter-spacing:-.035em;font-weight:800}.joinPromise em{font-style:normal;color:#8f1624}
-.chapterTabs{position:sticky;top:0;z-index:120;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));width:100%;padding:0 clamp(16px,4vw,64px);background:#e8edf2;box-shadow:0 8px 18px #061a4d10}
-.chapterTabs a{min-width:0;min-height:62px;padding:10px 8px;display:flex;align-items:center;gap:6px;border:1px solid #061a4d20;border-bottom:3px solid transparent;border-radius:12px 14px 0 0;background:#f7f4ec;color:var(--navy);text-decoration:none;font-size:11px;line-height:1.15}
+.chapterTabs{position:sticky;top:0;z-index:120;display:flex;width:100%;min-height:62px;padding:0 clamp(16px,4vw,64px);background:#e8edf2;box-shadow:0 8px 18px #061a4d10}
+.chapterTabs a{flex:0 1 10%;min-width:0;min-height:62px;padding:10px 8px;display:flex;align-items:center;gap:6px;border:1px solid #061a4d20;border-bottom:3px solid transparent;border-radius:12px 14px 0 0;background:#f7f4ec;color:var(--navy);text-decoration:none;font-size:11px;line-height:1.15;animation:tabReveal .24s ease-out both}
 .chapterTabs a:nth-child(3n+2){background:#dce6ee}.chapterTabs a:nth-child(3n){background:#f4f6f8}.chapterTabs a:hover,.chapterTabs a:focus-visible{border-bottom-color:var(--red);color:var(--red);outline:none}.chapterTabs span{color:var(--red);font-size:10px;font-weight:900}.chapterTabs b{font-weight:850}
+@keyframes tabReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 /* Each panel scrolls entirely above the tab baseline before it sticks.
    The top mask keeps retired content from showing through between file tabs. */
 .folderStack{--tab-top:16px;--tab-height:60px;--tab-bottom:76px;padding:0 clamp(16px,4vw,64px) 56px;background:#e8edf2;isolation:isolate}

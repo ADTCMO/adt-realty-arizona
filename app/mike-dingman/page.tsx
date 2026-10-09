@@ -4,7 +4,7 @@ import "./mike-dingman.css";
 export const metadata: Metadata = {
   title: "Mike Dingman | Arizona State Leader & Designated Broker",
   description:
-    "Meet Mike Dingman, ADT Realty Arizona State Leader and Designated Broker, Army veteran, mentor and Arizona real estate professional since 2001.",
+    "Meet Mike Dingman, ADT Realty Arizona State Leader, Designated Broker and Chief Marketing Officer, Army veteran, mentor and Arizona real estate professional since 2001.",
   alternates: { canonical: "/mike-dingman" },
 };
 
@@ -70,7 +70,7 @@ export default function MikeDingmanPage() {
           <div className="mikeHeroCopy">
             <p className="mikeEyebrow">Meet Arizona’s State Leader</p>
             <h1>Mike<br />Dingman</h1>
-            <p className="mikeRole">Arizona State Leader <span>&amp;</span> Designated Broker</p>
+            <p className="mikeRole">Arizona State Leader <span>·</span> Designated Broker <span>·</span> Chief Marketing Officer</p>
             <p className="mikeIntro">A broker, mentor and leader who believes real estate is still a relationship business.</p>
             <a className="mikeButton" href="#story">Get to Know Mike <span>↓</span></a>
           </div>

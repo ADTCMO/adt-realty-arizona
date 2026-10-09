@@ -12,7 +12,7 @@
 /* Each panel scrolls entirely above the tab baseline before it sticks.
    The top mask keeps retired content from showing through between file tabs. */
 .folderStack{--tab-top:16px;--tab-height:60px;--tab-bottom:76px;padding:0 clamp(16px,4vw,64px) 56px;background:#e8edf2;isolation:isolate}
-.folderStack:before{content:"";display:block;position:sticky;top:var(--tab-top);transform:translateY(calc(-1 * var(--tab-top)));height:var(--tab-bottom);margin-bottom:calc(-1 * var(--tab-bottom));background:#e8edf2;z-index:50;pointer-events:none}
+.folderStack:before{display:none}
 .recruitFolder{--folder-surface:#fffaf0;position:sticky;top:calc(var(--tab-bottom) - var(--folder-height,100000px));z-index:calc(1 + var(--folder-index));max-width:1280px;margin:0 auto 24px;filter:drop-shadow(0 -3px 8px #061a4d09)}
 .recruitFolder:last-child{margin-bottom:0}.folderTone1{--folder-surface:#dce6ee}.folderTone2{--folder-surface:#f4f6f8}.folderAnchor{scroll-margin-top:var(--tab-top)}
 .folderTab{pointer-events:auto;height:100%;display:flex;align-items:center;gap:6px;width:calc(100% / var(--folder-count));margin-left:calc(var(--folder-index)*100% / var(--folder-count));padding:8px;background:var(--folder-surface);border-radius:14px 18px 0 0;border:1px solid #061a4d20;border-bottom:0;color:var(--navy);font-weight:850;font-size:12px;line-height:1.2;text-decoration:none}.folderTab span{font-size:11px;color:#8f1624}.folderTab:hover{color:var(--red)}

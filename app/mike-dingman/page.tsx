@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LeadForm } from "../components/LeadForm";
 import "./mike-dingman.css";
 
 export const metadata: Metadata = {
@@ -142,10 +143,13 @@ export default function MikeDingmanPage() {
         </section>
 
         <section id="connect" className="mikeConnect">
-          <p className="mikeEyebrow">Let’s Talk</p>
-          <h2>Real estate is better<br />when it feels personal.</h2>
-          <p>Whether you’re buying, selling or thinking about your next step as an agent, the conversation can start right here.</p>
-          <div><a className="mikeButton red" href="mailto:mikedingman@adthomes.com">Start a Conversation <span>›</span></a><a className="mikeTextLink" href="/join">Explore ADT Realty <span>›</span></a></div>
+          <div className="mikeConnectCopy">
+            <p className="mikeEyebrow">Let’s Talk</p>
+            <h2>Real estate is better<br />when it feels personal.</h2>
+            <p>Whether you’re buying, selling or thinking about your next step as an agent, the conversation can start right here.</p>
+            <a className="mikeTextLink" href="/join">Explore ADT Realty <span>›</span></a>
+          </div>
+          <LeadForm type="contact" market="Mike Dingman page" />
         </section>
       </main>
 

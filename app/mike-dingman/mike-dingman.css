@@ -31,3 +31,7 @@
 /* Finish the feather on every edge, including the top of the source photo. */
 .mikeHeroPortrait:before{-webkit-mask-image:radial-gradient(ellipse 58% 72% at 55% 55%,#000 34%,rgba(0,0,0,.88) 48%,rgba(0,0,0,.35) 64%,transparent 82%);mask-image:radial-gradient(ellipse 58% 72% at 55% 55%,#000 34%,rgba(0,0,0,.88) 48%,rgba(0,0,0,.35) 64%,transparent 82%)}
 @media(max-width:700px){.mikeHeroPortrait:before{-webkit-mask-image:radial-gradient(ellipse 64% 74% at 50% 54%,#000 36%,rgba(0,0,0,.86) 51%,rgba(0,0,0,.34) 67%,transparent 84%);mask-image:radial-gradient(ellipse 64% 74% at 50% 54%,#000 36%,rgba(0,0,0,.86) 51%,rgba(0,0,0,.34) 67%,transparent 84%)}}
+
+/* Final hero art has its own transparent ADT-blue feather and no black backdrop. */
+.mikeHeroPortrait{background:#fff}.mikeHeroPortrait:before{background:url('/mike-dingman-headshot-v2.webp') center bottom/auto 94% no-repeat;-webkit-mask-image:none;mask-image:none}
+@media(max-width:700px){.mikeHeroPortrait{background:#f7f8fa}.mikeHeroPortrait:before{background-size:auto 95%;-webkit-mask-image:none;mask-image:none}}

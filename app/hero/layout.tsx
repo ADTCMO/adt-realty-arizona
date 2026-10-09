@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     title: "ADT Realty Community Heroes | Arizona Real Estate Savings",
     description:
       "See estimated real estate savings for Arizona military, veterans, first responders, healthcare workers and educators.",
-    images: [{ url: "/community-heroes-bg.png", alt: "ADT Realty Community Heroes in Arizona" }],
+    images: [{ url: "/community-heroes-bg-v2.webp", alt: "ADT Realty Community Heroes in Arizona" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ADT Realty Community Heroes",
     description: "Real estate savings for the people who serve Arizona communities.",
-    images: ["/community-heroes-bg.png"],
+    images: ["/community-heroes-bg-v2.webp"],
   },
 };
 

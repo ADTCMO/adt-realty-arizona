@@ -71,7 +71,7 @@ export default function Home() {
       .joinTeaserAction{margin-top:30px;margin-left:max(24px,calc((100vw - 1132px)/2))}
       .joinTeaserAction:focus-visible{outline:3px solid var(--navy);outline-offset:4px}
       .homeHeroes{position:relative;min-height:470px;display:flex;align-items:center;overflow:hidden;background:#011a59;color:#fff;isolation:isolate}
-      .homeHeroes:before{content:'';position:absolute;z-index:-2;inset:0;background:url('/community-heroes-bg.png') 63% center/cover no-repeat}
+      .homeHeroes:before{content:'';position:absolute;z-index:-2;inset:0;background:url('/community-heroes-bg-v2.webp') 63% center/cover no-repeat}
       .homeHeroes:after{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#011a59 0%,rgba(1,26,89,.96) 34%,rgba(1,26,89,.54) 58%,rgba(1,26,89,.08) 82%)}
       .homeHeroesCopy{width:min(600px,52%);margin-left:max(28px,calc((100vw - 1180px)/2));padding:48px 30px 42px 0}
       .homeHeroesLogo{display:block;width:220px;height:112px;object-fit:contain;object-position:left center;margin-bottom:12px;filter:drop-shadow(0 0 10px rgba(255,255,255,.95)) drop-shadow(0 0 24px rgba(255,255,255,.72))}

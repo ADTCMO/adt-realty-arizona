@@ -98,9 +98,8 @@ export default function MikeDingmanPage() {
           </div>
           <div className="mikeServiceCopy">
             <div className="mikeSectionLabel light"><span>02</span><p>Service &amp; Leadership</p></div>
-            <h2>Service shaped<br />the way I lead.</h2>
+            <h2>Service shaped the way I lead.</h2>
             <p>Mike’s time in the U.S. Army helped shape a leadership style built on discipline, accountability, teamwork and putting people first.</p>
-            <div className="mikeLeadershipPrinciple"><strong>Lead from experience.</strong><span>Be there. Do the work. Help people move forward.</span></div>
           </div>
         </section>
 

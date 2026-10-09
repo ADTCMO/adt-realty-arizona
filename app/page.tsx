@@ -13,11 +13,11 @@ export default function Home() {
       #home .actions{justify-content:center;gap:26px}
       #home .actions .button{min-width:230px}
       #home .actions .outline{border-color:#fff;background:rgba(0,19,67,.10)}
-      .homeValues{min-height:150px;padding:24px clamp(28px,6vw,88px);display:flex;flex-direction:column;justify-content:center;background:#011a59;color:#fff;text-align:center}
-      .homeValues>p{margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+      .homeValues{min-height:108px;padding:16px clamp(28px,6vw,88px) 20px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at center,rgba(1,26,89,.12) 0%,rgba(1,26,89,.045) 48%,rgba(255,255,255,0) 78%),linear-gradient(180deg,rgba(1,26,89,.08) 0%,#fff 88%);color:#011a59;text-align:center;border-bottom:1px solid rgba(1,26,89,.08)}
+      .homeValues>p{margin:0 0 10px;font-size:10px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#b00101}
       .homeValuesList{display:grid;grid-template-columns:1fr 1.65fr 1fr;align-items:center;max-width:1260px;width:100%;margin:auto}
-      .homeValuesList strong{min-height:48px;padding:0 28px;display:flex;align-items:center;justify-content:center;font-size:clamp(16px,1.55vw,24px);line-height:1.15;letter-spacing:.015em;text-transform:uppercase}
-      .homeValuesList strong+strong{border-left:4px solid #b00101}
+      .homeValuesList strong{min-height:38px;padding:0 28px;display:flex;align-items:center;justify-content:center;font-size:clamp(14px,1.3vw,20px);line-height:1.15;letter-spacing:.015em;text-transform:uppercase}
+      .homeValuesList strong+strong{border-left:2px solid #b00101}
       #buyers{position:relative;min-height:430px;display:block;overflow:hidden;background:#fff}
       #buyers .buyerImage{position:absolute;top:0;right:0;bottom:0;left:38%;background-image:linear-gradient(270deg,#fff 0%,rgba(255,255,255,.18) 20%,rgba(255,255,255,0) 42%),url('/homebuyer-couple-mobile.webp');background-size:cover;background-position:30% center;transform:scaleX(-1)}
       #buyers .buyerImage:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 8%,rgba(255,255,255,.68) 22%,rgba(255,255,255,.16) 40%,rgba(255,255,255,0) 56%)}
@@ -46,11 +46,11 @@ export default function Home() {
         #sellers .compactForm .button{height:48px;margin-top:2px}
         #sellers .compactForm small{margin-top:0}
         #sellers .compactForm .formStatus{min-height:0}
-        .homeValues{min-height:0;padding:27px 24px}
-        .homeValues>p{margin-bottom:14px}
-        .homeValuesList{grid-template-columns:1fr}
-        .homeValuesList strong{min-height:42px;padding:10px 4px;font-size:16px}
-        .homeValuesList strong+strong{border-left:0;border-top:1px solid rgba(255,255,255,.25)}
+        .homeValues{min-height:96px;padding:13px 10px 17px}
+        .homeValues>p{margin-bottom:8px;font-size:9px}
+        .homeValuesList{grid-template-columns:1fr 1.55fr 1fr}
+        .homeValuesList strong{min-height:42px;padding:0 8px;font-size:clamp(9px,2.55vw,12px);line-height:1.25}
+        .homeValuesList strong+strong{border-left:1px solid #b00101;border-top:0}
       }
 
       #join.joinTeaser{padding:0 0 58px;background:#fff;overflow:hidden}

@@ -38,8 +38,8 @@
 
 /* Transparent portrait over a separate ADT Realty blue halo. */
 .mikeHeroPortrait{background:#fff radial-gradient(ellipse 66% 74% at 53% 50%,#011a59 0%,rgba(1,26,89,.88) 35%,rgba(1,26,89,.44) 57%,rgba(1,26,89,.12) 74%,rgba(1,26,89,0) 92%)}
-.mikeHeroPortrait:before{background:url('/mike-dingman-cutout-v3.webp') center bottom/auto 94% no-repeat;-webkit-mask-image:none;mask-image:none}
-@media(max-width:700px){.mikeHeroPortrait{background:#f7f8fa radial-gradient(ellipse 70% 72% at 50% 49%,#011a59 0%,rgba(1,26,89,.84) 36%,rgba(1,26,89,.4) 60%,rgba(1,26,89,.1) 76%,rgba(1,26,89,0) 92%)}.mikeHeroPortrait:before{background-size:auto 95%}}
+.mikeHeroPortrait:before{background:url('/mike-dingman-cutout-v3.webp') center top/auto 143% no-repeat;-webkit-mask-image:none;mask-image:none}
+@media(max-width:700px){.mikeHeroPortrait{background:#f7f8fa radial-gradient(ellipse 70% 72% at 50% 49%,#011a59 0%,rgba(1,26,89,.84) 36%,rgba(1,26,89,.4) 60%,rgba(1,26,89,.1) 76%,rgba(1,26,89,0) 92%)}.mikeHeroPortrait:before{background-position:center top;background-size:auto 138%}}
 
 /* Direct lead capture for Mike, using the site's verified Arizona routing. */
 .mikeConnect{display:grid;grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);gap:clamp(55px,8vw,110px);align-items:center;text-align:left;padding-left:max(28px,calc((100vw - 1180px)/2));padding-right:max(28px,calc((100vw - 1180px)/2))}.mikeConnectCopy>p:not(.mikeEyebrow){max-width:570px;margin:25px 0;color:#dce2ef;font-size:17px;line-height:1.7}.mikeConnectCopy .mikeTextLink{display:inline-block;margin-top:10px}.mikeConnect .leadForm{padding:34px;background:rgba(255,255,255,.08);grid-template-columns:1fr 1fr}.mikeConnect .leadForm label:last-of-type{grid-column:1/-1}.mikeConnect .leadForm input,.mikeConnect .leadForm textarea{background:rgba(255,255,255,.96);color:var(--m-ink);border:0}.mikeConnect .leadForm textarea{border:0}.mikeConnect .leadForm .button,.mikeConnect .leadForm .formStatus{grid-column:1/-1}.mikeConnect .leadForm .formStatus{color:#fff}

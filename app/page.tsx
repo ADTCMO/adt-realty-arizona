@@ -92,16 +92,16 @@ export default function Home() {
         .joinTeaserHighlight>span{position:absolute;left:0;top:4px}
         .joinTeaserHighlight h3{margin:0 0 7px;font-size:20px}
         .joinTeaserAction{width:calc(100% - 48px);margin-left:24px;padding-left:16px;padding-right:16px}
-        .homeHeroes{min-height:620px;align-items:flex-end}
-        .homeHeroes:before{background-position:65% top}
-        .homeHeroes:after{background:linear-gradient(180deg,rgba(1,26,89,.04) 5%,rgba(1,26,89,.84) 48%,#011a59 72%)}
-        .homeHeroesCopy{width:100%;margin:0;padding:260px 24px 34px}
-        .homeHeroesLogo{width:155px;height:82px}
-        .homeHeroesCopy h2{font-size:40px}
-        .homeHeroesCopy>p{font-size:16px}
-        .homeHeroesActions{flex-direction:column}
+        .homeHeroes{min-height:0;display:block;background:#011a59}
+        .homeHeroes:before{height:310px;bottom:auto;background-position:62% 32%;background-size:cover}
+        .homeHeroes:after{background:linear-gradient(180deg,rgba(1,26,89,0) 0%,rgba(1,26,89,.08) 27%,rgba(1,26,89,.76) 43%,#011a59 57%)}
+        .homeHeroesCopy{position:relative;width:100%;margin:0;padding:275px 22px 30px}
+        .homeHeroesLogo{width:126px;height:64px;margin-bottom:4px}
+        .homeHeroesCopy h2{max-width:360px;font-size:34px;line-height:1.04;margin-bottom:13px}
+        .homeHeroesCopy>p{font-size:15px;line-height:1.5;margin:0}
+        .homeHeroesActions{flex-direction:column;gap:10px;margin-top:20px}
         .homeHeroesActions .button{width:100%}
-        .homeHeroGroups{gap:10px 16px}
+        .homeHeroGroups{gap:8px 15px;margin-top:20px;padding-top:15px;font-size:10px;line-height:1.35}
       }
     `}</style>
     <header className="siteHeader">

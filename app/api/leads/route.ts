@@ -68,7 +68,7 @@ export async function POST(request: Request) {
       id = leadId(created);
       if (!id) id = leadId(await lofty("/v1.0/leads?email=" + encodeURIComponent(email) + "&preciseSearchFlag=true&limit=1", key));
     } else {
-      await lofty("/v1.0/leads/" + id, key, {method:"PUT", body:JSON.stringify({tagsAdd:["ADT Arizona Website",kind]})});
+      await lofty("/v1.0/leads/" + id, key, {method:"PUT", body:JSON.stringify({\n        tagsAdd:["ADT Arizona Website",kind],\n        assignedUserId:OWNER_ID,\n        ownershipId:OWNER_ID,\n        ownershipScope:"PERSONAL",\n      })});
     }
     if (!id) throw new Error("Lead ID missing");
     await lofty("/v1.0/notes", key, {method:"POST",body:JSON.stringify({leadId:id,content:note,isPin:true})});

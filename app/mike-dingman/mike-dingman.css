@@ -33,5 +33,10 @@
 @media(max-width:700px){.mikeHeroPortrait:before{-webkit-mask-image:radial-gradient(ellipse 64% 74% at 50% 54%,#000 36%,rgba(0,0,0,.86) 51%,rgba(0,0,0,.34) 67%,transparent 84%);mask-image:radial-gradient(ellipse 64% 74% at 50% 54%,#000 36%,rgba(0,0,0,.86) 51%,rgba(0,0,0,.34) 67%,transparent 84%)}}
 
 /* Final hero art has its own transparent ADT-blue feather and no black backdrop. */
-.mikeHeroPortrait{background:#fff}.mikeHeroPortrait:before{background:url('/mike-dingman-headshot-v2.webp') center bottom/auto 94% no-repeat;-webkit-mask-image:none;mask-image:none}
+.mikeHeroPortrait{background:#fff}.mikeHeroPortrait:before{background:url('/mike-dingman-headshot-v3.png') center bottom/auto 94% no-repeat;-webkit-mask-image:none;mask-image:none}
 @media(max-width:700px){.mikeHeroPortrait{background:#f7f8fa}.mikeHeroPortrait:before{background-size:auto 95%;-webkit-mask-image:none;mask-image:none}}
+
+/* Transparent portrait over a separate ADT Realty blue halo. */
+.mikeHeroPortrait{background:#fff radial-gradient(ellipse 52% 66% at 53% 49%,#011a59 0%,rgba(1,26,89,.88) 35%,rgba(1,26,89,.44) 57%,rgba(1,26,89,.12) 72%,rgba(1,26,89,0) 88%)}
+.mikeHeroPortrait:before{background:url('/mike-dingman-cutout.png') center bottom/auto 94% no-repeat;-webkit-mask-image:none;mask-image:none}
+@media(max-width:700px){.mikeHeroPortrait{background:#f7f8fa radial-gradient(ellipse 58% 65% at 50% 48%,#011a59 0%,rgba(1,26,89,.84) 36%,rgba(1,26,89,.4) 60%,rgba(1,26,89,.1) 75%,rgba(1,26,89,0) 90%)}.mikeHeroPortrait:before{background-size:auto 95%}}

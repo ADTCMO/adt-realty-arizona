@@ -74,7 +74,7 @@ export default function Home() {
       .homeHeroes:before{content:'';position:absolute;z-index:-2;inset:0;background:url('/community-heroes-bg.png') 63% center/cover no-repeat}
       .homeHeroes:after{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#011a59 0%,rgba(1,26,89,.96) 34%,rgba(1,26,89,.54) 58%,rgba(1,26,89,.08) 82%)}
       .homeHeroesCopy{width:min(600px,52%);margin-left:max(28px,calc((100vw - 1180px)/2));padding:48px 30px 42px 0}
-      .homeHeroesLogo{display:block;width:190px;height:100px;object-fit:contain;object-position:left center;margin-bottom:12px}
+      .homeHeroesLogo{display:block;width:220px;height:112px;object-fit:contain;object-position:left center;margin-bottom:12px;filter:drop-shadow(0 0 10px rgba(255,255,255,.95)) drop-shadow(0 0 24px rgba(255,255,255,.72))}
       .homeHeroesCopy h2{font-size:clamp(38px,4vw,58px);line-height:1;margin:0 0 18px}
       .homeHeroesCopy>p{font-size:17px;line-height:1.6;color:#e5ebf5;max-width:560px}
       .homeHeroesActions{display:flex;gap:14px;margin-top:26px}.homeHeroesActions .outline{border-color:#fff;color:#fff;background:transparent}
@@ -96,7 +96,7 @@ export default function Home() {
         .homeHeroes:before{height:310px;bottom:auto;background-position:62% 32%;background-size:cover}
         .homeHeroes:after{background:linear-gradient(180deg,rgba(1,26,89,0) 0%,rgba(1,26,89,.08) 27%,rgba(1,26,89,.76) 43%,#011a59 57%)}
         .homeHeroesCopy{position:relative;width:100%;margin:0;padding:275px 22px 30px}
-        .homeHeroesLogo{width:126px;height:64px;margin-bottom:4px}
+        .homeHeroesLogo{position:absolute;top:20px;left:22px;width:158px;height:82px;margin:0;filter:drop-shadow(0 0 11px rgba(255,255,255,1)) drop-shadow(0 0 28px rgba(255,255,255,.88))}
         .homeHeroesCopy h2{max-width:360px;font-size:34px;line-height:1.04;margin-bottom:13px}
         .homeHeroesCopy>p{font-size:15px;line-height:1.5;margin:0}
         .homeHeroesActions{flex-direction:column;gap:10px;margin-top:20px}
@@ -120,7 +120,7 @@ export default function Home() {
 
       <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Enter your address for a free automated home-value estimate, then explore tools to understand your potential proceeds and prepare for your next move.</p><LeadForm type="seller" /></div></section>
 
-      <section id="community-heroes" className="homeHeroes" aria-labelledby="homeHeroesTitle"><div className="homeHeroesCopy"><img className="homeHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes"/><h2 id="homeHeroesTitle">Heroes, We Have Your Back.</h2><p>ADT Realty proudly offers meaningful homebuying and selling savings to the people who serve our communities.</p><div className="homeHeroGroups"><span>Military &amp; Veterans</span><span>Law Enforcement</span><span>Firefighters &amp; EMS</span><span>Healthcare</span><span>Educators &amp; School Staff</span></div><div className="homeHeroesActions"><a className="button red" href="/hero#community-hero-form">Estimate My Savings <span>›</span></a><a className="button outline" href="/hero">Learn More <span>›</span></a></div></div></section>
+      <section id="community-heroes" className="homeHeroes" aria-labelledby="homeHeroesTitle"><div className="homeHeroesCopy"><img className="homeHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes"/><h2 id="homeHeroesTitle">Heroes, We Have Your Back.</h2><p>ADT Realty proudly offers meaningful homebuying and selling savings to the people who serve our communities.</p><div className="homeHeroGroups"><span>Military &amp; Veterans</span><span>Law Enforcement</span><span>Firefighters &amp; EMS</span><span>Healthcare</span><span>Educators &amp; School Staff</span></div><div className="homeHeroesActions"><a className="button red" href="/hero">Learn More <span>›</span></a></div></div></section>
 
       <section id="join" className="join joinTeaser" aria-labelledby="joinTeaserTitle">
         <div className="joinTeaserInner">

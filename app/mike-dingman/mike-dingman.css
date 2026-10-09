@@ -43,5 +43,9 @@
 
 /* Direct lead capture for Mike, using the site's verified Arizona routing. */
 .mikeConnect{display:grid;grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);gap:clamp(55px,8vw,110px);align-items:center;text-align:left;padding-left:max(28px,calc((100vw - 1180px)/2));padding-right:max(28px,calc((100vw - 1180px)/2))}.mikeConnectCopy>p:not(.mikeEyebrow){max-width:570px;margin:25px 0;color:#dce2ef;font-size:17px;line-height:1.7}.mikeConnectCopy .mikeTextLink{display:inline-block;margin-top:10px}.mikeConnect .leadForm{padding:34px;background:rgba(255,255,255,.08);grid-template-columns:1fr 1fr}.mikeConnect .leadForm label:last-of-type{grid-column:1/-1}.mikeConnect .leadForm input,.mikeConnect .leadForm textarea{background:rgba(255,255,255,.96);color:var(--m-ink);border:0}.mikeConnect .leadForm textarea{border:0}.mikeConnect .leadForm .button,.mikeConnect .leadForm .formStatus{grid-column:1/-1}.mikeConnect .leadForm .formStatus{color:#fff}
+.mikeConnect>.mikeConnectCopy{display:block;margin:0}
 @media(max-width:850px){.mikeConnect{grid-template-columns:1fr}.mikeConnect .leadForm{width:100%}}
 @media(max-width:700px){.mikeConnect{display:grid;text-align:left}.mikeConnect>div{display:block}.mikeConnect .leadForm{grid-template-columns:1fr;padding:24px 20px}.mikeConnect .leadForm label:last-of-type,.mikeConnect .leadForm .button,.mikeConnect .leadForm .formStatus{grid-column:1}.mikeConnectCopy .mikeTextLink{margin-top:8px}}
+
+/* Mobile hero: keep the portrait attached to the copy and the experience badge on the image. */
+@media(max-width:700px){.mikeHero{display:flex;flex-direction:column;min-height:0}.mikeHeroCopy{padding:36px 22px 34px;margin:0}.mikeHeroPortrait{height:360px;flex:none}.mikeHeroPortrait:before{background-position:center top;background-size:auto 126%}.mikeHeroYears{top:auto;right:16px;bottom:18px;z-index:3}.mikeHero:before{z-index:4}}

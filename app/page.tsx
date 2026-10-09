@@ -62,7 +62,7 @@ export default function Home() {
       .joinTeaserPromise{font-size:clamp(18px,1.8vw,22px);line-height:1.55;color:#536078;max-width:510px;margin:0}
       .joinTeaserPromise strong{color:var(--navy);font-weight:700}
       .joinTeaserArt{position:absolute;inset:0 25% 0 0;z-index:0}
-      .joinTeaserArt img{display:block;width:100%;height:100%;object-fit:cover;object-position:42% 38%}
+      .joinTeaserArt img{display:block;width:100%;height:100%;object-fit:cover;object-position:42% 38%;transform:scaleX(-1)}
       .joinTeaserArt:after{content:'';position:absolute;inset:0;background:linear-gradient(270deg,#fff 0%,rgba(255,255,255,.98) 13%,rgba(255,255,255,.7) 29%,rgba(255,255,255,0) 49%),linear-gradient(0deg,#fff 0%,rgba(255,255,255,0) 19%)}
       .joinTeaserHighlights{max-width:1180px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin-top:12px;padding-top:28px;border-top:1px solid #cfd7e3}
       .joinTeaserHighlight>span{font-size:12px;letter-spacing:.16em;font-weight:800;color:var(--red)}
@@ -84,7 +84,7 @@ export default function Home() {
         .joinTeaserTop{display:flex;flex-direction:column;min-height:0}
         .joinTeaserCopy{width:100%;padding:0 24px 12px;order:2;margin-top:-20px}
         .joinTeaserArt:after{background:linear-gradient(0deg,#fff 0%,rgba(255,255,255,.85) 9%,rgba(255,255,255,0) 30%)}
-        .joinTeaserArt img{object-position:78% 27%}
+        .joinTeaserArt img{object-position:22% 27%}
         .joinTeaserCopy h2{font-size:38px;margin-bottom:16px}
         .joinTeaserArt{position:relative;inset:auto;width:100%;height:290px;order:1}
         .joinTeaserHighlights{grid-template-columns:1fr;gap:22px;margin-top:26px;padding-top:24px}

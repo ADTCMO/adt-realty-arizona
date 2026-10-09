@@ -94,7 +94,7 @@ export default function MikeDingmanPage() {
 
         <section className="mikeService">
           <div className="mikeServicePhoto">
-            <img src="/mike-dingman-army.webp" alt="Mike Dingman during his service in the United States Army" />
+            <img src="/mike-dingman-army-v2.webp" alt="Mike Dingman during his service in the United States Army" />
           </div>
           <div className="mikeServiceCopy">
             <div className="mikeSectionLabel light"><span>02</span><p>Service &amp; Leadership</p></div>

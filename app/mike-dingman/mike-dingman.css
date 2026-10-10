@@ -49,3 +49,6 @@
 
 /* Mobile hero: keep the portrait attached to the copy and the experience badge on the image. */
 @media(max-width:700px){.mikeHero{display:flex;flex-direction:column;min-height:0}.mikeHeroCopy{padding:36px 22px 34px;margin:0}.mikeHeroPortrait{height:360px;flex:none}.mikeHeroPortrait:before{background-position:center top;background-size:auto 126%}.mikeHeroYears{top:auto;right:16px;bottom:18px;z-index:3}.mikeHero:before{z-index:4}}
+
+/* Keep Mike's face centered inside the cropped casual portrait. */
+.mikeCasualPhoto img{object-position:38% 15%}

@@ -123,7 +123,7 @@ export default function MikeDingmanPage() {
         <section className="mikeQuestions">
           <div className="mikeQuestionsIntro">
             <div className="mikeCasualPhoto">
-              <img src="/mike-dingman-casual-v2.webp" alt="Mike Dingman in an ADT Realty hat" />
+              <img src="/mike-dingman-casual-v3.webp" alt="Mike Dingman in an ADT Realty hat" />
               <span>Relaxed. Approachable. Always himself.</span>
             </div>
             <div>

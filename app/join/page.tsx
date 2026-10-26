@@ -57,7 +57,7 @@ export default function JoinPage(){return <div className="joinPage">
  <div className="folderValues"><article><h3>Helping Others</h3><p>We put people first and serve with purpose.</p></article><article><h3>Do the Right Thing.<br/> Every Time.</h3><p>Integrity guides our actions and decisions.</p></article><article><h3>Build Relationships</h3><p>We connect, collaborate and create lasting relationships.</p></article></div>
  <div className="folderMission"><h3>Our Mission</h3><p>Help people live a better life through real estate by encouraging innovation, collaboration and integrity in our daily practices.</p></div>
 </Folder>
-<Folder label="Business Model" index={1} id="model">
+<Folder label="Business Model" index={1} id="model" natural>
  <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">The ADT Realty Advantage</p><h2>More Ways to Grow.<br/><em>More Ways to Earn.</em></h2><p>Build your business with practical training, connected technology and leaders who help you put both to work.</p><p>As your goals grow, explore revenue share, mentorship and leadership opportunities alongside your own real estate production.</p></div><div className="agentPhoto" role="img" aria-label="Real estate agents collaborating at a desk" /></div>
  <div className="advantageBenefits">{[
  ["Cloud-based brokerage","Professional support without the limits of office walls."],

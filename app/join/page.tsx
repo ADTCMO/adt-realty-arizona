@@ -5,6 +5,7 @@ import { RecruitingFolder } from "./RecruitingFolder";
 import type { ReactNode } from "react";
 import { LeadForm } from "../components/LeadForm";
 import { ChapterTabs } from "./ChapterTabs";
+import CompensationDetails from "./CompensationDetails";
 import "./join.css";
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ const stages=[
 
 
 export default function JoinPage(){return <div className="joinPage">
-<header className="joinTop"><a href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
+<header className="joinTop"><a href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#splits-fees">Splits &amp; Fees</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
 <main>
 <section className="joinHero joinHeroFlag">
   <video className="joinFlagVideo" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
@@ -65,6 +66,7 @@ export default function JoinPage(){return <div className="joinPage">
  ["Leadership opportunities","Help others grow while building your own future."],
  ["Additional income streams","Explore opportunities to grow beyond personal production."]
  ].map(([title,copy],i)=><article key={title}><span className={`advantageIcon advantageIcon${i}`} aria-hidden="true"/><h3>{title}</h3><p>{copy}</p></article>)}</div>
+ <CompensationDetails />
 </Folder>
 <Folder label="Training" index={2}>
  <div className="folderSplit"><div className="folderIntro"><p className="eyebrow">Real training. Real coaching. Real results.</p><h2>Training that<br/><em>builds businesses.</em></h2><p>Our training platform gives you the knowledge, tools and confidence to build a successful real estate business and create the life you want.</p><p>Practical skills you can put to work—from your first client conversation to your next stage of leadership.</p></div><img className="trainingDeckArt" src="/join-training-workspace.webp" alt="Illustrated ADT Realty training workspace with a laptop, notebook and Arizona view" width="1200" height="800" loading="lazy" decoding="async"/></div>

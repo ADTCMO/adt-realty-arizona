@@ -112,7 +112,7 @@ export default function Home() {
     </header>
 
     <main>
-      <section id="home" className="hero"><div className="heroContent"><h1>ADT REALTY — ARIZONA</h1><p>Local expertise. Modern tools. Relationships that matter.</p><div className="actions"><a className="button red" href="#buyers">Buy a Home <span>›</span></a><a className="button outline" href="#sellers">Sell a Home <span>›</span></a></div></div></section>
+      <section id="home" className="hero"><div className="heroContent"><h1>ADT REALTY — ARIZONA</h1><p>Your Move. Our Commitment.</p><div className="actions"><a className="button red" href="#buyers">Buy a Home <span>›</span></a><a className="button outline" href="#sellers">Sell a Home <span>›</span></a></div></div></section>
 
       <section className="homeValues" aria-labelledby="homeValuesTitle"><p id="homeValuesTitle">What Guides Us</p><div className="homeValuesList"><strong>Helping Others</strong><strong>Do the Right Thing. Every Time.</strong><strong>Build Relationships</strong></div></section>
 

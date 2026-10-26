@@ -1,6 +1,8 @@
 export type Source = { title: string; url: string };
 export type AreaHighlight = { name: string; detail: string; url?: string };
 export type PhoenixArea = {
+  market?: { medianSalePrice: number; period: string; coverage: string; sourceUrl: string; note: string };
+  image?: { src: string; alt: string; caption: string; credit: string; sourceUrl: string; license: string; licenseUrl: string };
   id: string;
   name: string;
   jurisdiction: string;

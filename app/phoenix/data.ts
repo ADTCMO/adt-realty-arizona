@@ -81,7 +81,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://paradisevalleyaz.gov/DocumentCenter/View/9608/2022-General-Plan",
       "https://www.susd.org/our-district/our-schools",
       "https://www.skyharbor.com/maps-directions/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 4497858,
+      "period": "Three months ending September 2026",
+      "coverage": "Paradise Valley town market · all home types",
+      "sourceUrl": "https://www.redfin.com/city/13625/AZ/Paradise-Valley/housing-market",
+      "note": "Redfin’s Paradise Valley town market, not Phoenix’s Paradise Valley Village. Sold-home mix affects the median; this is not an estimate for an individual property."
+    },
+    "image": {
+      "src": "/images/phoenix/paradise-valley-town.jpg",
+      "alt": "Camelback Mountain and resort pool in Paradise Valley, Arizona",
+      "caption": "Camelback Mountain from the Town of Paradise Valley.",
+      "credit": "Gage Skidmore · Paradise Valley, Arizona (52069353266) · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paradise_Valley,_Arizona_(52069353266).jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    }
   },
   {
     "id": "ahwatukee",
@@ -166,7 +182,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://www.kyrene.org/schools/schools/maps-locations-boundaries",
       "https://www.tempeunion.org/about-tuhsd/enrollment/attendance-boundaries",
       "https://www.skyharbor.com/maps-directions/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 519854,
+      "period": "Three months ending September 2026",
+      "coverage": "Redfin Ahwatukee Foothills area · all home types",
+      "sourceUrl": "https://www.redfin.com/neighborhood/103631/AZ/Phoenix/Ahwatukee-Foothills/housing-market",
+      "note": "Uses Redfin’s Ahwatukee Foothills market boundary. Neighborhood-level prices and home types vary within the area."
+    },
+    "image": {
+      "src": "/images/phoenix/ahwatukee.jpg",
+      "alt": "Aerial view of Ahwatukee neighborhoods beside South Mountain",
+      "caption": "Ahwatukee neighborhoods alongside South Mountain.",
+      "credit": "Hunter Trick (TrickHunter) · 231209-2 Ahwatukee and South Mountain · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:231209-2_Ahwatukee_and_South_Mountain.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
   },
   {
     "id": "arcadia",
@@ -241,7 +273,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://www.phoenix.gov/administration/departments/education/resources-families-students/school-districts.html",
       "https://www.susd.org/our-district/our-schools",
       "https://www.skyharbor.com/maps-directions/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 1254648,
+      "period": "Three months ending September 2026",
+      "coverage": "Redfin Arcadia area · all home types",
+      "sourceUrl": "https://www.redfin.com/neighborhood/351070/AZ/Phoenix/Arcadia/housing-market",
+      "note": "Uses Redfin’s Arcadia boundary; not a combined Arcadia/Arcadia Lite figure. Listing labels can cover different areas."
+    },
+    "image": {
+      "src": "/images/phoenix/arcadia.jpg",
+      "alt": "Water falling at the Arizona Falls canal landmark in Phoenix",
+      "caption": "Arizona Falls on the Arizona Canal in Arcadia.",
+      "credit": "Patrick Finnegan · Arizona Falls, Phoenix, AZ · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arizona_Falls,_Phoenix,_AZ.jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    }
   },
   {
     "id": "downtown-midtown",
@@ -333,7 +381,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://www.phoenix.gov/administration/departments/education/resources-families-students/school-districts.html",
       "https://www.skyharbor.com/ground-transportation/public-transportation/",
       "https://www.skyharbor.com/ground-transportation/phx-sky-train/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 427380,
+      "period": "Three months ending September 2026",
+      "coverage": "Downtown Phoenix only · all home types",
+      "sourceUrl": "https://www.redfin.com/neighborhood/100404/AZ/Phoenix/Downtown-Phoenix/housing-market",
+      "note": "This snapshot covers Redfin’s Downtown Phoenix area only, not Midtown or the combined central corridor. A small sales sample and condo mix can move the median sharply."
+    },
+    "image": {
+      "src": "/images/phoenix/downtown-midtown.jpg",
+      "alt": "Illuminated buildings of the Downtown Phoenix skyline at night",
+      "caption": "Downtown Phoenix at night, viewed from the Summit at Copper Square.",
+      "credit": "Alan Stark · Downtown Phoenix Skyline Lights · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Downtown_Phoenix_Skyline_Lights.jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    }
   },
   {
     "id": "biltmore",
@@ -419,7 +483,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://www.madisonaz.org/enrollment/enroll-in-madison/district-school-boundaries",
       "https://www.phoenix.gov/administration/departments/education/resources-families-students/school-districts.html",
       "https://www.skyharbor.com/maps-directions/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 1062952,
+      "period": "Three months ending September 2026",
+      "coverage": "Redfin Biltmore area · all home types",
+      "sourceUrl": "https://www.redfin.com/neighborhood/351068/AZ/Phoenix/Biltmore/housing-market",
+      "note": "Uses Redfin’s Biltmore boundary, not all of ZIP 85016 or Camelback East. Condos, townhomes and detached homes can have very different prices."
+    },
+    "image": {
+      "src": "/images/phoenix/biltmore.jpg",
+      "alt": "Historic Arizona Biltmore hotel exterior and landscaped lawn",
+      "caption": "The Arizona Biltmore resort, a landmark of the Biltmore area.",
+      "credit": "w_lemay · Arizona Biltmore Hotel, Missouri Ave, Biltmore Area, Phoenix, AZ · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arizona_Biltmore_Hotel,_Missouri_Ave,_Biltmore_Area,_Phoenix,_AZ.jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    }
   },
   {
     "id": "north-central",
@@ -484,7 +564,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://www.madisonaz.org/enrollment/enroll-in-madison/district-school-boundaries",
       "https://www.phoenix.gov/administration/departments/education/resources-families-students/school-districts.html",
       "https://www.skyharbor.com/maps-directions/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 878000,
+      "period": "Three months ending March 2026",
+      "coverage": "North Central Corridor · all home types",
+      "sourceUrl": "https://www.redfin.com/neighborhood/351122/AZ/Phoenix/North-Central-Corridor/housing-market",
+      "note": "Older snapshot: March 2026 is the period shown in Redfin’s data panel when checked October 26, 2026. Covers Redfin’s North Central Corridor, not every area marketed as North Central."
+    },
+    "image": {
+      "src": "/images/phoenix/north-central.jpg",
+      "alt": "Tree-shaded Murphy Bridle Path beside Central Avenue in Phoenix",
+      "caption": "Murphy Bridle Path along North Central Avenue.",
+      "credit": "Mark S. Süever · Murphy's Bridle Path, Central Avenue, Phoenix - panoramio · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Murphy%27s_Bridle_Path,_Central_Avenue,_Phoenix_-_panoramio.jpg",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+    }
   },
   {
     "id": "desert-ridge",
@@ -565,7 +661,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://www.pvschools.net/enroll",
       "https://www.phoenix.gov/administration/departments/education/resources-families-students/school-districts.html",
       "https://www.skyharbor.com/maps-directions/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 660000,
+      "period": "Three months ending March 2026",
+      "coverage": "Desert Ridge only · all home types",
+      "sourceUrl": "https://www.redfin.com/neighborhood/104445/AZ/Phoenix/Desert-Ridge/housing-market",
+      "note": "Older snapshot: March 2026 is the period shown in Redfin’s data panel when checked October 26, 2026. Covers Desert Ridge only, not all of North Phoenix."
+    },
+    "image": {
+      "src": "/images/phoenix/desert-ridge.jpg",
+      "alt": "Desert landscaping along the entrance of the Musical Instrument Museum",
+      "caption": "Musical Instrument Museum on Mayo Boulevard, near Desert Ridge.",
+      "credit": "PamMcP · Musical Instrument Museum, Phoenix AZ · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Musical_Instrument_Museum,_Phoenix_AZ.JPG",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
   },
   {
     "id": "south-mountain",
@@ -626,7 +738,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://www.phoenix.gov/administration/departments/parks/activities-facilities/trails/south-mountain-parkpreserve.html",
       "https://www.phoenix.gov/administration/departments/education/resources-families-students/school-districts.html",
       "https://www.skyharbor.com/maps-directions/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 386822,
+      "period": "Three months ending September 2026",
+      "coverage": "Redfin South Mountain area · all home types",
+      "sourceUrl": "https://www.redfin.com/neighborhood/105591/AZ/Phoenix/South-Mountain/housing-market",
+      "note": "Uses Redfin’s South Mountain housing-market boundary, not the park itself or all of South Phoenix."
+    },
+    "image": {
+      "src": "/images/phoenix/south-mountain.jpg",
+      "alt": "Stone Dobbins Lookout shelter above the Phoenix valley at sunset",
+      "caption": "Dobbins Lookout in South Mountain Park/Preserve.",
+      "credit": "Gage Skidmore · Dobbins Lookout by Gage Skidmore · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dobbins_Lookout_by_Gage_Skidmore.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    }
   },
   {
     "id": "paradise-valley-village",
@@ -696,7 +824,23 @@ export const phoenixAreas: PhoenixArea[] = [
       "https://www.pvschools.net/enroll",
       "https://www.phoenix.gov/administration/departments/education/resources-families-students/school-districts.html",
       "https://www.skyharbor.com/maps-directions/"
-    ]
+    ],
+    "market": {
+      "medianSalePrice": 626824,
+      "period": "Three months ending September 2026",
+      "coverage": "Paradise Valley Village · all home types",
+      "sourceUrl": "https://www.redfin.com/neighborhood/100034/AZ/Phoenix/Paradise-Valley-Village/housing-market",
+      "note": "Covers Redfin’s Paradise Valley Village market within Phoenix, not the separate Town of Paradise Valley. Confirm the exact property’s jurisdiction."
+    },
+    "image": {
+      "src": "/images/phoenix/paradise-valley-village.jpg",
+      "alt": "View south from Shadow Mountain across north Phoenix toward Piestewa Peak",
+      "caption": "Looking south from Shadow Mountain toward Piestewa Peak and Dreamy Draw. Nearby Phoenix Mountains setting.",
+      "credit": "Chris English · 2014, View S from Shadow Mountain, Piestewa Peak and Dreamy Draw in the Middle Distance, South Mountain on the Horizon - panoramio · resized/compressed; display crop",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2014,_View_S_from_Shadow_Mountain,_Piestewa_Peak_and_Dreamy_Draw_in_the_Middle_Distance,_South_Mountain_on_the_Horizon_-_panoramio.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    }
   }
 ];
 

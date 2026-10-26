@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { LeadForm } from "../components/LeadForm";
 import { ChapterTabs } from "./ChapterTabs";
 import CompensationDetails from "./CompensationDetails";
+import FutureOfADT from "./FutureOfADT";
 import "./join.css";
 
 export const metadata: Metadata = {
@@ -114,6 +115,7 @@ export default function JoinPage(){return <div className="joinPage">
  <JoinLeaders />
 </Folder>
 </div>
+<FutureOfADT />
 <section className="joinFaq" aria-labelledby="join-faq-heading"><div className="joinFaqInner"><div className="folderIntro"><p className="eyebrow">Let’s talk details</p><h2 id="join-faq-heading">Good questions.<br/><em>A clearer next step.</em></h2><p>Your next move deserves a clear conversation about costs, opportunities and the support behind you.</p></div><div className="joinFaqItems">
  <details><summary>What is the commission split?</summary><p>On self-generated business, the split is <strong>80/20</strong>, moving to <strong>100% after a $15,000 cap</strong>. Company-provided leads have a <strong>75/25 split</strong> and do not count toward the cap.</p></details>
  <details><summary>Is there a transaction fee?</summary><p>There is a <strong>$495 transaction fee</strong>, which may be paid by the client or the agent.</p></details>

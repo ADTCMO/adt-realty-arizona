@@ -30,9 +30,9 @@ export function ChapterTabs({ chapters }: { chapters: readonly (readonly [string
     };
   }, [chapters]);
 
-  return <nav className="chapterTabs" aria-label="Explore ADT Realty agent benefits">
+  return <div className="joinStickyNav"><nav className="joinQuickActions" aria-label="Your next step"><a href="#career-paths">Find your career path <span aria-hidden="true">↓</span></a><a href="#conversation">Start the conversation <span aria-hidden="true">→</span></a></nav><nav className="chapterTabs" aria-label="Explore ADT Realty agent benefits">
     {chapters.slice(0, visibleCount).map(([id, label], index) =>
       <a href={`#${id}`} key={id}><span>{String(index + 1).padStart(2, "0")}</span><b>{label}</b></a>
     )}
-  </nav>;
+  </nav></div>;
 }

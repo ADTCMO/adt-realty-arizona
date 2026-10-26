@@ -203,3 +203,14 @@ dialog.joinFutureDialog{position:fixed;max-width:calc(100vw - 32px);width:min(15
 @media print{.recruitFolder,.folderTabTrack{position:relative;top:auto}.recruitFolder{margin-bottom:24px;filter:none;break-inside:avoid}.joinFlagVideo,.folderStack:before{display:none}.folderStack{padding:0}.folderBody{min-height:0}.conversation{break-before:page}}
 
 
+
+/* Keep the folder-tab experience, with direct routes to career paths and contact. */
+.joinStickyNav{position:sticky;top:0;z-index:120;background:#fff}
+.joinStickyNav .chapterTabs{position:static}
+.joinQuickActions{display:flex;align-items:stretch;justify-content:center;gap:8px;padding:5px 16px;border-bottom:1px solid #dce3ec;background:#fff}
+.joinQuickActions a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;color:var(--navy);font-size:14px;font-weight:800;text-decoration:none;border-radius:6px}
+.joinQuickActions a:last-child{background:var(--red);color:#fff}
+.joinQuickActions a:focus-visible{outline:3px solid #2469bc;outline-offset:2px}
+.joinPage .folderAnchor,.joinPage #splits-fees,.joinPage #conversation{scroll-margin-top:128px}
+@media(max-width:600px){.joinQuickActions{gap:6px;padding:5px 10px}.joinQuickActions a{flex:1;padding:7px 6px;font-size:12px;text-align:center}.joinQuickActions a span{display:none}}
+@media print{.joinStickyNav{display:none}}

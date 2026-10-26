@@ -11,7 +11,8 @@ type GuideViewerProps = {
 
 export default function GuideViewer({ title, slideFolder, pageCount, pdfUrl }: GuideViewerProps) {
   const [page, setPage] = useState(1);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const [fullscreenError, setFullscreenError] = useState("");
   const viewerRef = useRef<HTMLDivElement>(null);
   const digits = pageCount >= 10 ? 2 : 1;
   const slideUrl = `${slideFolder}/slide-${String(page).padStart(digits, "0")}.jpg`;
@@ -21,29 +22,44 @@ export default function GuideViewer({ title, slideFolder, pageCount, pdfUrl }: G
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") previous();
-      if (event.key === "ArrowRight") next();
+      if (!viewerRef.current?.contains(document.activeElement)) return;
+      if (event.key === "ArrowLeft") { event.preventDefault(); previous(); }
+      if (event.key === "ArrowRight") { event.preventDefault(); next(); }
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [next, previous]);
 
   const toggleFullscreen = async () => {
-    if (!document.fullscreenElement) await viewerRef.current?.requestFullscreen();
-    else await document.exitFullscreen();
+    setFullscreenError("");
+    try {
+      if (!document.fullscreenElement) {
+        if (!viewerRef.current?.requestFullscreen) throw new Error("Fullscreen unavailable");
+        await viewerRef.current.requestFullscreen();
+      } else await document.exitFullscreen();
+    } catch {
+      setFullscreenError("Full screen isn’t available in this browser. Open the PDF to zoom in.");
+    }
   };
 
   return (
     <div
       ref={viewerRef}
       className="slideViewer"
-      onTouchStart={(event) => setTouchStart(event.touches[0].clientX)}
+      role="region"
+      aria-label={`${title} slides`}
+      tabIndex={0}
+      onTouchStart={(event) => { touchStart.current = { x: event.touches[0].clientX, y: event.touches[0].clientY }; }}
+      onTouchCancel={() => { touchStart.current = null; }}
       onTouchEnd={(event) => {
-        if (touchStart === null) return;
-        const distance = event.changedTouches[0].clientX - touchStart;
-        if (distance > 45) previous();
-        if (distance < -45) next();
-        setTouchStart(null);
+        if (!touchStart.current) return;
+        const dx = event.changedTouches[0].clientX - touchStart.current.x;
+        const dy = event.changedTouches[0].clientY - touchStart.current.y;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx > 0) previous();
+          else next();
+        }
+        touchStart.current = null;
       }}
     >
       <div className="slideStage">
@@ -56,11 +72,13 @@ export default function GuideViewer({ title, slideFolder, pageCount, pdfUrl }: G
       </div>
       <div className="slideControls">
         <button onClick={previous} disabled={page === 1}>Previous</button>
-        <span>{page} / {pageCount}</span>
+        <span aria-live="polite">{page} / {pageCount}</span>
         <button onClick={next} disabled={page === pageCount}>Next</button>
         <button onClick={toggleFullscreen}>Full screen</button>
         <a href={pdfUrl} target="_blank" rel="noreferrer">PDF</a>
       </div>
+      <p className="slideHint">Swipe or use Previous and Next to explore the guide.</p>
+      {fullscreenError && <p className="slideHint" role="status">{fullscreenError}</p>}
     </div>
   );
 }

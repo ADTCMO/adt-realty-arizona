@@ -26,12 +26,28 @@ export function websiteDestinations(model = {}) {
     showing: publicUrl && !model.layoutTest ? `${publicUrl.split('#')[0]}#showing` : '',
   };
 }
-function Photo({ photo, alt, className = '', loading = 'lazy' }) {
+function Photo({ photo, alt, className = '', loading = 'lazy', style }) {
   const src = websitePhotoSource(photo), [failed, setFailed] = useState('');
-  return src && failed !== src ? <img className={className} src={src} alt={text(photo?.alt || photo?.caption) || alt} loading={loading} decoding="async" onError={() => setFailed(src)} /> : <div className={`pw-photo-missing ${className}`} role="img" aria-label={`${alt} unavailable`} data-export-error={photo ? 'A supplied property image could not be loaded.' : undefined}>Photo unavailable</div>;
+  return src && failed !== src ? <img className={className} style={style} src={src} alt={text(photo?.alt || photo?.caption) || alt} loading={loading} decoding="async" onError={() => setFailed(src)} /> : <div className={`pw-photo-missing ${className}`} style={style} role="img" aria-label={`${alt} unavailable`} data-export-error={photo ? 'A supplied property image could not be loaded.' : undefined}>Photo unavailable</div>;
 }
 function ExternalLink({ href, children, className = '' }) { return href ? <a href={href} className={className} target="_blank" rel="noopener noreferrer">{children}</a> : null; }
-function MediaFrame({ media, kind, title }) { return validateMediaEmbed(media?.url) ? <iframe className="pw-media-frame" data-collection-media={kind} src={media.url} title={title} loading="lazy" allow="fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" /> : null; }
+function MediaFrame({ media, kind, title, covered = false }) { return validateMediaEmbed(media?.url) ? <iframe className="pw-media-frame" tabIndex={covered ? -1 : 0} aria-hidden={covered || undefined} data-collection-media={kind} src={media.url} title={title} loading="lazy" allow="fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" /> : null; }
+
+
+function EmbeddedVideo({ media }) {
+  const [opened, setOpened] = useState(false);
+  const player = useRef(null);
+  const poster = websitePhotoSource(media?.poster);
+  useEffect(() => { if (opened) player.current?.querySelector('iframe')?.focus(); }, [opened]);
+  if (!validateMediaEmbed(media?.url)) return null;
+  return <div ref={player} className="pw-video-player" data-pw-video-player style={{ position: 'relative' }}>
+    <MediaFrame media={media} kind="video" title="Property video" covered={!!poster && !opened} />
+    {poster && <button type="button" data-pw-video-cover hidden={opened} aria-label="Open video player" onClick={() => setOpened(true)} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, padding: 0, background: '#011a59', cursor: 'pointer' }}>
+      <Photo photo={poster} alt="Saved property video cover" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      <span style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', padding: '14px 20px', borderRadius: 4, background: '#b00101', color: '#ffffff', fontWeight: 600, fontSize: 14, lineHeight: 1.4 }}>Open video player</span>
+    </button>}
+  </div>;
+}
 
 const WebsitePiece = forwardRef(function WebsitePiece({ model = {}, exportMode = false, publicMode = false, showingForm = null }, ref) {
   const prefix = `pw-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
@@ -69,7 +85,7 @@ const WebsitePiece = forwardRef(function WebsitePiece({ model = {}, exportMode =
       {model.facts?.length > 0 && <dl className="pw-facts">{model.facts.map((fact, index) => <div key={fact.key || index}><dd>{text(fact.value)}</dd><dt>{text(fact.label)}</dt></div>)}</dl>}
       {(model.description || details.length || model.openHouse) && <section className="pw-section pw-about" id={`${prefix}-about`}><div><p className="pw-kicker">ABOUT THIS HOME</p><h2>{text(model.headline) && model.headline !== model.address ? text(model.headline) : 'Discover the property.'}</h2>{model.openHouse && <aside className="pw-open-house"><strong>Open house</strong><p>{text(model.openHouse)}</p></aside>}</div><div>{model.description && <p className="pw-description">{text(model.description)}</p>}{details.length > 0 && <dl className="pw-details">{details.map((detail, index) => <div key={index}><dt>{text(detail.label)}</dt><dd>{text(detail.value)}</dd></div>)}</dl>}</div></section>}
       {model.features?.length > 0 && <section className="pw-section pw-features" id={`${prefix}-features`}><p className="pw-kicker">THE DETAILS THAT MATTER</p><h2>Features & amenities</h2><ul>{model.features.map((feature, index) => <li key={index}><span aria-hidden="true">✓</span>{text(feature)}</li>)}</ul></section>}
-      {video && <section className="pw-section pw-media" id={`${prefix}-video`}><div className="pw-section-heading"><h2>Property video</h2><ExternalLink href={safeMediaUrl(video.url)}>Open video ↗</ExternalLink></div>{video.kind === 'embed' ? <MediaFrame media={video} kind="video" title="Property video" /> : video.kind === 'video' ? <video className="pw-native-video" data-collection-media="video" src={safeMediaUrl(video.url)} poster={websitePhotoSource(video.poster || featured[0])} controls playsInline preload="none">Video playback is unavailable. Use the video link above.</video> : <p>Watch the saved property video using the link above.</p>}</section>}
+      {video && <section className="pw-section pw-media" id={`${prefix}-video`}><div className="pw-section-heading"><h2>Property video</h2><ExternalLink href={safeMediaUrl(video.url)}>Open video ↗</ExternalLink></div>{video.kind === 'embed' ? <EmbeddedVideo key={`${video.url}:${video.poster || ''}`} media={video} /> : video.kind === 'video' ? <video className="pw-native-video" data-collection-media="video" src={safeMediaUrl(video.url)} poster={websitePhotoSource(video.poster || featured[0])} controls playsInline preload="none">Video playback is unavailable. Use the video link above.</video> : <p>Watch the saved property video using the link above.</p>}</section>}
       {photos.length > 0 && <section className="pw-section pw-gallery" id={`${prefix}-photos`}><div className="pw-section-heading"><div><p className="pw-kicker">EXPLORE EVERY ROOM</p><h2>Photo gallery</h2></div><span>{photos.length} photos · Select a photo to enlarge</span></div><div className="pw-gallery-grid cp-gallery-grid">{photos.map((photo, index) => <button type="button" className="cp-gallery-tile pw-gallery-tile" data-gallery-index={index} key={`${websitePhotoSource(photo)}:${index}`} aria-label={`Enlarge property photo ${index + 1} of ${photos.length}`} onClick={event => openPhoto(index, event)}><Photo photo={photo} alt={`Property photo ${index + 1}`} /><span>{String(index + 1).padStart(2, '0')} <span aria-hidden="true">↗</span></span></button>)}</div></section>}
       {tour && <section className="pw-section pw-media" id={`${prefix}-tour`}><div className="pw-section-heading"><h2>Take a virtual tour</h2><ExternalLink href={safeMediaUrl(tour.url)}>Open tour ↗</ExternalLink></div>{tour.kind === 'embed' ? <MediaFrame media={tour} kind="tour" title="Interactive property tour" /> : <p>Explore the saved virtual tour using the link above.</p>}</section>}
       {floorPlan && <section className="pw-section pw-floorplan" id={`${prefix}-floorplan`}><div className="pw-section-heading"><h2>Floor plan</h2><ExternalLink href={safeMediaUrl(floorPlan.url)}>Open floor plan ↗</ExternalLink></div>{floorPlan.kind === 'image' && <Photo photo={floorPlan.url} alt="Property floor plan" />}</section>}

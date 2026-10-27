@@ -216,3 +216,14 @@ test('showing submission locks synchronously, permits retry after failure and ne
     assert.equal(find(renderTree(false),node=>node.type==='form'),null,'success replaces form and prevents accidental resubmission');
   }finally{global.fetch=originalFetch;global.FormData=OriginalFormData;}
 });
+
+test('collection honors saved embedded video poster without autoplay assumptions', () => {
+  const listing={...fixture,video_url:'https://player.mux.com/abc123',video_poster_url:'https://example.com/selected-cover.jpg'};
+  const html=render(listing,'collection',false);
+  assert.match(html,/data-pw-video-cover/);
+  assert.match(html,/aria-label="Open video player"/);
+  assert.match(html,/<iframe[^>]*tabindex="-1"[^>]*aria-hidden="true"/);
+  assert.ok(html.includes('https://example.com/selected-cover.jpg'));
+  assert.doesNotMatch(html,/autoplay=/);
+  assert.doesNotMatch(render({...listing,video_poster_url:''},'collection',false),/data-pw-video-cover/);
+});

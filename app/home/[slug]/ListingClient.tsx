@@ -3,6 +3,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
+function hasFact(value) {
+  return value != null && String(value).trim() !== "";
+}
+
 function videoEmbed(url) {
   try {
     const parsed = new URL(url);
@@ -48,6 +52,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
   const pageStyle = ["heritage", "signature", "modern", "premier"].includes(style || listing.page_style) ? (style || listing.page_style) : "modern";
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(null);
+  const lightboxRef = useRef(null);
   const [videoStarted, setVideoStarted] = useState(false);
   const [inquiryState, setInquiryState] = useState("idle");
   const [inquiryError, setInquiryError] = useState("");
@@ -64,6 +69,21 @@ export default function ListingClient({ listing, slug, preview = false, style })
     const timer = setInterval(() => setActive((current) => (current + 1) % featured.length), 5500);
     return () => clearInterval(timer);
   }, [featured.length]);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const dialog = lightboxRef.current;
+    if (!dialog) return;
+    const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement;
+    document.body.style.overflow = "hidden";
+    dialog.showModal();
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus?.isConnected) previousFocus.focus?.();
+    };
+  }, [lightbox]);
 
   const address = [listing.address, listing.city, "AZ", listing.zip].filter(Boolean).join(", ");
   const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
@@ -147,8 +167,8 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing .agent{background:#f4f6fa;padding:30px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
         .listing .agent img{width:76px;height:76px;object-fit:cover;border-radius:50%}
         .listing .agent strong{font-size:20px}
-        .listing .contact{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
-        .listing .contact>a,.listing .contact>button{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border:0;border-radius:5px;font:inherit;font-weight:700}
+        .listing .agent-contact{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
+        .listing .agent-contact>a,.listing .agent-contact>button{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border:0;border-radius:5px;font:inherit;font-weight:700}
         .listing .email-reveal{width:100%;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
         .listing .email-reveal input{min-width:240px;max-width:100%;padding:10px;border:1px solid #cfd7e3;border-radius:5px;color:#001343;font:inherit}
         .listing .email-reveal button{background:#fff;color:#001343;border:1px solid #001343;border-radius:5px;padding:10px 12px;font:inherit;font-weight:700}
@@ -158,10 +178,10 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing .inquiry textarea,.listing .inquiry .wide{grid-column:1/-1}
         .listing .inquiry button{background:#b00101;color:white;border:0;padding:14px 20px;border-radius:5px;font-weight:700;justify-self:start}
         .listing footer{background:#001343;color:white;padding:25px 22px;text-align:center;font-size:13px}
-        .listing .overlay{position:fixed;inset:0;background:rgba(1,13,45,.95);z-index:10;display:grid;place-items:center;padding:55px 20px}
+        .listing .overlay{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;background:rgba(1,13,45,.95);color:#fff;z-index:10;display:grid;place-items:center;padding:55px 20px}
         .listing .overlay img{max-width:100%;max-height:100%;object-fit:contain}
         .listing .close{position:absolute;top:15px;right:20px;color:white;background:none;border:0;font-size:34px}
-        @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .email-reveal{justify-content:flex-start}.listing .email-reveal span{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
+        @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .agent-contact{margin-left:0;width:100%}.listing .email-reveal{justify-content:flex-start}.listing .email-reveal span{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
 
 
 
@@ -267,10 +287,10 @@ export default function ListingClient({ listing, slug, preview = false, style })
           <span className="status">{listing.status}</span>
           <h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p>
           <div className="price">{price}</div>
-          {listing.beds != null && <div className="panel-fact"><span>Bedrooms</span><strong>{listing.beds}</strong></div>}
-          {listing.baths != null && <div className="panel-fact"><span>Bathrooms</span><strong>{listing.baths}</strong></div>}
-          {listing.garage != null && <div className="panel-fact"><span>Garage</span><strong>{listing.garage}</strong></div>}
-          {listing.sqft != null && <div className="panel-fact"><span>Square feet</span><strong>{Number(listing.sqft).toLocaleString()}</strong></div>}
+          {hasFact(listing.beds) && <div className="panel-fact"><span>Bedrooms</span><strong>{listing.beds}</strong></div>}
+          {hasFact(listing.baths) && <div className="panel-fact"><span>Bathrooms</span><strong>{listing.baths}</strong></div>}
+          {hasFact(listing.garage) && <div className="panel-fact"><span>Garage</span><strong>{listing.garage}</strong></div>}
+          {hasFact(listing.sqft) && <div className="panel-fact"><span>Square feet</span><strong>{Number(listing.sqft).toLocaleString()}</strong></div>}
         </aside>}
         </div>
       )}
@@ -279,11 +299,11 @@ export default function ListingClient({ listing, slug, preview = false, style })
           <div><span className="status">{listing.status}</span><h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p></div>
           <div className="price">{price}</div>
         </div>}
-        {(pageStyle !== "premier" || listing.property_type || listing.year_built || listing.lot_size || listing.mls_number) && <div className="facts">
-          {(pageStyle !== "premier" || featured.length === 0) && listing.beds != null && <span>{listing.beds} Beds</span>}
-          {(pageStyle !== "premier" || featured.length === 0) && listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
-          {(pageStyle !== "premier" || featured.length === 0) && listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
-          {(pageStyle !== "premier" || featured.length === 0) && listing.garage != null && <span>{listing.garage} Car Garage</span>}
+        {(pageStyle !== "premier" || featured.length === 0 || listing.property_type || listing.year_built || listing.lot_size || listing.mls_number) && <div className="facts">
+          {(pageStyle !== "premier" || featured.length === 0) && hasFact(listing.beds) && <span>{listing.beds} Beds</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && hasFact(listing.baths) && <span>{listing.baths} Baths</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && hasFact(listing.sqft) && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && hasFact(listing.garage) && <span>{listing.garage} Car Garage</span>}
           {listing.property_type && <span>{listing.property_type}</span>}
           {listing.year_built && <span>Built {listing.year_built}</span>}
           {listing.lot_size && <span>Lot {listing.lot_size}</span>}
@@ -299,7 +319,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
         </div></section>}
         {listing.video_url && <section><h2>Take a Tour of the Home</h2>
           {video && listing.video_poster_url && !videoStarted ? <button className="video-cover media-frame" type="button" aria-label="Play property video" onClick={() => setVideoStarted(true)}><img src={listing.video_poster_url} alt="Property video cover" /><span aria-hidden="true">▶</span></button> : video ? <iframe className="media-frame" src={videoStarted ? `${video}${video.includes("?") ? "&" : "?"}autoplay=any` : video} title="Property video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen loading="lazy" />
-            : /\.(mp4|webm)(?:\?.*)?$/i.test(listing.video_url) ? <video className="media-frame" src={listing.video_url} controls style={{width:"100%"}} />
+            : /\.(mp4|webm)(?:\?.*)?$/i.test(listing.video_url) ? <video className="media-frame" src={listing.video_url} poster={listing.video_poster_url || undefined} controls style={{width:"100%"}} />
               : <a className="link" href={listing.video_url} target="_blank" rel="noopener noreferrer">Watch property video</a>}
         </section>}
         {floorPlan && <section><h2>Floor plan</h2>
@@ -316,7 +336,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
         <section className="agent">
           {listing.agent?.photo && <img src={listing.agent.photo} alt={listing.agent.name || "Listing agent"} />}
           <div><strong>{listing.agent?.name || "ADT Realty"}</strong>{listing.agent?.license && <div>License #{listing.agent.license}</div>}</div>
-          <div className="contact">
+          <div className="agent-contact">
             {phone && <a href={`tel:${phone.replace(/[^+\d]/g,"")}`}>Call Agent</a>}
             {email && <button type="button" onClick={() => { setEmailVisible(true); setEmailCopied(false); }}>Email Agent</button>}
             {email && emailVisible && <div className="email-reveal"><input ref={emailInputRef} type="text" readOnly value={email} aria-label="Agent email address" onClick={(event) => event.currentTarget.select()} /><button type="button" onClick={copyAgentEmail}>Copy email</button><span role="status">{emailCopied ? "Email copied. Paste it into your email app." : "Copy this address into your email app."}</span></div>}
@@ -339,9 +359,9 @@ export default function ListingClient({ listing, slug, preview = false, style })
         </section>
       </div>
       <footer>ADT Realty · Equal Housing Opportunity</footer>
-      {lightbox && <div className="overlay" role="dialog" aria-modal="true" aria-label="Enlarged property photo" onClick={() => setLightbox(null)}>
-        <button className="close" aria-label="Close photo" onClick={() => setLightbox(null)}>×</button><img src={lightbox} alt="Enlarged property view" />
-      </div>}
+      {lightbox && <dialog ref={lightboxRef} className="overlay" aria-label="Enlarged property photo" onCancel={(event) => { event.preventDefault(); setLightbox(null); }} onClick={(event) => { if (event.target === event.currentTarget) setLightbox(null); }}>
+        <button type="button" className="close" aria-label="Close photo" onClick={() => setLightbox(null)}>×</button><img src={lightbox} alt="Enlarged property view" />
+      </dialog>}
     </main>
   );
 }

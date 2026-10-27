@@ -23,7 +23,18 @@ export default function RegionGuide({ region }: { region: RegionKey }) {
   const info = regions[region];
   const cities = countyCities.filter(city => city.region === info.dataRegion);
   const heroPhoto = region === "east" ? countyCities.find(city => city.slug === "scottsdale")?.photo : region === "west" ? countyCities.find(city => city.slug === "goodyear")?.photo : countyCities.find(city => city.slug === "phoenix")?.photo;
-  const schema = { "@context": "https://schema.org", "@type": "CollectionPage", name: `${info.label} Relocation Guide`, url: `https://www.adtrealtyaz.com${info.path}`, description: info.description, hasPart: cities.map(city => ({ "@type": "WebPageElement", name: city.name, description: city.summary, url: `https://www.adtrealtyaz.com${info.path}#guide-${city.slug}` })) };
+  const url = `https://www.adtrealtyaz.com${info.path}`;
+  const schema = { "@context": "https://schema.org", "@graph": [
+    { "@type": "CollectionPage", "@id": `${url}#webpage`, name: `${info.label} Relocation Guide`, url, description: info.description, inLanguage: "en-US", dateModified: "2026-10-27", publisher: { "@type": "Organization", name: "ADT Realty Arizona", url: "https://www.adtrealtyaz.com/" }, image: `https://www.adtrealtyaz.com${heroPhoto?.src ?? info.image}`, isPartOf: { "@type": "CollectionPage", name: "Phoenix Area & Maricopa County Relocation Guide", url: "https://www.adtrealtyaz.com/moving-to-arizona" }, hasPart: [
+      ...cities.map(city => ({ "@type": "WebPageElement", name: city.name, description: city.summary, url: `${url}#guide-${city.slug}` })),
+      ...(region === "phoenix" ? phoenixAreas.map(area => ({ "@type": "WebPageElement", name: area.name, description: area.intro, url: `${url}#area-${area.id}` })) : []),
+    ] },
+    { "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ADT Realty Arizona", item: "https://www.adtrealtyaz.com/" },
+      { "@type": "ListItem", position: 2, name: "Maricopa County Guide", item: "https://www.adtrealtyaz.com/moving-to-arizona" },
+      { "@type": "ListItem", position: 3, name: info.label, item: url },
+    ] },
+  ] };
   return <main className="evPage phxPage relPage relRegionPage">
     <GuideAnchors />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />

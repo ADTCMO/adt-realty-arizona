@@ -3,15 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { LeadForm } from "../components/LeadForm";
 import { countyCities } from "./data";
-import RelocationPlanning, { relocationQuestions } from "./RelocationPlanning";
+import RelocationPlanning from "./RelocationPlanning";
 import GuideAnchors from "./GuideAnchors";
 import RegionNavigation from "./RegionNavigation";
 import "../east-valley/east-valley.css";
 import "../phoenix/phoenix.css";
 import "./relocation.css";
 
-const title = "Moving to Arizona: Maricopa County Relocation Guide";
-const description = "Choose East Valley, West Valley or Phoenix. Explore local cities, home prices, photos and a practical Arizona moving checklist, with no obligation.";
+const title = "Phoenix Area & Maricopa County Relocation Guide";
+const description = "Moving to the Phoenix area? Compare East Valley, West Valley and Phoenix communities, dated home-sale prices, photos, commutes and a practical moving checklist.";
 const url = "https://www.adtrealtyaz.com/moving-to-arizona";
 const regionLinks = [
   { name: "East Valley", href: "/east-valley", imageCity: "scottsdale", count: "8 cities & towns", intro: "Scottsdale, Tempe, Mesa, Chandler, Gilbert and the eastern Valley." },
@@ -27,9 +27,8 @@ export const metadata: Metadata = {
 
 export default function MovingToArizonaGuide() {
   const schema = { "@context": "https://schema.org", "@graph": [
-    { "@type": "CollectionPage", name: title, description, url, dateModified: "2026-10-27", spatialCoverage: { "@type": "AdministrativeArea", name: "Maricopa County, Arizona" }, hasPart: regionLinks.map(region => ({ "@type": "CollectionPage", name: `${region.name} Relocation Guide`, url: `https://www.adtrealtyaz.com${region.href}` })) },
+    { "@type": "CollectionPage", "@id": `${url}#webpage`, name: title, description, url, inLanguage: "en-US", dateModified: "2026-10-27", publisher: { "@type": "Organization", name: "ADT Realty Arizona", url: "https://www.adtrealtyaz.com/" }, image: "https://www.adtrealtyaz.com/images/phoenix/downtown-midtown.jpg", spatialCoverage: { "@type": "AdministrativeArea", name: "Maricopa County, Arizona" }, hasPart: regionLinks.map(region => ({ "@type": "CollectionPage", name: `${region.name} Relocation Guide`, url: `https://www.adtrealtyaz.com${region.href}` })) },
     { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "ADT Realty Arizona", item: "https://www.adtrealtyaz.com/" }, { "@type": "ListItem", position: 2, name: "Moving to Arizona", item: url }] },
-    { "@type": "FAQPage", mainEntity: relocationQuestions.map(item => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
   ] };
   return <main className="evPage phxPage relPage">
     <GuideAnchors />

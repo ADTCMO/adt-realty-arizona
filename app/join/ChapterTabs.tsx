@@ -9,7 +9,7 @@ export function ChapterTabs({ chapters }: { chapters: readonly (readonly [string
     let frame = 0;
     const update = () => {
       frame = 0;
-      const threshold = 110;
+      const threshold = (document.querySelector(".joinStickyNav")?.getBoundingClientRect().height ?? 110) + 16;
       let reached = 1;
       chapters.forEach(([id], index) => {
         const anchor = document.getElementById(id);

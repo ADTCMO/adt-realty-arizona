@@ -74,14 +74,6 @@ NWSPhoenix · Goodyear Ballpark, Goodyear, Arizona · resized/compressed; displa
 
 [Original and provenance](https://commons.wikimedia.org/wiki/File:Goodyear_Ballpark,_Goodyear,_Arizona.jpg) · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)
 
-## guadalupe
-
-Black-and-white photograph of Our Lady of Guadalupe church in Guadalupe, Arizona
-
-Rick Obst · Our Lady of Guadalupe Catholic Church in Guadalupe, Arizona · resized/compressed; display crop · 2023-09-22 08:46:26
-
-[Original and provenance](https://commons.wikimedia.org/wiki/File:Our_Lady_of_Guadalupe_Catholic_Church_in_Guadalupe,_Arizona.jpg) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0)
-
 ## litchfield-park
 
 City of Litchfield Park monument sign

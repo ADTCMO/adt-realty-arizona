@@ -117,7 +117,7 @@ export default function ChandlerPage() {
       <header className="chandlerHeader">
         <Link href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></Link>
         <nav><a href="#areas">Areas</a><a href="#real-talk">Real talk</a><a href="#compare">Compare</a></nav>
-        <a className="chandlerHeaderCta" href="#ask-agent">Ask a Local Agent</a>
+        <a className="chandlerHeaderCta" href="#ask-agent">Ask a local expert</a>
       </header>
 
       <section className="chandlerHero">
@@ -234,7 +234,7 @@ export default function ChandlerPage() {
       </section>
 
       <section className="chandlerContact" id="ask-agent">
-        <div><p className="chandlerKicker">Local guidance—not a sales pitch</p><h2>Ask an Agent About Chandler</h2><p>Tell Mike what you are comparing, what matters most and what you want to understand before making a move.</p><small>Your inquiry will be identified as a Chandler request.</small></div>
+        <div><p className="chandlerKicker">Local guidance—not a sales pitch</p><h2>Ask a local expert</h2><p>Share what you are comparing, what matters most and what you want to understand before making a move.</p><small>Your inquiry will be identified as a Chandler request.</small></div>
         <LeadForm type="contact" market="Chandler" />
       </section>
 
@@ -246,3 +246,4 @@ export default function ChandlerPage() {
     </main>
   );
 }
+

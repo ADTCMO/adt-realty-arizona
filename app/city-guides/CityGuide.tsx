@@ -8,7 +8,7 @@ export default function CityGuide({ city }: { city: CityGuideData }) {
       <header className="chandlerHeader">
         <Link href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></Link>
         <nav><a href="#areas">Areas</a><a href="#real-talk">Real talk</a><a href="#compare">Compare</a></nav>
-        <a className="chandlerHeaderCta" href="#ask-agent">Ask a Local Agent</a>
+        <a className="chandlerHeaderCta" href="#ask-agent">Ask a local expert</a>
       </header>
 
       <section className="chandlerHero" style={{ backgroundImage: `url('/images/east-valley/${city.slug}.jpg')` }}>
@@ -38,8 +38,9 @@ export default function CityGuide({ city }: { city: CityGuideData }) {
 
       <section className="chandlerDecision"><div><p className="chandlerKicker">Run the numbers</p><h2>Could {city.name} fit your budget?</h2><p>Price is only the beginning. Estimate how taxes, insurance, down payment, debt and ownership costs may affect your true buying power.</p></div><a href={`https://acebuyer.adtrealtyaz.com/?city=${encodeURIComponent(city.name)}`}>Calculate My {city.name} Buying Power <span>→</span></a></section>
 
-      <section className="chandlerContact" id="ask-agent"><div><p className="chandlerKicker">Local guidance—not a sales pitch</p><h2>Ask an Agent About {city.name}</h2><p>Tell Mike what you are comparing, what matters most and what you want to understand before making a move.</p><small>Your inquiry will be identified as a {city.name} request.</small></div><LeadForm type="contact" market={city.name} /></section>
+      <section className="chandlerContact" id="ask-agent"><div><p className="chandlerKicker">Local guidance—not a sales pitch</p><h2>Ask a local expert</h2><p>Share what you are comparing, what matters most and what you want to understand before making a move.</p><small>Your inquiry will be identified as a {city.name} request.</small></div><LeadForm type="contact" market={city.name} /></section>
       <footer className="chandlerFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /><p>Local guidance for {city.name} and Phoenix’s East Valley.</p><span>*Drive times vary by neighborhood and traffic. Verify schools and costs for each property.</span></footer>
     </main>
   );
 }
+

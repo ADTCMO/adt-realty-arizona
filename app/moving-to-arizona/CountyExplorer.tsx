@@ -9,7 +9,7 @@ import "./county-map.css";
 import { countyPath, fullView, project } from "./mapGeometry";
 
 // Leader lines separate neighboring municipality markers without moving their mapped locations.
-const pinOffsets: Record<string, [number, number]> = { "el-mirage": [-12, -9], youngtown: [13, 9], tempe: [9, -8], guadalupe: [-10, 9], carefree: [7, 4], "cave-creek": [-7, -4] };
+const pinOffsets: Record<string, [number, number]> = { "el-mirage": [-12, -9], youngtown: [13, 9], tempe: [9, -8], carefree: [7, 4], "cave-creek": [-7, -4] };
 
 export default function CountyExplorer({ cities, title = "Find your place on the map.", intro = "Click a numbered city or town for its local guide. Prefer a list? Search below and open the same details—no map skills required." }: { cities: CountyCity[]; title?: string; intro?: string }) {
   const [isReady, setIsReady] = useState(false);
@@ -182,7 +182,7 @@ export default function CountyExplorer({ cities, title = "Find your place on the
             <div className="countyDialogTopics"><details><summary>Housing & everyday connections</summary><div><h3>Housing character</h3><p>{selected.housing}</p><h3>Commute & access</h3><p>{selected.commute}</p></div></details><details><summary>Schools: check the address</summary><div><p>{selected.schools}</p><a href="https://azreportcards.azed.gov/" target="_blank" rel="noreferrer">Arizona School Report Cards ↗</a></div></details><details><summary>Places to know & local tradeoffs</summary><div><h3>Places to know</h3><ul>{selected.highlights.map((item) => <li key={item}>{item}</li>)}</ul><h3>Before you choose</h3><ul>{selected.considerations.map((item) => <li key={item}>{item}</li>)}</ul></div></details></div>
             {selected.guideHref && <a className="countyDetailLink" href={selected.guideHref} onClick={(event) => { if (selected.guideHref?.startsWith("#")) { event.preventDefault(); followGuide(selected.guideHref); } }}>Explore more of {selected.name} <span aria-hidden="true">→</span></a>}
             {selected.sources?.length ? <details className="countyCitySources"><summary>Local sources & useful links</summary><ul>{selected.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></li>)}</ul></details> : null}
-            <div className="countyDialogCta"><div><h3>Could {selected.name} fit your move?</h3><p>Explore your budget, then ask a local agent for address-specific guidance. Information without obligation.</p></div><div><a href={`https://acebuyer.adtrealtyaz.com/?city=${encodeURIComponent(selected.name)}`}>Try the buying-power calculator →</a><a className="countySecondaryCta" href="/#contact">Talk to a local agent →</a></div></div>
+            <div className="countyDialogCta"><div><h3>Could {selected.name} fit your move?</h3><p>Explore your budget, then ask a local expert for address-specific guidance. Information without obligation.</p></div><div><a href={`https://acebuyer.adtrealtyaz.com/?city=${encodeURIComponent(selected.name)}`}>Try the buying-power calculator →</a><a className="countySecondaryCta" href="/#contact">Ask a local expert</a></div></div>
           </div>
         </div>}
       </dialog>

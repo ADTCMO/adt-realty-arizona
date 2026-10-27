@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ListingClient from "./ListingClient";
+import { canonicalListingSlug, resolveListingSlug, isCollectionPreview } from "../../../lib/public-listings";
 
-type RouteProps = { params: Promise<{ slug: string }> };
-
-const shortListingSlugs: Record<string, string> = {
-  "2094-w-peninsula-cir": "2094-w-peninsula-cir-chandler-85248-5346fe33",
-};
+type RouteProps = { params: Promise<{ slug: string }>; searchParams?: Promise<{ preview?: string }> };
 
 async function getListing(slug: string) {
-  if (!/^[a-z0-9-]{1,180}$/.test(slug)) return null;
+  const savedSlug = resolveListingSlug(slug);
+  if (!savedSlug) return null;
   try {
     const response = await fetch(
-      `https://marketing.adtrealtyaz.com/api/public-listings/${encodeURIComponent(shortListingSlugs[slug] || slug)}`,
+      `https://marketing.adtrealtyaz.com/api/public-listings/${encodeURIComponent(savedSlug)}`,
       { cache: "no-store" }
     );
     return response.ok ? await response.json() : null;
@@ -21,7 +19,7 @@ async function getListing(slug: string) {
   }
 }
 
-export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: RouteProps): Promise<Metadata> {
   const { slug } = await params;
   const listing = await getListing(slug);
   if (!listing) {
@@ -30,14 +28,17 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   const title = `${listing.address}, ${listing.city} AZ`;
   const description = listing.description?.slice(0, 155)
     || `Explore ${listing.address} in ${listing.city}, Arizona.`;
+  const canonical = `/home/${canonicalListingSlug(slug, listing.id)}`;
+  const preview = isCollectionPreview((await searchParams)?.preview);
   return {
     title,
     description,
-    alternates: { canonical: `/home/${slug}` },
+    alternates: { canonical },
+    ...(preview ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       title,
       description,
-      url: `/home/${slug}`,
+      url: canonical,
       images: listing.photos?.[0] ? [{ url: listing.photos[0] }] : [],
     },
     twitter: {
@@ -49,9 +50,10 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   };
 }
 
-export default async function PropertyLandingPage({ params }: RouteProps) {
+export default async function PropertyLandingPage({ params, searchParams }: RouteProps) {
   const { slug } = await params;
   const listing = await getListing(slug);
   if (!listing) notFound();
-  return <ListingClient listing={listing} slug={shortListingSlugs[slug] || slug} style={listing.page_style} />;
+  const preview = isCollectionPreview((await searchParams)?.preview);
+  return <ListingClient listing={listing} slug={resolveListingSlug(slug)} style={preview ? "collection" : listing.page_style} preview={preview} />;
 }

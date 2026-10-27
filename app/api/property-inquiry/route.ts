@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { publicListingUrl, resolveListingSlug } from "../../../lib/public-listings";
 
 const LOFTY_BASE = "https://api.lofty.com";
 const OWNER_ID = process.env.LOFTY_ASSIGNED_USER_ID || "844769665620463";
@@ -35,8 +36,9 @@ export async function POST(request: Request) {
   const email = String(form.get("email") || "").trim().toLowerCase();
   const phone = String(form.get("phone") || "").trim();
   const message = String(form.get("message") || "").trim();
+  const savedSlug = resolveListingSlug(slug);
 
-  if (!/^[a-z0-9-]{1,180}$/.test(slug) ||
+  if (!savedSlug ||
       !name || name.length > 120 ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 ||
       phone.length > 40 || message.length > 2000) {
@@ -47,13 +49,17 @@ export async function POST(request: Request) {
   if (!key) return NextResponse.json({ error: "Showing request delivery is not configured" }, { status: 503 });
 
   const listingResponse = await fetch(
-    `https://marketing.adtrealtyaz.com/api/public-listings/${encodeURIComponent(slug)}`,
+    `https://marketing.adtrealtyaz.com/api/public-listings/${encodeURIComponent(savedSlug)}`,
     { cache: "no-store" }
   ).catch(() => null);
   if (!listingResponse?.ok) return NextResponse.json({ error: "Listing unavailable" }, { status: 404 });
-  const listing = await listingResponse.json();
+  const listing = await listingResponse.json().catch(() => null);
+  if (!listing || typeof listing.address !== "string" || !listing.address.trim() ||
+      typeof listing.city !== "string" || !listing.city.trim()) {
+    return NextResponse.json({ error: "Listing unavailable" }, { status: 502 });
+  }
   const address = [listing.address, listing.city, "AZ", listing.zip].filter(Boolean).join(", ");
-  const pageUrl = `https://www.adtrealtyaz.com/home/${slug}`;
+  const pageUrl = publicListingUrl(savedSlug, listing.id);
   const note = [
     "ACE MARKETING PROPERTY SHOWING REQUEST — RESPONSE NEEDED",
     `Property: ${address}`,

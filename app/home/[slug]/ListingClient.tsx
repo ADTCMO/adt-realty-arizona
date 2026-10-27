@@ -2,6 +2,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import WebsitePiece from "./collection/WebsitePiece";
+import { publicCollectionModel } from "./collection/public-model";
+
+function hasFact(value) {
+  return value != null && String(value).trim() !== "";
+}
 
 function videoEmbed(url) {
   try {
@@ -45,11 +51,13 @@ function tourEmbed(url) {
 }
 
 export default function ListingClient({ listing, slug, preview = false, style }) {
-  const pageStyle = ["heritage", "signature", "modern", "premier"].includes(style || listing.page_style) ? (style || listing.page_style) : "modern";
+  const pageStyle = ["heritage", "signature", "modern", "premier", "collection"].includes(style || listing.page_style) ? (style || listing.page_style) : "modern";
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(null);
+  const lightboxRef = useRef(null);
   const [videoStarted, setVideoStarted] = useState(false);
   const [inquiryState, setInquiryState] = useState("idle");
+  const inquiryInFlight = useRef(false);
   const [inquiryError, setInquiryError] = useState("");
   const [fallbackEmailHref, setFallbackEmailHref] = useState(null);
   const [emailVisible, setEmailVisible] = useState(false);
@@ -60,13 +68,29 @@ export default function ListingClient({ listing, slug, preview = false, style })
   const gallery = photos.slice(3, 23);
 
   useEffect(() => {
-    if (featured.length < 2) return;
+    if (pageStyle === "collection" || featured.length < 2) return;
     const timer = setInterval(() => setActive((current) => (current + 1) % featured.length), 5500);
     return () => clearInterval(timer);
-  }, [featured.length]);
+  }, [featured.length, pageStyle]);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const dialog = lightboxRef.current;
+    if (!dialog) return;
+    const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement;
+    document.body.style.overflow = "hidden";
+    dialog.showModal();
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus?.isConnected) previousFocus.focus?.();
+    };
+  }, [lightbox]);
 
   const address = [listing.address, listing.city, "AZ", listing.zip].filter(Boolean).join(", ");
   const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
   const phone = listing.agent?.phone;
   const email = listing.agent?.email;
   const emailSubject = `Showing request: ${address}`;
@@ -87,22 +111,51 @@ export default function ListingClient({ listing, slug, preview = false, style })
 
   async function submitInquiry(event) {
     event.preventDefault();
-    if (preview || !slug) return;
+    if (preview || !slug || inquiryInFlight.current || inquiryState === "sent") return;
+    inquiryInFlight.current = true;
     setInquiryState("sending");
-    const form = new FormData(event.currentTarget);
-    const body = `Name: ${form.get("name") || ""}\nEmail: ${form.get("email") || ""}\nPhone: ${form.get("phone") || ""}\n\n${form.get("message") || ""}\n\nProperty: ${address}`;
-    setFallbackEmailHref(`mailto:mikedingman@adthomes.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`);
-    const response = await fetch("/api/property-inquiry", {
-      method: "POST",
-      body: form,
-    }).catch(() => null);
-    if (response?.ok) {
-      setInquiryState("sent");
-    } else {
-      const result = await response?.json().catch(() => null);
-      setInquiryError(result?.error || "The request could not be sent.");
+    setInquiryError("");
+    try {
+      const form = new FormData(event.currentTarget);
+      const preferredDate = form.get("preferred_date");
+      if (preferredDate) form.set("message", `Preferred date: ${preferredDate}\n${form.get("message") || ""}`);
+      const body = `Name: ${form.get("name") || ""}\nEmail: ${form.get("email") || ""}\nPhone: ${form.get("phone") || ""}\n\n${form.get("message") || ""}\n\nProperty: ${address}`;
+      setFallbackEmailHref(`mailto:mikedingman@adthomes.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`);
+      const response = await fetch("/api/property-inquiry", {
+        method: "POST",
+        body: form,
+      }).catch(() => null);
+      if (response?.ok) {
+        setInquiryState("sent");
+      } else {
+        const result = await response?.json().catch(() => null);
+        setInquiryError(result?.error || "The request could not be sent.");
+        setInquiryState("error");
+      }
+    } catch {
+      setInquiryError("The request could not be sent.");
       setInquiryState("error");
+    } finally {
+      inquiryInFlight.current = false;
     }
+  }
+
+  if (pageStyle === "collection") {
+    const model = publicCollectionModel(listing, slug, preview);
+    const form = <div id="request-showing">{inquiryState === "sent" ? <p role="status">Thank you. We will be in touch.</p> : <form className="pw-showing-form" onSubmit={submitInquiry} aria-label="Showing request">
+      <fieldset disabled={preview || inquiryState === "sending"}>
+        <input type="hidden" name="slug" value={slug || ""} />
+        <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px"}} />
+        <label>Name<input name="name" required maxLength={120} autoComplete="name" placeholder="Your full name" /></label>
+        <label>Email<input name="email" type="email" required maxLength={254} autoComplete="email" placeholder="you@example.com" /></label>
+        <label>Phone<input name="phone" type="tel" maxLength={40} autoComplete="tel" placeholder="Your phone number (optional)" /></label>
+        <label>Preferred date<input name="preferred_date" type="date" /></label>
+        <label className="pw-form-wide">Message<textarea name="message" rows={4} maxLength={1900} placeholder="Let us know your preferred time or ask a question." /></label>
+        <button type="submit" className="pw-button">{inquiryState === "sending" ? "Sending..." : "Request showing"}</button>
+      </fieldset>
+      {inquiryState === "error" && <p role="alert">{inquiryError} {fallbackEmailHref ? <>You can <a href={fallbackEmailHref}>open an email draft</a> or write to <a href="mailto:mikedingman@adthomes.com">mikedingman@adthomes.com</a>.</> : "Please call the agent."}</p>}
+    </form>}</div>;
+    return <main><WebsitePiece model={model} publicMode={!preview} showingForm={form} /></main>;
   }
 
   return (
@@ -147,8 +200,8 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing .agent{background:#f4f6fa;padding:30px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
         .listing .agent img{width:76px;height:76px;object-fit:cover;border-radius:50%}
         .listing .agent strong{font-size:20px}
-        .listing .contact{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
-        .listing .contact>a,.listing .contact>button{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border:0;border-radius:5px;font:inherit;font-weight:700}
+        .listing .agent-contact{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
+        .listing .agent-contact>a,.listing .agent-contact>button{background:#b00101;color:#fff;padding:12px 18px;text-decoration:none;border:0;border-radius:5px;font:inherit;font-weight:700}
         .listing .email-reveal{width:100%;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
         .listing .email-reveal input{min-width:240px;max-width:100%;padding:10px;border:1px solid #cfd7e3;border-radius:5px;color:#001343;font:inherit}
         .listing .email-reveal button{background:#fff;color:#001343;border:1px solid #001343;border-radius:5px;padding:10px 12px;font:inherit;font-weight:700}
@@ -158,10 +211,10 @@ export default function ListingClient({ listing, slug, preview = false, style })
         .listing .inquiry textarea,.listing .inquiry .wide{grid-column:1/-1}
         .listing .inquiry button{background:#b00101;color:white;border:0;padding:14px 20px;border-radius:5px;font-weight:700;justify-self:start}
         .listing footer{background:#001343;color:white;padding:25px 22px;text-align:center;font-size:13px}
-        .listing .overlay{position:fixed;inset:0;background:rgba(1,13,45,.95);z-index:10;display:grid;place-items:center;padding:55px 20px}
+        .listing .overlay{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;background:rgba(1,13,45,.95);color:#fff;z-index:10;display:grid;place-items:center;padding:55px 20px}
         .listing .overlay img{max-width:100%;max-height:100%;object-fit:contain}
         .listing .close{position:absolute;top:15px;right:20px;color:white;background:none;border:0;font-size:34px}
-        @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .contact{margin-left:0;width:100%}.listing .email-reveal{justify-content:flex-start}.listing .email-reveal span{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
+        @media(max-width:700px){.listing .wrap{display:flex;flex-direction:column}.listing .wrap>.summary{order:0}.listing .wrap>.facts{order:1}.listing .wrap>.gallery-section{order:2}.listing .wrap>section{order:3}.listing .summary{display:block}.listing .price{margin-top:15px}.listing .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px}.listing .gallery button{flex:0 0 88%;scroll-snap-align:center}.listing .gallery-count{display:block;position:absolute;bottom:10px;right:10px;background:rgba(1,13,45,.8);color:#fff;border-radius:15px;padding:5px 10px;font-size:12px}.listing .inquiry{grid-template-columns:repeat(2,1fr)}.listing .agent{padding:24px 20px}.listing .agent-contact{margin-left:0;width:100%}.listing .email-reveal{justify-content:flex-start}.listing .email-reveal span{text-align:left}.listing .hero{min-height:270px}.listing .inquiry input{grid-column:1/-1}}
 
 
 
@@ -267,10 +320,10 @@ export default function ListingClient({ listing, slug, preview = false, style })
           <span className="status">{listing.status}</span>
           <h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p>
           <div className="price">{price}</div>
-          {listing.beds != null && <div className="panel-fact"><span>Bedrooms</span><strong>{listing.beds}</strong></div>}
-          {listing.baths != null && <div className="panel-fact"><span>Bathrooms</span><strong>{listing.baths}</strong></div>}
-          {listing.garage != null && <div className="panel-fact"><span>Garage</span><strong>{listing.garage}</strong></div>}
-          {listing.sqft != null && <div className="panel-fact"><span>Square feet</span><strong>{Number(listing.sqft).toLocaleString()}</strong></div>}
+          {hasFact(listing.beds) && <div className="panel-fact"><span>Bedrooms</span><strong>{listing.beds}</strong></div>}
+          {hasFact(listing.baths) && <div className="panel-fact"><span>Bathrooms</span><strong>{listing.baths}</strong></div>}
+          {hasFact(listing.garage) && <div className="panel-fact"><span>Garage</span><strong>{listing.garage}</strong></div>}
+          {hasFact(listing.sqft) && <div className="panel-fact"><span>Square feet</span><strong>{Number(listing.sqft).toLocaleString()}</strong></div>}
         </aside>}
         </div>
       )}
@@ -279,11 +332,11 @@ export default function ListingClient({ listing, slug, preview = false, style })
           <div><span className="status">{listing.status}</span><h1>{listing.address}</h1><p className="city">{listing.city}, AZ {listing.zip}</p></div>
           <div className="price">{price}</div>
         </div>}
-        {(pageStyle !== "premier" || listing.property_type || listing.year_built || listing.lot_size || listing.mls_number) && <div className="facts">
-          {(pageStyle !== "premier" || featured.length === 0) && listing.beds != null && <span>{listing.beds} Beds</span>}
-          {(pageStyle !== "premier" || featured.length === 0) && listing.baths !== null && listing.baths !== undefined && listing.baths !== "" && <span>{listing.baths} Baths</span>}
-          {(pageStyle !== "premier" || featured.length === 0) && listing.sqft != null && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
-          {(pageStyle !== "premier" || featured.length === 0) && listing.garage != null && <span>{listing.garage} Car Garage</span>}
+        {(pageStyle !== "premier" || featured.length === 0 || listing.property_type || listing.year_built || listing.lot_size || listing.mls_number) && <div className="facts">
+          {(pageStyle !== "premier" || featured.length === 0) && hasFact(listing.beds) && <span>{listing.beds} Beds</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && hasFact(listing.baths) && <span>{listing.baths} Baths</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && hasFact(listing.sqft) && <span>{Number(listing.sqft).toLocaleString()} Sq Ft</span>}
+          {(pageStyle !== "premier" || featured.length === 0) && hasFact(listing.garage) && <span>{listing.garage} Car Garage</span>}
           {listing.property_type && <span>{listing.property_type}</span>}
           {listing.year_built && <span>Built {listing.year_built}</span>}
           {listing.lot_size && <span>Lot {listing.lot_size}</span>}
@@ -299,7 +352,7 @@ export default function ListingClient({ listing, slug, preview = false, style })
         </div></section>}
         {listing.video_url && <section><h2>Take a Tour of the Home</h2>
           {video && listing.video_poster_url && !videoStarted ? <button className="video-cover media-frame" type="button" aria-label="Play property video" onClick={() => setVideoStarted(true)}><img src={listing.video_poster_url} alt="Property video cover" /><span aria-hidden="true">▶</span></button> : video ? <iframe className="media-frame" src={videoStarted ? `${video}${video.includes("?") ? "&" : "?"}autoplay=any` : video} title="Property video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen loading="lazy" />
-            : /\.(mp4|webm)(?:\?.*)?$/i.test(listing.video_url) ? <video className="media-frame" src={listing.video_url} controls style={{width:"100%"}} />
+            : /\.(mp4|webm)(?:\?.*)?$/i.test(listing.video_url) ? <video className="media-frame" src={listing.video_url} poster={listing.video_poster_url || undefined} controls style={{width:"100%"}} />
               : <a className="link" href={listing.video_url} target="_blank" rel="noopener noreferrer">Watch property video</a>}
         </section>}
         {floorPlan && <section><h2>Floor plan</h2>
@@ -312,17 +365,17 @@ export default function ListingClient({ listing, slug, preview = false, style })
           {tourEmbed(listing.tour_url) && <iframe className="media-frame" src={tourEmbed(listing.tour_url)} title="3D home tour and interactive floor plan" loading="lazy" allowFullScreen />}
           <p><a href={listing.tour_url} target="_blank" rel="noopener noreferrer" style={{color:"#b00101",fontWeight:700}}>Open the 3D tour in a new tab ↗</a></p>
         </section>}
-        <section><h2>Location</h2><iframe className="map" src={mapUrl} title={`Map of ${address}`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></section>
+        <section><h2>Location</h2><iframe className="map" src={mapUrl} title={`Map of ${address}`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><p><a className="link" href={directionsUrl} target="_blank" rel="noopener noreferrer">Get directions ↗</a></p></section>
         <section className="agent">
           {listing.agent?.photo && <img src={listing.agent.photo} alt={listing.agent.name || "Listing agent"} />}
           <div><strong>{listing.agent?.name || "ADT Realty"}</strong>{listing.agent?.license && <div>License #{listing.agent.license}</div>}</div>
-          <div className="contact">
+          <div className="agent-contact">
             {phone && <a href={`tel:${phone.replace(/[^+\d]/g,"")}`}>Call Agent</a>}
             {email && <button type="button" onClick={() => { setEmailVisible(true); setEmailCopied(false); }}>Email Agent</button>}
             {email && emailVisible && <div className="email-reveal"><input ref={emailInputRef} type="text" readOnly value={email} aria-label="Agent email address" onClick={(event) => event.currentTarget.select()} /><button type="button" onClick={copyAgentEmail}>Copy email</button><span role="status">{emailCopied ? "Email copied. Paste it into your email app." : "Copy this address into your email app."}</span></div>}
           </div>
         </section>
-        <section id="request-showing">
+        <section id="request-showing"><span id="showing" />
           <h2>Request a showing</h2>
           {inquiryState === "sent" ? <p>Thank you. We will be in touch.</p> : (
             <form className="inquiry" onSubmit={submitInquiry}>
@@ -339,9 +392,9 @@ export default function ListingClient({ listing, slug, preview = false, style })
         </section>
       </div>
       <footer>ADT Realty · Equal Housing Opportunity</footer>
-      {lightbox && <div className="overlay" role="dialog" aria-modal="true" aria-label="Enlarged property photo" onClick={() => setLightbox(null)}>
-        <button className="close" aria-label="Close photo" onClick={() => setLightbox(null)}>×</button><img src={lightbox} alt="Enlarged property view" />
-      </div>}
+      {lightbox && <dialog ref={lightboxRef} className="overlay" aria-label="Enlarged property photo" onCancel={(event) => { event.preventDefault(); setLightbox(null); }} onClick={(event) => { if (event.target === event.currentTarget) setLightbox(null); }}>
+        <button type="button" className="close" aria-label="Close photo" onClick={() => setLightbox(null)}>×</button><img src={lightbox} alt="Enlarged property view" />
+      </dialog>}
     </main>
   );
 }

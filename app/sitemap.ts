@@ -9,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${baseUrl}/join`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/`, changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/moving-to-arizona`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/west-valley`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/phoenix`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/east-valley`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/chandler`, changeFrequency: "monthly", priority: 0.9 },

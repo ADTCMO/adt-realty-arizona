@@ -6,6 +6,15 @@ export default function Home() {
     <link rel="preload" as="image" href="/hero-arizona-bright.webp" media="(min-width: 761px)" fetchPriority="high"/>
     <link rel="preload" as="image" href="/hero-arizona-mobile.webp" media="(max-width: 760px)" fetchPriority="high"/>
     <style>{`
+      .homeFooter{flex-wrap:wrap}.homeFooter .footerAreaGuides{flex-basis:100%;order:3;width:100%}.homeFooter>p{margin-left:auto}
+      @media(max-width:760px){.homeFooter{align-items:center;text-align:center}.homeFooter>p{margin-left:0}.homeFooter .footerAreaGuides{order:0;margin:10px auto}.footerAreaGuides ul{display:grid;grid-template-columns:1fr 1fr;gap:22px 16px}}
+      .footerAreaGuides{max-width:1000px;margin:26px auto;padding:24px 0;border-top:1px solid #cfd7e3;border-bottom:1px solid #cfd7e3}
+      .footerAreaGuides h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px}
+      .footerAreaGuides ul{display:flex;flex-wrap:wrap;justify-content:center;gap:20px 32px;list-style:none;margin:0;padding:0}
+      .footerAreaGuides li{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:14px;line-height:1.5}
+      .footerAreaGuides a{font-weight:750;text-decoration:underline;text-underline-offset:4px;padding:8px 0}
+      .footerAreaGuides a:focus-visible{outline:3px solid currentColor;outline-offset:5px}
+      .footerAreaGuides small{font-size:12px;opacity:.8}
       #home.hero{min-height:485px;display:grid;place-items:center;background:linear-gradient(0deg,rgba(0,17,54,.46),rgba(0,17,54,.01) 70%),url('/hero-arizona-bright.webp') center 52%/cover no-repeat}
       #home .heroContent{text-align:center;margin-top:70px;padding:30px;max-width:none}
       #home .heroContent h1{font-size:clamp(40px,4.5vw,68px);line-height:normal;letter-spacing:-.04em;text-shadow:0 2px 8px rgba(0,16,47,.72)}
@@ -140,6 +149,6 @@ export default function Home() {
       <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Talk About Your Next Move.</h2><p>Looking to buy a home, need to sell, or interested in joining the ADT Realty team? Reach out—we’d love to hear about your goals and help you take the next step.</p></div><LeadForm type="contact" /></section>
     </main>
 
-    <footer><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><p>© 2026 ADT Realty · Equal Housing Opportunity</p></footer>
+    <footer className="homeFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><nav className="footerAreaGuides" aria-labelledby="footerAreaGuidesTitle"><h2 id="footerAreaGuidesTitle">Arizona Area Guides</h2><ul><li><a href="/moving-to-arizona">Phoenix Area Guide</a></li><li><span>Tucson Area Guide</span><small>Coming soon</small></li><li><span>Flagstaff Area Guide</span><small>Coming soon</small></li><li><span>Prescott Area Guide</span><small>Coming soon</small></li></ul></nav><p>© 2026 ADT Realty · Equal Housing Opportunity</p></footer>
   </>;
 }

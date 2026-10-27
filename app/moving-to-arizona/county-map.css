@@ -1,0 +1,116 @@
+.countyExplorer{--county-navy:#001343;--county-red:#b00101;--county-ink:#15233e;--county-muted:#596578;color:var(--county-ink);padding:clamp(48px,7vw,96px) clamp(20px,6vw,92px);scroll-margin-top:24px;background:#fff}
+.countyExplorer *{box-sizing:border-box}
+.countyExplorerHeading{max-width:800px;margin-bottom:32px}
+.countyEyebrow{font-size:11px!important;line-height:1.5!important;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px!important}
+.countyExplorerHeading h2{font-size:clamp(30px,4.2vw,54px);line-height:1.1;letter-spacing:-.045em;margin:0 0 18px;color:var(--county-navy)}
+.countyExplorerHeading>p:last-child{max-width:690px;font-size:17px;line-height:1.75;color:var(--county-muted)}
+.countyExplorerTools{display:grid;grid-template-columns:minmax(230px,1fr) minmax(200px,.65fr);gap:24px;margin:0 0 24px;max-width:900px}
+.countyExplorerTools label{display:block;font-size:12px;font-weight:800;margin-bottom:9px}
+.countyExplorerTools input,.countyExplorerTools select{width:100%;min-height:50px;border:1px solid #ccd3dc;background:#fff;color:var(--county-ink);font:inherit;font-size:15px;border-radius:8px;padding:12px 14px}
+.countyExplorer :is(button,a,input,select,summary):focus-visible{outline:3px solid #b00101;outline-offset:4px}
+.countyExplorerLayout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,1fr);gap:30px;align-items:start}
+.countyMapPanel{position:relative;min-width:0;background:#edf2f4;border-radius:14px;overflow:hidden;border:1px solid #dce3e7}
+.countyMap{display:block;width:100%;aspect-ratio:9/7;cursor:grab;touch-action:pan-y;user-select:none}
+.countyMap:active{cursor:grabbing}
+.countyBoundary{fill:#fffdf7;stroke:#8c9b9e;stroke-width:2;vector-effect:non-scaling-stroke}
+.countyMapAreaLabel{fill:#879794;font-size:18px;letter-spacing:4px;font-weight:700;pointer-events:none}
+.countyCompass{stroke:#718286;fill:#718286;stroke-width:2;pointer-events:none}
+.countyCompass text{stroke:none;font-size:15px;font-weight:800}
+.countyMapControls{display:flex;gap:5px;position:absolute;top:14px;right:14px;z-index:2}
+.countyMapControls button{display:grid;place-items:center;min-width:42px;min-height:42px;border:1px solid #ccd4dc;border-radius:5px;background:#fff;color:var(--county-navy);font-family:inherit;font-size:23px;font-weight:700;cursor:pointer;box-shadow:0 2px 5px #0013430d}
+.countyMapControls button:last-child{font-size:11px;padding:0 11px}
+.countyMapControls button:hover{background:var(--county-navy);color:#fff}
+.countyMapPin{cursor:pointer;outline:none}
+.countyPinLeader{stroke:#596e7b;stroke-width:1;fill:#596e7b;pointer-events:none}
+.countyPinHit{fill:transparent}
+.countyPinDot{fill:var(--county-navy);stroke:#fff;stroke-width:1.6;transition:fill .15s}
+.countyPinNumber{fill:#fff;font-size:10px;font-weight:800;pointer-events:none}
+.countyMapPin.isDimmed{opacity:.22}
+.countyMapPin:is(:hover,:focus,.isHighlighted){opacity:1}
+.countyMapPin:is(:hover,:focus,.isHighlighted) .countyPinDot{fill:var(--county-red);stroke:#fff;stroke-width:2.5}
+.countyPinLeader{stroke:#596e7b;stroke-width:1;fill:#596e7b;pointer-events:none}
+.countyMapPin:focus-visible .countyPinHit{fill:#b0010126;stroke:var(--county-red);stroke-width:2}
+.countyPinLabel rect{fill:var(--county-navy);stroke:#fff;stroke-width:1}
+.countyPinLabel text{fill:#fff;font-size:12px;font-weight:700;pointer-events:none}
+.countyMapInstructions,.countyMapCredit{padding:0 18px;color:#53616e;font-size:11px;line-height:1.65;margin:0 0 12px}
+.countyMapCredit{font-size:10px;margin-bottom:18px}
+.countyMapCredit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.countyListPanel{min-width:0}
+.countyListCount{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--county-muted);margin:2px 0 12px}
+.countyCityList{list-style:none;margin:0;padding:0;max-height:620px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;border-top:1px solid #dce2e7}
+.countyCityList li{border-bottom:1px solid #dce2e7;margin:0;padding:0}
+.countyCityList a{display:flex;align-items:center;gap:14px;min-height:64px;padding:12px 10px 12px 4px;color:var(--county-navy);text-decoration:none;transition:background .15s}
+.countyCityList a:hover{background:#f3f5f8}
+.countyListNumber{flex:none;width:28px;height:28px;display:grid;place-items:center;border:1px solid #c9d0db;border-radius:50%;font-size:11px;font-weight:800}
+.countyCityList strong{font-size:14px;line-height:1.4;display:block}
+.countyCityList small{font-size:10px;color:var(--county-muted);line-height:1.7;display:block}
+.countyListArrow{margin-left:auto;color:var(--county-red);font-size:20px}
+.countyNoResults{padding:28px 0;font-size:14px;line-height:1.6}
+.countyNoResults button{font:inherit;background:var(--county-navy);color:#fff;border:0;border-radius:6px;padding:12px 16px;cursor:pointer}
+.countyDialog{width:min(940px,calc(100% - 48px));max-height:calc(100dvh - 48px);border:0;border-radius:16px;padding:0;color:var(--county-ink);background:#fff;overflow:auto;overscroll-behavior:contain;box-shadow:0 25px 100px #00134355}
+.countyDialog::backdrop{background:#00132fc4;backdrop-filter:blur(5px)}
+.countyDialogInner{position:relative;isolation:isolate}
+.countyDialogClose{position:sticky;top:16px;float:right;z-index:4;margin:16px 18px -60px 0;min-height:44px;display:flex;align-items:center;gap:10px;background:#fff;color:var(--county-navy);border:1px solid #d7dee7;border-radius:24px;padding:8px 16px;font-family:inherit;font-size:12px;font-weight:800;box-shadow:0 2px 10px #00134322;cursor:pointer}
+.countyDialogClose span{font-size:22px;font-weight:400;line-height:1}
+.countyDialogPhoto{position:absolute;top:0;left:0;width:100%;height:360px;z-index:-1;background:var(--county-navy);overflow:hidden;border-radius:16px 16px 0 0}
+.countyDialogPhoto img{object-fit:cover}
+.countyDialogPhotoShade{position:absolute;inset:0;background:linear-gradient(180deg,#00134333,#001343c9 55%,#001343f5)}
+.countyDialogTitle{padding:85px 44px 32px;background:var(--county-navy);color:#fff}
+.countyDialogTitle.hasPhoto{background:none;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end}
+.countyDialogTitle h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.045em;line-height:1.1;margin:0 0 16px;color:#fff}
+.countyDialogTitle>p:last-child{font-size:15px;line-height:1.7;max-width:740px;margin:0;color:#f1f3f7}
+.countyDialogBody{padding:0 44px 44px}
+.countyPhotoCredit{font-size:10px;line-height:1.6;color:var(--county-muted);margin:0;padding:10px 0 0}
+.countyPhotoCredit a{color:inherit;text-decoration:underline}
+.countyDialogStats{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;border-bottom:1px solid #dce2e9;padding:30px 0}
+.countyDialogStats span{display:block;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--county-muted);margin-bottom:8px}
+.countyDialogStats strong{font-size:clamp(24px,3vw,34px);letter-spacing:-.035em;line-height:1.15;display:block;color:var(--county-navy)}
+.countyDialogStats small{display:block;font-size:11px;color:var(--county-muted);line-height:1.6;margin-top:10px}
+.countyDialogStats p{font-size:15px;line-height:1.65;margin:0}
+.countyDialog a{color:var(--county-navy);text-underline-offset:3px}
+.countyDialogColumns{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin:30px 0}
+.countyDialogColumns h3{font-size:17px;color:var(--county-navy);margin:0 0 12px;letter-spacing:-.02em}
+.countyDialogColumns h3:not(:first-child){margin-top:28px}
+.countyDialogColumns p,.countyDialogColumns li,.countyDialogColumns a{font-size:14px;line-height:1.8}
+.countyDialogColumns p{margin:0 0 12px}
+.countyDialogColumns ul{padding-left:18px;margin:0 0 12px}
+.countyDialogColumns li{margin-bottom:7px;padding-left:3px}
+.countyDetailLink{display:inline-flex;align-items:center;gap:18px;font-size:14px;font-weight:800;text-decoration:none;border-bottom:2px solid var(--county-red);padding-bottom:9px;margin:0 0 25px}
+.countyCitySources{border-top:1px solid #dce2e9;padding:18px 0;margin-top:3px;font-size:12px;line-height:1.7}
+.countyCitySources summary{cursor:pointer;font-weight:800}
+.countyCitySources ul{padding-left:18px}
+.countyCitySources li{margin-bottom:6px;overflow-wrap:anywhere}
+.countyDialogCta{background:#f2f4f7;padding:26px;border-radius:10px;margin-top:20px}
+.countyDialogCta h3{font-size:20px;letter-spacing:-.025em;line-height:1.3;margin:0 0 10px;color:var(--county-navy)}
+.countyDialogCta p{font-size:13px;line-height:1.7;max-width:630px;margin:0 0 18px;color:var(--county-muted)}
+.countyDialogCta>div:last-child{display:flex;flex-wrap:wrap;gap:10px}
+.countyDialogCta a{background:var(--county-red);color:#fff;text-decoration:none;font-size:12px;font-weight:800;padding:14px 18px;border-radius:5px;line-height:1.5}
+.countyDialogCta a.countySecondaryCta{background:#fff;color:var(--county-navy);border:1px solid #cad2de}
+@media(min-width:1200px){.countyCityList{max-height:670px}}
+@media(max-width:900px){.countyExplorerLayout{grid-template-columns:minmax(0,1.4fr) minmax(210px,1fr);gap:20px}.countyMapAreaLabel{font-size:16px}.countyCityList{max-height:440px}.countyMapInstructions{font-size:10px}}
+@media(max-width:700px){.countyExplorer{padding:46px 20px}.countyExplorerHeading>p:last-child{font-size:15px}.countyExplorerTools{grid-template-columns:1fr;gap:15px}.countyExplorerLayout{grid-template-columns:1fr;gap:24px}.countyMapControls{top:10px;right:10px}.countyMapControls button{min-height:40px;min-width:40px}.countyCityList{max-height:none;display:grid;grid-template-columns:1fr 1fr;column-gap:14px;overflow:visible}.countyCityList a{gap:8px;padding-right:0;min-height:76px}.countyCityList strong{font-size:12px}.countyCityList small{font-size:9px}.countyListNumber{width:24px;height:24px;font-size:10px}.countyListArrow{font-size:15px}.countyMapInstructions{font-size:11px}.countyDialog{width:100%;height:100dvh;max-width:100%;max-height:100dvh;margin:0;border-radius:0}.countyDialogPhoto{border-radius:0;height:400px}.countyDialogTitle.hasPhoto{min-height:400px}.countyDialogTitle{padding:85px 24px 26px}.countyDialogTitle>p:last-child{font-size:14px}.countyDialogBody{padding:0 24px 40px}.countyDialogColumns{grid-template-columns:1fr;gap:26px}.countyDialogStats{grid-template-columns:1fr;gap:22px;padding:26px 0}.countyDialogClose{top:12px;margin-top:12px;margin-right:12px}.countyDialogCta{padding:22px}.countyDialogCta>div:last-child{flex-direction:column}.countyDialogCta a{text-align:center}.countyDialogTitle .countyEyebrow{font-size:10px!important;letter-spacing:.12em}.countyDialogColumns li,.countyDialogColumns p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.countyExplorer *{scroll-behavior:auto!important;transition:none!important}}
+/* Progressive disclosure keeps the mobile first visit focused. */
+.countyMapToggle{display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;padding:18px 20px;background:#f2f5f7;color:var(--county-navy);font-size:14px;font-weight:800;list-style:none}
+.countyMapToggle::-webkit-details-marker{display:none}
+.countyMapToggle:after{content:'+';font-size:22px;font-weight:500}
+.countyMapPanel[open]>.countyMapToggle:after{content:'−'}
+.countyMapToggle small{font-size:10px;font-weight:500;color:var(--county-muted);margin-left:auto}
+.countyMapContent{position:relative}
+.countyShowCities{display:none}
+.countyDialogStats{grid-template-columns:1fr}
+.countyDialogTopics{margin:8px 0 24px}
+.countyDialogTopics details{border-bottom:1px solid #dce2e9}
+.countyDialogTopics summary{cursor:pointer;font-size:15px;font-weight:800;padding:20px 0;color:var(--county-navy);line-height:1.5}
+.countyDialogTopics details>div{padding:0 0 20px}
+.countyDialogTopics h3{font-size:15px;line-height:1.5;margin:12px 0 6px}
+.countyDialogTopics p,.countyDialogTopics li,.countyDialogTopics a{font-size:14px;line-height:1.8}
+.countyDialogTopics p{margin:0 0 12px}
+.countyDialogTopics ul{padding-left:18px;margin:0 0 14px}
+.countyDialogTopics li{margin-bottom:6px}
+@media(max-width:700px){.countyMapToggle small{display:none}.countyExplorer.isReady .countyCityList:not(.isExpanded) li:nth-child(n+7){display:none}.countyExplorer.isReady .countyShowCities{display:flex;width:100%;align-items:center;justify-content:space-between;gap:15px;background:#fff;color:var(--county-navy);font-family:inherit;font-size:12px;font-weight:800;min-height:48px;padding:14px 4px;border:0;border-bottom:1px solid #dce2e7;cursor:pointer}.countyShowCities span{font-size:20px}.countyDialogPhoto{height:340px}.countyDialogTitle.hasPhoto{min-height:340px}.countyDialogTitle>p:last-child{font-size:13px;line-height:1.6}.countyDialogTitle h2{font-size:34px}.countyDialogStats{padding:22px 0}.countyExplorerLayout{gap:20px}.countyMapToggle{padding:15px 16px}}
+.countyExplorerTools.singleRegion{grid-template-columns:1fr;max-width:600px}
+
+.regionLocator{margin:0;border:1px solid #d9dfdf;border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 12px 35px #00134307}
+.valleyMapHeading{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:25px 30px;border-bottom:1px solid #e3e7e7}.valleyMapHeading span{font-size:10px;letter-spacing:.16em;font-weight:800;color:#64736f}.valleyMapHeading h3{font-size:28px;letter-spacing:-.04em;color:#001343;margin:5px 0 0}.valleyMapHeading p{font-size:12px;line-height:1.6;color:#5a6875;text-align:right;margin:0}.valleyMapScroll{overflow-x:auto;overscroll-behavior-x:contain}.regionLocator svg{display:block;width:100%;height:auto;aspect-ratio:11/6}.valleyRegionWash{opacity:.45;pointer-events:none}.valleyFreeways path{fill:none;stroke:#9eafb1;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}.valleyFreeways g{stroke:#c2aaa0}.valleyRouteShield rect{fill:#fff;stroke:#a9b8bc;stroke-width:1}.valleyRouteShield text{fill:#60737e;font-size:11px;font-weight:800}.valleyCityHit{fill:transparent!important;stroke:none!important}.valleyCityLink circle{fill:#364e59;stroke:#fff;stroke-width:2}.valleyCityLink text{font-size:15px;font-weight:650;fill:#283f4d;paint-order:stroke;stroke:#f4f5ee;stroke-width:4px;stroke-linejoin:round}.valleyCityLink:hover text,.valleyCityLink:focus text{fill:#b00101;text-decoration:underline}.valleyCityLink:focus-visible .valleyCityHit{stroke:#b00101!important;stroke-width:2!important}.valleyRegionLink rect{fill:#fff;stroke:#9eb4aa;stroke-width:1.3}.valleyRegionLink.central rect{stroke:#b0b4cb}.valleyRegionLink.east rect{stroke:#c7b398}.valleyRegionLink text{font-size:17px;font-weight:800;fill:#001343}.valleyRegionLink:hover rect,.valleyRegionLink:focus rect{fill:#001343;stroke:#001343}.valleyRegionLink:hover text,.valleyRegionLink:focus text{fill:#fff}.valleyNorth{fill:#60737e;stroke:#60737e;stroke-width:2}.valleyNorth text{stroke:none;font-size:13px;font-weight:800}.valleyRegionLinks{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #dde4e2;border-bottom:1px solid #dde4e2}.valleyRegionLinks a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px 22px;color:#001343;font-size:13px;font-weight:800;text-decoration:none;background:#edf3ef}.valleyRegionLinks a.central{background:#eff0f6}.valleyRegionLinks a.east{background:#f8f0e7}.valleyRegionLinks a:hover{text-decoration:underline}.regionLocator figcaption{font-size:11px;line-height:1.75;padding:14px 24px;color:#596b74}.regionLocator figcaption p{margin:0 0 7px}.regionLocator figcaption a{color:#001343;text-decoration:underline;text-underline-offset:3px}.valleySwipeHint{display:none}.regionLocator :is(a,div[tabindex]):focus-visible{outline:3px solid #b00101;outline-offset:-3px}
+@media(max-width:700px){.valleyMapHeading{padding:20px}.valleyMapHeading h3{font-size:25px}.valleyMapHeading p{display:none}.valleyMapScroll svg{min-width:760px}.valleyRegionLinks{grid-template-columns:1fr}.valleyRegionLinks a{padding:15px 20px;min-height:48px}.regionLocator figcaption{font-size:11px;padding:16px 20px}.valleySwipeHint{display:block;margin-top:6px}}

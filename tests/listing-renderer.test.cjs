@@ -227,3 +227,16 @@ test('collection honors saved embedded video poster without autoplay assumptions
   assert.doesNotMatch(html,/autoplay=/);
   assert.doesNotMatch(render({...listing,video_poster_url:''},'collection',false),/data-pw-video-cover/);
 });
+
+
+test('collection About section stacks a centered heading above readable left-aligned copy', () => {
+  const css = fs.readFileSync(path.resolve(__dirname, '../app/home/[slug]/collection/website-piece.css'), 'utf8');
+  assert.match(css, /\.pw-about\{display:grid;grid-template-columns:minmax\(0,1fr\);gap:28px\}/);
+  assert.match(css, /\.pw-about>div\{width:100%;max-width:900px;margin-inline:auto;min-width:0\}/);
+  assert.match(css, /\.pw-about>div:first-child\{text-align:center\}/);
+  assert.match(css, /\.pw-about \.pw-description\{text-align:left\}/);
+  assert.doesNotMatch(css, /grid-template-columns:\.85fr 1\.15fr/);
+  const html=render({...fixture,description:'Complete saved property description.'},'collection',false);
+  assert.ok(html.includes('Complete saved property description.'));
+  assert.ok(html.indexOf('ABOUT THIS HOME') < html.indexOf('Complete saved property description.'));
+});

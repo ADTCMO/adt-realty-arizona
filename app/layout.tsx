@@ -72,19 +72,33 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "RealEstateAgent",
-              name: "ADT Realty Arizona",
-              url: "https://www.adtrealtyaz.com/",
-              logo: "https://www.adtrealtyaz.com/adt-realty-arizona-outline.png",
-              image: "https://www.adtrealtyaz.com/social-share-home.jpg",
-              email: "mikedingman@adthomes.com",
-              areaServed: [
-                { "@type": "State", name: "Arizona" },
-                { "@type": "City", name: "Chandler" },
-                { "@type": "City", name: "Gilbert" },
-                { "@type": "AdministrativeArea", name: "Phoenix East Valley" },
+              "@graph": [
+                {
+                  "@type": "RealEstateAgent",
+                  "@id": "https://www.adtrealtyaz.com/#organization",
+                  name: "ADT Realty Arizona",
+                  description: "Arizona real estate guidance for homebuyers, sellers and agents, with free buyer tools, home-value estimates and local area guides.",
+                  url: "https://www.adtrealtyaz.com/",
+                  logo: "https://www.adtrealtyaz.com/adt-realty-arizona-outline.png",
+                  image: "https://www.adtrealtyaz.com/social-share-home.jpg",
+                  email: "mikedingman@adthomes.com",
+                  areaServed: [
+                    { "@type": "State", name: "Arizona" },
+                    { "@type": "City", name: "Chandler" },
+                    { "@type": "City", name: "Gilbert" },
+                    { "@type": "AdministrativeArea", name: "Phoenix East Valley" },
+                  ],
+                  parentOrganization: { "@type": "Organization", name: "ADT Realty" },
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.adtrealtyaz.com/#website",
+                  url: "https://www.adtrealtyaz.com/",
+                  name: "ADT Realty Arizona",
+                  inLanguage: "en-US",
+                  publisher: { "@id": "https://www.adtrealtyaz.com/#organization" },
+                },
               ],
-              parentOrganization: { "@type": "Organization", name: "ADT Realty" },
             }),
           }}
         />

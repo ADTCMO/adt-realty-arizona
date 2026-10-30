@@ -11,8 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // until the public-listings API can provide a complete, current URL list.
   // Fixed content-update dates, not a new timestamp on every build.
   return [
+    { url: `${baseUrl}/mike-dingman`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/join`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/`, lastModified: "2026-10-27", changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/`, lastModified: "2026-10-30", changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/phoenix`, lastModified: "2026-10-27", changeFrequency: "monthly", priority: 0.9, images: [...new Set([...regionalImages("Phoenix area"), ...phoenixAreas.flatMap(area => area.image ? [`${baseUrl}${area.image.src}`] : [])])] },
     { url: `${baseUrl}/moving-to-arizona`, lastModified: "2026-10-27", changeFrequency: "monthly", priority: 0.9, images: [`${baseUrl}/images/phoenix/downtown-midtown.jpg`, `${baseUrl}/images/east-valley/scottsdale.jpg`, `${baseUrl}/images/maricopa/goodyear.jpg`] },
     { url: `${baseUrl}/west-valley`, lastModified: "2026-10-27", changeFrequency: "monthly", priority: 0.9, images: [...new Set(regionalImages("West Valley"))] },

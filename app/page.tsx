@@ -3,6 +3,29 @@ import "./seller-section.css";
 
 export default function Home() {
   return <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://www.adtrealtyaz.com/#webpage",
+        url: "https://www.adtrealtyaz.com/",
+        name: "Arizona Real Estate | Buy, Sell & Local Guides | ADT Realty",
+        description: "Explore free homebuyer tools and education, home-value estimates, Community Heroes savings, Arizona area guides and real estate career opportunities with ADT Realty.",
+        inLanguage: "en-US",
+        isPartOf: { "@id": "https://www.adtrealtyaz.com/#website" },
+        about: { "@id": "https://www.adtrealtyaz.com/#organization" },
+        publisher: { "@id": "https://www.adtrealtyaz.com/#organization" },
+        significantLink: [
+          "https://acebuyer.adtrealtyaz.com/?view=tools",
+          "https://www.adtrealtyaz.com/#sellers",
+          "https://www.adtrealtyaz.com/hero",
+          "https://www.adtrealtyaz.com/moving-to-arizona",
+          "https://www.adtrealtyaz.com/mike-dingman",
+          "https://www.adtrealtyaz.com/join",
+        ],
+      }).replace(/</g, "\\u003c") }}
+    />
     <link rel="preload" as="image" href="/hero-arizona-bright.webp" media="(min-width: 761px)" fetchPriority="high"/>
     <link rel="preload" as="image" href="/hero-arizona-mobile.webp" media="(max-width: 760px)" fetchPriority="high"/>
     <style>{`

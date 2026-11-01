@@ -1,3 +1,4 @@
+import EqualHousingLogo from "../EqualHousingLogo";
 import MarketingSamples from "./MarketingSamples";
 import JoinLeaders from "./JoinLeaders";
 import type { Metadata } from "next";
@@ -126,7 +127,8 @@ export default function JoinPage(){return <div className="joinPage">
  <details><summary>Is there a path for my stage of career?</summary><p>Absolutely. We’ll discuss your experience, goals and where you are today to help identify the right career path for you. Whether you’re newly licensed, building consistency or growing an established business, ADT Realty offers training and support to help you take your next step—including opportunities to mentor agents and grow into leadership roles.</p></details>
  </div></div></section>
 <section id="conversation" className="conversation"><div className="conversationInner"><div><p className="eyebrow">No pressure. No obligation.</p><h2>Start a confidential conversation.</h2><p>Tell us where you are in your career and what you want to build. We’ll help you determine whether ADT Realty Arizona is the right fit.</p></div><LeadForm type="career"/></div></section>
-</main><footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Helping Others · Do the Right Thing Every Time · Build Relationships</p></footer></div>}
+</main><footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Helping Others · Do the Right Thing Every Time · Build Relationships</p><EqualHousingLogo /></footer></div>}
+
 
 
 

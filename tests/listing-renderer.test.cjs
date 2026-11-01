@@ -30,7 +30,7 @@ function loadRenderer(react = React) {
     child._compile(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{jsx:ts.JsxEmit.ReactJSX,module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020},fileName:file}).outputText,file);
     return child.exports;
   }
-  mod.require = (id) => id === 'react' ? react : id.startsWith('./collection/') ? compileLocal(id, filename) : requireOriginal(id);
+  mod.require = (id) => id === 'react' ? react : id.startsWith('.') ? compileLocal(id, filename) : requireOriginal(id);
   mod._compile(code, filename);
   return mod.exports.default;
 }
@@ -239,4 +239,14 @@ test('collection About section stacks a centered heading above readable left-ali
   const html=render({...fixture,description:'Complete saved property description.'},'collection',false);
   assert.ok(html.includes('Complete saved property description.'));
   assert.ok(html.indexOf('ABOUT THIS HOME') < html.indexOf('Complete saved property description.'));
+});
+
+
+test('every listing style renders exactly one small authentic housing logo', () => {
+  for (const style of styles) {
+    const html = render(fixture, style, false);
+    assert.equal((html.match(/alt="Equal Housing Opportunity"/g) || []).length, 1);
+    assert.ok(html.includes('/equal-housing-opportunity-hud.gif'));
+    assert.ok(html.includes('width:44px'));
+  }
 });

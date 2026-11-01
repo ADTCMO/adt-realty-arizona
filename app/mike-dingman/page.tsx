@@ -1,3 +1,4 @@
+import EqualHousingLogo from "../EqualHousingLogo";
 import type { Metadata } from "next";
 import { LeadForm } from "../components/LeadForm";
 import "./mike-dingman.css";
@@ -156,7 +157,8 @@ export default function MikeDingmanPage() {
       <footer className="mikeFooter">
         <img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" />
         <p>© 2026 ADT Realty · Equal Housing Opportunity</p>
-      </footer>
+      <EqualHousingLogo /></footer>
     </div>
   );
 }
+

@@ -1,3 +1,4 @@
+import EqualHousingLogo from "../EqualHousingLogo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,6 +43,7 @@ export default function MovingToArizonaGuide() {
     <RelocationPlanning />
     <section className="phxContact" id="ask-agent"><div><p className="evEyebrow dark">A local perspective</p><h2>Your shortlist.<br />Your next step.</h2><p>Ask a local expert. Share the regions or communities you are considering, your everyday destinations and what matters most. Visiting from out of state? Include your travel dates so tours can be planned ahead.</p><p><a className="relTextLink" href="https://acebuyer.adtrealtyaz.com">Explore your buying power →</a></p><p>Also selling? <a className="relTextLink" href="https://aceseller.adtrealtyaz.com">Get a free home valuation →</a></p></div><LeadForm type="contact" market="Maricopa County relocation" /></section>
     <section className="relSourceNote"><p>Editorial review: October 27, 2026. This guide is orientation, not a substitute for property-specific inspections, provider confirmations or professional advice. Regional pages identify each market snapshot’s source, period and coverage. Verify current conditions at the address.</p><details><summary>Coverage & photo credits</summary><p>East Valley, West Valley and Phoenix & North Valley are editorial groupings. Towns outside Phoenix city limits remain distinct municipalities. Some included cities extend into neighboring counties. Unincorporated Sun City and Sun City West are not included in this selected-community guide. San Tan Valley is in Pinal County and is linked separately from the East Valley guide.</p><p><a href="https://www.arcgis.com/home/item.html?id=22e3fbbfd551408785666533106c58e4">Maricopa County’s incorporated-city inventory</a> · <a href="/images/maricopa/ATTRIBUTION.md">Maricopa photo attribution</a> · <a href="/images/phoenix/ATTRIBUTION.md">Phoenix photo attribution</a>. Existing East Valley photography is retained from the original site. Regional photos illustrate identified local places, not homes for sale.</p></details></section>
-    <footer className="evFooter"><Image src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" width={84} height={84} /><p>Local guidance. Your Arizona move.</p><Link href="/">ADT Realty Arizona home →</Link><span>© 2026 ADT Realty · Equal Housing Opportunity</span></footer>
+    <footer className="evFooter"><Image src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" width={84} height={84} /><p>Local guidance. Your Arizona move.</p><Link href="/">ADT Realty Arizona home →</Link><span>© 2026 ADT Realty · Equal Housing Opportunity</span><EqualHousingLogo /></footer>
   </main>;
 }
+

@@ -1,3 +1,4 @@
+import EqualHousingLogo from "../EqualHousingLogo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LeadForm } from "../components/LeadForm";
@@ -242,8 +243,9 @@ export default function ChandlerPage() {
         <img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" />
         <p>Local guidance for Chandler and Phoenix’s East Valley.</p>
         <span>*Drive times vary by neighborhood and traffic. Verify schools and costs for each property.</span>
-      </footer>
+      <EqualHousingLogo /></footer>
     </main>
   );
 }
+
 

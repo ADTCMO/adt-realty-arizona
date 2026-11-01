@@ -1,5 +1,6 @@
 // @ts-nocheck
 "use client";
+import EqualHousingLogo from "../../EqualHousingLogo";
 
 import { useEffect, useRef, useState } from "react";
 import WebsitePiece from "./collection/WebsitePiece";
@@ -391,10 +392,11 @@ export default function ListingClient({ listing, slug, preview = false, style })
           )}
         </section>
       </div>
-      <footer>ADT Realty · Equal Housing Opportunity</footer>
+      <footer>ADT Realty · Equal Housing Opportunity<EqualHousingLogo /></footer>
       {lightbox && <dialog ref={lightboxRef} className="overlay" aria-label="Enlarged property photo" onCancel={(event) => { event.preventDefault(); setLightbox(null); }} onClick={(event) => { if (event.target === event.currentTarget) setLightbox(null); }}>
         <button type="button" className="close" aria-label="Close photo" onClick={() => setLightbox(null)}>×</button><img src={lightbox} alt="Enlarged property view" />
       </dialog>}
     </main>
   );
 }
+

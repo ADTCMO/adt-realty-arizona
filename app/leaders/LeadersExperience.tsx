@@ -1,4 +1,5 @@
 "use client";
+import EqualHousingLogo from "../EqualHousingLogo";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 
@@ -259,7 +260,8 @@ export default function LeadersExperience() {
         </div>
       </section>
       <section className="conversation-section" id="conversation"><div className="conversation-copy"><p className="eyebrow">No pressure. No obligation.</p><h2>Speak With One of Our Leaders</h2><p>If you would like to learn more about ADT Realty, one of our leaders is ready to have a confidential, no-pressure conversation.</p><p className="priority-note">Your request will receive priority follow-up from one of our ADT Realty leaders.</p></div><form className="conversation-form" onSubmit={submitPriorityLead}><label>Full name<input required name="name" autoComplete="name" placeholder="Your full name" /></label><label>Email address<input required type="email" name="email" autoComplete="email" placeholder="you@domain.com" /></label><label>Mobile number<input required type="tel" name="phone" autoComplete="tel" placeholder="(555) 555-5555" /></label><label>State<input required name="state" autoComplete="address-level1" placeholder="Your state" /></label><label>Are you currently licensed?<select required name="licensed" defaultValue=""><option value="" disabled>Select an option</option><option value="Yes">Yes</option><option value="No">No</option><option value="Pursuing license">Currently pursuing my license</option></select></label><label className="consent"><input required type="checkbox" name="consent" value="Agreed" /><span>I agree to be contacted by ADT Realty by phone, text or email regarding career and brokerage opportunities. Message and data rates may apply. Reply STOP to opt out.</span></label><button disabled={formStatus === "sending"}>{formStatus === "sending" ? "Sending…" : "Speak With One of Our Leaders ›"}</button>{formStatus === "success" && <p className="form-result success" role="status">Thank you. Your request has been received, and one of our leaders will contact you soon.</p>}{formStatus === "error" && <p className="form-result error" role="alert">We couldn&apos;t send your request. Please try again or email sheri@adthomes.com.</p>}</form></section>
-      <footer className="site-footer"><div className="footer-brand"><img src="https://leaders.adtrealtyaz.com/brand/adt-realty-logo-white.png" alt="ADT Realty" /><strong>ADT Realty <span>Builds Leaders</span></strong></div><div className="core-values"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div></footer>
+      <footer className="site-footer"><div className="footer-brand"><img src="https://leaders.adtrealtyaz.com/brand/adt-realty-logo-white.png" alt="ADT Realty" /><strong>ADT Realty <span>Builds Leaders</span></strong></div><div className="core-values"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><EqualHousingLogo /></footer>
     </main>
   );
 }
+

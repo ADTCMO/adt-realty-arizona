@@ -1,3 +1,4 @@
+import EqualHousingLogo from "./EqualHousingLogo";
 import { LeadForm } from "./components/LeadForm";
 import "./seller-section.css";
 
@@ -172,6 +173,7 @@ export default function Home() {
       <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Talk About Your Next Move.</h2><p>Looking to buy a home, need to sell, or interested in joining the ADT Realty team? Reach out—we’d love to hear about your goals and help you take the next step.</p></div><LeadForm type="contact" /></section>
     </main>
 
-    <footer className="homeFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><nav className="footerAreaGuides" aria-labelledby="footerAreaGuidesTitle"><h2 id="footerAreaGuidesTitle">Arizona Area Guides</h2><ul><li><a href="/moving-to-arizona">Phoenix Area Guide</a></li><li><span>Tucson Area Guide</span><small>Coming soon</small></li><li><span>Flagstaff Area Guide</span><small>Coming soon</small></li><li><span>Prescott Area Guide</span><small>Coming soon</small></li></ul></nav><p>© 2026 ADT Realty · Equal Housing Opportunity</p></footer>
+    <footer className="homeFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><nav className="footerAreaGuides" aria-labelledby="footerAreaGuidesTitle"><h2 id="footerAreaGuidesTitle">Arizona Area Guides</h2><ul><li><a href="/moving-to-arizona">Phoenix Area Guide</a></li><li><span>Tucson Area Guide</span><small>Coming soon</small></li><li><span>Flagstaff Area Guide</span><small>Coming soon</small></li><li><span>Prescott Area Guide</span><small>Coming soon</small></li></ul></nav><p>© 2026 ADT Realty · Equal Housing Opportunity</p><EqualHousingLogo /></footer>
   </>;
 }
+

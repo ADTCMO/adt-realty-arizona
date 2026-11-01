@@ -1,3 +1,4 @@
+import EqualHousingLogo from "../EqualHousingLogo";
 import Link from "next/link";
 import { LeadForm } from "../components/LeadForm";
 import type { CityGuideData } from "./data";
@@ -39,8 +40,9 @@ export default function CityGuide({ city }: { city: CityGuideData }) {
       <section className="chandlerDecision"><div><p className="chandlerKicker">Run the numbers</p><h2>Could {city.name} fit your budget?</h2><p>Price is only the beginning. Estimate how taxes, insurance, down payment, debt and ownership costs may affect your true buying power.</p></div><a href={`https://acebuyer.adtrealtyaz.com/?city=${encodeURIComponent(city.name)}`}>Calculate My {city.name} Buying Power <span>→</span></a></section>
 
       <section className="chandlerContact" id="ask-agent"><div><p className="chandlerKicker">Local guidance—not a sales pitch</p><h2>Ask a local expert</h2><p>Share what you are comparing, what matters most and what you want to understand before making a move.</p><small>Your inquiry will be identified as a {city.name} request.</small></div><LeadForm type="contact" market={city.name} /></section>
-      <footer className="chandlerFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /><p>Local guidance for {city.name} and Phoenix’s East Valley.</p><span>*Drive times vary by neighborhood and traffic. Verify schools and costs for each property.</span></footer>
+      <footer className="chandlerFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /><p>Local guidance for {city.name} and Phoenix’s East Valley.</p><span>*Drive times vary by neighborhood and traffic. Verify schools and costs for each property.</span><EqualHousingLogo /></footer>
     </main>
   );
 }
+
 

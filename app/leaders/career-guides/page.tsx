@@ -1,3 +1,4 @@
+import EqualHousingLogo from "../../EqualHousingLogo";
 const guides = [
   {
     number: "01",
@@ -87,7 +88,8 @@ export default function CareerGuidesPage() {
           <strong>Do the right thing. <span>Every time.</span></strong>
         </div>
         <p>© {new Date().getFullYear()} ADT Realty</p>
-      </footer>
+      <EqualHousingLogo /></footer>
     </main>
   );
 }
+

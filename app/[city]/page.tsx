@@ -6,6 +6,9 @@ import "../chandler/chandler.css";
 import Homepage from "../Homepage";
 import { getPublishedAgent } from "../../lib/published-agent";
 
+// Named-agent publications are uncached, including slugs absent at build time.
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return cityGuideSlugs.map((city) => ({ city }));
 }

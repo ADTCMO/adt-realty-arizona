@@ -2,10 +2,15 @@ import EqualHousingLogo from "./EqualHousingLogo";
 import { LeadForm } from "./components/LeadForm";
 import "./seller-section.css";
 
-import { AgentFooter, PendingAgentLead } from "./components/PublicAgent";
+import { AgentFooter } from "./components/PublicAgent";
 import type { PublishedAgent } from "../lib/published-agent";
 
 export default function Homepage({ agent }: { agent?: PublishedAgent }) {
+  // Existing tools use the main brokerage integration. Their own consent and
+  // navigation rules determine whether these referral tags reach a later lead.
+  const buyerToolsUrl = agent
+    ? `https://acebuyer.adtrealtyaz.com/?view=tools&utm_source=adt-agent-${encodeURIComponent(agent.slug)}&utm_medium=referral&utm_campaign=adt-agent-page`
+    : "https://acebuyer.adtrealtyaz.com/?view=tools";
   return <>
     <script
       type="application/ld+json"
@@ -152,9 +157,9 @@ export default function Homepage({ agent }: { agent?: PublishedAgent }) {
 
       <section className="homeValues" aria-labelledby="homeValuesTitle"><p id="homeValuesTitle">What Guides Us</p><div className="homeValuesList"><strong>Helping Others</strong><strong>Do the Right Thing. Every Time.</strong><strong>Build Relationships</strong></div></section>
 
-      <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple outside their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. Explore our free tools and homebuyer education.</p><a className="button red" href={agent ? "#agent-contact" : "https://acebuyer.adtrealtyaz.com/?view=tools"}>Explore Free Buyer Tools <span>›</span></a>{agent && <small>Buyer tools are pending CRM setup. Contact your agent directly.</small>}</div></section>
+      <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple outside their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. Explore our free tools and homebuyer education.</p><a className="button red" href={buyerToolsUrl}>Explore Free Buyer Tools <span>›</span></a></div></section>
 
-      <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Enter your address for a free automated home-value estimate, then explore tools to understand your potential proceeds and prepare for your next move.</p>{agent ? <PendingAgentLead type="seller" /> : <LeadForm type="seller" />}</div></section>
+      <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Enter your address for a free automated home-value estimate, then explore tools to understand your potential proceeds and prepare for your next move.</p><LeadForm type="seller" agentSlug={agent?.slug} /></div></section>
 
       <section id="community-heroes" className="homeHeroes" aria-labelledby="homeHeroesTitle"><div className="homeHeroesCopy"><img className="homeHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes"/><h2 id="homeHeroesTitle">Heroes, We Have Your Back.</h2><p>ADT Realty proudly offers meaningful homebuying and selling savings to the people who serve our communities.</p><div className="homeHeroGroups"><span>Military &amp; Veterans</span><span>Law Enforcement</span><span>Firefighters &amp; EMS</span><span>Healthcare</span><span>Educators &amp; School Staff</span></div><div className="homeHeroesActions"><a className="button red" href="/hero">Learn More <span>›</span></a></div></div></section>
 
@@ -173,7 +178,7 @@ export default function Homepage({ agent }: { agent?: PublishedAgent }) {
         </div>
       </section>
 
-      <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Talk About Your Next Move.</h2><p>Looking to buy a home, need to sell, or interested in joining the ADT Realty team? Reach out—we’d love to hear about your goals and help you take the next step.</p></div>{agent ? <PendingAgentLead type="contact" /> : <LeadForm type="contact" />}</section>
+      <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Talk About Your Next Move.</h2><p>Looking to buy a home, need to sell, or interested in joining the ADT Realty team? Reach out—we’d love to hear about your goals and help you take the next step.</p></div><LeadForm type="contact" agentSlug={agent?.slug} /></section>
     </main>
 
     {agent && <AgentFooter agent={agent} />}

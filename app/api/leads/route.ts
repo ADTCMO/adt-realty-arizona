@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
+import { agentInquiryNote, resolveAgentLeadContext } from "../../../lib/agent-lead-context";
 const LOFTY_BASE = "https://api.lofty.com";
 const OWNER_ID = process.env.LOFTY_ASSIGNED_USER_ID || "844769665620463";
+// Visitor-supplied routing/attribution fields must not masquerade as trusted CRM metadata.
+const RESERVED_NOTE_FIELDS = new Set([
+  "name", "email", "website", "agentSlug", "agentName", "agentPage", "agentReferrer",
+  "source", "referrer", "assignedUserId", "ownershipId", "ownershipScope", "apiKey", "LOFTY_API_KEY", "destination",
+]);
 
 async function lofty(path: string, key: string, init: RequestInit = {}) {
   const response = await fetch(`${LOFTY_BASE}${path}`, {
@@ -45,12 +51,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Name and career stage are required" }, { status: 400 });
   if (kind === "Talk to an agent" && !name)
     return NextResponse.json({ error: "Name is required" }, { status: 400 });
+  // Agent homepages currently expose only the contact form. Keep its type fixed
+  // and never let submitted destination, owner, credential, or name fields route it.
+  if (form.has("agentSlug") && (form.getAll("leadType").length !== 1 || kind !== "Talk to an agent" || !name))
+    return NextResponse.json({ error: "Enter a name and valid inquiry type" }, { status: 400 });
   const key = process.env.LOFTY_API_KEY?.trim();
   if (!key) return NextResponse.json({ error: "Lead delivery is not configured" }, { status: 503 });
-  const note = [
+  const resolution = await resolveAgentLeadContext(form, request);
+  if ("error" in resolution) return NextResponse.json({ error: resolution.error }, { status: resolution.status });
+  const agent = resolution.context;
+  const source = agent ? `adtrealtyaz.com/${agent.slug}` : "adtrealtyaz.com";
+  const note = agent ? agentInquiryNote(agent, { kind, name, email, phone, message: text("message", 1000) }) : [
     "ADT REALTY ARIZONA — WEBSITE INQUIRY",
     "Inquiry: " + kind, "Name: " + (name || "Website visitor"), "Email: " + email,
-    ...Array.from(form.entries()).filter(([k, v]) => typeof v === "string" && !["name", "email", "website"].includes(k))
+    ...Array.from(form.entries()).filter(([k, v]) => typeof v === "string" && !RESERVED_NOTE_FIELDS.has(k))
       .map(([k, v]) => k.slice(0, 60) + ": " + String(v).slice(0, 1000)),
     "Source: adtrealtyaz.com",
   ].join("\n").slice(0, 2000);
@@ -61,7 +75,7 @@ export async function POST(request: Request) {
       const [firstName, ...rest] = (name || "Website Visitor").split(/\s+/);
       const created = await lofty("/v1.0/leads", key, { method: "POST", body: JSON.stringify({
         firstName, lastName: rest.join(" "), emails: [email], phones: phone ? [phone] : [],
-        source: "adtrealtyaz.com", tagsAdd: ["ADT Arizona Website", kind],
+        source, tagsAdd: ["ADT Arizona Website", kind],
         content: note, assignedUserId: OWNER_ID, ownershipId: OWNER_ID,
         ownershipScope: "PERSONAL", welcomeEmail: false, leadAlert: true,
       }) });

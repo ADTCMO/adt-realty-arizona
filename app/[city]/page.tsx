@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import CityGuide from "../city-guides/CityGuide";
 import { cityGuides, cityGuideSlugs } from "../city-guides/data";
 import "../chandler/chandler.css";
+import Homepage from "../Homepage";
+import { getPublishedAgent } from "../../lib/published-agent";
 
 export function generateStaticParams() {
   return cityGuideSlugs.map((city) => ({ city }));
@@ -10,8 +12,13 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
   const { city: slug } = await params;
-  const city = cityGuides[slug];
-  if (!city) return {};
+  const city = Object.prototype.hasOwnProperty.call(cityGuides, slug) ? cityGuides[slug] : undefined;
+  if (!city) {
+    const agent = await getPublishedAgent(slug);
+    if (!agent) return { robots: { index: false, follow: false } };
+    return { title: `${agent.full_name} | ADT Realty`, alternates: { canonical: `https://www.adtrealtyaz.com/${agent.slug}` },
+      openGraph: { url: `https://www.adtrealtyaz.com/${agent.slug}`, title: `${agent.full_name} | ADT Realty`, type: "website" } };
+  }
   return {
     title: `Living in ${city.name} AZ | Neighborhood & Relocation Guide`,
     description: `Explore living in ${city.name}, Arizona: neighborhoods, housing, schools, commutes, employers, recreation and honest tradeoffs before buying a home.`,
@@ -23,8 +30,12 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
 
 export default async function LocalCityPage({ params }: { params: Promise<{ city: string }> }) {
   const { city: slug } = await params;
-  const city = cityGuides[slug];
-  if (!city) notFound();
+  const city = Object.prototype.hasOwnProperty.call(cityGuides, slug) ? cityGuides[slug] : undefined;
+  if (!city) {
+    const agent = await getPublishedAgent(slug);
+    if (!agent) notFound();
+    return <Homepage agent={agent} />;
+  }
   const schema = {
     "@context":"https://schema.org",
     "@graph":[

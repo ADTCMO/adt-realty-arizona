@@ -1,3 +1,4 @@
+import { pageAgent, type PageSearchParams } from "../../../lib/agent-page-context";
 import EqualHousingLogo from "../../EqualHousingLogo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,16 +15,18 @@ export function generateStaticParams() {
   return Object.keys(guides).map((slug) => ({ slug }));
 }
 
-export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function GuidePage({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams?: PageSearchParams }) {
   const { slug } = await params;
+  const agent = await pageAgent(searchParams);
+  const suffix = agent ? `?agentSlug=${encodeURIComponent(agent.slug)}&agentPublicationVersion=${encodeURIComponent(agent.publication_version)}` : "";
   const guide = guides[slug as keyof typeof guides];
   if (!guide) notFound();
 
   return (
     <main className="guidePage">
       <header className="guideHeader">
-        <Link href="/join#career-paths">‹ Back to career stages</Link>
-        <Link href="/"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></Link>
+        <Link href={`/join${suffix}#career-paths`}>‹ Back to career stages</Link>
+        <Link href={agent ? `/${agent.slug}${suffix}` : "/"}><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></Link>
       </header>
       <section>
         <p className="eyebrow">ADT Realty Career Guide</p>
@@ -35,4 +38,5 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     </main>
   );
 }
+
 

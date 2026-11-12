@@ -17,28 +17,32 @@ if (originalOwner === undefined) delete process.env.LOFTY_ASSIGNED_USER_ID; else
 
 function request(fields = {}, referrer = 'https://www.adtrealtyaz.com/testagent', extras = []) {
   const form = new FormData();
-  for (const [key, value] of Object.entries({ name: 'Example Visitor', email: 'visitor@example.test', leadType: 'Talk to an agent', message: 'Mocked transport only', agentSlug: 'testagent', ...fields })) {
-    if (value !== null) form.set(key, value);
+  for (const [key, value] of Object.entries({ name: 'Example Visitor', email: 'visitor@example.test', leadType: 'Talk to an agent', message: 'Mocked transport only', agentSlug: 'testagent', agentPublicationVersion: profile.publication_version, ...fields })) {
+    if (value !== null && !(key === 'agentPublicationVersion' && fields.agentSlug === null)) form.set(key, value);
   }
   for (const [key, value] of extras) form.append(key, value);
   return new Request(endpoint, { method: 'POST', body: form, headers: referrer === null ? {} : { referer: referrer } });
 }
 async function mocked(callback, responses = []) {
-  const before = { fetch: global.fetch, key: process.env.LOFTY_API_KEY, anon: process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY };
+  const before = { fetch: global.fetch, key: process.env.LOFTY_API_KEY, anon: process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY, environment: process.env.VERCEL_ENV };
   const calls = [];
   global.fetch = async (url, options) => {
+    // Legacy brokerage transport assertions omit the new registry lookup, whose
+    // allow/deny and credential-isolation contract is exercised in generic tests.
+    if (url.endsWith('/functions/v1/agent-connections')) return Response.json({schemaVersion:1,slug:'testagent',publicationVersion:profile.publication_version,mode:'brokerage'});
     calls.push({ url, options });
     const next = responses.shift();
     if (next instanceof Error) throw next;
     if (!next) throw Error('Unmocked transport is prohibited');
     return next;
   };
+  process.env.VERCEL_ENV = 'production';
   process.env.LOFTY_API_KEY = 'mock-main-key';
   process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY = 'mock-public-anon-key';
   try { return await callback(calls); }
   finally {
     global.fetch = before.fetch;
-    for (const [name, value] of [['LOFTY_API_KEY', before.key], ['AGENT_PUBLIC_SUPABASE_ANON_KEY', before.anon]]) {
+    for (const [name, value] of [['VERCEL_ENV', before.environment], ['LOFTY_API_KEY', before.key], ['AGENT_PUBLIC_SUPABASE_ANON_KEY', before.anon]]) {
       if (value === undefined) delete process.env[name]; else process.env[name] = value;
     }
   }
@@ -55,7 +59,7 @@ test('agent contact validates publication, creates lead with main credentials/ow
     assignedUserId: 'FAKE_OWNER', ownershipId: 'FAKE_OWNER', apiKey: 'FAKE_KEY', destination: 'https://evil.example/STEAL',
   }, 'https://www.adtrealtyaz.com/testagent?private=SECRET_QUERY#SECRET_FRAGMENT'));
   assert.equal(response.status, 200);
-  assert.deepEqual(await response.json(), {ok: true});
+  assert.deepEqual(await response.json(), {ok: true, recipientName:'Mike Dingman'});
   assert.equal(calls.length, 5);
   assert.equal(calls[0].url, publicRpc);
   assert.deepEqual(body(calls[0]), {p_slug: 'testagent'});
@@ -133,8 +137,8 @@ test('missing keys never use fallback destinations or return false success', asy
   for (const name of ['LOFTY_API_KEY', 'AGENT_PUBLIC_SUPABASE_ANON_KEY']) await mocked(async calls => {
     delete process.env[name];
     assert.equal((await route.POST(request())).status, 503);
-    assert.equal(calls.length, 0);
-  });
+    assert.equal(calls.length, name === 'LOFTY_API_KEY' ? 1 : 0);
+  }, [json(profile)]);
 });
 
 test('unpublished, mismatched, invalid or unavailable public record never reaches CRM', async () => {

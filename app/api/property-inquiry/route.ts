@@ -30,6 +30,9 @@ export async function POST(request: Request) {
   const form = await request.formData().catch(() => null);
   if (!form) return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   if (form.get("website")) return NextResponse.json({ ok: true });
+  if (form.has('agent') || form.has('agentSlug') || form.has('agentVersion') || form.has('agentPublicationVersion') || new URL(request.url).searchParams.has('agent') || new URL(request.url).searchParams.has('agentSlug') || new URL(request.url).searchParams.has('agentPublicationVersion') || new URL(request.url).searchParams.has('agent_version') || request.headers.has('x-ace-agent') || request.headers.has('x-ace-agent-version')) {
+    return NextResponse.json({error: 'Agent-specific showing requests must be sent through your agent’s buyer tools.'}, {status: 400});
+  }
 
   const slug = String(form.get("slug") || "").trim();
   const name = String(form.get("name") || "").trim();
@@ -105,3 +108,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Showing request could not be sent" }, { status: 502 });
   }
 }
+

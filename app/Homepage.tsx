@@ -5,11 +5,12 @@ import "./seller-section.css";
 import { AgentFooter } from "./components/PublicAgent";
 import type { PublishedAgent } from "../lib/published-agent";
 
-export default function Homepage({ agent }: { agent?: PublishedAgent }) {
-  // Existing tools use the main brokerage integration. Their own consent and
-  // navigation rules determine whether these referral tags reach a later lead.
+export default function Homepage({ agent, routingMode = 'brokerage' }: { agent?: PublishedAgent; routingMode?: 'brokerage' | 'agent' | 'unavailable' }) {
+  // Every published page keeps operational identity. The server registry, never
+  // an old browser flag, decides whether the current request uses agent or brokerage delivery.
+  const agentRouting = !!agent;
   const buyerToolsUrl = agent
-    ? `https://acebuyer.adtrealtyaz.com/?view=tools&utm_source=adt-agent-${encodeURIComponent(agent.slug)}&utm_medium=referral&utm_campaign=adt-agent-page`
+    ? `https://acebuyer.adtrealtyaz.com/?view=tools&utm_source=adt-agent-${encodeURIComponent(agent.slug)}&utm_medium=referral&utm_campaign=adt-agent-page${agentRouting ? `&agentSlug=${encodeURIComponent(agent.slug)}&agentPublicationVersion=${encodeURIComponent(agent.publication_version)}` : ""}`
     : "https://acebuyer.adtrealtyaz.com/?view=tools";
   return <>
     <script
@@ -159,9 +160,9 @@ export default function Homepage({ agent }: { agent?: PublishedAgent }) {
 
       <section id="buyers" className="split buyer"><div className="splitImage buyerImage" role="img" aria-label="A couple outside their new Arizona home" /><div className="splitCopy"><div className="redRule"/><p className="eyebrow">Buying in Arizona</p><h2>Your Path to Homeownership Starts Here</h2><p>Buying a home is exciting. Explore our free tools and homebuyer education.</p><a className="button red" href={buyerToolsUrl}>Explore Free Buyer Tools <span>›</span></a></div></section>
 
-      <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Enter your address for a free automated home-value estimate, then explore tools to understand your potential proceeds and prepare for your next move.</p><LeadForm type="seller" agentSlug={agent?.slug} /></div></section>
+      <section id="sellers" className="seller sellerSellerLayout"><div className="sellerVisual" role="img" aria-label="ADT Realty For Sale sign in an Arizona yard"/><div className="sellerForm"><div className="redRule"/><p className="eyebrow light">Selling in Arizona</p><h2>What’s My Home Worth?</h2><p>Enter your address for a free automated home-value estimate, then explore tools to understand your potential proceeds and prepare for your next move.</p><LeadForm type="seller" agentSlug={agent?.slug} agentPublicationVersion={agent?.publication_version} agentRouting={agentRouting} /></div></section>
 
-      <section id="community-heroes" className="homeHeroes" aria-labelledby="homeHeroesTitle"><div className="homeHeroesCopy"><img className="homeHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes"/><h2 id="homeHeroesTitle">Heroes, We Have Your Back.</h2><p>ADT Realty proudly offers meaningful homebuying and selling savings to the people who serve our communities.</p><div className="homeHeroGroups"><span>Military &amp; Veterans</span><span>Law Enforcement</span><span>Firefighters &amp; EMS</span><span>Healthcare</span><span>Educators &amp; School Staff</span></div><div className="homeHeroesActions"><a className="button red" href="/hero">Learn More <span>›</span></a></div></div></section>
+      <section id="community-heroes" className="homeHeroes" aria-labelledby="homeHeroesTitle"><div className="homeHeroesCopy"><img className="homeHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes"/><h2 id="homeHeroesTitle">Heroes, We Have Your Back.</h2><p>ADT Realty proudly offers meaningful homebuying and selling savings to the people who serve our communities.</p><div className="homeHeroGroups"><span>Military &amp; Veterans</span><span>Law Enforcement</span><span>Firefighters &amp; EMS</span><span>Healthcare</span><span>Educators &amp; School Staff</span></div><div className="homeHeroesActions"><a className="button red" href={agentRouting ? `/hero?agentSlug=${encodeURIComponent(agent!.slug)}&agentPublicationVersion=${encodeURIComponent(agent!.publication_version)}` : "/hero"}>Learn More <span>›</span></a></div></div></section>
 
       <section id="join" className="join joinTeaser" aria-labelledby="joinTeaserTitle">
         <div className="joinTeaserInner">
@@ -174,14 +175,14 @@ export default function Homepage({ agent }: { agent?: PublishedAgent }) {
             <div className="joinTeaserHighlight"><span aria-hidden="true">02</span><h3>Tools That Work for You</h3><p>Your personal website, ACE Buyer and Seller tools, and automated marketing.</p></div>
             <div className="joinTeaserHighlight"><span aria-hidden="true">03</span><h3>Support to Build Your Business</h3><p>Practical training, coaching, and accessible leadership.</p></div>
           </div>
-          <a className="button red joinTeaserAction" href="/join">Discover the ADT Advantage <span aria-hidden="true">›</span></a>
+          <a className="button red joinTeaserAction" href={agentRouting ? `/join?agentSlug=${encodeURIComponent(agent!.slug)}&agentPublicationVersion=${encodeURIComponent(agent!.publication_version)}` : "/join"}>Discover the ADT Advantage <span aria-hidden="true">›</span></a>
         </div>
       </section>
 
-      <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Talk About Your Next Move.</h2><p>Looking to buy a home, need to sell, or interested in joining the ADT Realty team? Reach out—we’d love to hear about your goals and help you take the next step.</p></div><LeadForm type="contact" agentSlug={agent?.slug} /></section>
+      <section id="contact" className="contact"><div><div className="redRule"/><p className="eyebrow light">Connect with ADT Realty</p><h2>Let’s Talk About Your Next Move.</h2><p>Looking to buy a home, need to sell, or interested in joining the ADT Realty team? Reach out—we’d love to hear about your goals and help you take the next step.</p></div><LeadForm type="contact" agentSlug={agent?.slug} agentPublicationVersion={agent?.publication_version} agentRouting={agentRouting} agentName={agent?.full_name} agentEmail={agent?.email} /></section>
     </main>
 
-    {agent && <AgentFooter agent={agent} />}
+    {agent && <AgentFooter agent={agent} routingMode={routingMode} />}
     <footer className="homeFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><nav className="footerAreaGuides" aria-labelledby="footerAreaGuidesTitle"><h2 id="footerAreaGuidesTitle">Arizona Area Guides</h2><ul><li><a href="/moving-to-arizona">Phoenix Area Guide</a></li><li><span>Tucson Area Guide</span><small>Coming soon</small></li><li><span>Flagstaff Area Guide</span><small>Coming soon</small></li><li><span>Prescott Area Guide</span><small>Coming soon</small></li></ul></nav><p>© 2026 ADT Realty · Equal Housing Opportunity</p><EqualHousingLogo /></footer>
   </>;
 }

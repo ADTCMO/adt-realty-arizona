@@ -4,6 +4,7 @@ import CityGuide from "../city-guides/CityGuide";
 import { cityGuides, cityGuideSlugs } from "../city-guides/data";
 import "../chandler/chandler.css";
 import Homepage from "../Homepage";
+import { getPublicAgentRouting } from "../../lib/agent-connection";
 import { getPublishedAgent } from "../../lib/published-agent";
 
 // Named-agent publications are uncached, including slugs absent at build time.
@@ -31,13 +32,19 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   };
 }
 
-export default async function LocalCityPage({ params }: { params: Promise<{ city: string }> }) {
+export default async function LocalCityPage({ params, searchParams }: { params: Promise<{ city: string }>; searchParams?: Promise<Record<string, string | string[] | undefined>> }) {
   const { city: slug } = await params;
   const city = Object.prototype.hasOwnProperty.call(cityGuides, slug) ? cityGuides[slug] : undefined;
   if (!city) {
     const agent = await getPublishedAgent(slug);
     if (!agent) notFound();
-    return <Homepage agent={agent} />;
+    const query = await searchParams;
+    if (query?.agent !== undefined || query?.agent_version !== undefined ||
+        ((query?.agentSlug !== undefined || query?.agentPublicationVersion !== undefined) &&
+         (query.agentSlug !== slug || query.agentPublicationVersion !== agent.publication_version))) notFound();
+    let routingMode: 'brokerage' | 'agent' | 'unavailable' = 'unavailable';
+    try { routingMode = (await getPublicAgentRouting({agentSlug: agent.slug, agentPublicationVersion: agent.publication_version})).mode; } catch { /* Connection failure never implies brokerage fallback. */ }
+    return <Homepage agent={agent} routingMode={routingMode} />;
   }
   const schema = {
     "@context":"https://schema.org",

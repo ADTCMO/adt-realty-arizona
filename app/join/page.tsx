@@ -1,3 +1,4 @@
+import { pageAgent, type PageSearchParams } from "../../lib/agent-page-context";
 import EqualHousingLogo from "../EqualHousingLogo";
 import MarketingSamples from "./MarketingSamples";
 import JoinLeaders from "./JoinLeaders";
@@ -35,8 +36,12 @@ const stages=[
 ];
 
 
-export default function JoinPage(){return <div className="joinPage">
-<header className="joinTop"><a href="/" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#splits-fees">Splits &amp; Fees</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
+export default async function JoinPage({ searchParams }: { searchParams?: PageSearchParams } = {}) {
+  const agent = await pageAgent(searchParams);
+  const suffix = agent ? `?agentSlug=${encodeURIComponent(agent.slug)}&agentPublicationVersion=${encodeURIComponent(agent.publication_version)}` : '';
+  const home = agent ? `/${agent.slug}${suffix}` : '/';
+  return <div className="joinPage">
+<header className="joinTop"><a href={home} aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#splits-fees">Splits &amp; Fees</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
 <main>
 <section className="joinHero joinHeroFlag">
   <video className="joinFlagVideo" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
@@ -104,12 +109,12 @@ export default function JoinPage(){return <div className="joinPage">
  <div className="aceBenefits"><article><b>Your personal website</b><p>A destination built to attract buyers and sellers with resources they can use.</p></article><article><b>Buyer & seller tools</b><p>Calculators, planning resources and education that help people take their next step.</p></article><article><b>Automated marketing</b><p>Stay visible, share useful content and keep your business in front of potential clients.</p></article></div>
 </Folder>
 <Folder label="Community Heroes" index={7} id="community-heroes" natural>
- <div className="joinHeroesFeature"><img className="joinHeroesPhoto" src="/community-heroes-bg-v2.webp" alt="Healthcare, education, fire, law enforcement and military community heroes together" width="1536" height="1024" loading="lazy"/><div className="joinHeroesCopy"><img className="joinHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes" loading="lazy"/><p className="eyebrow">Serve those who serve Arizona</p><h2>A chance<br/><em>to give back.</em></h2><p>They strengthen our communities every day. As an ADT Realty agent, you have an opportunity to thank them with meaningful support when they buy or sell a home.</p><p>Build relationships rooted in gratitude. Make a difference in the lives of the people who make a difference for all of us.</p><a className="joinButton" href="/hero">Explore Community Heroes</a></div></div>
+ <div className="joinHeroesFeature"><img className="joinHeroesPhoto" src="/community-heroes-bg-v2.webp" alt="Healthcare, education, fire, law enforcement and military community heroes together" width="1536" height="1024" loading="lazy"/><div className="joinHeroesCopy"><img className="joinHeroesLogo" src="/community-heroes-logo.png" alt="ADT Realty Community Heroes" loading="lazy"/><p className="eyebrow">Serve those who serve Arizona</p><h2>A chance<br/><em>to give back.</em></h2><p>They strengthen our communities every day. As an ADT Realty agent, you have an opportunity to thank them with meaningful support when they buy or sell a home.</p><p>Build relationships rooted in gratitude. Make a difference in the lives of the people who make a difference for all of us.</p><a className="joinButton" href={`/hero${suffix}`}>Explore Community Heroes</a></div></div>
  <div className="heroServiceList"><span>Military & Veterans</span><span>Law Enforcement</span><span>Firefighters & EMS</span><span>Healthcare</span><span>Educators & School Staff</span></div>
 </Folder>
 <Folder label="Career Paths" index={8} id="career-paths" natural>
  <div className="folderIntro"><p className="eyebrow">Build at every stage</p><h2>Wherever You Are in Your Career,<br/><em>There’s a Path Forward.</em></h2><p>From your first transaction to leading others, ADT Realty provides the tools, training and support to help you take your next step. Explore the guide that fits where you are today.</p></div>
- <div className="stageGrid">{stages.map(([slug,title,cover,copy])=><a href={`/join/${slug}`} className="stageCard" key={slug}><img className="careerCover" src={cover} alt={`${title} career guide cover`} width="160" height="210" loading="lazy" decoding="async"/><div><h3>{title}</h3><p>{copy}</p><b>View the career guide</b></div></a>)}</div>
+ <div className="stageGrid">{stages.map(([slug,title,cover,copy])=><a href={`/join/${slug}${suffix}`} className="stageCard" key={slug}><img className="careerCover" src={cover} alt={`${title} career guide cover`} width="160" height="210" loading="lazy" decoding="async"/><div><h3>{title}</h3><p>{copy}</p><b>View the career guide</b></div></a>)}</div>
 </Folder>
 <Folder label="Leadership" index={9} id="leaders" natural>
  <div className="folderIntro"><p className="eyebrow">Real people. Real growth.</p><h2>Hear from<br/><em>our leaders.</em></h2><p>There are plenty of opportunities to grow: increase production, mentor agents, become an area leader or help develop an entire market.</p></div>
@@ -126,8 +131,9 @@ export default function JoinPage(){return <div className="joinPage">
  <details><summary>Are there other opportunities to grow and earn at ADT Realty?</summary><p>ADT Realty is expanding opportunities beyond real estate sales. ADT Insurance recently launched, with ADT Mortgage and ADT Lending expected to follow. These businesses are intended to create additional income opportunities for eligible agents while giving clients access to more services. Participation details and requirements will vary by program.</p></details>
  <details><summary>Is there a path for my stage of career?</summary><p>Absolutely. We’ll discuss your experience, goals and where you are today to help identify the right career path for you. Whether you’re newly licensed, building consistency or growing an established business, ADT Realty offers training and support to help you take your next step—including opportunities to mentor agents and grow into leadership roles.</p></details>
  </div></div></section>
-<section id="conversation" className="conversation"><div className="conversationInner"><div><p className="eyebrow">No pressure. No obligation.</p><h2>Start a confidential conversation.</h2><p>Tell us where you are in your career and what you want to build. We’ll help you determine whether ADT Realty Arizona is the right fit.</p></div><LeadForm type="career"/></div></section>
+<section id="conversation" className="conversation"><div className="conversationInner"><div><p className="eyebrow">No pressure. No obligation.</p><h2>Start a confidential conversation.</h2><p>Tell us where you are in your career and what you want to build. We’ll help you determine whether ADT Realty Arizona is the right fit.</p></div><LeadForm type="career" agentSlug={agent?.slug} agentPublicationVersion={agent?.publication_version} agentRouting={!!agent} agentName={agent?.full_name} agentEmail={agent?.email} agentInquiryPage="join"/></div></section>
 </main><footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Helping Others · Do the Right Thing Every Time · Build Relationships</p><EqualHousingLogo /></footer></div>}
+
 
 
 

@@ -57,3 +57,85 @@ test('explicit return to named homepage stays operational after disabling the co
   await assert.rejects(page({params:Promise.resolve({city:'sampleagent'}),searchParams:Promise.resolve({agentSlug:'anotheragent',agentPublicationVersion:greg.publication_version})}),/NOT_FOUND/);
   }finally{global.fetch=old;for(const[key,value]of [['AGENT_PUBLIC_SUPABASE_ANON_KEY',anon],['VERCEL_ENV',env],['AGENT_ROUTING_GREG_ENABLED',flag]])if(value===undefined)delete process.env[key];else process.env[key]=value;}
 });
+
+const markupHash = html => require('node:crypto').createHash('sha256').update(html).digest('hex');
+const personalProfiles = [
+  {...profile, slug:'averymorgan', full_name:'Avery Morgan', email:'avery@example.test', phone:'(202) 555-0101'},
+  {...profile, slug:'reneelane', full_name:'Renée Lane', email:'renee@example.test', phone:'(202) 555-0102'},
+];
+
+test('personal homepage uses each agent first name, singular contact label and hides both broker navigation links',()=>{
+  const Home=load('app/Homepage.tsx').default;
+  for(const agent of personalProfiles)for(const routingMode of ['agent','brokerage','unavailable']){
+    const html=renderToStaticMarkup(React.createElement(Home,{agent,routingMode}));
+    assert.equal((html.match(new RegExp('Talk to '+agent.full_name.split(' ')[0],'g'))||[]).length,2);
+    assert.doesNotMatch(html,/Meet Our Arizona Broker|<a[^>]*href="\/mike-dingman"/);
+    assert.match(html,/How can I help\?/);assert.doesNotMatch(html,/How Can We Help\?/);
+    assert.match(html,new RegExp('data-agent-leads="'+routingMode+'"'));
+    assert.match(html,/ADT REALTY — ARIZONA/);assert.match(html,/Your Move\. Our Commitment\./);
+    assert.match(html,new RegExp('name="agentSlug" value="'+agent.slug+'"'));
+    assert.match(html,/name="agentPublicationVersion" value="12345678-1234-4321-8123-123456789abc"/);
+  }
+});
+
+test('personal CTA handles whitespace, a single name and escaped text without a hardcoded agent',()=>{
+  const {agentContactLabel}=load('app/components/PublicAgent.tsx');
+  for(const [full_name,label] of [['  Avery   Morgan  ','Talk to Avery'],['Renée','Talk to Renée'],['李 明','Talk to 李'],['<img> Example','Talk to <img>']])assert.equal(agentContactLabel({full_name}),label);
+  assert.equal(agentContactLabel(null),'Talk to an Agent');assert.equal(agentContactLabel({full_name:'   '}),'Talk to an Agent');
+  const html=renderToStaticMarkup(React.createElement(load('app/Homepage.tsx').default,{agent:{...profile,full_name:'<img> Example'}}));assert.match(html,/Talk to &lt;img&gt;/);assert.doesNotMatch(html,/Talk to <img>/);
+});
+
+test('attributed Hero and Join show verified agent CTA and footer without inventing a routing mode',async()=>{
+  const old=global.fetch,anon=process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY;
+  process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY='mock-public-key';
+  try{for(const agent of personalProfiles){
+    const calls=[];global.fetch=async(url,options)=>{calls.push(String(url));assert.equal(url,'https://lklgtilyptasjdxqfsij.supabase.co/rest/v1/rpc/ace_agent_public_site');assert.equal(JSON.parse(options.body).p_slug,agent.slug);return Response.json(agent);};
+    const searchParams=()=>Promise.resolve({agentSlug:agent.slug,agentPublicationVersion:agent.publication_version});
+    for(const [file,kind] of [['app/hero/page.tsx','hero'],['app/join/page.tsx','join']]){
+      const html=renderToStaticMarkup(await load(file).default({searchParams:searchParams()}));
+      assert.match(html,new RegExp('Talk to '+agent.full_name.split(' ')[0]));
+      assert.match(html,new RegExp('<h2 id="agent-profile-name">'+agent.full_name+'</h2>'));
+      assert.ok(html.includes('href="tel:'+agent.phone.replace(/[^+\d]/g,'')+'"'));
+      assert.ok(html.includes(agent.phone));assert.ok(html.includes('mailto:'+agent.email));
+      assert.match(html,new RegExp('data-agent-site-slug="'+agent.slug+'"'));
+      assert.match(html,/data-agent-publication-version="12345678-1234-4321-8123-123456789abc"/);
+      assert.doesNotMatch(html,/data-agent-leads=/);
+      assert.match(html,new RegExp('name="agentInquiryPage" value="'+kind+'"'));
+      assert.match(html,new RegExp('name="agentSlug" value="'+agent.slug+'"'));
+      assert.match(html,/name="agentPublicationVersion" value="12345678-1234-4321-8123-123456789abc"/);
+      if(kind==='hero'){
+        assert.doesNotMatch(html,/Meet Our Arizona Broker/);
+        assert.ok(html.includes('/'+agent.slug+'?agentSlug='+agent.slug+'&amp;agentPublicationVersion='+agent.publication_version+'#contact'));
+        assert.match(html,/ADT Realty Community Heroes Program/);assert.match(html,/Get My Exact Savings Estimate/);
+      }else{
+        assert.match(html,/<a class="joinButton" href="#conversation">Talk to /);
+        assert.match(html,/Join ADT Realty — Arizona/);assert.match(html,/Our Leaders/);
+      }
+    }
+    assert.equal(calls.length,2);
+  }}finally{global.fetch=old;if(anon===undefined)delete process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY;else process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY=anon;}
+});
+
+test('Hero and Join reject missing, duplicate, stale or unpublished context instead of showing another agent identity',async()=>{
+  const old=global.fetch,anon=process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY;process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY='mock-public-key';
+  try{for(const file of ['app/hero/page.tsx','app/join/page.tsx']){
+    const page=load(file).default;global.fetch=async()=>Response.json(profile);
+    for(const params of [{agentSlug:profile.slug},{agentPublicationVersion:profile.publication_version},{agentSlug:[profile.slug,profile.slug],agentPublicationVersion:profile.publication_version},{agentSlug:profile.slug,agentPublicationVersion:'87654321-1234-4321-8123-123456789abc'}])await assert.rejects(page({searchParams:Promise.resolve(params)}),/NOT_FOUND/);
+    global.fetch=async()=>Response.json(null);await assert.rejects(page({searchParams:Promise.resolve({agentSlug:profile.slug,agentPublicationVersion:profile.publication_version})}),/NOT_FOUND/);
+  }}finally{global.fetch=old;if(anon===undefined)delete process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY;else process.env.AGENT_PUBLIC_SUPABASE_ANON_KEY=anon;}
+});
+
+test('no-agent Home, Hero and Join markup stays byte-identical to the verified pre-personalization baseline',async()=>{
+  const expected=[['app/Homepage.tsx','207d4e4f28160040e90fbeccf84e230b45de3376c10b5a786337ac07a5b6b50f'],['app/hero/CommunityHeroes.tsx','69934ca2e88a1c07166b11acd6cd4ed0320d2fe76b90f8ae0c44cefc79e43b68'],['app/join/page.tsx','75113aebf4c125c3d692d05f0c3301cef2b43d3eed051256726861cf6a0246a8']];
+  for(const [file,hash]of expected){const component=load(file).default;const tree=file.includes('/join/')?await component():React.createElement(component);assert.equal(markupHash(renderToStaticMarkup(tree)),hash,file);}
+});
+
+test('seller address form remains byte-identical with and without complete personal attribution',()=>{
+  const Form=load('app/components/LeadForm.tsx').LeadForm;
+  for(const [agent,hash]of [[false,'076870d5adc60dbfeb04aa87d36b22c220bf837243bcc7f4d630fda66143ad12'],[true,'7351515eb17a1c4e3998ab5ac549c3b7e8b86c2150f9a347027fbae0f91cd45a']]){
+    const props={type:'seller',...(agent?{agentSlug:'sampleagent',agentPublicationVersion:profile.publication_version,agentRouting:true}:{})};
+    const html=renderToStaticMarkup(React.createElement(Form,props));assert.equal(markupHash(html),hash);assert.match(html,/action="https:\/\/aceseller.adtrealtyaz.com" method="get"/);assert.match(html,/name="address"/);
+  }
+  const ordinary=renderToStaticMarkup(React.createElement(Form,{type:'contact'}));assert.match(ordinary,/How Can We Help\?/);
+  const incomplete=renderToStaticMarkup(React.createElement(Form,{type:'contact',agentRouting:true,agentSlug:'sampleagent'}));assert.match(incomplete,/How Can We Help\?/);
+});

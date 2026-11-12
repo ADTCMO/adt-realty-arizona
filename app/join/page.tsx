@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { RecruitingFolder } from "./RecruitingFolder";
 import type { ReactNode } from "react";
 import { LeadForm } from "../components/LeadForm";
+import { AgentFooter, agentContactLabel } from "../components/PublicAgent";
 import { ChapterTabs } from "./ChapterTabs";
 import CompensationDetails from "./CompensationDetails";
 import FutureOfADT from "./FutureOfADT";
@@ -41,7 +42,7 @@ export default async function JoinPage({ searchParams }: { searchParams?: PageSe
   const suffix = agent ? `?agentSlug=${encodeURIComponent(agent.slug)}&agentPublicationVersion=${encodeURIComponent(agent.publication_version)}` : '';
   const home = agent ? `/${agent.slug}${suffix}` : '/';
   return <div className="joinPage">
-<header className="joinTop"><a href={home} aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#splits-fees">Splits &amp; Fees</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">Start the Conversation</a></header>
+<header className="joinTop"><a href={home} aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/></a><nav><a href="#model">Our Model</a><a href="#splits-fees">Splits &amp; Fees</a><a href="#career-paths">Career Paths</a><a href="#leaders">Our Leaders</a></nav><a className="joinButton" href="#conversation">{agent ? agentContactLabel(agent) : "Start the Conversation"}</a></header>
 <main>
 <section className="joinHero joinHeroFlag">
   <video className="joinFlagVideo" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
@@ -132,7 +133,7 @@ export default async function JoinPage({ searchParams }: { searchParams?: PageSe
  <details><summary>Is there a path for my stage of career?</summary><p>Absolutely. We’ll discuss your experience, goals and where you are today to help identify the right career path for you. Whether you’re newly licensed, building consistency or growing an established business, ADT Realty offers training and support to help you take your next step—including opportunities to mentor agents and grow into leadership roles.</p></details>
  </div></div></section>
 <section id="conversation" className="conversation"><div className="conversationInner"><div><p className="eyebrow">No pressure. No obligation.</p><h2>Start a confidential conversation.</h2><p>Tell us where you are in your career and what you want to build. We’ll help you determine whether ADT Realty Arizona is the right fit.</p></div><LeadForm type="career" agentSlug={agent?.slug} agentPublicationVersion={agent?.publication_version} agentRouting={!!agent} agentName={agent?.full_name} agentEmail={agent?.email} agentInquiryPage="join"/></div></section>
-</main><footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Helping Others · Do the Right Thing Every Time · Build Relationships</p><EqualHousingLogo /></footer></div>}
+</main>{agent && <AgentFooter agent={agent} />}<footer className="joinFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><p>Helping Others · Do the Right Thing Every Time · Build Relationships</p><EqualHousingLogo /></footer></div>}
 
 
 

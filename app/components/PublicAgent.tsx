@@ -1,7 +1,12 @@
 import type { PublishedAgent } from '../../lib/published-agent';
 import './public-agent.css';
 
-export function AgentFooter({ agent, routingMode = "brokerage" }: { agent: PublishedAgent; routingMode?: "brokerage" | "agent" | "unavailable" }) {
+export function agentContactLabel(agent?: Pick<PublishedAgent, "full_name"> | null) {
+  const firstName = agent?.full_name.trim().split(/\s+/)[0];
+  return firstName ? `Talk to ${firstName}` : "Talk to an Agent";
+}
+
+export function AgentFooter({ agent, routingMode }: { agent: PublishedAgent; routingMode?: "brokerage" | "agent" | "unavailable" }) {
   return <section id="agent-contact" className="agentProfileFooter" aria-labelledby="agent-profile-name"
     data-agent-site-slug={agent.slug} data-agent-publication-version={agent.publication_version} data-agent-leads={routingMode}>
     {agent.profile_photo_url && <img src={agent.profile_photo_url} alt={agent.full_name} width="112" height="112" loading="lazy" referrerPolicy="no-referrer"/>}

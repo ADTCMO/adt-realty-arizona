@@ -2,7 +2,7 @@ import EqualHousingLogo from "./EqualHousingLogo";
 import { LeadForm } from "./components/LeadForm";
 import "./seller-section.css";
 
-import { AgentFooter } from "./components/PublicAgent";
+import { AgentFooter, agentContactLabel } from "./components/PublicAgent";
 import type { PublishedAgent } from "../lib/published-agent";
 
 export default function Homepage({ agent, routingMode = 'brokerage' }: { agent?: PublishedAgent; routingMode?: 'brokerage' | 'agent' | 'unavailable' }) {
@@ -148,9 +148,9 @@ export default function Homepage({ agent, routingMode = 'brokerage' }: { agent?:
     `}</style>
     <header className="siteHeader">
       <a className="brand" href="#home" aria-label="ADT Realty Arizona home"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona" /></a>
-      <nav aria-label="Main navigation"><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="#community-heroes">Community Heroes</a><a href="/mike-dingman">Meet Our Arizona Broker</a><a href="#join">Join ADT</a></nav>
-      <a className="button red headerButton" href="#contact">Talk to an Agent <span>›</span></a>
-      <details className="mobileMenu"><summary aria-label="Open navigation"><span/><span/><span/></summary><div><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="#community-heroes">Community Heroes</a><a href="/mike-dingman">Meet Our Arizona Broker</a><a href="#join">Join ADT</a><a href="#contact">Talk to an Agent</a></div></details>
+      <nav aria-label="Main navigation"><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="#community-heroes">Community Heroes</a>{!agent && <a href="/mike-dingman">Meet Our Arizona Broker</a>}<a href="#join">Join ADT</a></nav>
+      <a className="button red headerButton" href="#contact">{agentContactLabel(agent)} <span>›</span></a>
+      <details className="mobileMenu"><summary aria-label="Open navigation"><span/><span/><span/></summary><div><a href="#buyers">Buy</a><a href="#sellers">Sell</a><a href="#community-heroes">Community Heroes</a>{!agent && <a href="/mike-dingman">Meet Our Arizona Broker</a>}<a href="#join">Join ADT</a><a href="#contact">{agentContactLabel(agent)}</a></div></details>
     </header>
 
     <main>

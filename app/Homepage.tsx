@@ -183,7 +183,7 @@ export default function Homepage({ agent, routingMode = 'brokerage' }: { agent?:
     </main>
 
     {agent && <AgentFooter agent={agent} routingMode={routingMode} />}
-    <footer className="homeFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><nav className="footerAreaGuides" aria-labelledby="footerAreaGuidesTitle"><h2 id="footerAreaGuidesTitle">Arizona Area Guides</h2><ul><li><a href="/moving-to-arizona">Phoenix Area Guide</a></li><li><span>Tucson Area Guide</span><small>Coming soon</small></li><li><span>Flagstaff Area Guide</span><small>Coming soon</small></li><li><span>Prescott Area Guide</span><small>Coming soon</small></li></ul></nav><p>© 2026 ADT Realty · Equal Housing Opportunity</p><EqualHousingLogo /></footer>
+    <footer className="homeFooter"><img src="/adt-realty-arizona-outline.png" alt="ADT Realty Arizona"/><div className="footerValues"><span>Helping Others</span><span>Do the Right Thing Every Time</span><span>Build Relationships</span></div><nav className="footerAreaGuides" aria-labelledby="footerAreaGuidesTitle"><h2 id="footerAreaGuidesTitle">Arizona Area Guides</h2><ul><li><a href="/moving-to-arizona">Phoenix Area Guide</a></li><li><a href="/tucson">Tucson Area Guide</a></li><li><span>Flagstaff Area Guide</span><small>Coming soon</small></li><li><span>Prescott Area Guide</span><small>Coming soon</small></li></ul></nav><p>© 2026 ADT Realty · Equal Housing Opportunity</p><EqualHousingLogo /></footer>
   </>;
 }
 

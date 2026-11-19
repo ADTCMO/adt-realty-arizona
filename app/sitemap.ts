@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { countyCities } from "./moving-to-arizona/data";
+import { tucsonCommunities } from "./tucson/data";
 import { phoenixAreas } from "./phoenix/data";
 
 const baseUrl = "https://www.adtrealtyaz.com";
@@ -11,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // until the public-listings API can provide a complete, current URL list.
   // Fixed content-update dates, not a new timestamp on every build.
   return [
+    { url: `${baseUrl}/tucson`, lastModified: "2026-11-19", changeFrequency: "monthly", priority: 0.9 },
+    ...tucsonCommunities.map(city => ({ url: `${baseUrl}/tucson/${city.slug}`, lastModified: "2026-11-19", changeFrequency: "monthly" as const, priority: 0.8 })),
     { url: `${baseUrl}/mike-dingman`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/join`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/`, lastModified: "2026-10-30", changeFrequency: "weekly", priority: 1 },

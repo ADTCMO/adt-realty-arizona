@@ -10,7 +10,7 @@ const fullView = { x: 0, y: 0, width: 900, height: 700 };
 const project = (lon: number, lat: number) => ({ x: 100 + (lon + 111.35) * 800, y: 60 + (32.5 - lat) * 750 });
 
 // Leader lines separate neighboring municipality markers without moving their mapped locations.
-const pinOffsets: Record<string, [number, number]> = { "el-mirage": [-12, -9], youngtown: [13, 9], tempe: [9, -8], carefree: [7, 4], "cave-creek": [-7, -4] };
+const pinOffsets: Record<string, [number, number]> = {};
 
 export default function TucsonExplorer({ cities, title = "Find your place on the map.", intro = "Click a numbered city or town for its local guide. Prefer a list? Search below and open the same details—no map skills required." }: { cities: CountyCity[]; title?: string; intro?: string }) {
   const [isReady, setIsReady] = useState(false);
@@ -163,7 +163,7 @@ export default function TucsonExplorer({ cities, title = "Find your place on the
               </a>;
             })}
           </svg>
-          <p className="countyMapInstructions">Numbers match the list. Zoom with +/−; drag the map to pan. Pins mark approximate representative locations, not downtowns or municipal boundaries. Leader lines separate close neighbors.</p>
+          <p className="countyMapInstructions">Numbers match the list. Zoom with +/−; drag the map to pan. Pins mark approximate representative locations, not downtowns or municipal boundaries. </p>
           <p className="countyMapCredit">Orientation only: approximate community centers, not boundaries, service areas or driving routes. Tucson, Oro Valley, Marana and Sahuarita are municipalities; the other profiles are unincorporated communities.</p>
         </div></details>
         <div className="countyListPanel">
@@ -179,7 +179,7 @@ export default function TucsonExplorer({ cities, title = "Find your place on the
           <div className={`countyDialogTitle ${selected.photo ? "hasPhoto" : ""}`}><p className="countyEyebrow">{selected.region} · Tucson-area guide</p><h2 id="county-dialog-title">{selected.name}</h2><p>{selected.summary}</p></div>
           <div className="countyDialogBody">
             {selected.photo && <p className="countyPhotoCredit">Photo: {selected.photo.creditUrl ? <a href={selected.photo.creditUrl} target="_blank" rel="noreferrer">{selected.photo.credit}</a> : selected.photo.credit}{selected.photo.license && <> · {selected.photo.licenseUrl ? <a href={selected.photo.licenseUrl} target="_blank" rel="noreferrer">{selected.photo.license}</a> : selected.photo.license}</>}</p>}
-            <div className="countyDialogStats"><div><span>{selected.price?.label ?? "Local housing prices"}</span><strong>{selected.price?.value ?? "Check current local sales"}</strong>{selected.price ? <small>{selected.price.period} · <a href={selected.price.sourceUrl} target="_blank" rel="noreferrer">Source ↗</a></small> : <small>A current, consistently defined median is not yet verified for this guide. Ask for recent comparable sales.</small>}</div></div>
+            <div className="countyDialogStats"><div><span>Median sale price · {selected.price?.label ?? "Local housing prices"}</span><strong>{selected.price?.value ?? "Check current local sales"}</strong>{selected.price ? <small>{selected.price.period} · <a href={selected.price.sourceUrl} target="_blank" rel="noreferrer">Source ↗</a></small> : <small>A current, consistently defined median is not yet verified for this guide. Ask for recent comparable sales.</small>}</div></div>
             <div className="countyDialogTopics"><details><summary>Housing & everyday connections</summary><div><h3>Housing character</h3><p>{selected.housing}</p><h3>Commute & access</h3><p>{selected.commute}</p></div></details><details><summary>Schools: check the address</summary><div><p>{selected.schools}</p><a href="https://azreportcards.azed.gov/" target="_blank" rel="noreferrer">Arizona School Report Cards ↗</a></div></details><details><summary>Places to know & local tradeoffs</summary><div><h3>Places to know</h3><ul>{selected.highlights.map((item) => <li key={item}>{item}</li>)}</ul><h3>Before you choose</h3><ul>{selected.considerations.map((item) => <li key={item}>{item}</li>)}</ul></div></details></div>
             {selected.guideHref && <a className="countyDetailLink" href={selected.guideHref} onClick={(event) => { if (selected.guideHref?.startsWith("#")) { event.preventDefault(); followGuide(selected.guideHref); } }}>Explore more of {selected.name} <span aria-hidden="true">→</span></a>}
             {selected.sources?.length ? <details className="countyCitySources"><summary>Local sources & useful links</summary><ul>{selected.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></li>)}</ul></details> : null}
